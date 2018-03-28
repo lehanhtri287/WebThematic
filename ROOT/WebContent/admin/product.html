@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="theme-color" content="#3e454c">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Sản phẩm</title>
+<!-- InstanceEndEditable -->
+<!-- Font awesome -->
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<!-- Sandstone Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- Admin Style -->
+<link rel="stylesheet" href="css/style.css">
+
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+	<div class="brand clearfix">
+		<a href="index.html" class="logo"><img src="/ShopHM1/images/logo.png"
+			class="img-responsive" alt=""></a> <span class="menu-btn"><i
+			class="fa fa-bars"></i></span>
+		<ul class="ts-profile-nav">
+			<li class="ts-account"><a href="#"><img
+					src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="">
+					Tài khoản <i class="fa fa-angle-down hidden-side"></i></a>
+				<ul>
+					<li><a href="#">Thông tin tài khoản</a></li>
+					<li><a href="#">Chỉnh sửa tài khoản</a></li>
+					<li><a href="#">Đăng xuất</a></li>
+				</ul></li>
+		</ul>
+	</div>
+	<div class="ts-main-content">
+		<nav class="ts-sidebar">
+			<ul class="ts-sidebar-menu">
+				<li class="ts-label">Tìm kiếm</li>
+				<li><input type="text" class="ts-sidebar-search"
+					placeholder="Nhập từ khóa..."></li>
+				<li class="ts-label">Danh Mục</li>
+				<!-- Account from above -->
+				<ul class="ts-profile-nav">
+					<li class="ts-account"><a href="#"><img
+							src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="">
+							Tài Khoản <i class="fa fa-angle-down hidden-side"></i></a>
+						<ul>
+							<li><a href="#">Thông Tin Tài Khoản</a></li>
+							<li><a href="#">Chỉnh Sửa Tài Khoản</a></li>
+							<li><a href="#">Đăng Xuất</a></li>
+						</ul></li>
+				</ul>
+			</ul>
+			<!-- InstanceBeginEditable name="open" -->
+			<ul class="ts-sidebar-menu">
+				<li><a href="index.html"><i class="fa fa-dashboard"></i>Thống
+						Kê</a></li>
+				<li class="open"><a href="product.html"><i
+						class="fa fa-database"></i>Sản Phẩm</a></li>
+				<li><a href="order.html"><i class="fa fa-pencil-square-o"></i>Đơn
+						Hàng</a></li>
+				<li><a href="customer.html"><i class="fa fa-users"></i>Khách
+						Hàng</a></li>
+			</ul>
+			<!-- InstanceEndEditable -->
+		</nav>
+		<!-- InstanceBeginEditable name="content" -->
+		<div class="content-wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<form class="search">
+							<input class="searchTerm" placeholder="Tìm kiếm ..." /> <input
+								class="searchButton" type="submit" />
+						</form>
+					</div>
+					<div class="col-md-12">
+						<h2 class="page-title">Quản lý sản phẩm</h2>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="row">
+									<div class="col-md-4">
+										<div class="panel panel-default">
+											<div class="panel-body bk-primary text-light">
+												<div class="stat-panel text-center h1">
+													<a href="add_product.html"><i
+														class="fa fa-plus-square-o text-white hover-product"></i></a>
+												</div>
+												<div class="stat-panel-title text-uppercase text-center">
+													<a href="add_product.html" class="hover-product">Thêm
+														sản phẩm mới</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="panel panel-default" href="#">
+											<div class="panel-body bk-success text-light">
+												<div class="stat-panel text-center">
+													<div class="stat-panel-number h1 ">111</div>
+													<div class="stat-panel-title text-uppercase">Tổng Sản
+														Phẩm</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="panel panel-default">
+											<div class="panel-body bk-danger text-light">
+												<div class="stat-panel text-center">
+													<div class="stat-panel-number h1 ">10</div>
+													<div class="stat-panel-title text-uppercase">Sản Phẩm
+														Bán Chạy</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="panel panel-default">
+								<div class="panel-heading">Sản Phẩm</div>
+								<div class="panel-body">
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th>Mã sản phẩm</th>
+												<th>Tên sản phẩm</th>
+												<th class="hidden-xs">Nhà sản xuất</th>
+												<th class="hidden-xs">Giá(vnđ)</th>
+												<th class="hidden-xs">Số lượng</th>
+												<th>Thao tác</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>PID.110</td>
+												<td>Casio Watch 2102</td>
+												<td class="hidden-xs">Casio</td>
+												<td class="hidden-xs">160.000</td>
+												<td class="hidden-xs">5</td>
+												<td><div class="btn-group btn-group-sm">
+														<button class="btn btn-primary hidden-xs"
+															data-toggle="modal" data-target="#view">
+															<i class="fa fa-eye" title="Chỉnh sửa"></i>
+														</button>
+														<a href="edit_product.html" class="btn btn-success"> <i
+															class="fa fa-edit" title="Chỉnh sửa"></i></a> <a href="#"
+															class="btn btn-danger"> <i class="fa fa-trash"
+															title="Xóa"></i></a>
+														<div id="view" class="modal fade">
+															<div class="modal-dialog">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<button type="button" class="close"
+																			data-dismiss="modal">&times;</button>
+																		<h4 class="modal-title">Thông tin sản phẩm</h4>
+																	</div>
+																	<!--end modal-header-->
+																	<div class="modal-body">
+																		<div class="product">
+																			<div class="img-product text-center">
+																				<img src="img/novel-7.png" alt="">
+																			</div>
+																			<div class="detail-product">
+																				<p>
+																					Mã sách: PID.123<br> Tên : Casio 1502<br>
+																					Nhà sản xuất: Casio<br> Giá bán: 124.000<br>
+																					Số lượng:111<br> Ngày thêm: 11/10/2016
+																				</p>
+																				<a href="edit_product.html" class="btn btn-default">Edit</a>
+																			</div>
+																		</div>
+
+																	</div>
+																	<!--end modal-body-->
+																</div>
+																<!--end modal-content-->
+															</div>
+															<!--end modal-dialog-->
+														</div>
+													</div></td>
+											</tr>
+											<tr>
+												<td>PID.109</td>
+												<td>Casio Watch 1111</td>
+												<td class="hidden-xs">Casio</td>
+												<td class="hidden-xs">620.000</td>
+												<td class="hidden-xs">1</td>
+												<td><div class="btn-group btn-group-sm">
+														<button class="btn btn-primary hidden-xs"
+															data-toggle="modal" data-target="#view">
+															<i class="fa fa-eye" title="Chỉnh sửa"></i>
+														</button>
+														<a href="edit_product.html" class="btn btn-success"> <i
+															class="fa fa-edit" title="Chỉnh sửa"></i></a> <a href="#"
+															class="btn btn-danger"> <i class="fa fa-trash"
+															title="Xóa"></i></a>
+
+
+													</div></td>
+											</tr>
+											<tr>
+												<td>PID.108</td>
+												<td>Casio Neon 21</td>
+												<td class="hidden-xs">Casio</td>
+												<td class="hidden-xs">460.000</td>
+												<td class="hidden-xs">2</td>
+												<td><div class="btn-group btn-group-sm">
+														<button class="btn btn-primary hidden-xs"
+															data-toggle="modal" data-target="#view">
+															<i class="fa fa-eye" title="Chỉnh sửa"></i>
+														</button>
+														<a href="edit_product.html" class="btn btn-success"> <i
+															class="fa fa-edit" title="Chỉnh sửa"></i></a> <a href="#"
+															class="btn btn-danger"> <i class="fa fa-trash"
+															title="Xóa"></i></a>
+													</div></td>
+											</tr>
+											<tr>
+												<td>PID.107</td>
+												<td>Casio Gold 21</td>
+												<td class="hidden-xs">Casio</td>
+												<td class="hidden-xs">220.000</td>
+												<td class="hidden-xs">4</td>
+												<td><div class="btn-group btn-group-sm">
+														<button class="btn btn-primary hidden-xs"
+															data-toggle="modal" data-target="#view">
+															<i class="fa fa-eye" title="Chỉnh sửa"></i>
+														</button>
+														<a href="edit_product.html" class="btn btn-success"> <i
+															class="fa fa-edit" title="Chỉnh sửa"></i></a> <a href="#"
+															class="btn btn-danger"> <i class="fa fa-trash"
+															title="Xóa"></i></a>
+													</div></td>
+											</tr>
+											<tr>
+												<td>PID.108</td>
+												<td>Casio Watch 2102</td>
+												<td class="hidden-xs">Casio</td>
+												<td class="hidden-xs">610.000</td>
+												<td class="hidden-xs">5</td>
+												<td><div class="btn-group btn-group-sm">
+														<button class="btn btn-primary hidden-xs"
+															data-toggle="modal" data-target="#view">
+															<i class="fa fa-eye" title="Chỉnh sửa"></i>
+														</button>
+														<a href="edit_product.html" class="btn btn-success"> <i
+															class="fa fa-edit" title="Chỉnh sửa"></i></a> <a href="#"
+															class="btn btn-danger"> <i class="fa fa-trash"
+															title="Xóa"></i></a>
+													</div></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="foot">
+					<ul class="pagination">
+						<li><a href="#" aria-label="Previous"> <span
+								aria-hidden="true">&laquo;</span>
+						</a></li>
+						<li><a href="#" class="active">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#" aria-label="Next"> <span
+								aria-hidden="true">&raquo;</span>
+						</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- /.container-fluid -->
+		</div>
+		<!-- /.content-wrapper -->
+		<script>
+			$("[data-toggle=popover]").popover({
+				html : true,
+				content : function() {
+					return $('#view').html();
+				}
+			});
+		</script>
+		<!-- InstanceEndEditable -->
+	</div>
+	<!-- Loading Scripts -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/index.js"></script>
+	<script>
+		window.onload = function() {
+
+			// Line chart from swirlData for dashReport
+			var ctx = document.getElementById("dashReport").getContext("2d");
+			window.myLine = new Chart(ctx)
+					.Line(
+							swirlData,
+							{
+								responsive : true,
+								scaleShowVerticalLines : false,
+								scaleBeginAtZero : true,
+								multiTooltipTemplate : "<%if (label){%><%=label%>: <%}%><%= value %>",
+							});
+
+			// Pie Chart from doughutData
+			var doctx = document.getElementById("chart-area3").getContext("2d");
+			window.myDoughnut = new Chart(doctx).Pie(doughnutData, {
+				responsive : true
+			});
+
+			// Dougnut Chart from doughnutData
+			var doctx = document.getElementById("chart-area4").getContext("2d");
+			window.myDoughnut = new Chart(doctx).Doughnut(doughnutData, {
+				responsive : true
+			});
+
+		}
+	</script>
+</body>
+<!-- InstanceEnd -->
+</html>
