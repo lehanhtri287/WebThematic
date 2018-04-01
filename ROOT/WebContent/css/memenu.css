@@ -73,7 +73,7 @@ ul.memenu.skyblue {text-align: center;}
 .menu{width: 100%;background-color: salmon;height: 65px;}
 .menuDropItem{color: darkgreen;text-decoration: none;}
 a, a:hover{text-decoration: none;}
-a:hover{font-size: 18px;}
+.h_nav a:hover{font-size: 18px;}
 a:hover h4{background-color: yellow;}
 .skyblue li>a,.skyblue>li.showhide span{color: white;font-size: 22px;}
 .skyblue>li:hover>a,.skyblue>li.active>a,.skyblue .dropdown li:hover>a{color:#000;border-top: 2px solid olive;}
