@@ -55,7 +55,7 @@
 	<div class="container menu">
 		<div class="head-top">
 			<div class="col-sm-2 number"></div>
-			<div class="col-sm-8 h_menu4">
+			<div class="col-sm-7 h_menu4">
 				<ul class="memenu skyblue">
 					<li class=" grid"><a href="index.jsp">Home</a></li>
 					<li><a href="#">Danh mục</a>
@@ -78,7 +78,7 @@
 					<li><a class="color6" href="contact.jsp">Liên hệ</a></li>
 				</ul>
 			</div>
-			<div class="col-sm-2 search">
+			<div class="col-sm-3 search">
 				<!-- <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i
 						class="glyphicon glyphicon-search"> </i> </a> -->
 				<form action="SearchProduct" method="POST">
