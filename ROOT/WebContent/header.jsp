@@ -19,7 +19,7 @@
 					if (userLogged == null) {
 				%>
 				<p class="log">
-					<a href="account.jsp">Đăng nhập</a> <span>or</span><a
+					<a href="account.jsp">Đăng nhập</a>or<a
 						href="register.jsp">Đăng ký</a>
 				</p>
 				<%
@@ -52,7 +52,7 @@
 			<div class="clearfix"></div>
 		</div>
 	</div>
-	<div class="container">
+	<div class="container menu">
 		<div class="head-top">
 			<div class="col-sm-2 number"></div>
 			<div class="col-sm-8 h_menu4">
@@ -60,16 +60,14 @@
 					<li class=" grid"><a href="index.jsp">Home</a></li>
 					<li><a href="#">Danh mục</a>
 						<div class="mepanel" style="width: 30%; margin-left: 15%;">
-
 							<div class="h_nav">
 								<%
 									List<Category> categories = CategoryDAO.getAllCategory();
 									for (Category category : categories) {
 								%>
-								<h4 style="text-align: center">
-									<a
-										href="ViewProductByCate?action=viewProd&id=<%=category.getIdCategory()%>"><%=category.getNameCategory()%></a>
-								</h4>
+									<a href="ViewProductByCate?action=viewProd&id=<%=category.getIdCategory()%>">
+										<h4><%=category.getNameCategory()%></h4>
+									</a>
 								<%
 									}
 								%>
