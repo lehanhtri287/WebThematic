@@ -19,7 +19,7 @@
 					if (userLogged == null) {
 				%>
 				<p class="log">
-					<a href="account.jsp">Đăng nhập</a>or<a
+					<a href="account.jsp">Đăng nhập</a> / <a
 						href="register.jsp">Đăng ký</a>
 				</p>
 				<%
@@ -58,8 +58,8 @@
 			<div class="col-sm-7 h_menu4">
 				<ul class="memenu skyblue">
 					<li class=" grid"><a href="index.jsp">Home</a></li>
-					<li><a href="#">Danh mục</a>
-						<div class="mepanel" style="width: 30%; margin-left: 15%;">
+					<li class="itemLine"><a href="#">Danh mục</a>
+						<div class="mepanel">
 							<div class="h_nav">
 								<%
 									List<Category> categories = CategoryDAO.getAllCategory();
@@ -74,7 +74,7 @@
 							</div>
 						</div></li>
 
-					<li><a href="typo.html">Tin Tức</a></li>
+					<li><a href="#">Tin Tức</a></li>
 					<li><a class="color6" href="contact.jsp">Liên hệ</a></li>
 				</ul>
 			</div>

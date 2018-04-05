@@ -1,22 +1,21 @@
 .memenu
-{margin:0;padding:0;width:100%;list-style:none;display:inline-block;position:relative;font-family:Calibri,Arial;font-size:15px}
+{width:100%;list-style:none;display:inline-block;position:relative;font-family:Calibri,Arial;font-size:15px}
 .memenu li{display:inline-block;}
-ul.memenu.skyblue {text-align: center;}
-.memenu>li>a{font-family: 'Roboto-Regular';float:left;padding: 0px 30px;font-size: 1.1em;text-decoration:none;transition:color .4s ease-in-out;-moz-transition:color .4s ease-in-out;-webkit-transition:color .4s ease-in-out;-o-transition:color .4s ease-in-out}
+ul.memenu.skyblue {text-align: center;margin-top: 1%;}
+.memenu>li>a{font-family: sans-serif;float:left;padding: 0px 30px;font-size: 1.1em;text-decoration:none;transition:color .4s ease-in-out;-moz-transition:color .4s ease-in-out;-webkit-transition:color .4s ease-in-out;-o-transition:color .4s ease-in-out}
 .memenu>li>.mepanel {
 	position: absolute;
-	display: none;
-	background: #fff;
-	width: 80%;
-	top: 56px;
-	left: 10.7%;
-	z-index: 99;
-	padding: 20px 30px 20px;
-	border: solid 1px #ccc;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	z-index: 9999;
+    display: none;
+    background: thistle;
+    top: 45px;
+    left: 10.7%;
+    z-index: 99;
+    padding: 1% 2%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    z-index: 9999;
+    text-transform: uppercase;
 }
 .me-one ul{
 	padding:0;
@@ -70,13 +69,22 @@ ul.memenu.skyblue {text-align: center;}
 .memenu>li.showhide span.title{margin:11px 0 0 25px;color: #fff;float:left}
 .memenu>li.showhide span.icon1:after{position:absolute;content:"";right:25px;top:12px;height:3px;width:25px;font-size:50px;border-top:3px solid #fff;border-bottom:3px solid #fff;z-index:1}
 .memenu>li.showhide span.icon2:after{position:absolute;content:"";right:25px;top:24px;height:3px;width:25px;font-size:50px;border-top:3px solid #fff;border-bottom:3px solid #fff;z-index:1}	
-.menu{width: 100%;background-color: salmon;height: 65px;}
+.menu{width: 100%;background-color: #ed1b2f;height: 45px;}
 .menuDropItem{color: darkgreen;text-decoration: none;}
 a, a:hover{text-decoration: none;}
-.h_nav a:hover{font-size: 18px;}
-a:hover h4{background-color: yellow;}
-.skyblue li>a,.skyblue>li.showhide span{color: white;font-size: 22px;}
-.skyblue>li:hover>a,.skyblue>li.active>a,.skyblue .dropdown li:hover>a{color:#000;border-top: 2px solid olive;}
+a:hover h4{    
+	background-color: palevioletred;
+    color: navajowhite;
+    text-align: center;
+    font-size: 1.5em;
+}
+.skyblue li>a,.skyblue>li.showhide span{
+	color: lightgoldenrodyellow;
+    font-size: 22px;
+    text-shadow: 1px burlywood;
+    text-transform: uppercase;
+}
+.skyblue>li:hover>a,.skyblue>li.active>a,.skyblue .dropdown li:hover>a{border-radius: 3px;background-color: #bf081d;color: white;}
 .skyblue .mepanel img:hover,.skyblue form.contact input[type="text"]:focus,.skyblue form.contact textarea:focus{border:solid 1px #0194be}
 .skyblue form.contact input[type="submit"]{background:#0194be}
 @media(max-width:768px){
@@ -105,22 +113,28 @@ a:hover h4{background-color: yellow;}
 	.mepanel .row{margin-top:0}.black{background:#222}
 	}
 @media(max-width:320px){
-.memenu>li.showhide {
-  	height: 37px;
+	.memenu>li.showhide {
+	  	height: 37px;
+	}
+	.memenu>li.showhide span.title {
+		margin: 8px 0 0 15px;
+		color:#fff;
+	}
+	.memenu>li.showhide span.icon1:after {
+		right: 10px;
+	top: 9px;
+	}
+	.memenu>li.showhide span.icon2:after {
+		right: 10px;
+		top: 21px;
+	}
 }
-.memenu>li.showhide span.title {
-  margin: 8px 0 0 15px;
-  color:#fff;
+.mepanel{
+	width: 30%; margin-left: 15%;
 }
-.memenu>li.showhide span.icon1:after {
-  right: 10px;
-  top: 9px;
-}
-.memenu>li.showhide span.icon2:after {
-  right: 10px;
-  top: 21px;
-}
-.memenu>li>a {
-  font-size: 1em;
-}
+.itemLineBefore::before{
+	width: 1px;
+	height: 18px;
+	content: '';
+	background: rgba(0, 0, 0, .1);
 }

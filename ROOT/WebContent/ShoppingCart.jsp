@@ -45,27 +45,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	});
 </script>
 <style type="text/css">
-.col-md-3.col-md2 {
-	padding-bottom: 3%;
-}
-/**.form-control {
-	width: 80px;
-	height: 40px;
-}**/
-.table.table-bordered {
-	width: 90%;
-	margin-left: 5%;
-}
 
-.navbar-right {
-	width: 17%;
-}
-
-.navbar-left {
-	margin-top: 3%;
-	margin-left: 5%;
-	width: 50%;
-}
 </style>
 </head>
 <body>
@@ -129,8 +109,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</table>
 		<div class="navbar-right">
 			<h3>
-				Tổng tiền:<br>
-				<%=sum%>đ
+				Tổng tiền: <%=sum%>đ
 			</h3>
 		</div>
 		<%
@@ -173,36 +152,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="navbar-left">
 			<h3>Thông tin khách hàng</h3>
 			<form action="Payment" method="POST">
-				<table>
+				<table class="customerInfo">
 					<tr>
-						<td><span style="font-size: 18px;">Tên:</span></td>
-						<td><input type="text" name="name" class="form-control"
-							style="margin-left: 85px; width: 250px" value="<%=name%>"></td>
+						<td><span class="myLabel" style="font-size: 18px;">Tên:</span></td>
+						<td class="input"><input type="text" name="name" class="form-control customer-payment" value="<%=name%>"></td>
 						<td><label style="color: red;"><%=errName%></label></td>
 					</tr>
 					<tr>
-						<td><span style="font-size: 18px;">Số điện thoại:</span></td>
-						<td><input type="text" name="phone" class="form-control"
-							style="margin-left: 85px; width: 250px" value="<%=phone%>"></td>
+						<td><span  style="font-size: 18px;">Số điện thoại:</span></td>
+						<td class="input"><input type="text" name="phone" class="form-control" value="<%=phone%>"></td>
 						<td><label style="color: red;"><%=errPhone%></label></td>
 					</tr>
 					<tr>
-						<td><span style="font-size: 18px;">Email:</span></td>
-						<td><input type="text" name="email" class="form-control"
-							style="margin-left: 85px; width: 250px" value="<%=email%>"></td>
+						<td><span class="myLabel" style="font-size: 18px;">Email:</span></td>
+						<td class="input"><input type="text" name="email" class="form-control" value="<%=email%>"></td>
 						<td><label style="color: red;"><%=errEmail%></label></td>
 					</tr>
 					<tr>
-						<td><p style="font-size: 18px;">Địa chỉ:</p></td>
-						<td><textarea rows="4" cols="30" name="address"
-								class="form-control" style="margin-left: 85px; width: 250px"
-								value=""><%=address%></textarea></td>
+						<td><span class="myLabel" style="font-size: 18px;">Địa chỉ:</span></td>
+						<td class="input"><textarea rows="4" cols="30" name="address"
+								class="form-control" value=""><%=address%></textarea></td>
 						<td><label style="color: red;"><%=errAddress%></label></td>
 					</tr>
 				</table>
-				<button type="submit" class="btn btn-success" id="payment"
-					style="color: navy; margin-left: 40%; margin-top: 1%;">Thanh
-					toán</button>
+				<button type="submit" class="btn btn-success btn-submit" id="payment">Thanh toán</button>
 				<label style="color: red;"><%=errCart%></label>
 			</form>
 		</div>

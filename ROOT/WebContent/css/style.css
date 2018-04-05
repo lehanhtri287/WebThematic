@@ -12,9 +12,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     src:url(../fonts/Roboto-Regular.ttf) format('truetype');
 }
 html,body{
-	background:#fff;
 	font-size: 100%;
-	font-family: 'Roboto-Regular';
 }
 body a{
 	transition: 0.5s all;
@@ -32,7 +30,6 @@ h1,h2,h3,h4,h5,h6,label,p{
 }
 /*----*/
 .header-top{
-	border-bottom: 1px solid #eee;
 	padding: 15px 0;
 }
 .header-left{
@@ -50,9 +47,6 @@ h1,h2,h3,h4,h5,h6,label,p{
 .header-left ul li a:hover{
 	color:  #EF5F21; 
 }
-.head-top {
-  padding: 1em 0 0;
-}
 .number {
   margin-top: 1%;
 }
@@ -60,17 +54,12 @@ h1,h2,h3,h4,h5,h6,label,p{
   color: #000;
   font-size: 1em;
 }
-/* start menu */
-.h_menu4 {
-  margin: 2px 0 0px;
-}
 .h_nav h4{
-	border-bottom:1px solid rgb(236, 236, 236);
-	font-size: 1.3em;
-	color:#000;
-	line-height: 1.8em;
-	margin-bottom: 4%;
-	  text-align: left;
+	border-bottom: 1px solid rgb(236, 236, 236);
+    font-size: 1.35em;
+    line-height: 1.8em;
+    text-align: left;
+    color: indigo;
 }
 .h_nav h4.top{
 	margin-top:1%;
@@ -121,16 +110,16 @@ p.log{
 	margin-top: 4%;
 }
 p.log a{
-	color:#52d0c4;
-	text-decoration:none;
-	margin: 0 2%;
-	display: inline-block;
+	color: teal;
+    text-decoration: none;
+    margin: 0 2%;
+    display: inline-block;
 }
 p.log a:hover{
-	color:#000;
+	font-weight: bold;
 }
 .search {
-  text-align: right;
+	margin: .4% 0;
 }
 i.glyphicon.glyphicon-search {
   color: #000;
@@ -188,7 +177,7 @@ a.item_add {
 }
 .cart.box_1{
 	float: right;
-	margin-top: 2px;
+	margin-top: 4%;
 }
 /*--- slider-css --*/
 .slider {
@@ -276,6 +265,9 @@ ul.callbacks_tabs.callbacks1_tabs {
 .col-md1 h3 a{
   	color: #000;
 	text-decoration: none;
+}
+.img-responsive {
+	height: 220px;
 }
 .price h5{
 	float: left;
@@ -367,7 +359,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 }
 .footer-bottom-cate h6{
 	font-size: 1.5em;
-    color: orangered;
+    color: teal;
     margin: 0 0 0.5em;
     font-family: sans-serif;
 }
@@ -385,7 +377,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 	color: darkslategray;
 }
 .footer-bottom-cate ul li a:hover{
-	color:darkviolet;
+	color: teal;
 	padding-left: 5px;
 }
 .cate-bottom ul li  {
@@ -419,11 +411,9 @@ p.footer-class a:hover{
   padding: 4em 0;
 }
 .contact h1{
-	font-size: 3em;
-	color: #000;
-  	font-family: 'OleoScript-Regular';
-	margin: 0 0px 1em;
-	text-align: center;
+    color: crimson;
+    font-family: unset;
+    text-align: center;
 }
 .contact-bottom  span,.contact-bottom-top span{
 	font-size:1.2em;
@@ -516,11 +506,9 @@ p.footer-class a:hover{
 /*--//contact--*/
 /*--login--*/
 .account h1 {
-	color:#000;
-	font-size: 3em;
-	margin:0 0 1em;
-	font-family: 'OleoScript-Regular';
-	text-align: center;
+	color: crimson;
+    font-family: unset;
+    text-align: center;
 }
 .login-left h4{
 	color:#000;
@@ -570,21 +558,26 @@ p.footer-class a:hover{
 	width: 96%;
 	font-size:0.9em;
 	padding:10px;
-	  margin: 0.5em 0;
+	margin: 0.5em 0;
+	border: none;
+    border-bottom: 2px solid plum;
+    height: 40px;
 }
 .login-right input[type="submit"] {
-	background:#52d0c4;
-	color: #FFF;
-	font-size: 0.9em;
-	padding: 0.4em 1em;
-	transition: 0.5s all;
-	-webkit-transition: 0.5s all;
-	-moz-transition: 0.5s all;
-	-o-transition: 0.5s all;
-	display: inline-block;
-	text-transform: uppercase;
-	border:none;
-	outline:none;
+	background: #52d0c4;
+    color: #FFF;
+    padding: 0.4em 1em;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    display: inline-block;
+    text-transform: uppercase;
+    border: none;
+    outline: none;
+    width: 100%;
+    margin: 0 35%;
+}
 }
 a.forgot {
 	font-size: 0.8125em;
@@ -595,11 +588,10 @@ a.forgot {
 }
 /*--register--*/
 .register h1 {
-	color:#000;
-	font-size:3em;
-	margin:0 0 1em;
-	  font-family: 'OleoScript-Regular';
-	  text-align: center;
+	color: crimson;
+    font-size: 3em;
+    font-family: unset;
+    text-align: center;
 }
 .register-top-grid span, .register-bottom-grid span {
 	color:#b2b2b2;
@@ -916,25 +908,24 @@ a.cart:hover{
 .check-out{
 	padding:4em 0em;
 }
-table{
-	width:100%;
-	  margin: 0em 0 2em;
+table.customerInfo{
+	margin: 1% 30%;
 }
 th{
-	color: #52D0C4;
-  	font-size: 1.2em;
- 	font-family: 'OleoScript-Regular';
+	color: green;
+    font-size: 1.2em;
+    font-family: unset;
     font-weight: 400;	
 }
 th, td {
-    padding: 10px;
+    padding: 5px 0px;
 }
 td{
 	color:#b2b2b2;
-  font-size: 1em;
+	font-size: 1em;
 }
 a.at-in {
-  float: left;
+	float: left;
     width: 20%;
 }
 .sed {
@@ -1029,7 +1020,6 @@ ul.nav.nav-pills {
 }
 @media(max-width:1024px){
 .content-top h1 {
-  font-size: 2.5em;
   margin: 0 0 0.3em;
 }	
 .content-top {
@@ -1064,7 +1054,6 @@ ul.nav.nav-pills {
   padding: 3em 0;
 }
 .contact h1 {
-  font-size: 2.5em;
     margin: 0 0px 0.8em;
 }
 /*--account--*/
@@ -1856,4 +1845,38 @@ h1.typo1 {
 }
 @media(max-width:800px){
 	.rslides{width: 100%;}
+}
+h3{
+	font-size: 24px;
+    text-align: center;
+    color: orangered;
+}
+.col-md-3.col-md2 {
+	padding-bottom: 3%;
+}
+.customer-payment {
+	padding: 0;
+	border: none;
+    border-bottom: 2px solid plum;
+}
+.table.table-bordered {
+	width: 90%;
+	margin: 2% 5%
+}
+
+.navbar-right {
+	width: 17%;
+}
+
+.navbar-left {
+	width: 98%;
+}
+.btn-submit{
+	margin: 1% 45%;
+}
+.fh5co-post-entry{
+	margin: 0px;
+}
+td.input{
+	width: 60%;
 }

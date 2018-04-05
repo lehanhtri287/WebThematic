@@ -45,7 +45,7 @@
 			<div class="col-sm-3 footer-bottom-cate cate-bottom">
 				<h6>Địa chỉ</h6>
 				<ul>
-					<li>Aliquam metus dui. asdasdasdlashjdl/ajsdlkasdl;ạkdlasdkj</li>
+					<li>Mộ Đức, Quảng Ngãi</li>
 					<li class="phone">LH : 6985792466</li>
 				</ul>
 			</div>
