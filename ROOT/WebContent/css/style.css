@@ -109,14 +109,11 @@ p.log{
 	width: 50%;
 	margin-top: 4%;
 }
-p.log a{
+.accountLink{
 	color: teal;
     text-decoration: none;
-    margin: 0 2%;
+    margin: 2%;
     display: inline-block;
-}
-p.log a:hover{
-	font-weight: bold;
 }
 .search {
 	margin: .4% 0;
@@ -210,7 +207,8 @@ a.item_add {
   float: left;
   width: 100%;
   border: 0;
-  }
+  .rslides img
+}
 .callbacks_tabs a:after {
 	content: "\f111";
 	font-size: 0;
@@ -237,10 +235,6 @@ ul.callbacks_tabs.callbacks1_tabs {
 	bottom: 14px;
 	z-index: 999;
 	left: 45%;
-}
-.banner{
-	border-bottom:1px solid #bcbcbc;
-	padding: 1em 0;
 }
 .banner-mat{
 	padding:0;
@@ -348,8 +342,7 @@ ul.callbacks_tabs.callbacks1_tabs {
   background-color:#52d0c4;
 }
 .footer {
-  border-top: 1px solid #BDBDBD;
-  background: antiquewhite
+	background: palevioletred;
 }
 .footer-top {
   padding: 3em 0 ;
@@ -359,7 +352,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 }
 .footer-bottom-cate h6{
 	font-size: 1.5em;
-    color: teal;
+    color: peachpuff;
     margin: 0 0 0.5em;
     font-family: sans-serif;
 }
@@ -372,38 +365,35 @@ ul.callbacks_tabs.callbacks1_tabs {
 	padding: 0.2em 0;
 }
 .footer-bottom-cate ul li a {
-	text-decoration:none;
-	font-size: 1em;
-	color: darkslategray;
+	text-decoration: none;
+    font-size: 18px;
+    color: papayawhip;
 }
 .footer-bottom-cate ul li a:hover{
-	color: teal;
-	padding-left: 5px;
+	color: white;
+    padding-left: 5px;
 }
 .cate-bottom ul li  {
-	font-size:1em;
-	color: #000;
+	color: pink;
+	font-size: 18px;
 }
 .cate-bottom ul li.phone {
-	color:crimson;
 	padding: 1em 0 0em;
 }
 p.footer-class {
-  font-size: 1em;
-  color:  green;
-  margin: 2em 0 0;
-  text-align:center;
+	font-size: 1em;
+    color: peachpuff;
+    text-align: center;
 }
 p.footer-class a{
-  text-decoration:none;
-  color: crimson;
+    text-decoration: none;
+    color: gold;
 }
 p.footer-class a:hover{
-  color:  crimson;
+    color: white;
 }
 .footer-bottom {
-	padding: 2em 0;
-	border-top: 1px solid #BDBDBD;
+	padding: 1%;
 }
 /*--//footer--*/
 /*-- contact --*/
@@ -507,8 +497,8 @@ p.footer-class a:hover{
 /*--login--*/
 .account h1 {
 	color: crimson;
-    font-family: unset;
     text-align: center;
+    margin-bottom: 3%;
 }
 .login-left h4{
 	color:#000;
@@ -535,13 +525,14 @@ p.footer-class a:hover{
 	display: inline-block;
 	text-transform: uppercase;
 }
-.acount-btn:hover, .login-right input[type="submit"]:hover{
+.acount-btn:hover, .account input[type="submit"]:hover{
 	background:#000;
 	text-decoration:none;
 	color:#fff;
 }
-.login-right form {
-	padding: 1em 0;
+.account form {
+	padding: 2%;
+	font-size: 18px;
 }
 .login-right span {
 	color: #b2b2b2;
@@ -552,39 +543,45 @@ p.footer-class a:hover{
 .word-in{
 	margin: 0.5em 0 0;
 }
-.login-right input[type="text"] {
-	border: 1px solid #bbb;
-	outline-color:#52d0c4;
-	width: 96%;
-	font-size:0.9em;
-	padding:10px;
-	margin: 0.5em 0;
-	border: none;
-    border-bottom: 2px solid plum;
-    height: 40px;
-}
-.login-right input[type="submit"] {
-	background: #52d0c4;
-    color: #FFF;
-    padding: 0.4em 1em;
-    transition: 0.5s all;
-    -webkit-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-    -o-transition: 0.5s all;
-    display: inline-block;
-    text-transform: uppercase;
+.account input[type="text"], .account input[type="password"] {
+	outline-color: #52d0c4;
+    width: 96%;
+    padding: 10px;
+    margin: 1.5%;
     border: none;
-    outline: none;
-    width: 100%;
-    margin: 0 35%;
+    border-bottom: 2px solid plum;
 }
+.accountLink:hover{
+	margin-left: 5%;
+    color: midnightblue;
 }
 a.forgot {
 	font-size: 0.8125em;
 	  color: #000000;
 }
 .account {
-  padding: 4em 0;
+  padding: 3%;
+}
+.account .container{
+	padding: 3%;
+    background-color: papayawhip;
+    width: 40%;
+}
+.account .register{
+	width: 60%;
+}
+.tLogin{
+	width: 85%;
+    font-size: 18px;
+    font-family: unset;
+}
+.tRegister{
+	width: 100%;
+    font-size: 18px;
+}
+.tRegisterTitle{
+	color: green;
+    font-size: 22px;
 }
 /*--register--*/
 .register h1 {
@@ -598,14 +595,6 @@ a.forgot {
 	font-size: 0.9em;
 	padding-bottom: 0.2em;
 	display: block;
-}
-.register-top-grid input[type="text"], .register-bottom-grid input[type="text"] {
-	border: 1px solid #EEE;
-	outline-color:#52D0C4;
-	width: 100%;
-	font-size: 1em;
-	padding: 0.5em;
-	margin: 0.5em 0;
 }
 .checkbox {
 	margin-bottom: 4px;
@@ -676,10 +665,9 @@ a.forgot {
 .register-but{
 	margin-top:1em;
 }
-.register-but form input[type="submit"] {
+form input[type="submit"] {
 	background:#52D0C4;
 	color: #FFF;
-	font-size:1em;
 	padding: 0.4em 1em;
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;
@@ -688,6 +676,24 @@ a.forgot {
 	display: inline-block;
 	border:none;
 	outline:none;
+}
+.forgotPassSubmit{
+	margin: 8% 85%;
+}
+.loginSubmit{
+	margin: 8% 65%;
+}
+.registerSubmit{
+	width: 25%;
+    display: block;
+    margin: 2.5% 35%;
+    padding: 1.5%;
+}
+.loginFromRegister{
+	margin: 0 42%;
+}
+.loginFromRegister:hover{
+	margin: 0 43%;
 }
 .register-but input[type="submit"]:hover {
 	background:#000;
@@ -911,19 +917,6 @@ a.cart:hover{
 table.customerInfo{
 	margin: 1% 30%;
 }
-th{
-	color: green;
-    font-size: 1.2em;
-    font-family: unset;
-    font-weight: 400;	
-}
-th, td {
-    padding: 5px 0px;
-}
-td{
-	color:#b2b2b2;
-	font-size: 1em;
-}
 a.at-in {
 	float: left;
     width: 20%;
@@ -1060,7 +1053,7 @@ ul.nav.nav-pills {
 .account h1,.register h1 {
   font-size: 2.5em;
 }
-.account,.register {
+.account {
   padding: 3em 0;
 }
 /*--checkout--*/
@@ -1198,7 +1191,7 @@ p.log {
   margin: 0 0 1em;
 }
 /*--account--*/
-.account h1 ,.register h1{
+.account h1{
   margin: 0;
 }
 /*--checkout--*/
@@ -1295,7 +1288,7 @@ select.in-drop, select.in-drop1 {
   padding: 2em 0;
 }
 /*--account--*/
-.account,.register {
+.account {
   padding: 2em 0;
 }
 /*--checkout--*/
@@ -1452,7 +1445,7 @@ select.in-drop, select.in-drop1 {
   padding: 2em 0 0;
 }
 /*--account--*/
-.account h1, .register h1 {
+.account h1{
   font-size: 2em;
 }
 /*--checkout--*/
@@ -1720,10 +1713,10 @@ h3.cate {
   padding: 1.5em 0 0.5em;
 }
 /*--account--*/
-.account, .register {
+.account{
   padding: 1.5em 0;
 }
-.account h1, .register h1 {
+.account h1{
   font-size: 1.7em;
 }
 .login-right ,.login-left,.register-top-grid,.register-bottom-grid{

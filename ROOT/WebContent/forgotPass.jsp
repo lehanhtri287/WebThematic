@@ -80,18 +80,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<table class="tLogin" align="center">
 							<tr>
 								<td colspan="2">
-									<input type="text" name="email" value="<%=email%>"
-									class="form-control" placeholder="Email">
+									<input type="text" name="email" value="<%=email%>" placeholder="Email">
 								</td>
 							</tr>
 							<tr>
-								<td>
-									<input type="submit" value="Tiếp tục">
-								</td>
+								<td><input type="submit" class="forgotPassSubmit" value="Tiếp tục"></td>
 							</tr>
 							<tr>
-								<td><a class="forgot" href="#">Đăng nhập</a></td>
-								<td><a class="forgot" href="register.jsp">Chưa có tài khoản?</a></td>
+								<td><a class="accountLink" href="#">Đăng nhập</a></td>
+								<td><a class="accountLink" href="register.jsp">Chưa có tài khoản?</a></td>
 							</tr>
 						</table>
 					</form>

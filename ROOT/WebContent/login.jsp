@@ -44,11 +44,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	});
 </script>
-<style type="text/css">
-.col-md-3.col-md2 {
-	padding-bottom: 3%;
-}
-</style>
 </head>
 <body>
 	<!--header-->
@@ -79,24 +74,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<form action="LoginServlet" method="POST">
 						<table class="tLogin" align="center">
 							<tr>
-								<td  colspan="2"><input type="text" name="email" value="<%=email%>"
-									class="form-control" placeholder="Email" style="width: 100%"></td>
+								<td colspan="2"><input type="text" name="email" value="<%=email%>"
+								 placeholder="Email"></td>
 								<td><label style="color: red;"><%=errEmail%></label></td>
 							</tr>
 							<tr>
 								<td colspan="2">
-									<input type="password" name="password" class="form-control" placeholder="Mật khẩu">
-									<label style="color: red;"><%=errPass%></label>
+									<input type="password" name="password" placeholder="Mật khẩu">
 								</td>
+								<td><label style="color: red;"><%=errPass%></label></td>
 							</tr>
 							<tr>
-								<td>
-									<input type="submit" value="Đăng nhập">
-								</td>
+								<td><input class="loginSubmit" type="submit" value="Đăng nhập"></td>
 							</tr>
 							<tr>
-								<td><a class="forgot" href="forgotPass.jsp">Quên mật khẩu?</a></td>
-								<td><a class="forgot" href="register.jsp">Chưa có tài khoản?</a></td>
+								<td><a class="accountLink" href="forgotPass.jsp">Quên mật khẩu?</a></td>
+								<td><a class="accountLink" href="register.jsp">Chưa có tài khoản?</a></td>
 							</tr>
 						</table>
 					</form>

@@ -19,8 +19,8 @@
 					if (userLogged == null) {
 				%>
 				<p class="log">
-					<a href="account.jsp">Đăng nhập</a> / <a
-						href="register.jsp">Đăng ký</a>
+					<a class="accountLink" href="login.jsp">Đăng nhập</a> /
+					<a class="accountLink" href="register.jsp">Đăng ký</a>
 				</p>
 				<%
 					} else {

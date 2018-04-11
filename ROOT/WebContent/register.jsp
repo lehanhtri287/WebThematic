@@ -66,8 +66,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--header-->
 	<%@include file="header.jsp"%>
 	<!--content-->
-	<div class="container">
-		<div class="register">
+	<div class="account">
+		<div class="container register">
 			<h1>Đăng ký</h1>
 			<%
 				String errName = (String) request.getAttribute("errName");
@@ -124,20 +124,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			%>
 			<form action="RegisterServlet" method="POST">
 				<div class="col-md-6 register-top-grid">
-					<table>
+					<table class="tRegister">
+						<tr class="tRegisterTitle"><td>Thông tin tài khoản</td></tr>
 						<tr>
-							<td><input type="text" class="form-control" name="email"
+							<td><input type="text" name="email"
 								placeholder="Email" value="<%=email%>"></td>
 							<td><label style="color: red;"><%=errEmail%></label></td>
 						</tr>
 						<tr>
-							<td><input type="password" class="form-control"
+							<td><input type="password"
 								name="password" placeholder="Mật khẩu" value="<%=password%>"></td>
 							<td><label style="color: red;"><%=errPass%></label></td>
 						</tr>
 						<tr>
-							<td><input type="password" class="form-control"
-								name="confirmPassword" placeholder="Xác nhận mật khẩu"
+							<td><input type="password" name="confirmPassword" placeholder="Xác nhận mật khẩu"
 								value="<%=confirmPassword%>"></td>
 							<td><label style="color: red;"><%=errConfirm%></label></td>
 						</tr>
@@ -145,31 +145,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="clearfix"></div>
 				</div>
 				<div class=" col-md-6 register-bottom-grid">
-					<table>
+					<table class="tRegister">
+						<tr class="tRegisterTitle"><td>Thông tin cá nhân</td></tr>
 						<tr>
-							<td><input type="text" class="form-control" name="name"
+							<td><input type="text" name="name"
 								placeholder="Họ tên" value="<%=name%>"></td>
 							<td><label style="color: red;"><%=errName%></label></td>
 						</tr>
 						<tr>
-							<td><input type="text" class="form-control" name="address"
+							<td><input type="text" name="address"
 								placeholder="Địa chỉ giao hàng" value="<%=address%>"></td>
 							<td><label style="color: red;"><%=errAddress%></label></td>
 						</tr>
 						<tr>
-							<td><input type="text" class="form-control"
+							<td><input type="text"
 								name="phoneNumbers" placeholder="Số điện thoại"
 								value="<%=phone%>"></td>
 							<td><label style="color: red;"><%=errPhone%></label></td>
 						</tr>
+						
 					</table>
 				</div>
-				<div class="clearfix"></div>
-				<div class="register-but" style="margin-left: 2%">
-					<input type="submit" value="Đăng ký" class="btn btn-success"
-						role="button">
-					<div class="clearfix"></div>
+				<div>
+					<input type="submit" class="registerSubmit" value="Đăng ký">
+					<a class="accountLink loginFromRegister" href="login.jsp">Đăng nhập</a>
 				</div>
+				<div class="clearfix"></div>
 			</form>
 		</div>
 	</div>
