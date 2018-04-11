@@ -8,7 +8,7 @@
 <div class="footer">
 	<div class="footer-bottom">
 		<div class="container">
-			<div class="col-sm-3 footer-bottom-cate">
+			<div class="col-sm-4 footer-bottom-cate">
 				<h6>Danh mục sản phẩm</h6>
 				<ul>
 					<%
@@ -23,7 +23,7 @@
 
 				</ul>
 			</div>
-			<div class="col-sm-3 footer-bottom-cate">
+			<div class="col-sm-4 footer-bottom-cate">
 				<h6>Sản phẩm bán chạy</h6>
 				<ul>
 					<%
@@ -42,7 +42,7 @@
 					%>
 				</ul>
 			</div>
-			<div class="col-sm-3 footer-bottom-cate cate-bottom">
+			<div class="col-sm-4 footer-bottom-cate cate-bottom">
 				<h6>Địa chỉ</h6>
 				<ul>
 					<li>Mộ Đức, Quảng Ngãi</li>
