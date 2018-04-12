@@ -14,8 +14,8 @@
 					for (Product product : products) {
 				%>
 
-				<div class="col-md-3 col-md2">
-					<div class="col-md1 simpleCart_shelfItem">
+				<div class="item">
+					<div class="">
 						<a
 							href="ViewProductByCate?action=getAProduct&id=<%=product.getIdProduct()%>">
 							<img class="img-responsive" src="<%=product.getImage()%>" />

@@ -20,7 +20,6 @@
 					<%
 						}
 					%>
-
 				</ul>
 			</div>
 			<div class="col-sm-4 footer-bottom-cate">

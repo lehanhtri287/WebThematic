@@ -83,7 +83,7 @@
 						class="glyphicon glyphicon-search"> </i> </a> -->
 				<form action="SearchProduct" method="POST">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Tìm kiếm"
+						<input type="text" class="form-control inputSearch" placeholder="Tìm kiếm"
 							name="search">
 					</div>
 				</form>
