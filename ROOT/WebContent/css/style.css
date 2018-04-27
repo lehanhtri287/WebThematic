@@ -29,11 +29,12 @@ h1,h2,h3,h4,h5,h6,label,p{
 	margin:0;	
 }
 /*----*/
-.header-top{
-	padding: 15px 0;
+.header{
+	position: fixed;
+    width: 100%;
 }
-.header-left{
-	margin-top: 4px;
+.header-top{
+	background-color: lavenderblush;
 }
 .header-left ul li{
 	display: inline-block;	
@@ -46,9 +47,6 @@ h1,h2,h3,h4,h5,h6,label,p{
 }
 .header-left ul li a:hover{
 	color:  #EF5F21; 
-}
-.number {
-  margin-top: 1%;
 }
 .number span {
   color: #000;
@@ -105,29 +103,26 @@ select.in-drop1{
 }
 p.log{
 	float:left;
-	font-size: 1em;
-	width: 50%;
-	margin-top: 4%;
+	width: 80%;
 }
 .accountLink{
 	color: teal;
     text-decoration: none;
-    margin: 2%;
     display: inline-block;
 }
 .search {
-	margin: .4% 0;
+	margin: .3% 0;
 }
 .inputSearch{
 	border: 2px solid pink;
     border-radius: 0px;
+    height: 30px;
 }
 i.glyphicon.glyphicon-search {
   color: #000;
   font-size: 1em;
 }
 .world {
-  margin-top: 2%;
 }
 i.glyphicon.glyphicon-phone {
   margin: 0 4% 0 0;
@@ -164,7 +159,6 @@ a.item_add {
 }
 .box_1 h3{
   color: #000;
-  font-size: 1em;
 }
 .box_1 h3 img{
 	margin-left: 5px;
@@ -178,7 +172,6 @@ a.item_add {
 }
 .cart.box_1{
 	float: right;
-	margin-top: 4%;
 }
 /*--- slider-css --*/
 .slider {
@@ -291,10 +284,7 @@ ul.callbacks_tabs.callbacks1_tabs {
     transition: border-bottom .5s ease-in-out;
 }
 .content-top {
-	padding: 3% 0;
-}
-.content-top1 {
-  padding: 2em 0;
+	padding: 8% 0;
 }
 /*--footer--*/
 .top-footer iframe{
@@ -331,7 +321,7 @@ ul.callbacks_tabs.callbacks1_tabs {
   background-color:#52d0c4;
 }
 .footer {
-	background: palevioletred;
+	background: #033439;
 }
 .footer-top {
   padding: 3em 0 ;
@@ -356,15 +346,15 @@ ul.callbacks_tabs.callbacks1_tabs {
 .footer-bottom-cate ul li a {
 	text-decoration: none;
     font-size: 18px;
-    color: lightgoldenrodyellow;
+    color: powderblue;
 }
 .footer-bottom-cate ul li a:hover{
-	color: white;
-    padding-left: 5px;
+	color: lightpink;
+    margin-left: 2%;
+    transition: .4s ease-in-out;
 }
 .cate-bottom ul li  {
-	color: antiquewhite;
-	font-size: 18px;
+	color: powderblue;
 }
 .cate-bottom ul li.phone {
 	padding: 1em 0 0em;
@@ -541,8 +531,8 @@ p.footer-class a:hover{
     border-bottom: 2px solid plum;
 }
 .accountLink:hover{
-	margin-left: 5%;
-    color: midnightblue;
+	margin-left: 3%;
+    color: darkblue;
 }
 a.forgot {
 	font-size: 0.8125em;
@@ -555,6 +545,7 @@ a.forgot {
 	padding: 3%;
     background-color: papayawhip;
     width: 40%;
+    margin-top: 5%;
 }
 .account .register{
 	width: 60%;
@@ -1001,9 +992,6 @@ ul.nav.nav-pills {
 	
 }
 @media(max-width:1024px){
-.content-top h1 {
-  margin: 0 0 0.3em;
-}	
 .content-top {
   padding: 3em 0;
 }
@@ -1066,10 +1054,6 @@ h1.typo1 {
 	  float: left;
 	  margin-bottom: 2em;
 	}	
-	p.log {
-	    width: 55%;
-	  font-size: 0.85em;
-	}
 	.number span {
 	  color: #000;
 	  font-size: 0.82em;
@@ -1085,9 +1069,6 @@ h1.typo1 {
 	.content-top1 {
 	  padding: 0em 0;
 	}
-	.content-top h1 {
-	  margin: 0 0 1em;
-	}
 	.content-top {
 	  padding: 3em 0 1em;
 	}
@@ -1100,9 +1081,9 @@ h1.typo1 {
 	.top-footer1 input[type="submit"] {
 	  width: 16%;
 	}
-	.world ,.logo,.header-left{
-	  width: 33.33%;
-	  float: left;
+	.header-left{
+		width: 70%;
+    	padding: 0;
 	}
 	.number ,.search{
 	  width: 16.66%;
@@ -1197,17 +1178,9 @@ h1.typo1 {
 	}
 }
 @media (max-width: 736px){
-	p.log {
-	  width: 60%;
-	}
 	.number span {
 	  font-size: 0.75em;
 	}
-}
-@media (max-width: 667px){
-		p.log {
-		  font-size: 0.77em;
-		}
 }
 @media(max-width:640px){
 		.world {
@@ -1221,8 +1194,8 @@ h1.typo1 {
 		  font-size: 0.85em;
 		}
 		.header-left {
-		  width: 33%;
-		  padding: 0;
+			width: 70%;
+			padding: 0;
 		}
 		
 		.logo {
@@ -1544,13 +1517,6 @@ h1.typo1 {
 	.box_1 h3 {
 	  font-size: 0.8em;
 	}
-	p.log {
-	  	margin-top: 7%;
-	    font-size: 0.9em;
-	}
-	.header-left {
-	  margin-top: 1%;
-	}
 	.number {
 	  width: 32%;
 	}
@@ -1572,10 +1538,6 @@ h1.typo1 {
 	}
 	.head-top {
 	  padding: 0.4em 0 0;
-	}
-	.content-top h1 {
-	  font-size: 1.5em;
-	    margin: 0 0 0.7em;
 	}
 	.content-top {
 	  padding: 1.5em 0 0.5em;
@@ -1828,12 +1790,6 @@ h1.typo1 {
 		width: 100%;
 	}
 }
-h3 {
-    font-size: 20px;
-    text-align: center;
-    color: orangered;
-    margin: 3%
-}
 .col-md-3.col-md2 {
 	padding-bottom: 3%;
 }
@@ -1896,3 +1852,40 @@ td.input{
 		width: 23%;
 	}
 }
+@media (min-width: 768px){
+	.col-sm-2 {
+    	width: 0;
+	}
+	.col-sm-7 {
+    	width: 75%;
+	}
+	.col-sm-3 {
+    	width: 21%;
+	}
+	
+}
+@media (min-width: 900px){
+	.col-sm-2 {
+    	width: 5%;
+	}
+	.col-sm-7 {
+    	width: 70%;
+	}
+	.col-sm-3 {
+    	width: 21%;
+	}
+	
+}
+@media (min-width: 1100px){
+	.col-sm-2 {
+    	width: 15%;
+	}
+	.col-sm-7 {
+    	width: 55%;
+	}
+	.col-sm-3 {
+    	width: 25%;
+	}
+	
+}
+

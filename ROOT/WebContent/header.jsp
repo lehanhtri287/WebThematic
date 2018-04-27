@@ -10,9 +10,7 @@
 		<div class="container">
 			<div class="col-sm-4 world"></div>
 			<div class="col-sm-4 logo">
-				<a href="index.jsp"><img src="images/logo.png" alt=""></a>
 			</div>
-
 			<div class="col-sm-4 header-left">
 				<%
 					User userLogged = (User) session.getAttribute("userLogged");

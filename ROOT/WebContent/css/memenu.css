@@ -1,8 +1,8 @@
 .memenu
 {width:100%;list-style:none;display:inline-block;position:relative;font-family:Calibri,Arial;font-size:15px}
 .memenu li{display:inline-block;}
-ul.memenu.skyblue {text-align: center;margin-top: 1%;font-family: sans-serif;}
-.memenu>li>a{font-family: sans-serif;float:left;padding: 0px 30px;font-size: 1.1em;text-decoration:none;transition:color .4s ease-in-out;-moz-transition:color .4s ease-in-out;-webkit-transition:color .4s ease-in-out;-o-transition:color .4s ease-in-out}
+ul.memenu.skyblue {text-align: center;margin: .5%;font-family: sans-serif;}
+.memenu>li>a{font-family: sans-serif;float:left;padding: 0 20px;font-size: 1.1em;text-decoration:none;transition:color .4s ease-in-out;-moz-transition:color .4s ease-in-out;-webkit-transition:color .4s ease-in-out;-o-transition:color .4s ease-in-out}
 .memenu>li>.mepanel {
 	position: absolute;
     display: none;
@@ -65,10 +65,10 @@ ul.memenu.skyblue {text-align: center;margin-top: 1%;font-family: sans-serif;}
 	background:#52D0C4;
 	
 }
-.memenu>li.showhide span.title{margin:11px 0 0 25px;color: #fff;float:left}
+.memenu>li.showhide span.title{margin: 1% 10%;color: #fff;float:left}
 .memenu>li.showhide span.icon1:after{position:absolute;content:"";right:25px;top:12px;height:3px;width:25px;font-size:50px;border-top:3px solid #fff;border-bottom:3px solid #fff;z-index:1}
 .memenu>li.showhide span.icon2:after{position:absolute;content:"";right:25px;top:24px;height:3px;width:25px;font-size:50px;border-top:3px solid #fff;border-bottom:3px solid #fff;z-index:1}	
-.menu{width: 100%;background-color: palevioletred;height: 45px;}
+.menu{width: 100%;background-color: palevioletred;height: 38px;}
 .menuDropItem{color: darkgreen;text-decoration: none;}
 a, a:hover{text-decoration: none;}
 a:hover h4{    
@@ -136,7 +136,7 @@ a:hover h4{
 	}
 }
 .mepanel{
-	width: 30%;margin-top: -1%;
+	margin-top: -1%;
 }
 .itemLineBefore::before{
 	width: 1px;
