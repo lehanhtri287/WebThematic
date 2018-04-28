@@ -238,8 +238,8 @@ ul.callbacks_tabs.callbacks1_tabs {
 }
 /*--content--*/
 .content-top h1{
-	color: orangered;
-    font-size: 2.2em;
+	color: green;
+    font-size: 1.8em;
     font-family: sans-serif;
     text-align: center;
 }
@@ -260,6 +260,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 .img-responsive {
 	height: 220px;
 	width: 100%;
+	margin-bottom: 3%;
 }
 .price h5{
 	float: left;
@@ -993,7 +994,7 @@ ul.nav.nav-pills {
 }
 @media(max-width:1024px){
 .content-top {
-  padding: 3em 0;
+  padding: 15% 0 0;
 }
 .top-footer1 input[type="submit"] {
   width: 33%;
@@ -1070,7 +1071,7 @@ h1.typo1 {
 	  padding: 0em 0;
 	}
 	.content-top {
-	  padding: 3em 0 1em;
+	  padding: 18% 0 0;
 	}
 	.top-footer1 {
 	  margin: 2em 0 0;
@@ -1105,9 +1106,9 @@ h1.typo1 {
 	  width: 50%;
 	  float: left;
 	}
-	.footer-bottom-cate {
+	.footer-bottom-cate, .cate-bottom {
 	  float: left;
-	  width: 25%;
+	      width: 100%;
 	}
 	.number {
 	  margin-top: 0%;
@@ -1320,7 +1321,7 @@ h1.typo1 {
 	  width: 22%;
 	}
 	.content-top {
-	  padding: 2em 0 1em;
+	  padding: 25% 0 0;
 	}
 	.price h5 {
 	  font-size: 1em;
@@ -1344,8 +1345,8 @@ h1.typo1 {
 	.top-footer1 input[type="submit"] {
 	  width: 23%;
 	}
-	.footer-bottom-cate {
-	  width: 50%;
+	.footer-bottom-cate, .cate-bottom {
+	  width: 100%;
 	    margin: 0 0 1em;
 	}
 	.footer-bottom {
@@ -1496,7 +1497,7 @@ h1.typo1 {
 	.number {
 	  width: 29%;
 	}
-	}
+}
 	@media(max-width:320px){
 	.logo {
 	  width: 100%;	
@@ -1540,7 +1541,7 @@ h1.typo1 {
 	  padding: 0.4em 0 0;
 	}
 	.content-top {
-	  padding: 1.5em 0 0.5em;
+	  padding: 33% 0 0;
 	}
 	.col-md2 {
 	  padding: 0 5px;
@@ -1586,8 +1587,9 @@ h1.typo1 {
 	  padding: 0.6em 0em;
 	  width: 33%;
 	}
-	.footer-bottom-cate {
+	.footer-bottom-cate, .cate-bottom {
 	  padding: 0;
+	  width: 100%;
 	}
 	p.footer-class {
 	  font-size: 0.9em;
@@ -1831,6 +1833,9 @@ td.input{
     border-bottom: 3px solid mediumpurple;
     transition: border-bottom .5s ease-in-out;
 }
+.item:hover .img-responsive{
+	opacity: .5;
+}
 @media (min-width: 20px){
 	.item {
 	    width: 100%;
@@ -1843,7 +1848,7 @@ td.input{
 }
 @media (min-width: 900px){
 	.item {
-	    width: 32%;
+	    width: 30%;
 	    
 	}
 }
@@ -1857,31 +1862,34 @@ td.input{
     	width: 0;
 	}
 	.col-sm-7 {
-    	width: 75%;
+    	width: 80%;
+	    margin-left: -5%;
+	    padding: 0;
 	}
 	.col-sm-3 {
-    	width: 21%;
+    	width: 18%;
+    	padding: 0;
 	}
 	
 }
 @media (min-width: 900px){
 	.col-sm-2 {
-    	width: 5%;
+    	width: 0%;
 	}
 	.col-sm-7 {
-    	width: 70%;
+    	width: 80%;
 	}
 	.col-sm-3 {
-    	width: 21%;
+    	width: 16%;
 	}
 	
 }
 @media (min-width: 1100px){
 	.col-sm-2 {
-    	width: 15%;
+    	width: 10%;
 	}
 	.col-sm-7 {
-    	width: 55%;
+    	width: 65%;
 	}
 	.col-sm-3 {
     	width: 25%;

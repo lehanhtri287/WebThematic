@@ -55,7 +55,7 @@
 			<div class="col-sm-2 number"></div>
 			<div class="col-sm-7 h_menu4">
 				<ul class="memenu skyblue">
-					<li class=" grid"><a href="index.jsp">Home</a></li>
+					<li class=" grid"><a class="home" href="index.jsp">Trần Lê Vi handshop</a></li>
 					<li class="itemLine"><a href="#">Danh mục</a>
 						<div class="mepanel">
 							<div class="h_nav">

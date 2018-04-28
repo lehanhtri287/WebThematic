@@ -2,7 +2,7 @@
 {width:100%;list-style:none;display:inline-block;position:relative;font-family:Calibri,Arial;font-size:15px}
 .memenu li{display:inline-block;}
 ul.memenu.skyblue {text-align: center;margin: .5%;font-family: sans-serif;}
-.memenu>li>a{font-family: sans-serif;float:left;padding: 0 20px;font-size: 1.1em;text-decoration:none;transition:color .4s ease-in-out;-moz-transition:color .4s ease-in-out;-webkit-transition:color .4s ease-in-out;-o-transition:color .4s ease-in-out}
+.memenu>li>a{font-family: sans-serif;float:left;padding: 0 10px;font-size: 1.1em;text-decoration:none;transition:color .4s ease-in-out;-moz-transition:color .4s ease-in-out;-webkit-transition:color .4s ease-in-out;-o-transition:color .4s ease-in-out}
 .memenu>li>.mepanel {
 	position: absolute;
     display: none;
@@ -89,6 +89,9 @@ a:hover h4{
     background-color: mediumvioletred;
     color: lightgoldenrodyellow;
     transition: background-color .5s ease-in-out;
+}
+.skyblue li>a.home{
+	text-transform: none;
 }
 .skyblue .mepanel img:hover,.skyblue form.contact input[type="text"]:focus,.skyblue form.contact textarea:focus{border:solid 1px #0194be}
 .skyblue form.contact input[type="submit"]{background:#0194be}
