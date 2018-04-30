@@ -18,7 +18,7 @@
 				%>
 				<p class="log">
 					<a class="accountLink" href="login.jsp">Đăng nhập</a> /
-					<a class="accountLink" href="register.jsp">Đăng ký</a>
+					<a class="accountLink" href="signUp.jsp">Đăng ký</a>
 				</p>
 				<%
 					} else {

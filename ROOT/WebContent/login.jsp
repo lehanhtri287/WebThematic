@@ -89,7 +89,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</tr>
 							<tr>
 								<td><a class="accountLink" href="forgotPass.jsp">Quên mật khẩu?</a></td>
-								<td><a class="accountLink" href="register.jsp">Chưa có tài khoản?</a></td>
+								<td><a class="accountLink" href="signUp.jsp">Chưa có tài khoản?</a></td>
 							</tr>
 						</table>
 					</form>
