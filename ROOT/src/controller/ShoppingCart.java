@@ -18,7 +18,7 @@ import model.Product;
 /**
  * Servlet implementation class ShoppingCart
  */
-@WebServlet("/ShoppingCart")
+@WebServlet("/shoppingCart")
 public class ShoppingCart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -47,9 +47,9 @@ public class ShoppingCart extends HttpServlet {
 			if (session.getAttribute("listProd") == null) {
 				ArrayList<Product> products = new ArrayList<>();
 				session.setAttribute("listProd", products);
-				request.getRequestDispatcher("ShoppingCart.jsp").forward(request, response);
+				request.getRequestDispatcher("shoppingCart.jsp").forward(request, response);
 			} else {
-				request.getRequestDispatcher("ShoppingCart.jsp").forward(request, response);
+				request.getRequestDispatcher("shoppingCart.jsp").forward(request, response);
 			}
 		}
 		if (action.equalsIgnoreCase("updateCart")) {
@@ -57,7 +57,7 @@ public class ShoppingCart extends HttpServlet {
 
 			List<Product> products = (List<Product>) session.getAttribute("listProd");
 			updateProduct(session, request, idProd);
-			request.getRequestDispatcher("ShoppingCart.jsp").forward(request, response);
+			request.getRequestDispatcher("shoppingCart.jsp").forward(request, response);
 		}
 		if (action.equalsIgnoreCase("deleteCart")) {
 			int idProd = Integer.parseInt(request.getParameter("id"));
@@ -68,7 +68,7 @@ public class ShoppingCart extends HttpServlet {
 				}
 			}
 			session.setAttribute("listProd", products);
-			request.getRequestDispatcher("ShoppingCart.jsp").forward(request, response);
+			request.getRequestDispatcher("shoppingCart.jsp").forward(request, response);
 		}
 
 		// if (!Validate.checkEmail(email) ||
@@ -81,7 +81,7 @@ public class ShoppingCart extends HttpServlet {
 		// request.setAttribute("phone", phone);
 		// request.setAttribute("errName", "*");
 		// request.setAttribute("errAddress", "*");
-		// request.getRequestDispatcher("ShoppingCart.jsp").forward(request,
+		// request.getRequestDispatcher("shoppingCart.jsp").forward(request,
 		// response);
 		// }
 

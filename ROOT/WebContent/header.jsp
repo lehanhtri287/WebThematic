@@ -40,7 +40,7 @@
 							<div class="total">
 								<span class="simpleCart_total"></span>
 							</div>
-							<a href="ShoppingCart?action=viewCart"><img
+							<a href="shoppingCart?action=viewCart"><img
 								src="images/cart.png" alt="" /></a>
 						</h3>
 					</a>

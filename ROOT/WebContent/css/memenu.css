@@ -6,15 +6,15 @@ ul.memenu.skyblue {text-align: center;margin: .5%;font-family: sans-serif;}
 .memenu>li>.mepanel {
 	position: absolute;
     display: none;
-    background: thistle;
-    top: 45px;
-    z-index: 99;
+    background: whitesmoke;
     padding: 1% 2%;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     z-index: 9999;
-    text-transform: uppercase;
+    border-radius: 5px;
+    width: 25%;
+    margin-top: 5%;
 }
 .me-one ul{
 	padding:0;
@@ -72,17 +72,12 @@ ul.memenu.skyblue {text-align: center;margin: .5%;font-family: sans-serif;}
 .menuDropItem{color: darkgreen;text-decoration: none;}
 a, a:hover{text-decoration: none;}
 a:hover h4{    
-	background-color: palevioletred;
-    color: navajowhite;
-    border-left: 2px solid darkmagenta;
-    padding-left: 4%;
-    transition: padding 1s ease;
+	color: #0BB8E3;
+    border-right-style: double;
 }
 .skyblue li>a,.skyblue>li.showhide span{
 	color: ghostwhite;
     font-size: 22px;
-    text-shadow: 1px burlywood;
-    text-transform: uppercase;
 }
 .skyblue>li:hover>a,.skyblue>li.active>a,.skyblue .dropdown li:hover>a{
 	border-radius: 2.5px;

@@ -28,7 +28,7 @@
 							<h5 class="item_price"><%=String.format("%,d", product.getPrice())%>đ
 							</h5>
 							<a
-								href="ShoppingCart?action=addProdToCart&id=<%=product.getIdProduct()%>"
+								href="shoppingCart?action=addProdToCart&id=<%=product.getIdProduct()%>"
 								class="item_add">Thêm vào giỏ</a>
 							<div class="clearfix"></div>
 						</div>

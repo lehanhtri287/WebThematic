@@ -53,14 +53,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<%@include file="header.jsp"%>
 	<!--content-->
 	<div class="row fh5co-post-entry">
-		<table class="table table-bordered" border="1" align="center">
-			<tr>
+		<h2 class="cartHeader">Giỏ hàng</h2>
+		<table class="table table-hover" border="1" align="center">
+			<tr class="tHead">
 				<th>Mã SP</th>
 				<th>Tên sản phẩm</th>
 				<th>Hình ảnh</th>
 				<th>Giá(VNĐ)</th>
 				<th>Số lượng</th>
-
 				<th>Thành tiền(VNĐ)</th>
 				<th>Thao tác</th>
 			</tr>
@@ -69,7 +69,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				List<Product> productsList = (List<Product>) session.getAttribute("listProd");
 				if (productsList.size() == 0 || productsList == null) {
 			%>
-			<div></div>
 			<%
 				} else {
 					for (Product product : productsList) {
@@ -80,24 +79,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<td><img src="<%=product.getImage()%>" width="80" height="40"></td>
 				<td><%=product.getPrice()%></td>
 
-				<td style="width: 80px"><div class="input-group input-group-lg"
+				<td style="width: 80px">
+					<div class="input-group input-group-lg"
 						style="width: 80px;">
-						<span class="input-group-addon" id="sizing-addon1"><a
-							href="ShoppingCart?action=updateCart&behav=plus&id=<%=product.getIdProduct()%>">+</a></span>
+						<span class="input-group-addon" id="sizing-addon1">
+							<a href="shoppingCart?action=updateCart&behav=plus&id=<%=product.getIdProduct()%>">+</a>
+						</span>
 						<input type="text" class="form-control"
 							aria-describedby="sizing-addon1"
 							value="<%=product.getQuantity()%>" name="quantity"
-							style="width: 60px; height: 45px;"><span
-							class="input-group-addon" id="sizing-addon1"><a
-							href="ShoppingCart?action=updateCart&behav=minus&id=<%=product.getIdProduct()%>">-</a></span></span>
-					</div></td>
-				</div>
+							style="width: 60px; height: 45px;">
+							<span class="input-group-addon" id="sizing-addon1">
+								<a href="shoppingCart?action=updateCart&behav=minus&id=<%=product.getIdProduct()%>">-</a>
+							</span>
+					</div>
 				</td>
 				<td><%=product.getPrice() * product.getQuantity()%> VNĐ</td>
-				<td><a
-					href="ShoppingCart?action=deleteCart&id=<%=product.getIdProduct()%>"
-					class="btn btn-danger" role="button">Xóa</a></td>
-
+				<td>
+					<a href="shoppingCart?action=deleteCart&id=<%=product.getIdProduct()%>" class="btn btn-danger" role="button">Xóa</a>
+				</td>
 			</tr>
 			<%
 				sum += product.getPrice() * product.getQuantity();
@@ -150,32 +150,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			}
 		%>
 		<div class="navbar-left">
-			<h3>Thông tin khách hàng</h3>
+			<h1>Thông tin khách hàng</h1>
 			<form action="Payment" method="POST">
-				<table class="customerInfo">
+					<table class="customerInfo">
 					<tr>
-						<td><span class="myLabel" style="font-size: 18px;">Tên:</span></td>
-						<td class="input"><input type="text" name="name" class="form-control customer-payment" value="<%=name%>"></td>
+						<td>
+							<span class="myLabel">Họ Tên</span>
+							<input type="text" name="name" class="customer-payment" value="<%=name%>">
+						</td>
 						<td><label style="color: red;"><%=errName%></label></td>
 					</tr>
 					<tr>
-						<td><span  style="font-size: 18px;">Số điện thoại:</span></td>
-						<td class="input"><input type="text" name="phone" class="form-control" value="<%=phone%>"></td>
-						<td><label style="color: red;"><%=errPhone%></label></td>
-					</tr>
-					<tr>
-						<td><span class="myLabel" style="font-size: 18px;">Email:</span></td>
-						<td class="input"><input type="text" name="email" class="form-control" value="<%=email%>"></td>
+						<td>
+							<span class="myLabel">Email</span>
+							<input type="email" name="email" class="customer-payment" value="<%=email%>">
+						</td>
 						<td><label style="color: red;"><%=errEmail%></label></td>
 					</tr>
 					<tr>
-						<td><span class="myLabel" style="font-size: 18px;">Địa chỉ:</span></td>
-						<td class="input"><textarea rows="4" cols="30" name="address"
-								class="form-control" value=""><%=address%></textarea></td>
+						<td>
+							<span class="myLabel">Số điện thoại</span>
+							<input type="tel" name="phone" class="customer-payment" value="<%=phone%>">
+						</td>
+						<td><label style="color: red;"><%=errPhone%></label></td>
+					</tr>
+					<tr>
+						<td>
+							<span class="myLabel">Địa chỉ</span>
+							<textarea rows="4" cols="30" name="address" class="customer-payment" value=""><%=address%></textarea>
+						</td>
 						<td><label style="color: red;"><%=errAddress%></label></td>
 					</tr>
 				</table>
-				<button type="submit" class="btn btn-success btn-submit" id="payment">Thanh toán</button>
+				
+				<input type="submit" class="paymentSubmit" id="payment" value="Thanh toán">
 				<label style="color: red;"><%=errCart%></label>
 			</form>
 		</div>

@@ -74,13 +74,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<form action="LoginServlet" method="POST">
 						<table class="tLogin" align="center">
 							<tr>
-								<td colspan="2"><input type="text" name="email" value="<%=email%>"
-								 placeholder="Email"></td>
+								<td colspan="2">
+									<span class="myLabel">Email</span>
+									<input type="text" name="email" value="<%=email%>">
+								 </td>
 								<td><label style="color: red;"><%=errEmail%></label></td>
 							</tr>
 							<tr>
 								<td colspan="2">
-									<input type="password" name="password" placeholder="Mật khẩu">
+									<span class="myLabel">Mật khẩu</span>
+									<input type="password" name="password">
 								</td>
 								<td><label style="color: red;"><%=errPass%></label></td>
 							</tr>

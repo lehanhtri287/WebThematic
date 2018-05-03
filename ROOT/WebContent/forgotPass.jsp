@@ -80,7 +80,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<table class="tLogin" align="center">
 							<tr>
 								<td colspan="2">
-									<input type="text" name="email" value="<%=email%>" placeholder="Email">
+									<span class="myLabel">Email</span>
+									<input type="text" name="email" value="<%=email%>">
 								</td>
 							</tr>
 							<tr>

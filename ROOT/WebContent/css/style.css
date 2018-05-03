@@ -14,6 +14,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 html,body{
 	font-size: 100%;
 }
+body{
+	background-color: #E9EBEE;
+}
 body a{
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;
@@ -32,6 +35,8 @@ h1,h2,h3,h4,h5,h6,label,p{
 .header{
 	position: fixed;
     width: 100%;
+    height: 18%;
+    z-index: 999;
 }
 .header-top{
 	background-color: lavenderblush;
@@ -54,10 +59,11 @@ h1,h2,h3,h4,h5,h6,label,p{
 }
 .h_nav h4{
 	border-bottom: 1px solid rgb(236, 236, 236);
-    font-size: 1.35em;
+    font-size: 20px;
     line-height: 1.8em;
     text-align: left;
-    color: indigo;
+    color: #434343;
+    margin-left: 5%;
 }
 .h_nav h4.top{
 	margin-top:1%;
@@ -238,7 +244,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 }
 /*--content--*/
 .content-top h1{
-	color: green;
+	color: black;
     font-size: 1.8em;
     font-family: sans-serif;
     text-align: center;
@@ -258,15 +264,19 @@ ul.callbacks_tabs.callbacks1_tabs {
 	text-decoration: none;
 }
 .img-responsive {
-	height: 220px;
-	width: 100%;
-	margin-bottom: 3%;
+	height: 250px;
+    width: 100%;
+    margin-bottom: 10%;
+    transform: scale(1.1);
+}
+.price{
+	margin-top: 3%;
 }
 .price h5{
 	float: left;
-	color:#000;
-	font-size: 20px;
-	margin-top: 3px;
+    color: #000;
+    font-size: 20px;
+    margin-top: 2.5%;
 }
 .price a {
 	color: #FFF;
@@ -275,6 +285,7 @@ ul.callbacks_tabs.callbacks1_tabs {
     background-color: #52D0C4;
     padding: 0.3em 0.6em;
     text-decoration: none;
+    font-size: 18px;
 }
 .price a:hover{
 	background-color: teal;
@@ -505,7 +516,7 @@ p.footer-class a:hover{
 	display: inline-block;
 	text-transform: uppercase;
 }
-.acount-btn:hover, .account input[type="submit"]:hover{
+.acount-btn:hover, .account input[type="submit"]:hover, .paymentSubmit:hover{
 	background:#000;
 	text-decoration:none;
 	color:#fff;
@@ -514,16 +525,10 @@ p.footer-class a:hover{
 	padding: 2%;
 	font-size: 18px;
 }
-.login-right span {
-	color: #b2b2b2;
-	font-size:0.9em;
-	padding-bottom: 0.4em;
-	display: block;
-}
 .word-in{
 	margin: 0.5em 0 0;
 }
-.account input[type="text"], .account input[type="password"] {
+.account input[type="text"], .account input[type="password"], .customer-payment {
 	outline-color: #52d0c4;
     width: 96%;
     padding: 10px;
@@ -567,15 +572,8 @@ a.forgot {
 /*--register--*/
 .register h1 {
 	color: crimson;
-    font-size: 3em;
     font-family: unset;
     text-align: center;
-}
-.register-top-grid span, .register-bottom-grid span {
-	color:#b2b2b2;
-	font-size: 0.9em;
-	padding-bottom: 0.2em;
-	display: block;
 }
 .checkbox {
 	margin-bottom: 4px;
@@ -896,7 +894,8 @@ a.cart:hover{
 	padding:4em 0em;
 }
 table.customerInfo{
-	margin: 1% 30%;
+	margin: 2% 10%;
+    width: 80%;
 }
 a.at-in {
 	float: left;
@@ -1795,25 +1794,36 @@ h1.typo1 {
 .col-md-3.col-md2 {
 	padding-bottom: 3%;
 }
-.customer-payment {
-	padding: 0;
-	border: none;
-    border-bottom: 2px solid plum;
-}
 .table.table-bordered {
 	width: 90%;
-	margin: 2% 5%
+	margin: 10% 5%;
 }
 
 .navbar-right {
 	width: 17%;
+	margin-right: 5%;
+	color: #003cb3;
+	border-bottom-style: double;
 }
 
 .navbar-left {
-	width: 98%;
+	width: 35%;
+    background-color: papayawhip;
+    margin: 3% 33%;
+    padding: 2%;
+    padding-bottom: 0;
 }
-.btn-submit{
-	margin: 1% 45%;
+.navbar-left h1{
+	color: crimson;
+    font-family: unset;
+    text-align: center;
+}
+.navbar-left h3{
+	text-align: center;
+    color: green;
+}
+.paymentSubmit{
+	margin: 1% 38%;
 }
 .fh5co-post-entry{
 	margin: 0px;
@@ -1827,6 +1837,8 @@ td.input{
     border-bottom: 3px solid #52D0C4;
     display: inline-block;
     margin: 2% .4%;
+    background-color: white;
+    overflow: hidden;
 }
 .item:hover {
 	border: 1px solid mediumorchid;
@@ -1834,7 +1846,8 @@ td.input{
     transition: border-bottom .5s ease-in-out;
 }
 .item:hover .img-responsive{
-	opacity: .5;
+    transform: scale(1.15);
+    transition: all .6s ease-out;
 }
 @media (min-width: 20px){
 	.item {
@@ -1896,4 +1909,26 @@ td.input{
 	}
 	
 }
-
+.table-hover{
+	width: 90%;
+    background-color: white;
+}
+.table-hover td{
+	text-align: center;
+    vertical-align: middle;
+}
+.cartHeader{
+	margin: 7% 44% 1%;
+    color: crimson
+}
+.navbar-left h2{
+	color: crimson;
+    font-family: unset;
+    text-align: center;
+}
+.tHead{
+	background-color: #00e6e6;
+}
+.myLabel{
+	font-size: 18px;
+}

@@ -127,43 +127,53 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<table class="tRegister">
 						<tr class="tRegisterTitle"><td>Thông tin tài khoản</td></tr>
 						<tr>
-							<td><input type="text" name="email"
-								placeholder="Email" value="<%=email%>"></td>
+							<td>
+								<span class="myLabel">Email</span>
+								<input type="text" name="email" value="<%=email%>">
+							</td>
 							<td><label style="color: red;"><%=errEmail%></label></td>
 						</tr>
 						<tr>
-							<td><input type="password"
-								name="password" placeholder="Mật khẩu" value="<%=password%>"></td>
+							<td>
+								<span class="myLabel">Mật khẩu</span>
+								<input type="password"
+								name="password" value="<%=password%>"></td>
 							<td><label style="color: red;"><%=errPass%></label></td>
 						</tr>
 						<tr>
-							<td><input type="password" name="confirmPassword" placeholder="Xác nhận mật khẩu"
-								value="<%=confirmPassword%>"></td>
+							<td>
+								<span class="myLabel">Xác nhận mật khẩu</span>
+								<input type="password" name="confirmPassword" value="<%=confirmPassword%>">
+							</td>
 							<td><label style="color: red;"><%=errConfirm%></label></td>
 						</tr>
 					</table>
 					<div class="clearfix"></div>
 				</div>
-				<div class=" col-md-6 register-bottom-grid">
+				<div class="col-md-6 register-bottom-grid">
 					<table class="tRegister">
 						<tr class="tRegisterTitle"><td>Thông tin cá nhân</td></tr>
 						<tr>
-							<td><input type="text" name="name"
-								placeholder="Họ tên" value="<%=name%>"></td>
+							<td>
+								<span class="myLabel">Họ tên</span>
+								<input type="text" name="name" value="<%=name%>">
+							</td>
 							<td><label style="color: red;"><%=errName%></label></td>
 						</tr>
 						<tr>
-							<td><input type="text" name="address"
-								placeholder="Địa chỉ giao hàng" value="<%=address%>"></td>
+							<td>
+								<span class="myLabel">Địa chỉ giao hàng</span>
+								<input type="text" name="address" value="<%=address%>">
+							</td>
 							<td><label style="color: red;"><%=errAddress%></label></td>
 						</tr>
 						<tr>
-							<td><input type="text"
-								name="phoneNumbers" placeholder="Số điện thoại"
-								value="<%=phone%>"></td>
+							<td>
+								<span class="myLabel">Địa chỉ giao hàng</span>
+								<input type="text" name="phoneNumbers" value="<%=phone%>">
+							</td>
 							<td><label style="color: red;"><%=errPhone%></label></td>
 						</tr>
-						
 					</table>
 				</div>
 				<div>
