@@ -1,5 +1,5 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="UTF-8" />
 <title>Trần Lê Vi Handshop</title>
@@ -13,16 +13,12 @@
 	content="Fashion Mania Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
-	
-	
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
         }, false);
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
-
-
 </script>
 <!-- start menu -->
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
@@ -33,6 +29,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	});
 </script>
 <script src="js/simpleCart.min.js">
+	
 </script>
 <!-- slide -->
 <script src="js/responsiveslides.min.js"></script>
@@ -50,16 +47,48 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 .col-md-3.col-md2 {
 	padding-bottom: 3%;
 }
+
+.img-responsive {
+	height: 340px;
+}
 </style>
 </head>
 <body>
-	
 	<!--header-->
-	<div th:replace="header :: header"></div>
+	<!-- banner -->
+	<!-- banner <%@include file="banner.jsp"%>-->
 	<!--content-->
-	<div th:replace="mainContent :: main"></div>
+	<div class="content">
+		<div class="container">
+			<div class="content-top">
+				<div class="content-top1">
+
+					<h2 style="color: red; margin-left: 35%">Không tìm thấy sản
+						phẩm</h2>
+					<div class="col-md-3 col-md2">
+						<div class="col-md1 simpleCart_shelfItem">
+							<a href="single.jsp"> <img class="img-responsive"
+								src="<%=product.getImage()%>" />
+							</a>
+							<h3>
+								<a href="single.html"></a>
+							</h3>
+							<div class="price">
+								<h5 class="item_price">đ
+								</h5>
+								<a href="#" class="item_add">Thêm vào giỏ</a>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--//content-->
 	<!--footer-->
-	<div th:replace="footer :: footer"></div>
-	
+	<!--//footer-->
 </body>
 </html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div class="header" th:fragment="header">
+		<div class="header-top">
+			<div class="container">
+				<div class="col-sm-4 world"></div>
+				<div class="col-sm-4 logo">
+				</div>
+				<div class="col-sm-4 header-left">
+					<p class="log">
+						<a class="accountLink" href="login.jsp">Đăng nhập</a> /
+						<a class="accountLink" href="signUp.jsp">Đăng ký</a>
+					</p>
+					<div class="cart box_1">
+						<a href="shoppingCart?action=viewCart">
+							<img th:src="@{images/shopping-cart.png}" />
+						</a>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="container menu">
+			<div class="head-top">
+				<div class="col-sm-2 number"></div>
+				<div class="col-sm-7 h_menu4">
+					<ul class="memenu skyblue">
+						<li class=" grid"><a class="home" href="index.jsp">Trần Lê Vi handshop</a></li>
+						<li class="itemLine"><a href="#">Danh mục</a>
+							<div class="mepanel">
+								<div class="h_nav">
+										<a href="ViewProductByCate?action=viewProd&id=">
+											<h4></h4>
+										</a>
+								</div>
+							</div></li>
+	
+						<li><a href="#">Tin Tức</a></li>
+						<li><a class="color6" href="contact.jsp">Liên hệ</a></li>
+					</ul>
+				</div>
+				<div class="col-sm-3 search">
+					<!-- <a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i
+							class="glyphicon glyphicon-search"> </i> </a> -->
+					<form action="SearchProduct" method="POST">
+						<div class="form-group">
+							<input type="text" class="form-control inputSearch" placeholder="Tìm kiếm"
+								name="search">
+						</div>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+<!--banner-->
+</body>
+</html>
+
