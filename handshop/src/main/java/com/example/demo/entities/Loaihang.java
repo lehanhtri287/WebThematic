@@ -28,6 +28,10 @@ public class Loaihang implements java.io.Serializable {
 	public Loaihang(String tenLoaihang) {
 		this.tenLoaihang = tenLoaihang;
 	}
+//	public Loaihang(Integer idLoaihang, String tenLoaihang) {
+//		this.idLoaihang = idLoaihang;
+//		this.tenLoaihang = tenLoaihang;		
+//	}
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)

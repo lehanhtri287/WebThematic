@@ -17,10 +17,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "sanpham", catalog = "shophandmade")
 public class Sanpham implements java.io.Serializable {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Integer idSanpham;
 	private Loaihang loaihang;
