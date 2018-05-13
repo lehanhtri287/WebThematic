@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.demo.dao.TaikhoanDAO;
@@ -24,8 +25,10 @@ public class HandshopApplicationTests {
 	
 	@Test
 	public void testSignUp(){
+//		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Taikhoan taikhoan = new Taikhoan("trinhpham96@gmail.com", "1234", "KH", "Trinh Phạm", "KP 6 Phường Linh Trung", "01234", 1);
 		assertEquals("trinhpham96@gmail.com", taikhoanDAO.signUp(taikhoan));
+//		assertEquals(encoder.encode(taikhoan.getMatKhau()), taikhoanDAO.signUp(taikhoan));
 	}
 
 }
