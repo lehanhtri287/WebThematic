@@ -55,7 +55,7 @@ public class SanphamDAO {
 		}
 		return result;
 	}
-
+	
 	public static void main(String[] args) {
 		SanphamDAO sanphamDAO = new SanphamDAO();
 		System.out.println(sanphamDAO.getSanpham(12).toString());
