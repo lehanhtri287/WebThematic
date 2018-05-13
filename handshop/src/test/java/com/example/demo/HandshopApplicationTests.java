@@ -25,10 +25,9 @@ public class HandshopApplicationTests {
 	
 	@Test
 	public void testSignUp(){
-//		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		Taikhoan taikhoan = new Taikhoan("trinhpham96@gmail.com", "1234", "KH", "Trinh Phạm", "KP 6 Phường Linh Trung", "01234", 1);
-		assertEquals("trinhpham96@gmail.com", taikhoanDAO.signUp(taikhoan));
-//		assertEquals(encoder.encode(taikhoan.getMatKhau()), taikhoanDAO.signUp(taikhoan));
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		Taikhoan taikhoan = new Taikhoan("trinhpham92@gmail.com", "1234", "KH", "Trinh Phạm", "KP 6 Phường Linh Trung", "01234", 1);
+		assertEquals(true, encoder.matches(taikhoan.getMatKhau(), taikhoanDAO.signUp(taikhoan)));
 	}
 
 }

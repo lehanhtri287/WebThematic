@@ -35,7 +35,7 @@ public class MainController {
 
 		model.addAttribute("message", message);
 
-		return "index";
+		return "index2";
 	}
 
 	@RequestMapping(value = { "/personList" }, method = RequestMethod.GET)

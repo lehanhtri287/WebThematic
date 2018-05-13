@@ -14,14 +14,14 @@ public class TaikhoanDAO {
 	public String signUp(Taikhoan taikhoan){
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		taikhoan.setMatKhau(encoder.encode(taikhoan.getMatKhau()));
+		
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
 		String matKhau = null;
-		Query query = null;
 		try {
 			session.save(taikhoan);
 			session.getTransaction().commit();
-			query = session.createQuery("select tk.matKhau from " + Taikhoan.class.getName() +
+			Query query = session.createQuery("select tk.matKhau from " + Taikhoan.class.getName() +
 					" tk where tk.tenDangnhap = :tenDangnhap");
 			query.setString("tenDangnhap", taikhoan.getTenDangnhap());
 			matKhau = (String) query.uniqueResult();
