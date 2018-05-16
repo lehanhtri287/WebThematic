@@ -5,20 +5,18 @@
 		<div class="container">
 			<div class="content-top">
 				<h1>Danh sách sản phẩm</h1>
-				<div class="content-top1">
+				<div class="content-top1" th:each="product : ${listProducts}">
 					<div class="item">
 						<div class="">
-							<a
-								href="ViewProductByCate?action=getAProduct&id=">
-								<img class="img-responsive" th:src="@{images/pi3.png}" />
+							<a href="ViewProductByCate?action=getAProduct&id="> <img
+								class="img-responsive" th:src="${product.images}" />
 							</a>
 							<h3>
-								<a
-									href="ViewProductByCate?action=getAProduct&id="></a>
+								<a href="ViewProductByCate?action=getAProduct&id="
+									th:utext="${product.tenSanpham}"></a>
 							</h3>
 							<div class="price">
-								<h5 class="item_price">120 000 vnd
-								</h5>
+								<h5 class="item_price" th:utext="${product.gia}"></h5>
 								<a
 									href="shoppingCart?action=addProdToCart&id=<%=product.getIdProduct()%>"
 									class="item_add">Thêm vào giỏ</a>
@@ -31,5 +29,6 @@
 			</div>
 		</div>
 	</div>
+
 </body>
 </html>

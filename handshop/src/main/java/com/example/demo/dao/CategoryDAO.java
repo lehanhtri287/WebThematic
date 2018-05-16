@@ -25,7 +25,7 @@ public class CategoryDAO {
 
 		try {
 			session.getTransaction().begin();
-			String hql = "from " + Loaihang.class.getName();
+			String hql = "from " + Loaihang.class.getName() + " where is_delete = 0";
 			Query query = session.createQuery(hql);
 			// query.setMaxResults(12);
 			categories = query.list();
@@ -47,7 +47,7 @@ public class CategoryDAO {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			session.getTransaction().commit();
+			session.getTransaction().rollback();
 		}
 		return false;
 	}
@@ -64,40 +64,44 @@ public class CategoryDAO {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			session.getTransaction().commit();
+			session.getTransaction().rollback();
 		}
 		return false;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public boolean deleteCategory(int idLoaihang) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.getTransaction().begin();
-			Loaihang cate = (Loaihang) session.get(Loaihang.class, idLoaihang);
 
-			session.delete(cate);
+			Query query = session.createSQLQuery("call delete_loaihang(:idLoaihang)");
+			query.setParameter("idSanpham", idLoaihang);
+			int res = query.executeUpdate();
+
 			session.getTransaction().commit();
-			return true;
+			return 1 == res;
 		} catch (Exception e) {
 			e.printStackTrace();
-			session.getTransaction().commit();
+			session.getTransaction().rollback();
 		}
 		return false;
 	}
 
 	public static void main(String[] args) {
-//		BCryptPasswordEncoder crypto = new BCryptPasswordEncoder();
-		
-//		String encode = crypto.encode("trile123");
-//		
-//		System.out.println(encode);
-//		System.out.println(crypto.matches("trile12223", "$2a$10$NuCgUHiTbe/4pEDxCz78H.6HBiGGJr6HL23HPINZyvNokTmtmNTaW"));
+		// BCryptPasswordEncoder crypto = new BCryptPasswordEncoder();
+
+		// String encode = crypto.encode("trile123");
+		//
+		// System.out.println(encode);
+		// System.out.println(crypto.matches("trile12223",
+		// "$2a$10$NuCgUHiTbe/4pEDxCz78H.6HBiGGJr6HL23HPINZyvNokTmtmNTaW"));
 		CategoryDAO categoryDAO = new CategoryDAO();
-//		System.out.println(categoryDAO.getAllCategory().size());
-		 System.out.println(categoryDAO.addCategory(new Loaihang("Áo thun trẻ em")));
+		// System.out.println(categoryDAO.getAllCategory().size());
+		// System.out.println(categoryDAO.addCategory(new Loaihang("Áo thun trẻ em")));
 		// Loaihang cate = new Loaihang();
 		// cate.setIdLoaihang(13);
 		// cate.setTenLoaihang("Ao thun tre em");
-		// System.out.println(categoryDAO.deleteCategory(13));
+		 System.out.println(categoryDAO.deleteCategory(13));
 	}
 }
