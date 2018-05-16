@@ -10,6 +10,10 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class ChitietdonhangId implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer idDonhang;
 	private Integer idSanpham;
 	private Integer soLuong;

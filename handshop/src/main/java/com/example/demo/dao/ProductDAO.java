@@ -81,11 +81,25 @@ public class ProductDAO {
 		return false;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public boolean updateProduct(Sanpham sanpham) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.getTransaction().begin();
 			Sanpham sp = (Sanpham) session.get(Sanpham.class, sanpham.getIdSanpham());
+			
+			sp.setTenSanpham(sanpham.getTenSanpham());
+			sp.setGia(sanpham.getGia());
+			sp.setGiamGia(sanpham.getGiamGia());
+			sp.setTinhTrang(sanpham.getTinhTrang());
+			sp.setImages(sanpham.getImages());
+			sp.setMoTa(sanpham.getMoTa());
+			sp.setSoLuong(sanpham.getSoLuong());
+			
+			Query query = session.createQuery("from " + Loaihang.class.getName() + " where ID_LOAIHANG = :ID_LOAIHANG");
+			query.setInteger("ID_LOAIHANG", sanpham.getLoaihang().getIdLoaihang());
+			Loaihang cate = (Loaihang) query.uniqueResult();
+			sp.setLoaihang(cate);
 			
 			session.update(sp);
 			session.getTransaction().commit();
@@ -100,8 +114,9 @@ public class ProductDAO {
 	public static void main(String[] args) {
 		ProductDAO sanphamDAO = new ProductDAO();
 		Loaihang cate = new Loaihang();
-		cate.setIdLoaihang(3);
-		Sanpham sanpham = new Sanpham(cate, "Lục lạc", 80000, "Lục lạc vàng đáng yêu", 0, 0, "images/1.jpg", 5);
-		System.out.println(sanphamDAO.insertProduct(sanpham));
+		cate.setIdLoaihang(12);
+		Sanpham sanpham = new Sanpham(cate, "Lục lạc", 230000, "Lục lạc vàng đáng yêu quá đi", 0, 0, "images/1.jpg", 5);
+		sanpham.setIdSanpham(1003);
+		System.out.println(sanphamDAO.updateProduct(sanpham));
 	}
 }
