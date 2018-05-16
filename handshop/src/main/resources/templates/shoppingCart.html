@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Trần Lê Vi Handshop</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css"
+	media="all" />
+<script src="js/jquery.min.js"></script>
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords"
+	content="Fashion Mania Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+</script>
+<!-- start menu -->
+<link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="js/memenu.js"></script>
+<script>
+	$(document).ready(function() {
+		$(".memenu").memenu();
+	});
+</script>
+<script src="js/simpleCart.min.js">
+	
+</script>
+<!-- slide -->
+<script src="js/responsiveslides.min.js"></script>
+<script>
+	$(function() {
+		$("#slider").responsiveSlides({
+			auto : true,
+			speed : 500,
+			namespace : "callbacks",
+			pager : true,
+		});
+	});
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+	<!--header-->
+	<!--content-->
+	<div class="row fh5co-post-entry">
+		<h2 class="cartHeader">Giỏ hàng</h2>
+		<table class="table table-hover" border="1" align="center">
+			<tr class="tHead">
+				<th>Mã SP</th>
+				<th>Tên sản phẩm</th>
+				<th>Hình ảnh</th>
+				<th>Giá(VNĐ)</th>
+				<th>Số lượng</th>
+				<th>Thành tiền(VNĐ)</th>
+				<th>Thao tác</th>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td><img src="" width="80" height="40"></td>
+				<td></td>
+
+				<td style="width: 80px">
+					<div class="input-group input-group-lg"
+						style="width: 80px;">
+						<span class="input-group-addon" id="sizing-addon1">
+							<a href="shoppingCart?action=updateCart&behav=plus&id=">+</a>
+						</span>
+						<input type="text" class="form-control"
+							aria-describedby="sizing-addon1"
+							value="" name="quantity"
+							style="width: 60px; height: 45px;">
+							<span class="input-group-addon" id="sizing-addon1">
+								<a href="shoppingCart?action=updateCart&behav=minus&id=">-</a>
+							</span>
+					</div>
+				</td>
+				<td>> VNĐ</td>
+				<td>
+					<a href="shoppingCart?action=deleteCart&id=" class="btn btn-danger" role="button">Xóa</a>
+				</td>
+			</tr>
+
+		</table>
+		<div class="navbar-right">
+			<h3>
+				Tổng tiền: đ
+			</h3>
+		</div>
+		
+		<div class="navbar-left">
+			<h1>Thông tin khách hàng</h1>
+			<form action="Payment" method="POST">
+					<table class="customerInfo">
+					<tr>
+						<td>
+							<span class="myLabel">Họ Tên</span>
+							<input type="text" name="name" class="customer-payment" value="">
+						</td>
+						<td><label style="color: red;"></label></td>
+					</tr>
+					<tr>
+						<td>
+							<span class="myLabel">Email</span>
+							<input type="email" name="email" class="customer-payment" value="">
+						</td>
+						<td><label style="color: red;"></label></td>
+					</tr>
+					<tr>
+						<td>
+							<span class="myLabel">Số điện thoại</span>
+							<input type="tel" name="phone" class="customer-payment" value="">
+						</td>
+						<td><label style="color: red;"></label></td>
+					</tr>
+					<tr>
+						<td>
+							<span class="myLabel">Địa chỉ</span>
+							<textarea rows="4" cols="30" name="address" class="customer-payment" value=""></textarea>
+						</td>
+						<td><label style="color: red;"></label></td>
+					</tr>
+				</table>
+				
+				<input type="submit" class="paymentSubmit" id="payment" value="Thanh toán">
+				<label style="color: red;"></label>
+			</form>
+		</div>
+	</div>
+
+	<!--//content-->
+	<!--footer-->
+	<!--//footer-->
+</body>
+</html>

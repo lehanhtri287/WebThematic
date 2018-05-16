@@ -30,6 +30,11 @@ public class Taikhoan implements java.io.Serializable {
 
 	public Taikhoan() {
 	}
+	
+	public Taikhoan(String tenDangnhap, String matKhau) {
+		this.tenDangnhap = tenDangnhap;
+		this.matKhau = matKhau;
+	}
 
 	public Taikhoan(String tenDangnhap, String matKhau, String chucvu, String tenKh, String diachi, String sdt,
 			Integer isConfirm) {

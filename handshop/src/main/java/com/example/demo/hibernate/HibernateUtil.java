@@ -1,12 +1,12 @@
 package com.example.demo.hibernate;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 
-@SuppressWarnings("deprecation")
 public class HibernateUtil {
 	private static final SessionFactory session = buildSessionFactory();
 
@@ -27,6 +27,10 @@ public class HibernateUtil {
 
 	public static SessionFactory getSessionFactory() {
 		return session;
+	}
+	
+	public static Session getSession() {
+		return getSessionFactory().openSession();
 	}
 
 }

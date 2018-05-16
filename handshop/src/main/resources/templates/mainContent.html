@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div class="content" th:fragment="main">
+		<div class="container">
+			<div class="content-top">
+				<h1>Danh sách sản phẩm</h1>
+				<div class="content-top1">
+					<div class="item">
+						<div class="">
+							<a
+								href="ViewProductByCate?action=getAProduct&id=">
+								<img class="img-responsive" th:src="@{images/pi3.png}" />
+							</a>
+							<h3>
+								<a
+									href="ViewProductByCate?action=getAProduct&id="></a>
+							</h3>
+							<div class="price">
+								<h5 class="item_price">120 000 vnd
+								</h5>
+								<a
+									href="shoppingCart?action=addProdToCart&id=<%=product.getIdProduct()%>"
+									class="item_add">Thêm vào giỏ</a>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
