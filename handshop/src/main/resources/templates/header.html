@@ -26,17 +26,19 @@
 				<div class="col-sm-2 number"></div>
 				<div class="col-sm-7 h_menu4">
 					<ul class="memenu skyblue">
-						<li class=" grid"><a class="home" href="index.jsp">Trần
+						<li class="grid"><a class="home" href="index.jsp">Trần
 								Lê Vi handshop</a></li>
-						<li class="itemLine"><a href="#">Danh mục</a>
+						<li class="itemLine">
+							<label for="menu-toggle">Danh mục</label>
+							<input type="checkbox" id="menu-toggle">
 							<div class="mepanel">
 								<div class="h_nav" th:each="category : ${listCate}">
 									<a href="ViewProductByCate?action=viewProd&id=">
-										<h4 th:text="category.tenLoaihang"></h4>
+										<h4 th:text="${category.tenLoaihang}"></h4>
 									</a>
 								</div>
-							</div></li>
-
+							</div>
+						</li>
 						<li><a href="#">Tin Tức</a></li>
 						<li><a class="color6" href="contact.jsp">Liên hệ</a></li>
 					</ul>
