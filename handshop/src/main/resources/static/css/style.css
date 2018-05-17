@@ -16,6 +16,7 @@ html,body{
 }
 body{
 	background-color: #E9EBEE;
+	font-family: 'Segoe UI',SegoeUI,'Segoe WP',Tahoma,Arial,sans-serif;
 }
 body a{
 	transition: 0.5s all;
@@ -62,8 +63,9 @@ h1,h2,h3,h4,h5,h6,label,p{
     font-size: 20px;
     line-height: 1.8em;
     text-align: left;
-    color: #434343;
+    color: black;
     margin-left: 5%;
+    font-weight: 400;
 }
 .h_nav h4.top{
 	margin-top:1%;
@@ -117,21 +119,18 @@ p.log{
     display: inline-block;
 }
 .search {
-	margin: .3% 0;
+	width: 30%;
+    float: right;
 }
 .inputSearch{
-	border: 2px solid pink;
+	border: 2px solid #66afe9;
     border-radius: 0px;
     height: 30px;
+    display: inline-block;
+    width: 70%;
 }
-i.glyphicon.glyphicon-search {
-  color: #000;
-  font-size: 1em;
-}
-.world {
-}
-i.glyphicon.glyphicon-phone {
-  margin: 0 4% 0 0;
+.inputSearch:FOCUS{
+	border-color: blue;
 }
 /*--cart--*/
 .itemContainer{
@@ -245,9 +244,9 @@ ul.callbacks_tabs.callbacks1_tabs {
 /*--content--*/
 .content-top h1{
 	color: black;
-    font-size: 1.8em;
-    font-family: sans-serif;
-    text-align: center;
+    font-size: 28px;
+    margin-left: 35%;
+    font-weight: 400;
 }
 .col-md1 img{
 	margin: 0 auto;
@@ -275,15 +274,16 @@ ul.callbacks_tabs.callbacks1_tabs {
 .price h5{
 	float: left;
     color: #000;
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 2.5%;
+    font-weight: 400;
 }
 .price a {
 	color: #FFF;
     display: block;
     float: right;
     background-color: #52D0C4;
-    padding: 0.3em 0.6em;
+    padding: 2%;
     text-decoration: none;
     font-size: 18px;
 }
@@ -342,10 +342,10 @@ ul.callbacks_tabs.callbacks1_tabs {
   margin: 6em 0 0;
 }
 .footer-bottom-cate h6{
-	font-size: 1.5em;
+	font-size: 22px;
     color: peachpuff;
-    margin: 0 0 0.5em;
-    font-family: sans-serif;
+    font-weight: 400;
+    margin: 2% 0;
 }
 .footer-bottom-cate ul{
 	padding: 0;
@@ -537,8 +537,9 @@ p.footer-class a:hover{
     border-bottom: 2px solid plum;
 }
 .accountLink:hover{
-	margin-left: 3%;
-    color: darkblue;
+	color: darkblue;
+    text-decoration: underline;
+    transition: all .6s ease-out;
 }
 a.forgot {
 	font-size: 0.8125em;
@@ -645,16 +646,20 @@ a.forgot {
 	margin-top:1em;
 }
 form input[type="submit"] {
-	background:#52D0C4;
-	color: #FFF;
-	padding: 0.4em 1em;
-	transition: 0.5s all;
-	-webkit-transition: 0.5s all;
-	-moz-transition: 0.5s all;
-	-o-transition: 0.5s all;
-	display: inline-block;
-	border:none;
-	outline:none;
+	background: #0078d7;
+    color: ghostwhite;
+    padding: 1.5%;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    display: inline-block;
+    border: none;
+    outline: none;
+    font-weight: 400;
+}
+.iconSearch:hover{
+	background-color: teal;
 }
 .forgotPassSubmit{
 	margin: 8% 85%;
@@ -1060,9 +1065,6 @@ h1.typo1 {
 	  margin-top: 1.5em;
 	  display: block;
 	}
-	.search {
-	  margin-top: 3%;
-	}
 	.banner-mat img {
 	  height: 186px;
 	}
@@ -1085,14 +1087,13 @@ h1.typo1 {
 		width: 70%;
     	padding: 0;
 	}
-	.number ,.search{
+	.number{
 	  width: 16.66%;
 	  float: left;
 	}
 	.h_menu4 {
 	  float: left;
-	  width: 66.66%;
-	  background-color: palevioletred;
+	  background-color: #1a1a1a;
 	}
 	.logo img{
 		width: 100%;
@@ -1210,11 +1211,7 @@ h1.typo1 {
 		  width: 20%;
 		}
 		.h_menu4 {
-		  width: 63%;
-		  background-color: palevioletred;
-		}
-		.search {
-		  padding: 0;
+		  background-color: #1a1a1a;
 		}
 		.banner-mat img {
 		  height: 152px;
@@ -1308,9 +1305,6 @@ h1.typo1 {
 	}
 	.logo img {
 	  width: 29%;
-	}
-	.search {
-	  width: 11%;
 	}
 	.h_menu4 {
 	  width: 67%;
@@ -1523,18 +1517,12 @@ h1.typo1 {
 	.number span {
 	  font-size: 0.8em;
 	}
-	.search {
-	  width: 6%;
-	}
 	.h_menu4 {
-	  width: 62%;
+	  width: 100%;
 	  background-color: palevioletred;
 	}
 	.number {
 	  margin-top: 0%;
-	}
-	.search {
-	  margin-top: 6%;
 	}
 	.head-top {
 	  padding: 0.4em 0 0;
@@ -1841,11 +1829,12 @@ td.input{
     overflow: hidden;
 }
 .item h3{
-	font-size: 1.3em;
+	font-size: 20px;
+    font-weight: 400;
 }
 .item:hover {
-	border: 1px solid mediumorchid;
-    border-bottom: 3px solid mediumpurple;
+	border-bottom: 3px solid mediumpurple;
+    transition: all .5s ease-out;
 }
 .item:hover .img-responsive{
     transform: scale(1.15);
@@ -1883,7 +1872,6 @@ td.input{
 	}
 	.col-sm-7 {
     	width: 80%;
-	    margin-left: -5%;
 	    padding: 0;
 	}
 	.col-sm-3 {
@@ -1906,15 +1894,11 @@ td.input{
 }
 @media (min-width: 1100px){
 	.col-sm-2 {
-    	width: 10%;
+    	width: 20%;
 	}
 	.col-sm-7 {
-    	width: 65%;
+    	width: 80%;
 	}
-	.col-sm-3 {
-    	width: 25%;
-	}
-	
 }
 .table-hover{
 	width: 90%;

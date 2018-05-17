@@ -7,8 +7,9 @@
 				<div class="col-sm-4 footer-bottom-cate">
 					<h6>Danh mục sản phẩm</h6>
 					<ul>
-						<li><a
-							href="ViewProductByCate?action=viewProd&id=>"></a></li>
+						<li th:each="category : ${listCate}">
+							<a href="ViewProductByCate?action=viewProd&id=" th:text="${category.tenLoaihang}"></a>
+						</li>
 					</ul>
 				</div>
 				<div class="col-sm-4 footer-bottom-cate">
