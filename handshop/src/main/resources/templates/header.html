@@ -8,8 +8,8 @@
 				<div class="col-sm-4 logo"></div>
 				<div class="col-sm-4 header-left">
 					<p class="log">
-						<a class="accountLink" href="login.jsp">Đăng nhập</a> / <a
-							class="accountLink" href="signUp.jsp">Đăng ký</a>
+						<a class="accountLink" href="login.html">Đăng nhập</a> / <a
+							class="accountLink" href="signUp.html">Đăng ký</a>
 					</p>
 					<div class="cart box_1">
 						<a href="shoppingCart?action=viewCart"> <img
@@ -30,9 +30,9 @@
 								Lê Vi handshop</a></li>
 						<li class="itemLine"><a href="#">Danh mục</a>
 							<div class="mepanel">
-								<div class="h_nav">
+								<div class="h_nav" th:each="category : ${listCate}">
 									<a href="ViewProductByCate?action=viewProd&id=">
-										<h4></h4>
+										<h4 th:text="category.tenLoaihang"></h4>
 									</a>
 								</div>
 							</div></li>

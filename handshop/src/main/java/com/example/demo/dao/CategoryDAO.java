@@ -6,11 +6,13 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import com.example.demo.entities.Loaihang;
 import com.example.demo.hibernate.HibernateUtil;
 
 @SuppressWarnings("deprecation")
+@Repository
 public class CategoryDAO {
 	private SessionFactory sessionFactory;
 

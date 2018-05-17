@@ -19,4 +19,12 @@ public class HomeController1 {
 		return "index";
 	}
 	
+	@RequestMapping(value = { "/home2" }, method = RequestMethod.GET)
+	public String productList2(Model model) {
+		ProductDAO productDAO = new ProductDAO();
+		CategoryDAO categoryDAO = new CategoryDAO();
+		model.addAttribute("listProducts", productDAO.getAllProduct());
+		model.addAttribute("listCate", categoryDAO.getAllCategory());
+		return "index";
+	}
 }
