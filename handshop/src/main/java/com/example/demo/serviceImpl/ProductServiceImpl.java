@@ -13,6 +13,10 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductDAO productDAO;
 	
+	public ProductServiceImpl() {
+		productDAO = new ProductDAO();
+	}
+	
 	@Override
 	public boolean addProduct(Sanpham sanpham) {
 		return productDAO.insertProduct(sanpham);
@@ -31,6 +35,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Sanpham> getAllProduct() {
 		return productDAO.getAllProduct();
+	}
+
+	@Override
+	public Sanpham getProduct(int idProduct) {
+		return productDAO.getProduct(idProduct);
 	}
 
 }

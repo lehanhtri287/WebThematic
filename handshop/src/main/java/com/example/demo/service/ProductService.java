@@ -12,5 +12,7 @@ public interface ProductService {
 	public boolean deleteProduct(int idSanpham);
 
 	public List<Sanpham> getAllProduct();
+	
+	public Sanpham getProduct(int idProduct);
 
 }

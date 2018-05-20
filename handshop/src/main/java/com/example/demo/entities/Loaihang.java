@@ -21,6 +21,7 @@ public class Loaihang implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer idLoaihang;
 	private String tenLoaihang;
+	private Integer isDelete;
 
 	public Loaihang() {
 	}
@@ -28,10 +29,10 @@ public class Loaihang implements java.io.Serializable {
 	public Loaihang(String tenLoaihang) {
 		this.tenLoaihang = tenLoaihang;
 	}
-//	public Loaihang(Integer idLoaihang, String tenLoaihang) {
-//		this.idLoaihang = idLoaihang;
-//		this.tenLoaihang = tenLoaihang;		
-//	}
+	// public Loaihang(Integer idLoaihang, String tenLoaihang) {
+	// this.idLoaihang = idLoaihang;
+	// this.tenLoaihang = tenLoaihang;
+	// }
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -52,6 +53,20 @@ public class Loaihang implements java.io.Serializable {
 
 	public void setTenLoaihang(String tenLoaihang) {
 		this.tenLoaihang = tenLoaihang;
+	}
+
+	@Column(name = "IS_DELETE", nullable = true, length = 1)
+	public Integer getIsdelete() {
+		return this.isDelete;
+	}
+
+	public void setIsdelete(Integer isDelete) {
+		this.isDelete = isDelete;
+	}
+
+	@Override
+	public String toString() {
+		return "Loaihang [idLoaihang=" + idLoaihang + ", tenLoaihang=" + tenLoaihang + ", isDelete=" + isDelete + "]";
 	}
 
 }

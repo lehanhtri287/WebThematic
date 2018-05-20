@@ -8,18 +8,19 @@
 				<div class="content-top1" th:each="product : ${listProducts}">
 					<div class="item">
 						<div class="">
-							<a href="ViewProductByCate?action=getAProduct&id="> <img
+							<a th:href="${'/single/' + product.idSanpham}"> <img
 								class="img-responsive" th:src="${product.images}" />
 							</a>
 							<h3>
-								<a href="ViewProductByCate?action=getAProduct&id="
+								<a id="nameProduct" href="${'/single/' + product.idSanpham}"
 									th:utext="${product.tenSanpham}"></a>
 							</h3>
 							<div class="price">
 								<h5 class="item_price" th:utext="${product.gia}"></h5>
 								<a
-									href="shoppingCart?action=addProdToCart&id=<%=product.getIdProduct()%>"
-									class="item_add">Thêm vào giỏ</a>
+									href="#"
+									class="item_add"
+									onclick="addCart();">Thêm vào giỏ</a>
 								<div class="clearfix"></div>
 							</div>
 						</div>

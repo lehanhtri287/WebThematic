@@ -6,11 +6,13 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import com.example.demo.entities.Loaihang;
 import com.example.demo.hibernate.HibernateUtil;
 
 @SuppressWarnings("deprecation")
+@Repository
 public class CategoryDAO {
 	private SessionFactory sessionFactory;
 
@@ -35,6 +37,24 @@ public class CategoryDAO {
 			session.getTransaction().rollback();
 		}
 		return categories;
+	}
+
+	public Loaihang getCategory(int idCate) {
+		Loaihang loaihang = null;
+		Session session = sessionFactory.openSession();
+
+		try {
+			session.getTransaction().begin();
+
+			loaihang = (Loaihang) session.get(Loaihang.class, idCate);
+			// Query query = session.createQuery(hql);
+			// query.setMaxResults(12);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		return loaihang;
 	}
 
 	public boolean addCategory(Loaihang loaihang) {
@@ -102,6 +122,6 @@ public class CategoryDAO {
 		// Loaihang cate = new Loaihang();
 		// cate.setIdLoaihang(13);
 		// cate.setTenLoaihang("Ao thun tre em");
-		 System.out.println(categoryDAO.deleteCategory(13));
+		System.out.println(categoryDAO.getCategory(1));
 	}
 }

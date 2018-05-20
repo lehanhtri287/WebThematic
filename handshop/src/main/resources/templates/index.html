@@ -15,12 +15,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript">
 	
 	
+	
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
         }, false);
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
+
 
 
 </script>
@@ -33,9 +35,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	});
 </script>
 <script src="js/simpleCart.min.js">
+	
 </script>
 <!-- slide -->
 <script src="js/responsiveslides.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 	$(function() {
 		$("#slider").responsiveSlides({
@@ -53,13 +58,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </style>
 </head>
 <body>
-	
+
 	<!--header-->
 	<div th:replace="header :: header"></div>
 	<!--content-->
 	<div th:replace="mainContent :: main"></div>
 	<!--footer-->
 	<div th:replace="footer :: footer"></div>
-	
+	<script type="text/javascript">
+		//$(document).ready(function() {
+		//var nameProduct = $("#nameProduct").attr('data_value').val();
+		var i = 0;
+		function addCart() {
+			i++;
+			document.getElementById("sizeCart").innerHTML = ""+ i;
+		}
+		//});
+	</script>
 </body>
 </html>
