@@ -1,4 +1,4 @@
-package com.example.demo.dao;
+package com.example.demo.repository.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,16 +12,13 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.entities.Loaihang;
 import com.example.demo.entities.Sanpham;
 import com.example.demo.hibernate.HibernateUtil;
+import com.example.demo.repository.ProductDAO;
 
 @SuppressWarnings("deprecation")
 @Repository
-public class ProductDAO {
-	private SessionFactory sessionFactory;
+public class ProductDAOImpl implements ProductDAO{
+	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 	private int pageSize;
-
-	public ProductDAO() {
-		sessionFactory = HibernateUtil.getSessionFactory();
-	}
 
 	public void setPageSize(int pageSize) {
 		this.pageSize = pageSize;
@@ -192,7 +189,7 @@ public class ProductDAO {
 	}
 
 	public static void main(String[] args) {
-		ProductDAO sanphamDAO = new ProductDAO();
+		ProductDAOImpl sanphamDAO = new ProductDAOImpl();
 		// Loaihang cate = new Loaihang();
 		// cate.setIdLoaihang(12);
 		// Sanpham sanpham = new Sanpham(cate, "Lục lạc", 230000, "Lục lạc vàng đáng yêu
