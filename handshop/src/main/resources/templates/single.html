@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
 <title>Trần Lê Vi Handshop</title>
@@ -13,12 +13,18 @@
 	content="Fashion Mania Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
+	
+	
+	
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
         }, false);
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
+
+
+
 </script>
 <!-- start menu -->
 <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
@@ -51,6 +57,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 	<!--header-->
+	<div th:replace="header :: header"></div>
 	<!--content-->
 	<!-- banner -->
 	<div class="single">
@@ -61,7 +68,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<ul class="slides">
 							<li data-thumb="">
 								<div class="thumb-image">
-									<img src="" data-imagezoom="true"
+									<img th:src="${singleProduct.images}" data-imagezoom="true"
 										class="img-responsive" style="height: 400px">
 								</div>
 							</li>
@@ -70,35 +77,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-7 single-top-in">
 					<div class="single-para simpleCart_shelfItem">
-						<h1></h1>
-						<p></p>
+						<h1 th:text="${singleProduct.tenSanpham}"></h1>
+						<p th:text="${singleProduct.gia}"></p>
 						<div class="star-on">
 							<div class="review">
 								<a>Nhận xét</a>
 							</div>
 							<div class="clearfix"></div>
 						</div>
-						<label class="add-to item_price">đ</label>
-						<a href="ShoppingCart?action=addProdToCart&id=" class="cart item_add">Thêm vào giỏ</a>
+						<label class="add-to item_price">đ</label> <a
+							href="ShoppingCart?action=addProdToCart&id="
+							class="cart item_add">Thêm vào giỏ</a>
 					</div>
 				</div>
 				<div class="clearfix"></div>
 				<div class="content-top1">
 					<div>
 						<ul class="nav nav-tabs" style="width: 80%">
-							<li role="presentation" class="active">
-								<a href="">Comment</a>
+							<li role="presentation" class="active"><a href="">Comment</a>
 							</li>
 						</ul>
 					</div>
 					<div class="formaction">
 						<form action="CommentAction" method="POST">
 							<input type="text" class="form-control" placeholder="Tên họ"
-								style="width: 60%" name="name" value=""
-								readonly="readonly"><label style="color: red;"></label>
-							<input type="email" value="" class="form-control"
-								style="width: 60%" placeholder="Email" name="email"
-								readonly="readonly"><label style="color: red;"></label>
+								style="width: 60%" name="name" value="" readonly="readonly"><label
+								style="color: red;"></label> <input type="email" value=""
+								class="form-control" style="width: 60%" placeholder="Email"
+								name="email" readonly="readonly"><label
+								style="color: red;"></label>
 							<textarea type="text" class="form-control" placeholder="Nội dung"
 								style="width: 60%" name="context"></textarea>
 							<input type="submit" value="Gửi" class="btn btn-success"
@@ -114,14 +121,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class=" rsidebar span_1_of_left">
 					<h3 class="cate">Danh mục</h3>
 					<ul class="menu-drop">
-						<li class="item1">
-						<a href="ViewProductByCate?action=viewProd&id="></a>
-						</li>
+						<li class="item1"><a
+							href="ViewProductByCate?action=viewProd&id="></a></li>
 					</ul>
 				</div>
 				<!--initiate accordion-->
 				<script type="text/javascript">
-				$(function() {
+					$(function() {
 						var menu_ul = $('.menu-drop > li > ul'), menu_a = $('.menu-drop > li > a');
 						menu_ul.hide();
 						menu_a.click(function(e) {
@@ -146,8 +152,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<h3 class="cate">Sản phẩm bán chạy</h3>
 					<div class="product-go">
 						<div class=" fashion-grid">
-							<a
-								href="ViewProductByCate?action=getAProduct&id="><img
+							<a href="ViewProductByCate?action=getAProduct&id="><img
 								class="img-responsive " src="" alt=""></a>
 						</div>
 						<div class=" fashion-grid1">
@@ -187,6 +192,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<!--//content-->
 	<!--footer-->
+	<div th:replace="footer :: footer"></div>
 	<!--//footer-->
 </body>
 </html>

@@ -14,7 +14,7 @@ import com.example.demo.form.PersonForm;
 import com.example.demo.model.Person;
 
 @Controller
-public class MainController {
+public class MainxController {
 
 	private static List<Person> persons = new ArrayList<Person>();
 

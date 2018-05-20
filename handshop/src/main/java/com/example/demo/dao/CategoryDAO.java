@@ -39,6 +39,24 @@ public class CategoryDAO {
 		return categories;
 	}
 
+	public Loaihang getCategory(int idCate) {
+		Loaihang loaihang = null;
+		Session session = sessionFactory.openSession();
+
+		try {
+			session.getTransaction().begin();
+
+			loaihang = (Loaihang) session.get(Loaihang.class, idCate);
+			// Query query = session.createQuery(hql);
+			// query.setMaxResults(12);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		return loaihang;
+	}
+
 	public boolean addCategory(Loaihang loaihang) {
 		Session session = sessionFactory.openSession();
 
@@ -104,6 +122,6 @@ public class CategoryDAO {
 		// Loaihang cate = new Loaihang();
 		// cate.setIdLoaihang(13);
 		// cate.setTenLoaihang("Ao thun tre em");
-		 System.out.println(categoryDAO.deleteCategory(13));
+		System.out.println(categoryDAO.getCategory(1));
 	}
 }

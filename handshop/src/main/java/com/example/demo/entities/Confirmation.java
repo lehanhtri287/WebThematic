@@ -19,6 +19,10 @@ import javax.persistence.TemporalType;
 @Table(name = "confirmation", catalog = "shophandmade")
 public class Confirmation implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String idConfirm;
 	private Taikhoan taikhoan;
 	private int status;
