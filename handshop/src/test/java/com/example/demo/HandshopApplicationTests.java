@@ -9,8 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.example.demo.dao.TaikhoanDAO;
 import com.example.demo.entities.Taikhoan;
+import com.example.demo.repository.TaikhoanDAO;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

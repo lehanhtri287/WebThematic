@@ -1,24 +1,32 @@
-package com.example.demo.serviceImpl;
+package com.example.demo.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+<<<<<<< HEAD:handshop/src/main/java/com/example/demo/serviceImpl/ProductServiceImpl.java
 import com.example.demo.dao.ProductDAO;
 import com.example.demo.entities.Loaihang;
+=======
+>>>>>>> master:handshop/src/main/java/com/example/demo/service/impl/ProductServiceImpl.java
 import com.example.demo.entities.Sanpham;
+import com.example.demo.repository.ProductDAO;
 import com.example.demo.service.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductDAO productDAO;
+<<<<<<< HEAD:handshop/src/main/java/com/example/demo/serviceImpl/ProductServiceImpl.java
 
 	public ProductServiceImpl() {
 		productDAO = new ProductDAO();
 	}
 
+=======
+	
+>>>>>>> master:handshop/src/main/java/com/example/demo/service/impl/ProductServiceImpl.java
 	@Override
 	public boolean addProduct(Sanpham sanpham) {
 		return productDAO.insertProduct(sanpham);

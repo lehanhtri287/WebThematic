@@ -1,4 +1,4 @@
-package com.example.demo.dao;
+package com.example.demo.repository.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,15 +10,12 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.entities.Loaihang;
 import com.example.demo.hibernate.HibernateUtil;
+import com.example.demo.repository.CategoryDAO;
 
 @SuppressWarnings("deprecation")
 @Repository
-public class CategoryDAO {
-	private SessionFactory sessionFactory;
-
-	public CategoryDAO() {
-		sessionFactory = HibernateUtil.getSessionFactory();
-	}
+public class CategoryDAOImpl implements CategoryDAO{
+	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public List<Loaihang> getAllCategory() {
@@ -108,20 +105,4 @@ public class CategoryDAO {
 		return false;
 	}
 
-	public static void main(String[] args) {
-		// BCryptPasswordEncoder crypto = new BCryptPasswordEncoder();
-
-		// String encode = crypto.encode("trile123");
-		//
-		// System.out.println(encode);
-		// System.out.println(crypto.matches("trile12223",
-		// "$2a$10$NuCgUHiTbe/4pEDxCz78H.6HBiGGJr6HL23HPINZyvNokTmtmNTaW"));
-		CategoryDAO categoryDAO = new CategoryDAO();
-		// System.out.println(categoryDAO.getAllCategory().size());
-		// System.out.println(categoryDAO.addCategory(new Loaihang("Áo thun trẻ em")));
-		// Loaihang cate = new Loaihang();
-		// cate.setIdLoaihang(13);
-		// cate.setTenLoaihang("Ao thun tre em");
-		System.out.println(categoryDAO.getCategory(1));
-	}
 }

@@ -1,4 +1,4 @@
-.memenu{width:100%;list-style:none;display:inline-block;position:relative;font-size:15px}
+.memenu{width:100%;list-style:none;display:inline-block;position:relative;font-size:15px;padding: .12%;}
 .memenu li{display:inline-block;font-weight: 100;}
 .memenu>li>a, .skyblue .itemLine label{float:left;padding: 0 20px;font-size: 1.1em;text-decoration:none;transition:color .4s ease-in-out;-moz-transition:color .4s ease-in-out;-webkit-transition:color .4s ease-in-out;-o-transition:color .4s ease-in-out}
 .memenu>li>.mepanel {

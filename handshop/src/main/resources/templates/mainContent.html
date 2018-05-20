@@ -7,8 +7,7 @@
 				<h1>Danh sách sản phẩm</h1>
 
 				<div class="content-top1">
-					<div class="item" th:each="product : ${listProducts}">
-						<div class="">
+					<div class="item"  th:each="product : ${listProducts}">
 							<a th:href="${'/single/' + product.idSanpham}"> <img
 								class="img-responsive" th:src="${product.images}" />
 							</a>
@@ -24,7 +23,6 @@
 									onclick="addCart();">Thêm vào giỏ</a>
 								<div class="clearfix"></div>
 							</div>
-						</div>
 					</div>
 					<div class="clearfix"></div>
 				</div>
