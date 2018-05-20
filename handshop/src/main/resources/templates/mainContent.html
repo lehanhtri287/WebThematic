@@ -6,8 +6,8 @@
 			<div class="content-top">
 				<h1>Danh sách sản phẩm</h1>
 
-				<div class="content-top1" th:each="product : ${listProducts}">
-					<div class="item">
+				<div class="content-top1">
+					<div class="item" th:each="product : ${listProducts}">
 						<div class="">
 							<a th:href="${'/single/' + product.idSanpham}"> <img
 								class="img-responsive" th:src="${product.images}" />

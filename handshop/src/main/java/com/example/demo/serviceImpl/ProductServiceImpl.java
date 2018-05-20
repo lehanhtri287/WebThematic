@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.ProductDAO;
+import com.example.demo.entities.Loaihang;
 import com.example.demo.entities.Sanpham;
 import com.example.demo.service.ProductService;
 
@@ -13,11 +14,11 @@ import com.example.demo.service.ProductService;
 public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductDAO productDAO;
-	
+
 	public ProductServiceImpl() {
 		productDAO = new ProductDAO();
 	}
-	
+
 	@Override
 	public boolean addProduct(Sanpham sanpham) {
 		return productDAO.insertProduct(sanpham);
@@ -41,6 +42,12 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Sanpham getProduct(int idProduct) {
 		return productDAO.getProduct(idProduct);
+	}
+
+	@Override
+	public List<Sanpham> getProductByCate(int idLoaihang) {
+		// TODO Auto-generated method stub
+		return productDAO.getProductByCate(idLoaihang);
 	}
 
 }

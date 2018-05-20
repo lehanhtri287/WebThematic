@@ -54,7 +54,7 @@ public class ProductDAO {
 		Session session = sessionFactory.openSession();
 
 		int offset = 0;
-		
+
 		if (page > getNumpPages()) {
 			page = getNumpPages();
 		}
@@ -191,6 +191,27 @@ public class ProductDAO {
 		return 0;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public List<Sanpham> getProductByCate(int id) {
+		List<Sanpham> sanphams = new ArrayList<>();
+		Session session = sessionFactory.openSession();
+
+		try {
+			session.getTransaction().begin();
+			String hql = "from " + Sanpham.class.getName() + " where id_loaihang = :idCate";
+			Query query = session.createQuery(hql);
+			query.setInteger("idCate", id);
+			
+			sanphams = query.list();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		
+		return sanphams;
+	}
+
 	public static void main(String[] args) {
 		ProductDAO sanphamDAO = new ProductDAO();
 		// Loaihang cate = new Loaihang();
@@ -200,6 +221,6 @@ public class ProductDAO {
 		// sanpham.setIdSanpham(1003);
 		// System.out.println(sanphamDAO.updateProduct(sanpham));
 		sanphamDAO.setPageSize(5);
-		System.out.println(sanphamDAO.getProductPagination(5));
+		System.out.println(sanphamDAO.getProductByCate(12).size());
 	}
 }

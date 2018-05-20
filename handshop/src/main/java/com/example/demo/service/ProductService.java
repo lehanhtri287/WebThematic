@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.util.List;
 
+import com.example.demo.entities.Loaihang;
 import com.example.demo.entities.Sanpham;
 
 public interface ProductService {
@@ -14,5 +15,7 @@ public interface ProductService {
 	public List<Sanpham> getAllProduct();
 	
 	public Sanpham getProduct(int idProduct);
+	
+	public List<Sanpham> getProductByCate(int idLoaihang);
 
 }

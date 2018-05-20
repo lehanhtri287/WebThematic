@@ -32,5 +32,11 @@ public class HomeController1 {
 		
 		return "single";
 	}
+	@RequestMapping(value = "/viewByCate/{idCate}", method = RequestMethod.GET)
+	public String listProductsByCate(@PathVariable int idCate, Model model) {
+		model.addAttribute("listProducts", productService.getProductByCate(idCate));
+
+		return "index";
+	}
 
 }
