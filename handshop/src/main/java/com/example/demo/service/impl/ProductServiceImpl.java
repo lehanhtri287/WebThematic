@@ -39,4 +39,10 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.getProduct(idProduct);
 	}
 
+	@Override
+	public List<Sanpham> getProductByCate(int idLoaihang) {
+		// TODO Auto-generated method stub
+		return productDAO.getProductByCate(idLoaihang);
+	}
+
 }

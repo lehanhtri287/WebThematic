@@ -14,5 +14,7 @@ public interface ProductService {
 	public List<Sanpham> getAllProduct();
 	
 	public Sanpham getProduct(int idProduct);
+	
+	public List<Sanpham> getProductByCate(int idLoaihang);
 
 }
