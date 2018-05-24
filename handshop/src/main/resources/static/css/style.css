@@ -115,8 +115,9 @@ p.log{
 }
 .accountLink{
 	color: teal;
-    text-decoration: none;
-    display: inline-block;
+}
+.leftLink{
+	margin-left: 12%;
 }
 .search {
 	width: 30%;
@@ -491,6 +492,7 @@ p.footer-class a:hover{
 	color: crimson;
     text-align: center;
     margin-bottom: 3%;
+    font-weight: 400;
 }
 .login-left h4{
 	color:#000;
@@ -529,7 +531,7 @@ p.footer-class a:hover{
 .word-in{
 	margin: 0.5em 0 0;
 }
-.account input[type="text"], .account input[type="password"], .customer-payment {
+.account input[type="text"], .account input[type="email"], .account input[type="password"], .customer-payment {
 	outline-color: #52d0c4;
     width: 96%;
     padding: 10px;
@@ -550,16 +552,12 @@ a.forgot {
   padding: 3%;
 }
 .account .container{
-	padding: 3%;
+	padding: 1%;
     background-color: papayawhip;
-    width: 40%;
     margin-top: 5%;
 }
-.account .register{
-	width: 60%;
-}
+
 .tLogin{
-	width: 85%;
     font-size: 18px;
     font-family: unset;
 }
@@ -570,12 +568,6 @@ a.forgot {
 .tRegisterTitle{
 	color: green;
     font-size: 22px;
-}
-/*--register--*/
-.register h1 {
-	color: crimson;
-    font-family: unset;
-    text-align: center;
 }
 .checkbox {
 	margin-bottom: 4px;
@@ -663,31 +655,25 @@ form input[type="submit"] {
 	background-color: teal;
 }
 .forgotPassSubmit{
-	margin: 8% 85%;
+	margin: 18% 85%;
+	width: 100%;
+    height: 43px;
 }
 .loginSubmit{
-	margin: 8% 65%;
+	margin: 8% 50%;
+	width: 100%;
+    height: 43px;
 }
 .registerSubmit{
 	width: 25%;
     display: block;
-    margin: 2.5% 35%;
     padding: 1.5%;
-}
-.loginFromRegister{
-	margin: 0 42%;
-}
-.loginFromRegister:hover{
-	margin: 0 43%;
 }
 .register-but input[type="submit"]:hover {
 	background:#000;
 }
 .mation{
 	padding: 1em 0;
-}
-.register {
-	padding: 4em 0;
 }
 /*--product--*/
 .products h1{
@@ -1479,11 +1465,68 @@ h1.typo1 {
 }
 @media (min-width:280px){
 	.h_menu4 {
-	  width: 100%;
-	  background-color: #1a1a1a;
+		width: 100%;
+		background-color: #1a1a1a;
+	}
+	.tLogin, .account .container{
+		width: 100%;
+	}
+	.loginFromRegister:hover {
+    	text-decoration: underline;
+	}
+	.loginFromRegister {
+    	margin: 0 34%;
+	}
+	.registerSubmit{
+		padding: 3.5%;
+		width: 35%;
+		margin-left: 32%;
+	}
+	
+}
+@media (min-width:500px){
+	.account .container{
+		width: 75%;
+	}
+	.tLogin{
+		width: 90%;
+	}
+}	
+@media (min-width:750px){
+	.account .container{
+		 width: 65%;
+	}
+	.tLogin{
+		width: 85%;
 	}
 }
-	@media(max-width:320px){
+@media (min-width:900px){
+	.account .container{
+		 width: 60%;
+	}
+	.tLogin{
+		width: 85%;
+	}
+	.registerSubmit{
+		margin: 2.5% 33%;
+	}
+	.loginFromRegister {
+    	margin: 0 43%;
+	}
+}
+@media (min-width:1300px){
+	.account .container{
+		 width: 40%;
+	}
+	.tLogin{
+		width: 85%;
+	}
+	
+	.account .register{
+		width: 60%;
+	}
+}
+@media(max-width:320px){
 	.logo {
 	  width: 100%;	
 	}
@@ -1901,4 +1944,7 @@ td.input{
 .myLabel{
 	font-size: 18px;
 }
-
+.responseContent{
+	padding: 8%;
+    height: 485px;
+}

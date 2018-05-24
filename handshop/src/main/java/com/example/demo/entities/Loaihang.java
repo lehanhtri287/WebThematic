@@ -1,10 +1,11 @@
 package com.example.demo.entities;
-// Generated May 2, 2018 12:43:54 PM by Hibernate Tools 5.2.3.Final
+// Generated May 23, 2018 1:38:46 AM by Hibernate Tools 5.2.3.Final
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -29,10 +30,11 @@ public class Loaihang implements java.io.Serializable {
 	public Loaihang(String tenLoaihang) {
 		this.tenLoaihang = tenLoaihang;
 	}
-	// public Loaihang(Integer idLoaihang, String tenLoaihang) {
-	// this.idLoaihang = idLoaihang;
-	// this.tenLoaihang = tenLoaihang;
-	// }
+
+	public Loaihang(String tenLoaihang, Integer isDelete) {
+		this.tenLoaihang = tenLoaihang;
+		this.isDelete = isDelete;
+	}
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -55,18 +57,13 @@ public class Loaihang implements java.io.Serializable {
 		this.tenLoaihang = tenLoaihang;
 	}
 
-	@Column(name = "IS_DELETE", nullable = true, length = 1)
-	public Integer getIsdelete() {
+	@Column(name = "IS_DELETE")
+	public Integer getIsDelete() {
 		return this.isDelete;
 	}
 
-	public void setIsdelete(Integer isDelete) {
+	public void setIsDelete(Integer isDelete) {
 		this.isDelete = isDelete;
-	}
-
-	@Override
-	public String toString() {
-		return "Loaihang [idLoaihang=" + idLoaihang + ", tenLoaihang=" + tenLoaihang + ", isDelete=" + isDelete + "]";
 	}
 
 }

@@ -1,5 +1,5 @@
 package com.example.demo.entities;
-// Generated May 2, 2018 12:43:54 PM by Hibernate Tools 5.2.3.Final
+// Generated May 23, 2018 1:38:46 AM by Hibernate Tools 5.2.3.Final
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -31,7 +31,7 @@ public class VComment implements java.io.Serializable {
 			@AttributeOverride(name = "tenKh", column = @Column(name = "TEN_KH", length = 200)),
 			@AttributeOverride(name = "thoiGian", column = @Column(name = "THOI_GIAN", nullable = false, length = 19)),
 			@AttributeOverride(name = "noiDung", column = @Column(name = "NOI_DUNG", length = 500)),
-			@AttributeOverride(name = "tenDangnhap", column = @Column(name = "TEN_DANGNHAP", length = 200)) })
+			@AttributeOverride(name = "tenDangnhap", column = @Column(name = "TEN_DANGNHAP", nullable = false, length = 200)) })
 	public VCommentId getId() {
 		return this.id;
 	}

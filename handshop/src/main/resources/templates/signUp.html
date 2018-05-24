@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<title>Trần Lê Vi Handshop</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css"
+<title>Đăng ký</title>
+<link href="/css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all" />
-<script src="js/jquery.min.js"></script>
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<script src="/js/jquery.min.js"></script>
+<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords"
@@ -21,48 +21,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         }
 </script>
 <!-- start menu -->
-<link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="js/memenu.js"></script>
-<script>
-	$(document).ready(function() {
-		$(".memenu").memenu();
-	});
-</script>
+<link href="/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script src="js/simpleCart.min.js">
 	
 </script>
-<!-- slide -->
-<script src="js/responsiveslides.min.js"></script>
-<script>
-	$(function() {
-		$("#slider").responsiveSlides({
-			auto : true,
-			speed : 500,
-			namespace : "callbacks",
-			pager : true,
-		});
-	});
-</script>
-<style type="text/css">
-.col-md-3.col-md2 {
-	padding-bottom: 3%;
-}
-</style>
 </head>
 <body>
+	<script type="text/javascript">
+		
+	</script>
 	<!--header-->
+	<div th:replace="header :: header"></div>
 	<!--content-->
 	<div class="account">
 		<div class="container register">
 			<h1>Đăng ký</h1>
-			<form action="RegisterServlet" method="POST">
+			<form name="signUpForm" th:action="@{/account/sign-up/process}" th:object="${taikhoan}" method="POST">
 				<div class="col-md-6 register-top-grid">
 					<table class="tRegister">
 						<tr class="tRegisterTitle"><td>Thông tin tài khoản</td></tr>
 						<tr>
 							<td>
 								<span class="myLabel">Email</span>
-								<input type="text" name="email" value="">
+								<input type="email" th:field="*{tenDangnhap}" value="">
 							</td>
 							<td><label style="color: red;"></label></td>
 						</tr>
@@ -70,7 +51,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<td>
 								<span class="myLabel">Mật khẩu</span>
 								<input type="password"
-								name="password" value=""></td>
+								th:field="*{matKhau}" value=""></td>
 							<td><label style="color: red;"></label></td>
 						</tr>
 						<tr>
@@ -89,21 +70,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<tr>
 							<td>
 								<span class="myLabel">Họ tên</span>
-								<input type="text" name="name" value="">
+								<input type="text" th:field="*{tenKh}" value="">
 							</td>
 							<td><label style="color: red;"></label></td>
 						</tr>
 						<tr>
 							<td>
 								<span class="myLabel">Địa chỉ giao hàng</span>
-								<input type="text" name="address" value="">
+								<input type="text" th:field="*{diachi}" value="">
 							</td>
 							<td><label style="color: red;"></label></td>
 						</tr>
 						<tr>
 							<td>
-								<span class="myLabel">Địa chỉ giao hàng</span>
-								<input type="text" name="phoneNumbers" value="">
+								<span class="myLabel">Số điện thoại</span>
+								<input type="text" th:field="*{sdt}" value="">
 							</td>
 							<td><label style="color: red;"></label></td>
 						</tr>
@@ -111,15 +92,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div>
 					<input type="submit" class="registerSubmit" value="Đăng ký">
-					<a class="accountLink loginFromRegister" href="login.jsp">Đăng nhập</a>
+					<a class="accountLink loginFromRegister" th:href="@{/account/login}">Đăng nhập</a>
 				</div>
 				<div class="clearfix"></div>
 			</form>
 		</div>
 	</div>
-
 	<!--//content-->
 	<!--footer-->
+	<div th:replace="footer :: footer"></div>
 	<!--//footer-->
 </body>
 </html>

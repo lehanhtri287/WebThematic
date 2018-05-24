@@ -1,11 +1,12 @@
 package com.example.demo.entities;
-// Generated May 2, 2018 12:43:54 PM by Hibernate Tools 5.2.3.Final
+// Generated May 23, 2018 1:38:46 AM by Hibernate Tools 5.2.3.Final
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,6 +18,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "sanpham", catalog = "shophandmade")
 public class Sanpham implements java.io.Serializable {
+
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	private Integer idSanpham;
 	private Loaihang loaihang;
@@ -132,13 +137,6 @@ public class Sanpham implements java.io.Serializable {
 
 	public void setSoLuong(Integer soLuong) {
 		this.soLuong = soLuong;
-	}
-
-	@Override
-	public String toString() {
-		return "Sanpham [idSanpham=" + idSanpham + ", loaihang=" + loaihang + ", tenSanpham=" + tenSanpham + ", gia="
-				+ gia + ", moTa=" + moTa + ", tinhTrang=" + tinhTrang + ", giamGia=" + giamGia + ", images=" + images
-				+ ", soLuong=" + soLuong + "]";
 	}
 
 }

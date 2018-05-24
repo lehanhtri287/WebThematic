@@ -8,12 +8,12 @@
 				<div class="col-sm-4 logo"></div>
 				<div class="col-sm-4 header-left">
 					<p class="log">
-						<a class="accountLink" href="login.html">Đăng nhập</a> / <a
-							class="accountLink" href="signUp.html">Đăng ký</a>
+						<a class="accountLink" th:href="@{/account/login}">Đăng nhập</a> / <a
+							class="accountLink" th:href="@{/account/sign-up}">Đăng ký</a>
 					</p>
 					<div class="cart box_1">
 						<a href="shoppingCart?action=viewCart"> <img
-							th:src="@{images/shopping-cart.png}" />
+							th:src="@{/images/shopping-cart.png}" />
 						</a>
 						<a href="" id="sizeCart"> (0)</a>
 					</div>
@@ -27,7 +27,7 @@
 				<div class="col-sm-2 number"></div>
 				<div class="col-sm-7 h_menu4">
 					<ul class="memenu skyblue">
-						<li class="grid"><a class="home" href="index.jsp">T&T handshop</a></li>
+						<li class="grid"><a class="home" th:href="@{/home}">T&T handshop</a></li>
 						<li class="itemLine">
 							<label for="menu-toggle">Danh mục</label>
 							<input type="checkbox" id="menu-toggle">

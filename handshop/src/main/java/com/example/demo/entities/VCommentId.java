@@ -1,5 +1,5 @@
 package com.example.demo.entities;
-// Generated May 2, 2018 12:43:54 PM by Hibernate Tools 5.2.3.Final
+// Generated May 23, 2018 1:38:46 AM by Hibernate Tools 5.2.3.Final
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,10 +21,11 @@ public class VCommentId implements java.io.Serializable {
 	public VCommentId() {
 	}
 
-	public VCommentId(int idCmt, int idSanpham, Date thoiGian) {
+	public VCommentId(int idCmt, int idSanpham, Date thoiGian, String tenDangnhap) {
 		this.idCmt = idCmt;
 		this.idSanpham = idSanpham;
 		this.thoiGian = thoiGian;
+		this.tenDangnhap = tenDangnhap;
 	}
 
 	public VCommentId(int idCmt, int idSanpham, String tenKh, Date thoiGian, String noiDung, String tenDangnhap) {
@@ -81,7 +82,7 @@ public class VCommentId implements java.io.Serializable {
 		this.noiDung = noiDung;
 	}
 
-	@Column(name = "TEN_DANGNHAP", length = 200)
+	@Column(name = "TEN_DANGNHAP", nullable = false, length = 200)
 	public String getTenDangnhap() {
 		return this.tenDangnhap;
 	}

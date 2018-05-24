@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<title>Quên mật khẩu</title>
+<title>Phản hồi</title>
 <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all" />
 <script src="/js/jquery.min.js"></script>
@@ -13,18 +13,12 @@
 	content="Fashion Mania Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
-	
-	
-	
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
         }, false);
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
-
-
-
 </script>
 <!-- start menu -->
 <link href="/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
@@ -36,37 +30,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--header-->
 	<div th:replace="header :: header"></div>
 	<!--content-->
-	<div class="account">
-		<div class="container">
-			<h1>Quên mật khẩu</h1>
-			<div class="account_grid">
-				<div class="col-md-12 login-right">
-					<form action="LoginServlet" method="POST">
-						<table class="tLogin" align="center">
-							<tr>
-								<td colspan="2">
-									<span class="myLabel">Email</span>
-									<input type="text" name="email">
-								</td>
-							</tr>
-							<tr>
-								<td><input type="submit" class="forgotPassSubmit" value="Tiếp tục"></td>
-							</tr>
-							<tr>
-								<td><a class="accountLink" th:href="@{/account/login}">Đăng nhập</a></td>
-								<td><a class="accountLink" th:href="@{/account/sign-up}">Chưa có tài khoản?</a></td>
-							</tr>
-						</table>
-					</form>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-		</div>
+	<div class="responseContent">
+		<h2 th:text="${responseMessage}"></h2>
+		<h3><a th:href="@{/home}">Trang chủ</a></h3>
 	</div>
-
-	<!--//content-->
 	<!--footer-->
 	<div th:replace="footer :: footer"></div>
-	<!--//footer-->
 </body>
 </html>

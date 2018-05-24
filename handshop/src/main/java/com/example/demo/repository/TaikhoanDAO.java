@@ -4,5 +4,5 @@ import com.example.demo.entities.Taikhoan;
 
 public interface TaikhoanDAO {
 	
-	public String signUp(Taikhoan taikhoan);
+	public boolean signUp(Taikhoan taikhoan);
 }
