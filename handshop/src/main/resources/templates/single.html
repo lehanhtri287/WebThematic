@@ -43,10 +43,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-5 grid">
 					<div class="flexslider">
 						<ul class="slides">
-							<li data-thumb="">
+							<li>
 								<div class="thumb-image">
 									<img th:src="${singleProduct.images}" data-imagezoom="true"
-										class="img-responsive" style="height: 400px">
+										class="img-responsive">
 								</div>
 							</li>
 						</ul>
@@ -56,15 +56,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="single-para simpleCart_shelfItem">
 						<h1 th:text="${singleProduct.tenSanpham}"></h1>
 						<p th:text="${singleProduct.gia}"></p>
+						<label class="add-to item_price">đ</label> <a
+							href="ShoppingCart?action=addProdToCart&id="
+							class="cart item_add">Thêm vào giỏ</a>
 						<div class="star-on">
 							<div class="review">
 								<a>Nhận xét</a>
 							</div>
 							<div class="clearfix"></div>
 						</div>
-						<label class="add-to item_price">đ</label> <a
-							href="ShoppingCart?action=addProdToCart&id="
-							class="cart item_add">Thêm vào giỏ</a>
 					</div>
 				</div>
 				<div class="clearfix"></div>
@@ -85,7 +85,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								style="color: red;"></label>
 							<textarea type="text" class="form-control" placeholder="Nội dung"
 								style="width: 60%" name="context"></textarea>
-							<input type="submit" value="Gửi" class="btn btn-success"
+							<input type="submit" value="Gửi" class="btnComment"
 								role="button">
 						</form>
 					</div>

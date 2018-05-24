@@ -28,6 +28,7 @@ body a{
  ul{
 	padding: 0;
 	margin: 0;
+	list-style: none;
 }
 h1,h2,h3,h4,h5,h6,label,p{
 	margin:0;	
@@ -793,24 +794,21 @@ span.price-in1 {
 	margin:0.5em 0 0;
 }
 /*--typo-single--*/
-.thumb-image { width: 305px; }
+.thumb-image {overflow: hidden;}
 
-.thumb-image > img { width: 100%; }
+.thumb-image > img {height: 350px;width: 90%;transform:none;}
 /*--single--*/
 .single-para h1{
-	font-size:1.5em;
 	color:#52D0C4;
-	line-height:1.5em;
-	  font-family: 'OleoScript-Regular';
 }
 label.add-to{
-	display:block;
-	font-size: 2em;
-	color: #000;
+	font-size: 1.5em;
+    color: #000;
+    margin-right: 5%;
+    font-weight: normal;
 }
 .single-para p{
-	font-size:0.9em;
-	color:#B2B2B2;
+	display: inline-block;
 	line-height:1.8em;
 }
 a.cart{
@@ -843,7 +841,6 @@ a.cart:hover{
 }
 .review{
 	float:left;
-	  padding: 0 1em;
 }
 .star-on a{
 	text-decoration:none;
@@ -859,9 +856,7 @@ a.cart:hover{
 	padding:0.5em;
 	border-bottom:1px solid #fa7455	;
 }
-.single {
-  padding: 4em 0;
-}
+
 .available h6{
 	color:#52D0C4;
 	font-size:1.4em;
@@ -974,14 +969,6 @@ ul.nav.nav-pills {
 }
 .page {
   padding: 4em 0;
-}
-/*--//typo--*/
-/*--responsive--*/
-@media(max-width:1366px){
-	
-}
-@media(max-width:1280px){
-	
 }
 @media(max-width:1024px){
 .content-top {
@@ -1123,9 +1110,6 @@ h1.typo1 {
 	.single-top-in {
 	  width: 50%;
 	  float: left;
-	}
-	.single {
-	  padding: 3em 0;
 	}
 	/*--contact--*/
 	.in-contact {
@@ -1410,9 +1394,6 @@ h1.typo1 {
 	  margin: 0;
 	  font-size: 0.8em;
 	}
-	.single {
-	  padding: 2em 0;
-	}
 	/*--typo--*/
 	.page-header h3 {
 	  font-size: 2em; 
@@ -1463,6 +1444,25 @@ h1.typo1 {
 	  width: 29%;
 	}
 }
+.single {
+	padding: 4em 2em 0;
+}
+.formaction .form-control{
+	font-size: inherit;
+	background: white;
+}
+.nav-tabs{
+	margin-top: 1%;
+    margin-bottom: 2%;
+}
+.btnComment{
+	width: 10%;
+    margin-top: 2%;
+    padding: 1.5%;
+}
+.single .col-md-9, .single .col-md-5{
+	padding-left: 0;
+}
 @media (min-width:280px){
 	.h_menu4 {
 		width: 100%;
@@ -1482,8 +1482,19 @@ h1.typo1 {
 		width: 35%;
 		margin-left: 32%;
 	}
-	
+	.single .container{
+		margin: 15% 0;
+		background: white;
+	}
+	.single-para p, .star-on a {
+    	font-size: 1.5em;
+	}
 }
+@media (min-width:400px){
+	.single .container{
+		margin: 15% 0;
+	}
+}	
 @media (min-width:500px){
 	.account .container{
 		width: 75%;
@@ -1513,7 +1524,16 @@ h1.typo1 {
 	.loginFromRegister {
     	margin: 0 43%;
 	}
+	.single-para h1{
+    	font-size: 36px;
+	}
 }
+@media (min-width:1100px){
+	.single .container{
+		margin: 2% auto;
+    	padding: 2%
+	}
+}	
 @media (min-width:1300px){
 	.account .container{
 		 width: 40%;
@@ -1678,9 +1698,6 @@ h1.typo1 {
 	.product-bottom {
 	  padding: 0;
 	}
-	.single {
-	  padding: 1.5em 0 0.5em;
-	}
 	/*--account--*/
 	.account{
 	  padding: 1.5em 0;
@@ -1726,12 +1743,6 @@ h1.typo1 {
 	.single-top-in {
 	  padding: 0;
 	    margin: 0 0 1em;
-	}
-	.single-para h1 {
-	  font-size: 1.2em;
-	}
-	.star-on a {
-	  font-size: 0.8em;
 	}
 	.available {
 	  padding: 1em 0 1em;
@@ -1871,6 +1882,10 @@ td.input{
     transform: scale(1.15);
     transition: all .6s ease-out;
 }
+ .thumb-image:hover .img-responsive{
+    transform: scale(1.1);
+    transition: all .6s ease-out;
+}
 @media (min-width: 20px){
 	.item {
 	    width: 100%;
@@ -1882,19 +1897,6 @@ td.input{
 @media (min-width: 550px){
 	.item {
 	    width: 48%;
-	}
-}
-@media (min-width: 900px){
-	.item {
-	    width: 30%;
-	}
-}
-@media(min-width:1100px){
-	.item{
-		width: 21%;
-	}
-	.content .container{
-		margin-left: 12%;
 	}
 }
 @media (min-width: 768px){
@@ -1912,6 +1914,9 @@ td.input{
 	.col-sm-7 {
     	width: 80%;
 	}
+	.item {
+	    width: 30%;
+	}
 }
 @media (min-width: 1100px){
 	.col-sm-2 {
@@ -1919,6 +1924,12 @@ td.input{
 	}
 	.col-sm-7 {
     	width: 80%;
+	}
+	.item{
+		width: 21%;
+	}
+	.content .container{
+		margin-left: 12%;
 	}
 }
 .table-hover{
