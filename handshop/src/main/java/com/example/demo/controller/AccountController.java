@@ -7,17 +7,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entities.Taikhoan;
+import com.example.demo.service.CategoryService;
 import com.example.demo.service.TaikhoanService;
 
 @Controller
 @RequestMapping("/account/")
 public class AccountController {
-	@Autowired
-	TaikhoanService taikhoanService;
+	
+	@Autowired TaikhoanService taikhoanService;
+	@Autowired CategoryService categoryService;
 	
 	@RequestMapping("sign-up")
 	public String signUpPage(Model model){
 		model.addAttribute(new Taikhoan());
+		model.addAttribute("listCate", categoryService.getAllCategories());
 		return "signUp";
 	}
 	
@@ -34,15 +37,18 @@ public class AccountController {
 			e.printStackTrace();
 		}
 		responseMessage = "Sign up fail";
+		model.addAttribute("responseMessage", responseMessage);
 		return "redirect:/account/sign-up";
 	}
 	
 	@RequestMapping("login")
-	public String loginPage(){
+	public String loginPage(Model model){
+		model.addAttribute("listCate", categoryService.getAllCategories());
 		return "login";
 	}
 	@RequestMapping("forgot-password")
-	public String forgotPasswordPage(){
+	public String forgotPasswordPage(Model model){
+		model.addAttribute("listCate", categoryService.getAllCategories());
 		return "forgotPass";
 	}
 }

@@ -24,7 +24,7 @@ public class HandshopApplicationTests {
 	@Test
 	public void testSignUp(){
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		Taikhoan taikhoan = new Taikhoan("trinhpham92@gmail.com", "1234", "KH", "Trinh Phạm", "KP 6 Phường Linh Trung", "01234", 1);
+		Taikhoan taikhoan = new Taikhoan("trinhpham92@gmail.com", "1234", "Trinh Phạm", "KP 6 Phường Linh Trung", "01234");
 	}
 
 }

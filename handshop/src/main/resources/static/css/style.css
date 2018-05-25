@@ -117,8 +117,11 @@ p.log{
 .accountLink{
 	color: teal;
 }
-.leftLink{
+.leftForgot{
 	margin-left: 12%;
+}
+.leftLogin{
+	margin-left: 22%;
 }
 .search {
 	width: 30%;
@@ -656,7 +659,7 @@ form input[type="submit"] {
 	background-color: teal;
 }
 .forgotPassSubmit{
-	margin: 18% 85%;
+	margin: 18% 65%;
 	width: 100%;
     height: 43px;
 }

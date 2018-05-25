@@ -42,22 +42,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<tr class="tRegisterTitle"><td>Thông tin tài khoản</td></tr>
 						<tr>
 							<td>
-								<span class="myLabel">Email</span>
-								<input type="email" th:field="*{tenDangnhap}" value="">
+								<span class="myLabel">Email</span><b>*</b>
+								<input type="email" name="tenDangnhap" th:value="${taikhoan.tenDangnhap}">
 							</td>
 							<td><label style="color: red;"></label></td>
 						</tr>
 						<tr>
 							<td>
-								<span class="myLabel">Mật khẩu</span>
-								<input type="password"
-								th:field="*{matKhau}" value=""></td>
+								<span class="myLabel">Mật khẩu</span><b>*</b>
+								<input type="password" name="matKhau" th:value="${taikhoan.matKhau}">
+							</td>
 							<td><label style="color: red;"></label></td>
 						</tr>
 						<tr>
 							<td>
-								<span class="myLabel">Xác nhận mật khẩu</span>
-								<input type="password" name="confirmPassword" value="">
+								<span class="myLabel">Xác nhận mật khẩu</span><b>*</b>
+								<input type="password" name="confirmPassword" th:value="${confirmPassword}">
 							</td>
 							<td><label style="color: red;"></label></td>
 						</tr>
@@ -70,21 +70,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<tr>
 							<td>
 								<span class="myLabel">Họ tên</span>
-								<input type="text" th:field="*{tenKh}" value="">
+								<input type="text" name="tenKh" th:value="${taikhoan.tenKh}">
 							</td>
 							<td><label style="color: red;"></label></td>
 						</tr>
 						<tr>
 							<td>
 								<span class="myLabel">Địa chỉ giao hàng</span>
-								<input type="text" th:field="*{diachi}" value="">
+								<input type="text" name="diachi" th:value="${taikhoan.diachi}">
 							</td>
 							<td><label style="color: red;"></label></td>
 						</tr>
 						<tr>
 							<td>
 								<span class="myLabel">Số điện thoại</span>
-								<input type="text" th:field="*{sdt}" value="">
+								<input type="text" name="sdt" th:value="${taikhoan.sdt}">
 							</td>
 							<td><label style="color: red;"></label></td>
 						</tr>

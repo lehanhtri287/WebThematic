@@ -42,22 +42,11 @@ public class Taikhoan implements java.io.Serializable {
 		super();
 		this.tenDangnhap = tenDangnhap;
 		this.matKhau = matKhau;
-		this.tenKh = tenKh;
-		this.diachi = diachi;
-		this.sdt = sdt;
 		this.chucvu = "KH";
-		this.isConfirm = 1;
-	}
-
-	public Taikhoan(String tenDangnhap, String matKhau, String chucvu, String tenKh, String diachi, String sdt,
-			Integer isConfirm) {
-		this.tenDangnhap = tenDangnhap;
-		this.matKhau = matKhau;
-		this.chucvu = chucvu;
 		this.tenKh = tenKh;
 		this.diachi = diachi;
 		this.sdt = sdt;
-		this.isConfirm = isConfirm;
+		this.isConfirm = 1;
 	}
 
 	@Id
