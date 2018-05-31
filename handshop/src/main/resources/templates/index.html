@@ -2,17 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<title>Trần Lê Vi Handshop</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css"
+<title>T&T Handshop</title>
+<link href="/css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all" />
-<script src="js/jquery.min.js"></script>
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<script src="/js/jquery.min.js"></script>
+<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords"
 	content="Fashion Mania Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
+	
 	
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
@@ -21,21 +22,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             window.scrollTo(0, 1);
         }
 
-</script>
-<!-- start menu -->
-<link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 
 </script>
 <!-- start menu -->
-<link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="js/memenu.js"></script>
+<link href="/css/memenu.css" rel="stylesheet" type="text/css"
+	media="all" />
+
+<script type="text/javascript" src="/js/memenu.js"></script>
 <script>
 	$(document).ready(function() {
 		$(".memenu").memenu();
 	});
 </script>
-<script src="js/simpleCart.min.js">
-	
+
+<script type="text/javascript">
+function addCart(prod_id) {
+	var host = window.location.host;
+	$.ajax({
+		type : "POST",
+		data : {
+			prodId : prod_id
+		},
+		url : "http://" + host + "/shoppingcart",
+		async : true
+	});
+}
 </script>
 <!-- slide -->
 <script src="js/responsiveslides.min.js"></script>
@@ -66,15 +77,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div th:replace="mainContent :: main"></div>
 	<!--footer-->
 	<div th:replace="footer :: footer"></div>
-	<script type="text/javascript">
-		//$(document).ready(function() {
-		//var nameProduct = $("#nameProduct").attr('data_value').val();
-		var i = 0;
-		function addCart() {
-			i++;
-			document.getElementById("sizeCart").innerHTML = "(" + i + ")";
-		}
-		//});
-	</script>
+	
 </body>
 </html>

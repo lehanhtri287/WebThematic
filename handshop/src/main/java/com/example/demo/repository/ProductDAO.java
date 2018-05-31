@@ -21,5 +21,7 @@ public interface ProductDAO {
 	public boolean deleteProduct(int idSanpham);
 	
 	public int getNumpPages();
+	
+	public List<Sanpham> getProductByCate(int idLoaihang);
 
 }
