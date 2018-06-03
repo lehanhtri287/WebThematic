@@ -44,25 +44,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<tr>
 							<td>
 								<span class="myLabel">Email</span><b>*</b>
-								<input type="email" name="tenDangnhap" th:field="*{tenDangnhap}" placeholder="example: username@gmail.com" autofocus="autofocus">
+								<label class="message" th:if="${#fields.hasErrors('tenDangnhap')}" th:errors="*{tenDangnhap}"></label>
+								<input type="text" name="tenDangnhap" th:field="*{tenDangnhap}" placeholder="example: username@gmail.com" autofocus="autofocus">
 							</td>
 						</tr>
-						<tr><td><label class="message" th:if="${#fields.hasErrors('tenDangnhap')}" th:errors="*{tenDangnhap}"></label></td></tr>
 						<tr>
 							<td>
 								<span class="myLabel">Mật khẩu</span><b>*</b>
+								<label class="message" th:if="${#fields.hasErrors('matKhau')}" th:errors="*{matKhau}"></label>
 								<input type="password" name="matKhau" th:field="*{matKhau}">
 							</td>
 						</tr>
-						<tr><td><label class="message" th:if="${#fields.hasErrors('matKhau')}" th:errors="*{matKhau}"></label></td></tr>
 						<tr>
 							<td>
 								<span class="myLabel">Nhập lại mật khẩu</span><b>*</b>
-								
+								<label class="message" th:if="${#fields.hasErrors('xacNhanMatKhau')}" th:errors="*{xacNhanMatKhau}"></label>
 								<input type="password" name="xacNhanMatKhau" th:field="*{xacNhanMatKhau}">
 							</td>
 						</tr>
-						<tr><td><label class="message" th:if="${#fields.hasErrors('xacNhanMatKhau')}" th:errors="*{xacNhanMatKhau}"></label></td></tr>
 					</table>
 					<div class="clearfix"></div>
 				</div>

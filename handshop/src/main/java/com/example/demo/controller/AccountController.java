@@ -1,5 +1,12 @@
 package com.example.demo.controller;
 
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,22 +44,28 @@ public class AccountController {
 			BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
 		ModelAndView mav = new ModelAndView();
 		String emailAlreadyExists = taikhoanService.findByEmail(taikhoanSignup.getTenDangnhap());
-		LOGGER.info("- emailAlreadyExists " + emailAlreadyExists);
 		Taikhoan taikhoan = getTaikhoanFromTaikhoanSignup(taikhoanSignup);
+		
+		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+		Validator validator = factory.getValidator();
+		//danh sach loi
+		Set<ConstraintViolation<TaikhoanSignup>> violations = validator.validate(taikhoanSignup);
 		try{
 			if(emailAlreadyExists != null) {
-				bindingResult.rejectValue("tenDangnhap", "tenDangnhapError", "accSignup.email.exists");
+				bindingResult.rejectValue("tenDangnhap", "accSignup.email.exists");
 				LOGGER.error("- Email da ton tai");
 			}
 			if(bindingResult.hasErrors()) {
 				mav.setViewName("signUp");
-				LOGGER.error("- Co loi email ton tai");
+				for (ConstraintViolation<TaikhoanSignup> violation : violations) {
+					LOGGER.error("+ " + violation.getMessage());
+				}
 			} else if(!bindingResult.hasErrors()){
 				if(taikhoanService.signUp(taikhoan)){
 					mav.addObject("successMess", "Sign up successful");
 					mav.addObject("taikhoanSignup", new TaikhoanSignup());
 					mav.setViewName("signUp");
-					LOGGER.info("- inserted");
+					LOGGER.info("- dang ky tai khoan thanh cong");
 				}
 			}
 		}catch(Exception e){

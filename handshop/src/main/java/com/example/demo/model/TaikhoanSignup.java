@@ -6,11 +6,11 @@ import javax.validation.constraints.NotEmpty;
 public class TaikhoanSignup {
 	
 	@Email(message = "{accSignup.email.invalid}")
-	@NotEmpty(message = "{accSignup.email.empty}")
+	@NotEmpty(message = "{accSignup.empty}")
 	private String tenDangnhap;
-	@NotEmpty(message = "{accSignup.password.empty}")
+	@NotEmpty(message = "{accSignup.empty}")
 	private String matKhau;
-	@NotEmpty(message = "{accSignup.rePassword.empty}")
+	@NotEmpty(message = "{accSignup.empty}")
 	private String xacNhanMatKhau;
 	private String tenKh;
 	private String diachi;
