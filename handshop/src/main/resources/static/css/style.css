@@ -1962,3 +1962,7 @@ td.input{
 	padding: 8%;
     height: 485px;
 }
+.message{
+	color: red;
+	font-weight: normal;
+}

@@ -17,4 +17,9 @@ public class TaikhoanServiceImpl implements TaikhoanService{
 		return taikhoanDAO.signUp(taikhoan);
 	}
 
+	@Override
+	public String findByEmail(String email) {
+		return taikhoanDAO.findByEmail(email);
+	}
+
 }

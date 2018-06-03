@@ -55,7 +55,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-7 single-top-in">
 					<div class="single-para simpleCart_shelfItem">
 						<h1 th:text="${singleProduct.tenSanpham}"></h1>
-						<p th:text="${singleProduct.gia}"></p>
+						<p th:text="${{singleProduct.gia}}"></p>
 						<label class="add-to item_price">đ</label> <a
 							href="ShoppingCart?action=addProdToCart&id="
 							class="cart item_add">Thêm vào giỏ</a>

@@ -16,11 +16,8 @@
 									th:utext="${product.tenSanpham}"></a>
 							</h3>
 							<div class="price">
-								<h5 class="item_price" th:utext="${product.gia} + ' đ'"></h5>
-								<a
-									href="#"
-									class="item_add"
-									onclick="addCart();">Thêm vào giỏ</a>
+								<h5 class="item_price" th:text="${{product.gia}} + ' đ'"></h5>
+								<a href="#" class="item_add" onclick="addCart();">Thêm vào giỏ</a>
 								<div class="clearfix"></div>
 							</div>
 					</div>

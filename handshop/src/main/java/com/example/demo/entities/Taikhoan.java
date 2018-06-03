@@ -42,11 +42,9 @@ public class Taikhoan implements java.io.Serializable {
 		super();
 		this.tenDangnhap = tenDangnhap;
 		this.matKhau = matKhau;
-		this.chucvu = "KH";
 		this.tenKh = tenKh;
 		this.diachi = diachi;
 		this.sdt = sdt;
-		this.isConfirm = 1;
 	}
 
 	@Id
@@ -122,6 +120,12 @@ public class Taikhoan implements java.io.Serializable {
 
 	public void setIsConfirm(Integer isConfirm) {
 		this.isConfirm = isConfirm;
+	}
+
+	@Override
+	public String toString() {
+		return "Taikhoan [idTk=" + idTk + ", tenDangnhap=" + tenDangnhap + ", matKhau=" + matKhau + ", chucvu=" + chucvu
+				+ ", tenKh=" + tenKh + ", diachi=" + diachi + ", sdt=" + sdt + ", isConfirm=" + isConfirm + "]";
 	}
 
 }

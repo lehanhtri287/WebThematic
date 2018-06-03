@@ -209,15 +209,4 @@ public class ProductDAOImpl implements ProductDAO{
 		return sanphams;
 	}
 
-	public static void main(String[] args) {
-		ProductDAOImpl sanphamDAO = new ProductDAOImpl();
-		// Loaihang cate = new Loaihang();
-		// cate.setIdLoaihang(12);
-		// Sanpham sanpham = new Sanpham(cate, "Lục lạc", 230000, "Lục lạc vàng đáng yêu
-		// quá đi", 0, 0, "images/1.jpg", 5);
-		// sanpham.setIdSanpham(1003);
-		// System.out.println(sanphamDAO.updateProduct(sanpham));
-		sanphamDAO.setPageSize(5);
-		System.out.println(sanphamDAO.getProductByCate(12).size());
-	}
 }
