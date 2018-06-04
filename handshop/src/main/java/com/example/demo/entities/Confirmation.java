@@ -24,7 +24,7 @@ public class Confirmation implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String idConfirm;
-	private Taikhoan taikhoan;
+	private Account taikhoan;
 	private int status;
 	private Date dateCreated;
 	private Integer typeConfirmed;
@@ -32,14 +32,14 @@ public class Confirmation implements java.io.Serializable {
 	public Confirmation() {
 	}
 
-	public Confirmation(String idConfirm, Taikhoan taikhoan, int status, Date dateCreated) {
+	public Confirmation(String idConfirm, Account taikhoan, int status, Date dateCreated) {
 		this.idConfirm = idConfirm;
 		this.taikhoan = taikhoan;
 		this.status = status;
 		this.dateCreated = dateCreated;
 	}
 
-	public Confirmation(String idConfirm, Taikhoan taikhoan, int status, Date dateCreated, Integer typeConfirmed) {
+	public Confirmation(String idConfirm, Account taikhoan, int status, Date dateCreated, Integer typeConfirmed) {
 		this.idConfirm = idConfirm;
 		this.taikhoan = taikhoan;
 		this.status = status;
@@ -60,11 +60,11 @@ public class Confirmation implements java.io.Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_TK", nullable = false)
-	public Taikhoan getTaikhoan() {
+	public Account getTaikhoan() {
 		return this.taikhoan;
 	}
 
-	public void setTaikhoan(Taikhoan taikhoan) {
+	public void setTaikhoan(Account taikhoan) {
 		this.taikhoan = taikhoan;
 	}
 

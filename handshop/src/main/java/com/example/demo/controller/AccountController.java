@@ -19,74 +19,75 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.demo.entities.Taikhoan;
-import com.example.demo.model.TaikhoanSignup;
+import com.example.demo.entities.Account;
+import com.example.demo.model.AccountSignup;
 import com.example.demo.service.CategoryService;
-import com.example.demo.service.TaikhoanService;
+import com.example.demo.service.AccountService;
 
 @Controller
 @RequestMapping("/account/")
 public class AccountController {
-	
-	@Autowired TaikhoanService taikhoanService;
-	@Autowired CategoryService categoryService;
+
+	@Autowired
+	AccountService accountService;
+	@Autowired
+	CategoryService categoryService;
 	private static final Logger LOGGER = LoggerFactory.getLogger(AccountController.class);
 
-	@RequestMapping(value="sign-up", method=RequestMethod.GET)
-	public String signUpPage(Model model){
-		model.addAttribute("taikhoanSignup", new TaikhoanSignup());
+	@RequestMapping(value = "sign-up", method = RequestMethod.GET)
+	public String signUpPage(Model model) {
+		model.addAttribute("accountSignup", new AccountSignup());
 		model.addAttribute("listCate", categoryService.getAllCategories());
 		return "signUp";
 	}
-	
-	@RequestMapping(value="sign-up", method=RequestMethod.POST)
-	public ModelAndView signUpProcess(@Validated TaikhoanSignup taikhoanSignup,
-			BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
+
+	@RequestMapping(value = "sign-up", method = RequestMethod.POST)
+	public ModelAndView signUpProcess(@Validated AccountSignup accountSignup, BindingResult bindingResult,
+			RedirectAttributes redirectAttributes) {
 		ModelAndView mav = new ModelAndView();
-		String emailAlreadyExists = taikhoanService.findByEmail(taikhoanSignup.getTenDangnhap());
-		Taikhoan taikhoan = getTaikhoanFromTaikhoanSignup(taikhoanSignup);
-		
+		String emailAlreadyExists = accountService.findByEmail(accountSignup.getEmail());
+		Account account = getAccountFromAccountSignup(accountSignup);
+
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		Validator validator = factory.getValidator();
-		//danh sach loi
-		Set<ConstraintViolation<TaikhoanSignup>> violations = validator.validate(taikhoanSignup);
-		try{
-			if(emailAlreadyExists != null) {
-				bindingResult.rejectValue("tenDangnhap", "accSignup.email.exists");
-				LOGGER.error("- Email da ton tai");
+		// danh sach loi
+		Set<ConstraintViolation<AccountSignup>> violations = validator.validate(accountSignup);
+		if (emailAlreadyExists != null) {
+			bindingResult.rejectValue("tenDangnhap", "accSignup.email.exists");
+			LOGGER.error("- Email da ton tai");
+		}
+		if (bindingResult.hasErrors()) {
+			mav.addObject("listCate", categoryService.getAllCategories());
+			mav.setViewName("signUp");
+			for (ConstraintViolation<AccountSignup> violation : violations) {
+				LOGGER.error("+ " + violation.getMessage());
 			}
-			if(bindingResult.hasErrors()) {
+		} else {
+			if (accountService.signUp(account)) {
+				mav.addObject("successMess", "Đăng ký thành công");
+				mav.addObject("accountSignup", new AccountSignup());
+				mav.addObject("listCate", categoryService.getAllCategories());
 				mav.setViewName("signUp");
-				for (ConstraintViolation<TaikhoanSignup> violation : violations) {
-					LOGGER.error("+ " + violation.getMessage());
-				}
-			} else if(!bindingResult.hasErrors()){
-				if(taikhoanService.signUp(taikhoan)){
-					mav.addObject("successMess", "Sign up successful");
-					mav.addObject("taikhoanSignup", new TaikhoanSignup());
-					mav.setViewName("signUp");
-					LOGGER.info("- dang ky tai khoan thanh cong");
-				}
+				LOGGER.info("- dang ky tai khoan thanh cong");
 			}
-		}catch(Exception e){
-			e.printStackTrace();
 		}
 		return mav;
 	}
 	
-	public Taikhoan getTaikhoanFromTaikhoanSignup(TaikhoanSignup taikhoanSignup){
-		Taikhoan taikhoan = new Taikhoan(taikhoanSignup.getTenDangnhap(), taikhoanSignup.getMatKhau(),
-				taikhoanSignup.getTenKh(), taikhoanSignup.getDiachi(), taikhoanSignup.getSdt());
-		return taikhoan;
+	public Account getAccountFromAccountSignup(AccountSignup accountSignup) {
+		Account account = new Account(accountSignup.getEmail(), accountSignup.getPassword(),
+				accountSignup.getFullName(), accountSignup.getAddress(), accountSignup.getPhoneNumber());
+		return account;
 	}
-	
+
 	@RequestMapping("login")
-	public String loginPage(Model model){
+	public String loginPage(Model model) {
 		model.addAttribute("listCate", categoryService.getAllCategories());
 		return "login";
 	}
+
 	@RequestMapping("forgot-password")
-	public String forgotPasswordPage(Model model){
+	public String forgotPasswordPage(Model model) {
 		model.addAttribute("listCate", categoryService.getAllCategories());
 		return "forgotPass";
 	}

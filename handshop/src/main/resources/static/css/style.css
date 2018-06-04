@@ -495,8 +495,8 @@ p.footer-class a:hover{
 .account h1 {
 	color: crimson;
     text-align: center;
-    margin-bottom: 3%;
     font-weight: 400;
+    margin-top: 2%;
 }
 .login-left h4{
 	color:#000;

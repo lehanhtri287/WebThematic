@@ -17,7 +17,7 @@
 		<mapping class="com.example.demo.entities.Cmt" />
 		<mapping class="com.example.demo.entities.Donhang" />
 		<mapping class="com.example.demo.entities.Loaihang" />
-		<mapping class="com.example.demo.entities.Taikhoan" />
+		<mapping class="com.example.demo.entities.Account" />
 		<mapping class="com.example.demo.entities.Tintuc" />
 	</session-factory>
 </hibernate-configuration>

@@ -27,20 +27,20 @@ public class Cmt implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer idCmt;
 	private Sanpham sanpham;
-	private Taikhoan taikhoan;
+	private Account taikhoan;
 	private Date thoiGian;
 	private String noiDung;
 
 	public Cmt() {
 	}
 
-	public Cmt(Sanpham sanpham, Taikhoan taikhoan, Date thoiGian) {
+	public Cmt(Sanpham sanpham, Account taikhoan, Date thoiGian) {
 		this.sanpham = sanpham;
 		this.taikhoan = taikhoan;
 		this.thoiGian = thoiGian;
 	}
 
-	public Cmt(Sanpham sanpham, Taikhoan taikhoan, Date thoiGian, String noiDung) {
+	public Cmt(Sanpham sanpham, Account taikhoan, Date thoiGian, String noiDung) {
 		this.sanpham = sanpham;
 		this.taikhoan = taikhoan;
 		this.thoiGian = thoiGian;
@@ -71,11 +71,11 @@ public class Cmt implements java.io.Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_TK", nullable = false)
-	public Taikhoan getTaikhoan() {
+	public Account getTaikhoan() {
 		return this.taikhoan;
 	}
 
-	public void setTaikhoan(Taikhoan taikhoan) {
+	public void setTaikhoan(Account taikhoan) {
 		this.taikhoan = taikhoan;
 	}
 

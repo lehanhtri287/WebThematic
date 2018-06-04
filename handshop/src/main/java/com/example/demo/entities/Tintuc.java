@@ -28,7 +28,7 @@ public class Tintuc implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer idTt;
-	private Taikhoan taikhoan;
+	private Account taikhoan;
 	private String title;
 	private String context;
 	private String nguoiDang;
@@ -37,12 +37,12 @@ public class Tintuc implements java.io.Serializable {
 	public Tintuc() {
 	}
 
-	public Tintuc(Taikhoan taikhoan, Date ngayDang) {
+	public Tintuc(Account taikhoan, Date ngayDang) {
 		this.taikhoan = taikhoan;
 		this.ngayDang = ngayDang;
 	}
 
-	public Tintuc(Taikhoan taikhoan, String title, String context, String nguoiDang, Date ngayDang) {
+	public Tintuc(Account taikhoan, String title, String context, String nguoiDang, Date ngayDang) {
 		this.taikhoan = taikhoan;
 		this.title = title;
 		this.context = context;
@@ -64,11 +64,11 @@ public class Tintuc implements java.io.Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_TK", nullable = false)
-	public Taikhoan getTaikhoan() {
+	public Account getTaikhoan() {
 		return this.taikhoan;
 	}
 
-	public void setTaikhoan(Taikhoan taikhoan) {
+	public void setTaikhoan(Account taikhoan) {
 		this.taikhoan = taikhoan;
 	}
 

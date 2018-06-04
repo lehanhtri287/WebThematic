@@ -37,29 +37,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container register">
 			<h3 class="message" th:if="${successMess}" th:text="${successMess}"></h3>
 			<h1>Đăng ký</h1>
-			<form name="signUpForm" th:action="@{/account/sign-up}" th:object="${taikhoanSignup}" method="POST">
+			<form name="signUpForm" th:action="@{/account/sign-up}" th:object="${accountSignup}" method="POST">
 				<div class="col-md-6 register-top-grid">
 					<table class="tRegister">
 						<tr class="tRegisterTitle"><td>Thông tin tài khoản</td></tr>
 						<tr>
 							<td>
 								<span class="myLabel">Email</span><b>*</b>
-								<label class="message" th:if="${#fields.hasErrors('tenDangnhap')}" th:errors="*{tenDangnhap}"></label>
-								<input type="text" name="tenDangnhap" th:field="*{tenDangnhap}" placeholder="example: username@gmail.com" autofocus="autofocus">
+								<label class="message" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label>
+								<input type="text" name="email" th:field="*{email}" placeholder="example: username@gmail.com" autofocus="autofocus">
 							</td>
 						</tr>
 						<tr>
 							<td>
 								<span class="myLabel">Mật khẩu</span><b>*</b>
-								<label class="message" th:if="${#fields.hasErrors('matKhau')}" th:errors="*{matKhau}"></label>
-								<input type="password" name="matKhau" th:field="*{matKhau}">
+								<label class="message" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></label>
+								<input type="password" name="password" th:field="*{password}">
 							</td>
 						</tr>
 						<tr>
 							<td>
 								<span class="myLabel">Nhập lại mật khẩu</span><b>*</b>
-								<label class="message" th:if="${#fields.hasErrors('xacNhanMatKhau')}" th:errors="*{xacNhanMatKhau}"></label>
-								<input type="password" name="xacNhanMatKhau" th:field="*{xacNhanMatKhau}">
+								<label class="message" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></label>
+								<input type="password" name="confirmPassword" th:field="*{confirmPassword}">
 							</td>
 						</tr>
 					</table>
@@ -71,21 +71,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<tr>
 							<td>
 								<span class="myLabel">Họ tên</span>
-								<input type="text" name="tenKh" th:field="*{tenKh}">
+								<input type="text" name="fullName" th:field="*{fullName}">
 							</td>
 						</tr>
 						<tr></tr>
 						<tr>
 							<td>
 								<span class="myLabel">Địa chỉ giao hàng</span>
-								<input type="text" name="diachi" th:field="*{diachi}">
+								<input type="text" name="address" th:field="*{address}">
 							</td>
 						</tr>
 						<tr></tr>
 						<tr>
 							<td>
 								<span class="myLabel">Số điện thoại</span>
-								<input type="text" name="sdt" th:field="*{sdt}">
+								<input type="text" name="phoneNumber" th:field="*{phoneNumber}">
 							</td>
 						</tr>
 						<tr></tr>
