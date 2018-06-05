@@ -50,10 +50,10 @@ public class AccountController {
 
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		Validator validator = factory.getValidator();
-		// danh sach loi
-		Set<ConstraintViolation<AccountSignup>> violations = validator.validate(accountSignup);
+		Set<ConstraintViolation<AccountSignup>> violations = validator.validate(accountSignup); // errors list
+		
 		if (emailAlreadyExists != null) {
-			bindingResult.rejectValue("tenDangnhap", "accSignup.email.exists");
+			bindingResult.rejectValue("email", "accSignup.email.exists");
 			LOGGER.error("- Email da ton tai");
 		}
 		if (bindingResult.hasErrors()) {

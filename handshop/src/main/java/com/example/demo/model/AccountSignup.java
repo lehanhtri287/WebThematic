@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 public class AccountSignup {
 	
@@ -12,8 +13,10 @@ public class AccountSignup {
 	private String password;
 	@NotEmpty(message = "{accSignup.empty}")
 	private String confirmPassword;
+	@NotEmpty(message = "{accSignup.empty}")
 	private String fullName;
 	private String address;
+	@Pattern(regexp = "(\\d{10,11})", message = "{accSignup.phone.invalid}")
 	private String phoneNumber;
 	
 	public AccountSignup() {}
@@ -21,8 +24,9 @@ public class AccountSignup {
 	public AccountSignup(
 			@Email(message = "{accSignup.email.invalid}") @NotEmpty(message = "{accSignup.empty}") String email,
 			@NotEmpty(message = "{accSignup.empty}") String password,
-			@NotEmpty(message = "{accSignup.empty}") String confirmPassword, String fullName, String address,
-			String phoneNumber) {
+			@NotEmpty(message = "{accSignup.empty}") String confirmPassword,
+			@NotEmpty(message = "{accSignup.empty}") String fullName, String address,
+			@Pattern(regexp = "(\\d{10,11})", message = "{accSignup.phone.invalid}") String phoneNumber) {
 		super();
 		this.email = email;
 		this.password = password;

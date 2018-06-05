@@ -43,21 +43,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<tr class="tRegisterTitle"><td>Thông tin tài khoản</td></tr>
 						<tr>
 							<td>
-								<span class="myLabel">Email</span><b>*</b>
+								<span class="myLabel">Email</span><b class="message">*</b>
 								<label class="message" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label>
 								<input type="text" name="email" th:field="*{email}" placeholder="example: username@gmail.com" autofocus="autofocus">
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<span class="myLabel">Mật khẩu</span><b>*</b>
+								<span class="myLabel">Mật khẩu</span><b class="message">*</b>
 								<label class="message" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></label>
 								<input type="password" name="password" th:field="*{password}">
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<span class="myLabel">Nhập lại mật khẩu</span><b>*</b>
+								<span class="myLabel">Nhập lại mật khẩu</span><b class="message">*</b>
 								<label class="message" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></label>
 								<input type="password" name="confirmPassword" th:field="*{confirmPassword}">
 							</td>
@@ -70,7 +70,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<tr class="tRegisterTitle"><td>Thông tin cá nhân</td></tr>
 						<tr>
 							<td>
-								<span class="myLabel">Họ tên</span>
+								<span class="myLabel">Họ tên</span><b class="message">*</b>
+								<label class="message" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></label>
 								<input type="text" name="fullName" th:field="*{fullName}">
 							</td>
 						</tr>
@@ -84,7 +85,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<tr></tr>
 						<tr>
 							<td>
-								<span class="myLabel">Số điện thoại</span>
+								<span class="myLabel">Điện thoại (10 - 11 số)</span>
+								<label class="message" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></label>
 								<input type="text" name="phoneNumber" th:field="*{phoneNumber}">
 							</td>
 						</tr>
