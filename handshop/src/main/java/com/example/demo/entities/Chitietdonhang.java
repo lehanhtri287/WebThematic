@@ -13,7 +13,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "chitietdonhang", catalog = "shophandmade")
 public class Chitietdonhang implements java.io.Serializable {
-
 	private static final long serialVersionUID = 1L;
 	private ChitietdonhangId id;
 	private Donhang donhang;

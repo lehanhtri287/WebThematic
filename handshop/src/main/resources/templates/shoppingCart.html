@@ -5,7 +5,8 @@
 <title>Trần Lê Vi Handshop</title>
 <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all" />
-<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/validatePaymentForm.js"></script>
 <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -15,12 +16,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript">
 	
 	
+	
+	
+	
+	
+	
+	
+	
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
         }, false);
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
+
+
+
+
+
+
+
 
 
 </script>
@@ -52,7 +67,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		$(".memenu").memenu();
 	});
 </script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
+
 	$(function() {
 		$("#slider").responsiveSlides({
 			auto : true,
@@ -96,48 +114,58 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							aria-describedby="sizing-addon1" readonly="readonly"
 							th:value="${productCart.quantityCart}" name="quantity"
 							style="width: 70px; height: 45px;" /> <span
-							class="input-group-addon" id="sizing-addon1"> 
-							<a th:href="${'/minusProduct/' + productCart.product.idSanpham}">-</a>
+							class="input-group-addon" id="sizing-addon1"> <a
+							th:href="${'/minusProduct/' + productCart.product.idSanpham}">-</a>
 						</span>
 					</div>
 				</td>
 				<td id="cost"
 					th:text="${#numbers.formatInteger(productCart.product.gia * productCart.quantityCart, 3, 'COMMA')} + ' VNĐ' ">
 				</td>
-				<td><a th:href="${'/deletecart/' + productCart.product.idSanpham}" class="btn btn-danger" role="button">Xóa</a>
-				</td>
+				<td><a
+					th:href="${'/deletecart/' + productCart.product.idSanpham}"
+					class="btn btn-danger" role="button">Xóa</a></td>
+
 			</tr>
 
 		</table>
+		<div class="navbar-center" style="text-align: center;">
+			<label style="color: red;" id="errorListProducts"></label>
+		</div>
 		<div class="navbar-right">
-			<h3 th:text="${' Tổng tiền: ' + #numbers.formatInteger(totalAmount, 3, 'COMMA') + 'đ'}"></h3>
+			<h3 class="amount">Tổng tiền: </h3>
+			<h3 class="amount"
+				id="totalAmount"
+				th:text="${#numbers.formatInteger(totalAmount, 3, 'COMMA')}"></h3>
+			<h3 class="amount">đ</h3>
 		</div>
 
 		<div class="navbar-left">
 			<h1>Thông tin khách hàng</h1>
-			<form action="Payment" method="POST">
+			<form th:action="@{/payment}" id="formPayment"
+				onsubmit="return validatePayment();" method="POST">
 				<table class="customerInfo">
 					<tr>
-						<td><span class="myLabel">Họ Tên</span> <input type="text"
-							name="name" class="customer-payment" value=""></td>
-						<td><label style="color: red;"></label></td>
+						<td><span class="myLabel">Họ Tên </span><label
+							style="color: red;" id="errorName"></label> <input type="text"
+							name="tenKhachhang" class="customer-payment" value=""
+							id="formName"></td>
 					</tr>
 					<tr>
-						<td><span class="myLabel">Email</span> <input type="email"
-							name="email" class="customer-payment" value=""></td>
-						<td><label style="color: red;"></label></td>
+						<td><span class="myLabel">Email </span> <label
+							style="color: red;" id="errorEmail"></label><input type="email"
+							name="email" class="customer-payment" value="" id="formEmail"></td>
 					</tr>
 					<tr>
-						<td><span class="myLabel">Số điện thoại</span> <input
-							type="tel" name="phone" class="customer-payment" value="">
-						</td>
-						<td><label style="color: red;"></label></td>
+						<td><span class="myLabel">Số điện thoại </span> <label
+							style="color: red;" id="errorPhone"></label><input type="tel"
+							name="sdt" class="customer-payment" value="" id="formPhone"></td>
 					</tr>
 					<tr>
-						<td><span class="myLabel">Địa chỉ</span> <textarea rows="4"
-								cols="30" name="address" class="customer-payment" value=""></textarea>
-						</td>
-						<td><label style="color: red;"></label></td>
+						<td><span class="myLabel">Địa chỉ </span> <label
+							style="color: red;" id="errorAddress"></label> <textarea rows="4"
+								cols="30" name="diachi" class="customer-payment" value=""
+								id="formAddress"></textarea></td>
 					</tr>
 				</table>
 
@@ -150,6 +178,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--//content-->
 	<!--footer-->
 	<!--//footer-->
-
 </body>
 </html>

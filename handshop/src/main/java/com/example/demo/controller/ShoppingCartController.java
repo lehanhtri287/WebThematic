@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,18 +13,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.demo.entities.Donhang;
 import com.example.demo.entities.Sanpham;
 import com.example.demo.model.ProductCart;
 import com.example.demo.service.CategoryService;
+import com.example.demo.service.OrderService;
 import com.example.demo.service.ProductService;
 
 @SuppressWarnings("unchecked")
 @Controller
 public class ShoppingCartController {
 	@Autowired
-	ProductService productService;
+	private ProductService productService;
 	@Autowired
-	CategoryService categoryService;
+	private CategoryService categoryService;
+	@Autowired
+	private OrderService orderService;
 
 	@RequestMapping(value = "shoppingcart", method = { RequestMethod.POST, RequestMethod.GET })
 	public void addCart(int prodId, HttpSession session, Model model) {
@@ -120,6 +125,30 @@ public class ShoppingCartController {
 			}
 		}
 		return "forward:/showCart";
+	}
+
+	@RequestMapping(value = "/payment", method = RequestMethod.POST)
+	public String payment(Donhang donhang, HttpSession session, Model model) {
+		List<ProductCart> productCarts = (ArrayList<ProductCart>) session.getAttribute("list_detail");
+
+		int totalAmount = getTotalAmount(productCarts);
+		donhang.setTongTien(totalAmount);
+
+		boolean tmp = orderService.insertOrder(donhang);
+
+		donhang.setIdDonhang(orderService.getInsertedID());
+
+		for (ProductCart productCart : productCarts) {
+			orderService.insertOrderDetail(donhang.getIdDonhang(), 
+										   productCart.getProduct().getIdSanpham(),
+										   productCart.getQuantityCart());
+		}
+		model.addAttribute("listCate", categoryService.getAllCategories());
+		if(tmp) {
+			return "successPayment";
+		} else {
+			return "failedPayment";
+		}
 	}
 
 	private int getTotalAmount(List<ProductCart> details) {
