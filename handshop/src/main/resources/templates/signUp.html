@@ -1,35 +1,20 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
 <title>Đăng ký</title>
 <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all" />
-<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery-3.3.1.min.js"></script>
 <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords"
 	content="Fashion Mania Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript">
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-</script>
-<!-- start menu -->
-<link href="/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-<script src="js/simpleCart.min.js">
-	
-</script>
 </head>
 <body>
-	<script type="text/javascript">
-		
-	</script>
 	<!--header-->
 	<div th:replace="header :: header"></div>
 	<!--content-->
@@ -45,7 +30,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<td>
 								<span class="myLabel">Email</span><b class="message">*</b>
 								<label class="message" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label>
-								<input type="text" name="email" th:field="*{email}" placeholder="example: username@gmail.com" autofocus="autofocus">
+								<input type="text" id="email" name="email" th:field="*{email}" placeholder="example: username@gmail.com">
 							</td>
 						</tr>
 						<tr>

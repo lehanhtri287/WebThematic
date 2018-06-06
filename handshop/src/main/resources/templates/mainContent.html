@@ -4,6 +4,7 @@
 	<div class="content" th:fragment="main">
 		<div class="container">
 			<div class="content-top">
+				<h3 class="message" th:if="${loginSuccess}" th:text="${loginSuccess}"></h3>
 				<h1>Danh sách sản phẩm</h1>
 
 				<div class="content-top1">

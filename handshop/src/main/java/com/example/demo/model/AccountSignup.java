@@ -20,7 +20,7 @@ public class AccountSignup {
 	private String phoneNumber;
 	
 	public AccountSignup() {}
-
+	
 	public AccountSignup(
 			@Email(message = "{accSignup.email.invalid}") @NotEmpty(message = "{accSignup.empty}") String email,
 			@NotEmpty(message = "{accSignup.empty}") String password,

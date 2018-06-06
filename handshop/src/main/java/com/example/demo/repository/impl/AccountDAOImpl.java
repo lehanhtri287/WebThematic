@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.entities.Account;
 import com.example.demo.hibernate.HibernateUtil;
+import com.example.demo.model.AccountLogin;
 import com.example.demo.repository.AccountDAO;
 
 @Repository
@@ -59,6 +60,27 @@ public class AccountDAOImpl implements AccountDAO{
 			session.close();
 		}
 		return emailResult;
+	}
+
+	@Override
+	public Account findByEmailAndPassword(AccountLogin accountLogin) {
+		Account account = null;;
+		String password = null;
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		Query<String> query = session.createQuery("select password from Account where email = :email", String.class);
+		query.setParameter("email", accountLogin.getEmail());
+		try{
+			Optional<String> passwordResult = query.uniqueResultOptional();
+			if (passwordResult.isPresent()) password = passwordResult.get();
+			if (encoder.matches(accountLogin.getPassword(), password)) account = new Account(accountLogin.getEmail(), accountLogin.getPassword());
+		} catch (NoSuchElementException e) {
+			LOGGER.error("- error when call method findByEmailAndPassword with paramater " + account, e);
+		}finally {
+			session.close();
+		}
+		return account;
 	}
 	
 }
