@@ -1,5 +1,4 @@
 package com.example.demo.entities;
-// Generated May 23, 2018 1:38:46 AM by Hibernate Tools 5.2.3.Final
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -19,10 +18,6 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "donhang", catalog = "shophandmade")
 public class Donhang implements java.io.Serializable {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Integer idDonhang;
 	private Date ngayDh;
@@ -125,6 +120,13 @@ public class Donhang implements java.io.Serializable {
 
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "Donhang [idDonhang=" + idDonhang + ", ngayDh=" + ngayDh + ", tongTien=" + tongTien + ", tenKhachhang="
+				+ tenKhachhang + ", sdt=" + sdt + ", diachi=" + diachi + ", email=" + email + ", status=" + status
+				+ "]";
 	}
 
 }

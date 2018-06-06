@@ -12,10 +12,10 @@
 							class="accountLink" th:href="@{/account/sign-up}">Đăng ký</a>
 					</p>
 					<div class="cart box_1">
-						<a href="shoppingCart?action=viewCart"> <img
+						<a th:href="@{/showCart}"> <img
 							th:src="@{/images/shopping-cart.png}" />
 						</a>
-						<a href="" id="sizeCart"> (0)</a>
+						<!-- <a href="" id="sizeCart" th:text="${'(' + session.size + ')'}"></a> -->
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -27,24 +27,23 @@
 				<div class="col-sm-2 number"></div>
 				<div class="col-sm-7 h_menu4">
 					<ul class="memenu skyblue">
-						<li class="grid"><a class="home" th:href="@{/home}">T&T handshop</a></li>
-						<li class="itemLine">
-							<label for="menu-toggle">Danh mục</label>
-							<input type="checkbox" id="menu-toggle">
+						<li class="grid"><a class="home" href="/">T&T handshop</a></li>
+						<li class="itemLine"><label for="menu-toggle">Danh
+								mục</label> <input type="checkbox" id="menu-toggle">
 							<div class="mepanel">
 								<div class="h_nav" th:each="category : ${listCate}">
-									<a href="ViewProductByCate?action=viewProd&id=">
+									<a th:href="${'/viewByCate/' + category.idLoaihang}">
 										<h4 th:text="${category.tenLoaihang}"></h4>
 									</a>
 								</div>
-							</div>
-						</li>
+							</div></li>
 						<li><a href="#">Tin Tức</a></li>
 						<li><a class="color6" href="contact.jsp">Liên hệ</a></li>
 						<li class="search">
 							<form action="SearchProduct" method="POST">
-								<input type="text" class="form-control inputSearch" placeholder="Tìm kiếm" name="search">
-								<input type="submit" class="iconSearch" value="Search">
+								<input type="text" class="form-control inputSearch"
+									placeholder="Tìm kiếm" name="search"> <input
+									type="submit" class="iconSearch" value="Search">
 							</form>
 						</li>
 					</ul>

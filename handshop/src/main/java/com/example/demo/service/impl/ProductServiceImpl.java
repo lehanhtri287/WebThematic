@@ -13,7 +13,7 @@ import com.example.demo.service.ProductService;
 public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductDAO productDAO;
-	
+
 	@Override
 	public boolean addProduct(Sanpham sanpham) {
 		return productDAO.insertProduct(sanpham);
@@ -41,7 +41,6 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<Sanpham> getProductByCate(int idLoaihang) {
-		// TODO Auto-generated method stub
 		return productDAO.getProductByCate(idLoaihang);
 	}
 

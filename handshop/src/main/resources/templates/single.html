@@ -2,7 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
+
 <title>Chi tiết sản phẩm</title>
+
 <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all" />
 <script src="/js/jquery.min.js"></script>
@@ -14,8 +16,6 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
 	
-	
-	
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
         }, false);
@@ -23,14 +23,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             window.scrollTo(0, 1);
         }
 
-
-
 </script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- start menu -->
+
 <link href="/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script src="js/simpleCart.min.js">
 	
 </script>
+
+<link href="/css/memenu.css" rel="stylesheet" type="text/css"
+	media="all" />
+<script type="text/javascript" src="/js/memenu.js"></script>
+<script>
+	$(document).ready(function() {
+		$(".memenu").memenu();
+	});
+</script>
+<script src="/js/simpleCart.min.js">
+	
+</script>
+<!-- slide -->
+<script type="text/javascript">
+	function addCart(prod_id) {
+		var host = window.location.host;
+		$.ajax({
+			type : "POST",
+			data : {
+				prodId : prod_id
+			},
+			url : "http://" + host + "/shoppingcart",
+			async : true
+		});
+	}
+</script>
+
+<script src="/js/responsiveslides.min.js"></script>
+
+<style type="text/css">
+.col-md-3.col-md2 {
+	padding-bottom: 3%;
+}
+</style>
 </head>
 <body>
 	<!--header-->
@@ -45,8 +80,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<ul class="slides">
 							<li>
 								<div class="thumb-image">
-									<img th:src="${singleProduct.images}" data-imagezoom="true"
-										class="img-responsive">
+									<img th:src="${'/'+ singleProduct.images}"
+										data-imagezoom="true" class="img-responsive"
+										style="height: 400px">
+
 								</div>
 							</li>
 						</ul>
@@ -55,16 +92,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-7 single-top-in">
 					<div class="single-para simpleCart_shelfItem">
 						<h1 th:text="${singleProduct.tenSanpham}"></h1>
-						<p th:text="${{singleProduct.gia}}"></p>
-						<label class="add-to item_price">đ</label> <a
-							href="ShoppingCart?action=addProdToCart&id="
-							class="cart item_add">Thêm vào giỏ</a>
+						<p th:text="${singleProduct.moTa}"></p>
+
 						<div class="star-on">
 							<div class="review">
 								<a>Nhận xét</a>
 							</div>
 							<div class="clearfix"></div>
 						</div>
+
+						<label class="add-to item_price" th:text="${singleProduct.gia}"></label>
+						<a href=""
+							th:onclick="'addCart(\''+ ${singleProduct.idSanpham}+'\');'"
+							class="cart item_add">Thêm vào giỏ</a>
 					</div>
 				</div>
 				<div class="clearfix"></div>
@@ -171,5 +211,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--footer-->
 	<div th:replace="footer :: footer"></div>
 	<!--//footer-->
+
+
 </body>
 </html>

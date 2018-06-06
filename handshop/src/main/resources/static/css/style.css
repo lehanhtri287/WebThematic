@@ -1831,18 +1831,21 @@ h1.typo1 {
 	width: 90%;
 	margin: 10% 5%;
 }
+.amount{
+	display: inline-block;
+}
 
 .navbar-right {
-	width: 17%;
+	width: 20%;
 	margin-right: 5%;
 	color: #003cb3;
 	border-bottom-style: double;
 }
 
 .navbar-left {
-	width: 35%;
+	width: 55%;
     background-color: papayawhip;
-    margin: 3% 33%;
+    margin: 3% 23%;
     padding: 2%;
     padding-bottom: 0;
 }

@@ -8,19 +8,28 @@
 				<h1>Danh sách sản phẩm</h1>
 
 				<div class="content-top1">
-					<div class="item"  th:each="product : ${listProducts}">
-							<a th:href="${'/single/' + product.idSanpham}"> <img
-								class="img-responsive" th:src="${product.images}" />
-							</a>
-							<h3>
-								<a id="nameProduct" href="${'/single/' + product.idSanpham}"
-									th:utext="${product.tenSanpham}"></a>
-							</h3>
-							<div class="price">
-								<h5 class="item_price" th:text="${{product.gia}} + ' đ'"></h5>
-								<a href="#" class="item_add" onclick="addCart();">Thêm vào giỏ</a>
-								<div class="clearfix"></div>
-							</div>
+
+					<!-- <div th:if="${listProducts.isEmpty()}">
+						<h3 style="text-align: center; color: red; margin-top: 50px">Không
+							có sản phẩm thuộc loại hàng này</h3>
+					</div>-->
+					<div class="item" th:each="product : ${listProducts}">
+						<a th:href="${'/single/' + product.idSanpham}"> <img
+							class="img-responsive" th:src="${'/' + product.images}" />
+						</a>
+						<h3>
+							<a id="nameProduct" th:href="${'/single/' + product.idSanpham}"
+								th:utext="${product.tenSanpham}"></a>
+						</h3>
+						<div class="price">
+							<h5 class="item_price"
+								th:utext="${#numbers.formatInteger(product.gia, 3, 'COMMA')} + ' đ' "></h5>
+							<a href="" class="item_add"
+								th:onclick="'addCart(\''+ ${product.idSanpham}+'\');'">Thêm
+								vào giỏ</a>
+							<div class="clearfix"></div>
+						</div>
+
 					</div>
 					<div class="clearfix"></div>
 				</div>
