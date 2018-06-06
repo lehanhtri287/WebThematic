@@ -45,14 +45,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<table class="tLogin" align="center">
 							<tr>
 								<td colspan="2">
-									<span class="myLabel">Email</span>
+									<span class="myLabel">Email</span><b class="message">*</b>
 									<label class="message" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label>
 									<input type="text" id="email" name="email" th:field="*{email}" placeholder="example: username@gmail.com">
 								 </td>
 							</tr>
 							<tr>
 								<td colspan="2">
-									<span class="myLabel">Mật khẩu</span>
+									<span class="myLabel">Mật khẩu</span><b class="message">*</b>
 									<label class="message" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></label>
 									<input type="password" name="password" th:field="*{password}">
 								</td>
