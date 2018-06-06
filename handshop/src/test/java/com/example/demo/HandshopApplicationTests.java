@@ -29,18 +29,18 @@ public class HandshopApplicationTests {
 	
 	@Test
 	public void testFindByEmail(){
-		assertEquals("nhoccodaihp96@gmail.com", accountDAO.findByEmail("nhoccodaihp96@gmail.com "));
+		assertEquals("trinhpham0415@gmail", accountDAO.findByEmail("trinhpham0415@gmail"));
 	}
 	
 	@Test
-	public void testGetAccountFromAccountSignup(){
+	public void testSignup(){
 		AccountSignup accountSignup = new AccountSignup("trinhpham0415@gmail7", "a", "a", "a", "a", "a");
 		Account account = new AccountController().getAccountFromAccountSignup(accountSignup);
 		assertFalse("fail", accountDAO.signUp(account));
 	}
 	
 	@Test
-	public void testFindByEmailAndPassword(){
+	public void testLogin(){
 		AccountLogin accountLogin = new AccountLogin("nhoccodaihp96@gmail.com", "a");
 		Account account = accountDAO.findByEmailAndPassword(accountLogin);
 		assertTrue(account != null);

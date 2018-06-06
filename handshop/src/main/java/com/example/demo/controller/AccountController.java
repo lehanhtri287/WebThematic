@@ -1,5 +1,14 @@
 package com.example.demo.controller;
 
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +36,7 @@ public class AccountController {
 	CategoryService categoryService;
 	@Autowired
 	ProductService productService;
+	private static final Logger LOGGER = LoggerFactory.getLogger(AccountController.class);
 
 	@RequestMapping(value = "sign-up", method = RequestMethod.GET)
 	public String signUpPage(Model model) {
@@ -38,20 +48,23 @@ public class AccountController {
 	@RequestMapping(value = "sign-up", method = RequestMethod.POST)
 	public ModelAndView signUpProcess(@Validated AccountSignup accountSignup, BindingResult bindingResult) {
 		ModelAndView mav = new ModelAndView();
-		String emailAlreadyExists = null;
-		Account account = null;
-		
-		if (!accountSignup.getEmail().contains(" ")) {
-			emailAlreadyExists = accountService.findByEmail(accountSignup.getEmail());
-			account = getAccountFromAccountSignup(accountSignup);
+		String emailAlreadyExists = accountService.findByEmail(accountSignup.getEmail());
+		Account account = getAccountFromAccountSignup(accountSignup);
+
+		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+		Validator validator = factory.getValidator();
+		Set<ConstraintViolation<AccountSignup>> violations = validator.validate(accountSignup); // errors
+																								// list
+
+		if (emailAlreadyExists != null) {
+			bindingResult.rejectValue("email", "accSignup.email.exists");
 		}
-		if(accountSignup.getPassword() != accountSignup.getConfirmPassword()){
-			bindingResult.rejectValue("password", "accSignup.password.notMatch");
-		}
-		if (emailAlreadyExists != null) bindingResult.rejectValue("email", "accSignup.email.exists");
 		if (bindingResult.hasErrors()) {
 			mav.addObject("listCate", categoryService.getAllCategories());
 			mav.setViewName("signUp");
+			for (ConstraintViolation<AccountSignup> violation : violations) {
+				LOGGER.error("+ " + violation.getMessage());
+			}
 		} else {
 			if (accountService.signUp(account)) {
 				mav.addObject("successMess", "Đăng ký thành công");
@@ -62,6 +75,19 @@ public class AccountController {
 		}
 		return mav;
 	}
+
+	// @RequestMapping(value = "sign-up/validateEmail", method =
+	// RequestMethod.POST)
+	// public ModelAndView signUpValidate(String email) {
+	// ModelAndView mav = new ModelAndView();
+	// String emailAlreadyExists = accountService.findByEmail(email);
+	// if (emailAlreadyExists != null) {
+	// mav.addObject("listCate", categoryService.getAllCategories());
+	// mav.addObject("emailAlreadyExists", "Email đã tồn tại");
+	// mav.setViewName("signUp");
+	// }
+	// return mav;
+	// }
 
 	public Account getAccountFromAccountSignup(AccountSignup accountSignup) {
 		Account account = new Account(accountSignup.getEmail(), accountSignup.getPassword(),
@@ -81,9 +107,12 @@ public class AccountController {
 		ModelAndView mav = new ModelAndView();
 		Account account = accountService.findByEmailAndPassword(accountLogin);
 
-		if (accountLogin.getEmail().contains(" ")) bindingResult.rejectValue("email", "accSignup.email.invalid");
-		if (accountLogin.getEmail() == "") bindingResult.rejectValue("email", "accLogin.empty");
-		if (accountLogin.getEmail() != "" && accountLogin.getPassword() != "") {
+		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+		Validator validator = factory.getValidator();
+		Set<ConstraintViolation<AccountLogin>> violations = validator.validate(accountLogin); // errors list
+		
+		if (accountLogin.getEmail() == null || accountLogin.getEmail() == "") bindingResult.rejectValue("email", "accLogin.empty");
+		else{
 			if (account == null) {
 				bindingResult.rejectValue("email", "accLogin.invalid");
 			}
@@ -91,6 +120,9 @@ public class AccountController {
 		if (bindingResult.hasErrors()) {
 			mav.addObject("listCate", categoryService.getAllCategories());
 			mav.setViewName("login");
+			for (ConstraintViolation<AccountLogin> violation : violations) {
+				LOGGER.error("+ " + violation.getMessage());
+			}
 		} else {
 			mav.addObject("listCate", categoryService.getAllCategories());
 			mav.addObject("listProducts", productService.getAllProduct());
