@@ -251,7 +251,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 .content-top h1{
 	color: black;
     font-size: 28px;
-    margin-left: 35%;
+    margin-left: 38%;
     font-weight: 400;
 }
 .col-md1 img{
@@ -303,6 +303,15 @@ ul.callbacks_tabs.callbacks1_tabs {
 }
 .content-top {
 	padding: 8% 0;
+}
+.noProduct{
+	height: 200px;
+}
+.noProduct h3{
+	color: red;
+    margin-top: 2%;
+    margin-left: 25%;
+    font-weight: 400;
 }
 /*--footer--*/
 .top-footer iframe{

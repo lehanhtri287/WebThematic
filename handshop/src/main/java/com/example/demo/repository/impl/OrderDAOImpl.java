@@ -6,13 +6,11 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.entities.Chitietdonhang;
 import com.example.demo.entities.ChitietdonhangId;
 import com.example.demo.entities.Donhang;
-import com.example.demo.entities.OrderDetail;
 import com.example.demo.entities.Sanpham;
 import com.example.demo.hibernate.HibernateUtil;
 import com.example.demo.repository.OrderDAO;
@@ -168,8 +166,8 @@ public class OrderDAOImpl implements OrderDAO {
 		return orderDetails;
 	}
 
-	public static void main(String[] args) {
-		OrderDAOImpl orderDAOImpl = new OrderDAOImpl();
+//	public static void main(String[] args) {
+//		OrderDAOImpl orderDAOImpl = new OrderDAOImpl();
 		// System.out.println(orderDAOImpl.getOrder(1));
 		// Donhang dh = new Donhang();
 		// dh.setTenKhachhang("Hello Kitty");
@@ -179,14 +177,14 @@ public class OrderDAOImpl implements OrderDAO {
 		// dh.setEmail("lehanhtri287@gmail.com");
 		// dh.setStatus(0);
 
-		ChitietdonhangId chitietdonhangId = new ChitietdonhangId();
-		chitietdonhangId.setIdDonhang(25);
-		chitietdonhangId.setIdSanpham(6);
-		chitietdonhangId.setSoLuong(2);
+//		ChitietdonhangId chitietdonhangId = new ChitietdonhangId();
+//		chitietdonhangId.setIdDonhang(25);
+//		chitietdonhangId.setIdSanpham(6);
+//		chitietdonhangId.setSoLuong(2);
 
 		// System.out.println(orderDAOImpl.insertOrder(dh));
 		// System.out.println(orderDAOImpl.getInsertedID());
-		System.out.println(orderDAOImpl.insertOrderDetail(25, 6, 2));
+//		System.out.println(orderDAOImpl.insertOrderDetail(25, 6, 2));
 //		System.out.println(orderDAOImpl.getOrderDetail());
-	}
+//	}
 }
