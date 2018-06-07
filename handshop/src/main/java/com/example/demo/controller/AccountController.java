@@ -81,11 +81,10 @@ public class AccountController {
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public ModelAndView loginProcess(@Validated @ModelAttribute("accLogin") AccountLogin accountLogin, BindingResult bindingResult) {
 		ModelAndView mav = new ModelAndView();
-		Account account = accountService.findByEmailAndPassword(accountLogin);
 
 		if (accountLogin.getEmail().contains(" ")) bindingResult.rejectValue("email", "accSignup.email.invalid");
-		if (accountLogin.getEmail() == "") bindingResult.rejectValue("email", "accLogin.empty");
-		if (accountLogin.getEmail() != "" && accountLogin.getPassword() != "") {
+		if (!accountLogin.getEmail().contains(" ") && accountLogin.getEmail() != "" && accountLogin.getPassword() != "") {
+			Account account = accountService.findByEmailAndPassword(accountLogin);
 			if (account == null) bindingResult.rejectValue("email", "accLogin.invalid");
 			if (account != null && account.getConfirmation() == 0) bindingResult.rejectValue("email", "accLogin.notConfirmed");
 		}

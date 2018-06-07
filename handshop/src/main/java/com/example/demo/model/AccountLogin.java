@@ -3,6 +3,7 @@ package com.example.demo.model;
 import javax.validation.constraints.NotEmpty;
 
 public class AccountLogin {
+	@NotEmpty(message = "{accLogin.empty}")
 	private String email;
 	@NotEmpty(message = "{accLogin.empty}")
 	private String password;
@@ -10,7 +11,7 @@ public class AccountLogin {
 	public AccountLogin() {}
 
 	public AccountLogin(
-			String email,
+			@NotEmpty(message = "{accLogin.empty}") String email,
 			@NotEmpty(message = "{accLogin.empty}") String password) {
 		super();
 		this.email = email;
