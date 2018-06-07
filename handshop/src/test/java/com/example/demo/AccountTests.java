@@ -18,7 +18,7 @@ import com.example.demo.repository.AccountDAO;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class HandshopApplicationTests {
+public class AccountTests {
 	
 	@Autowired
 	AccountDAO accountDAO;

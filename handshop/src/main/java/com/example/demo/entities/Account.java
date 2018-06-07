@@ -32,11 +32,13 @@ public class Account implements java.io.Serializable {
 
 	public Account() {}
 
-	public Account(String email, String password) {
+	public Account(String email, String password, Integer confirmation) {
+		super();
 		this.email = email;
 		this.password = password;
+		this.confirmation = confirmation;
 	}
-	
+
 	public Account(String email, String password, String fullName, String address, String phoneNumber) {
 		super();
 		this.email = email;

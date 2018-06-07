@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.entities.Account;
 import com.example.demo.hibernate.HibernateUtil;
+import com.example.demo.model.AccLoginResult;
 import com.example.demo.model.AccountLogin;
 import com.example.demo.repository.AccountDAO;
 
@@ -69,12 +70,13 @@ public class AccountDAOImpl implements AccountDAO{
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		Query<String> query = session.createQuery("select password from Account where email = :email", String.class);
+		Query<AccLoginResult> query = session.createQuery("select new com.example.demo.model.AccLoginResult(a.password, a.confirmation) from Account a where a.email = :email", AccLoginResult.class);
 		query.setParameter("email", accountLogin.getEmail());
 		try{
-			Optional<String> passwordResult = query.uniqueResultOptional();
-			if (passwordResult.isPresent()) password = passwordResult.get();
-			if (encoder.matches(accountLogin.getPassword(), password)) account = new Account(accountLogin.getEmail(), accountLogin.getPassword());
+			Optional<AccLoginResult> result = query.uniqueResultOptional();
+			AccLoginResult accLoginResult = result.get();
+			if (result.isPresent()) password = accLoginResult.getPassword();
+			if (encoder.matches(accountLogin.getPassword(), password)) account = new Account(accountLogin.getEmail(), accountLogin.getPassword(), accLoginResult.getConfirmation());
 		} catch (NoSuchElementException e) {
 			LOGGER.error("- error when call method findByEmailAndPassword with paramater " + account, e);
 		}finally {

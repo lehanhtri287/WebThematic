@@ -86,9 +86,8 @@ public class AccountController {
 		if (accountLogin.getEmail().contains(" ")) bindingResult.rejectValue("email", "accSignup.email.invalid");
 		if (accountLogin.getEmail() == "") bindingResult.rejectValue("email", "accLogin.empty");
 		if (accountLogin.getEmail() != "" && accountLogin.getPassword() != "") {
-			if (account == null) {
-				bindingResult.rejectValue("email", "accLogin.invalid");
-			}
+			if (account == null) bindingResult.rejectValue("email", "accLogin.invalid");
+			if (account != null && account.getConfirmation() == 0) bindingResult.rejectValue("email", "accLogin.notConfirmed");
 		}
 		if (bindingResult.hasErrors()) {
 			mav.addObject("listCate", categoryService.getAllCategories());
@@ -97,7 +96,7 @@ public class AccountController {
 			mav.addObject("listCate", categoryService.getAllCategories());
 			mav.addObject("listProducts", productService.getAllProduct());
 			mav.addObject("loginSuccess", "Login successful");
-			mav.setViewName("index");
+			mav.setViewName("redirect:/");
 		}
 		return mav;
 	}
