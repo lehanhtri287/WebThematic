@@ -17,14 +17,13 @@ import com.example.demo.model.AccountLogin;
 import com.example.demo.repository.AccountDAO;
 
 @Repository
-public class AccountDAOImpl implements AccountDAO{
-	
+public class AccountDAOImpl implements AccountDAO {
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(AccountDAOImpl.class);
 
 	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-	
-	
-	public boolean signUp(Account account){
+
+	public boolean signUp(Account account) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String fullName = account.getFullName();
 		fullName = fullName.replaceAll("\\s+", " "); //replace spaces to space between
@@ -43,7 +42,7 @@ public class AccountDAOImpl implements AccountDAO{
 			LOGGER.error("- error when call method signUp with paramater " + account, e);
 			session.getTransaction().rollback();
 			return false;
-		}finally {
+		} finally {
 			session.close();
 		}
 	}
@@ -57,10 +56,11 @@ public class AccountDAOImpl implements AccountDAO{
 		query.setParameter("email", email);
 		try {
 			Optional<String> result = query.uniqueResultOptional();
-			if(result.isPresent()) emailResult = result.get();
+			if (result.isPresent())
+				emailResult = result.get();
 		} catch (NoSuchElementException e) {
 			LOGGER.error("- error when call method findByEmail with paramater " + email, e);
-		}finally {
+		} finally {
 			session.close();
 		}
 		return emailResult;
@@ -68,26 +68,30 @@ public class AccountDAOImpl implements AccountDAO{
 
 	@Override
 	public Account findByEmailAndPassword(AccountLogin accountLogin) {
-		Account account = null;;
+		Account account = null;
+		
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
+
 		Query<Account> query = session.createQuery("from Account where email = :email", Account.class);
+
 		query.setParameter("email", accountLogin.getEmail());
-		try{
+		try {
 			Optional<Account> result = query.uniqueResultOptional();
 			account = result.get();
-			if (result.isPresent()){
-				if (!encoder.matches(accountLogin.getPassword(), account.getPassword())){
+
+			if (result.isPresent()) {
+				if (!encoder.matches(accountLogin.getPassword(), account.getPassword())) {
 					account = null;
 				}
 			}
 		} catch (NoSuchElementException e) {
 			LOGGER.error("- error when call method findByEmailAndPassword with paramater " + account, e);
-		}finally {
+		} finally {
 			session.close();
 		}
 		return account;
 	}
-	
+
 }

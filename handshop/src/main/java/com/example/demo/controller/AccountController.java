@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,7 +86,7 @@ public class AccountController {
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public ModelAndView loginProcess(@Validated @ModelAttribute("accLogin") AccountLogin accountLogin,
-			BindingResult bindingResult, HttpServletRequest request) {
+		BindingResult bindingResult, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Account account = null;
 		
@@ -103,9 +102,8 @@ public class AccountController {
 		} else {
 			mav.addObject("listCate", categoryService.getAllCategories());
 			mav.addObject("listProducts", productService.getAllProduct());
-			HttpSession session = request.getSession();
+			mav.addObject("loginSuccess", "Login successful");
 			session.setAttribute("user", account);
-			mav.addObject("session", session);
 			mav.setViewName("redirect:/");
 		}
 		return mav;

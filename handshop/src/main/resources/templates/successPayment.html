@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
 <title>T&T Handshop</title>
@@ -54,7 +54,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-
 	$(function() {
 		$("#slider").responsiveSlides({
 			auto : true,
@@ -72,7 +71,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--content-->
 	<div class="row fh5co-post-entry">
 		<div class="navbar-left" style="text-align: center;">
-			<label style="color: red; margin-top: 20px">Hề lếu</label>
+			<p style="color: red; margin-top: 20px" th:text="${'Mã ĐH: ' + messageSuccess.idDonhang}"></p>
+			<p style="color: red; margin-top: 20px" th:text="${'Ngày ĐH: ' + messageSuccess.generateDate()}"></p>
+			<p style="color: red; margin-top: 20px" th:text="${'Tổng tiền: ' + messageSuccess.tongTien}"></p>
+			<p style="color: red; margin-top: 20px" th:text="${'Tình trạng: '+messageSuccess.generateStatus()}"></p>	
+			<p style="color: red; margin-top: 20px" th:text="${messageFailed}"></p>
 		</div>
 	</div>
 

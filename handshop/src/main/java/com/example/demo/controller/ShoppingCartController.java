@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -31,8 +32,6 @@ public class ShoppingCartController {
 
 	@RequestMapping(value = "shoppingcart", method = { RequestMethod.POST, RequestMethod.GET })
 	public void addCart(int prodId, HttpSession session, Model model) {
-		System.out.println(prodId);
-
 		int result = 0;
 
 		Sanpham sanpham = productService.getProduct(prodId);
@@ -60,7 +59,7 @@ public class ShoppingCartController {
 			result = details.size();
 			session.setAttribute("list_detail", details);
 			session.setAttribute("size", result);
-			System.out.println(details);
+//			System.out.println(details);
 		}
 
 	}
@@ -143,11 +142,13 @@ public class ShoppingCartController {
 		int totalAmount = getTotalAmount(productCarts);
 		donhang.setTongTien(totalAmount);
 		donhang.setStatus(0);
+		donhang.setNgayDh(new Date());
 
 		boolean tmp = orderService.insertOrder(donhang);
 
 		donhang.setIdDonhang(orderService.getInsertedID());
 
+		
 		for (ProductCart productCart : productCarts) {
 			orderService.insertOrderDetail(donhang.getIdDonhang(), 
 										   productCart.getProduct().getIdSanpham(),
@@ -155,11 +156,14 @@ public class ShoppingCartController {
 		}
 		model.addAttribute("listCate", categoryService.getAllCategories());
 		if(tmp) {
-//			resul
-			return "successPayment";
+//			resultMessage = donhang.toString();
+			model.addAttribute("messageSuccess", donhang);
+			session.setAttribute("list_detail", null);
 		} else {
-			return "failedPayment";
+			resultMessage = "Đã có lỗi xảy ra!";
+			model.addAttribute("messageFailed", resultMessage);
 		}
+		return "successPayment";
 	}
 
 	private int getTotalAmount(List<ProductCart> details) {
