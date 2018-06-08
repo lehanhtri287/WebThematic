@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<!-- InstanceBegin template="Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="theme-color" content="#3e454c">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Thêm sản phẩm</title>
+<!-- InstanceEndEditable -->
+<!-- Font awesome -->
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<!-- Sandstone Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- Admin Style -->
+<link rel="stylesheet" href="css/style.css">
+
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+</head>
+
+<body>
+	<div class="brand clearfix">
+		<a href="index.html" class="logo"><img src="img/logo.jpg"
+			class="img-responsive" alt=""></a> <span class="menu-btn"><i
+			class="fa fa-bars"></i></span>
+		<ul class="ts-profile-nav">
+			<li><a href="#">Cài đặt</a></li>
+			<li class="ts-account"><a href="#"><img
+					src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="">
+					Tài khoản <i class="fa fa-angle-down hidden-side"></i></a>
+				<ul>
+					<li><a href="#">Thông tin tài khoản</a></li>
+					<li><a href="#">Chỉnh sửa tài khoản</a></li>
+					<li><a href="#">Đăng xuất</a></li>
+				</ul></li>
+		</ul>
+	</div>
+	<div class="ts-main-content">
+		<nav class="ts-sidebar">
+			<ul class="ts-sidebar-menu">
+				<li class="ts-label">Tìm kiếm</li>
+				<li><input type="text" class="ts-sidebar-search"
+					placeholder="Nhập từ khóa..."></li>
+				<li class="ts-label">Danh Mục</li>
+				<!-- Account from above -->
+				<ul class="ts-profile-nav">
+					<li><a href="#">Cài Đặt</a></li>
+					<li class="ts-account"><a href="#"><img
+							src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="">
+							Tài Khoản <i class="fa fa-angle-down hidden-side"></i></a>
+						<ul>
+							<li><a href="#">Thông tin tài khoản</a></li>
+							<li><a href="#">Chỉnh sửa tài khoản</a></li>
+							<li><a href="#">Đăng xuất</a></li>
+						</ul></li>
+				</ul>
+			</ul>
+			<!-- InstanceBeginEditable name="open" -->
+			<ul class="ts-sidebar-menu">
+				<li><a href="index.html"><i class="fa fa-dashboard"></i>Thống
+						Kê</a></li>
+				<li class="open"><a href="product.html"><i
+						class="fa fa-database"></i>Sản Phẩm</a></li>
+				<li><a href="order.html"><i class="fa fa-pencil-square-o"></i>Đơn
+						Hàng</a></li>
+				<li><a href="customer.html"><i class="fa fa-users"></i>Khách
+						Hàng</a></li>
+				<li><a href="admin.html"><i class="fa fa-user"></i>Admin</a></li>
+			</ul>
+			<!-- InstanceEndEditable -->
+		</nav>
+		<!-- InstanceBeginEditable name="content" -->
+		<div class="content-wrapper">
+			<div class="container-fluid">
+				<div class="add-product">
+					<div class="col-md-12">
+						<form>
+							<div class="title-product">
+								<h1 class="text-center">Thêm Sản Phẩm</h1>
+							</div>
+							<div class="row">
+								<div class="main col-md-8">
+									<input type="text" class="pid"
+										placeholder="Nhập mã sản phẩm..."> <br> <input
+										type="text" class="name" placeholder="Nhập tên sản phẩm...">
+									<br> <select name="category" id="category">
+										<option value="op0" selected>---Chọn nhà sản xuất---</option>
+										<option value="op1">Casio</option>
+										<option value="op2">Watch 2</option>
+										<option value="op3"></option>
+										<option value="op4"></option>
+										<option value="op5"></option>
+									</select> <input type="text" class="price" placeholder="Nhập đơn giá...">
+									<br> <input type="text" class="quanity"
+										placeholder="Nhập số lượng..."> <br>
+									<textarea placeholder="Nhập thông tin sản phẩm..."></textarea>
+								</div>
+								<div class="image-product col-md-4">
+									<img id="pimg" src="#" alt="Image"> <input type="file"
+										name="chooseimg" onchange="readURL(this);" class="chooseimg"
+										value="Chọn Hình">
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="row">
+								<div class="col-md-12">
+									<button class="btn btn-primary" type="button">
+										<i class="fa fa-save">&nbsp;Save</i>
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- /.container-fluid -->
+		</div>
+		<!-- /.content-wrapper -->
+		<script>
+			function readURL(input) {
+				if (input.files && input.files[0]) {
+					var reader = new FileReader();
+
+					reader.onload = function(e) {
+						$('#pimg').attr('src', e.target.result).width(150)
+								.height(200);
+					};
+
+					reader.readAsDataURL(input.files[0]);
+				}
+			}
+		</script>
+		<!-- InstanceEndEditable -->
+	</div>
+	<!-- Loading Scripts -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/index.js"></script>
+	<script>
+		window.onload = function() {
+
+			// Line chart from swirlData for dashReport
+			var ctx = document.getElementById("dashReport").getContext("2d");
+			window.myLine = new Chart(ctx)
+					.Line(
+							swirlData,
+							{
+								responsive : true,
+								scaleShowVerticalLines : false,
+								scaleBeginAtZero : true,
+								multiTooltipTemplate : "<%if (label){%><%=label%>: <%}%><%= value %>",
+							});
+
+			// Pie Chart from doughutData
+			var doctx = document.getElementById("chart-area3").getContext("2d");
+			window.myDoughnut = new Chart(doctx).Pie(doughnutData, {
+				responsive : true
+			});
+
+			// Dougnut Chart from doughnutData
+			var doctx = document.getElementById("chart-area4").getContext("2d");
+			window.myDoughnut = new Chart(doctx).Doughnut(doughnutData, {
+				responsive : true
+			});
+
+		}
+	</script>
+</body>
+<!-- InstanceEnd -->
+</html>

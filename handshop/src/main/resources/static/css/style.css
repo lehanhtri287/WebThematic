@@ -1854,17 +1854,16 @@ h1.typo1 {
 }
 
 .navbar-left {
-	width: 45%;
+	width: 55%;
     background-color: papayawhip;
     margin: 1.5% 28%;
     padding: 2%;
     padding-bottom: 0;
 }
-.navbar-left h2{
+.navbar-left h1{
 	color: crimson;
     font-family: unset;
     text-align: center;
-    font-weight: 400;
 }
 .navbar-left h3{
 	text-align: center;
@@ -1961,8 +1960,7 @@ td.input{
 }
 .cartHeader{
 	margin: 7% 44% 1%;
-    color: crimson;
-    font-weight: 400;
+    color: crimson
 }
 .manageHeader{
 	margin: 6% 8% 1%;
@@ -1991,9 +1989,6 @@ td.input{
 }
 .tHead{
 	background-color: #00e6e6;
-}
-.tHead th{
-	font-weight: 500;
 }
 .myLabel{
 	font-size: 18px;

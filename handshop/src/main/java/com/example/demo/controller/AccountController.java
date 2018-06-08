@@ -1,5 +1,14 @@
 package com.example.demo.controller;
 
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,7 +59,6 @@ public class AccountController {
 				bindingResult.rejectValue("password", "accSignup.password.notMatch");
 			}
 		}
-		if (emailAlreadyExists != null) bindingResult.rejectValue("email", "accSignup.email.exists");
 		if (bindingResult.hasErrors()) {
 			mav.addObject("listCate", categoryService.getAllCategories());
 			mav.setViewName("signUp");
@@ -64,6 +72,19 @@ public class AccountController {
 		}
 		return mav;
 	}
+
+	// @RequestMapping(value = "sign-up/validateEmail", method =
+	// RequestMethod.POST)
+	// public ModelAndView signUpValidate(String email) {
+	// ModelAndView mav = new ModelAndView();
+	// String emailAlreadyExists = accountService.findByEmail(email);
+	// if (emailAlreadyExists != null) {
+	// mav.addObject("listCate", categoryService.getAllCategories());
+	// mav.addObject("emailAlreadyExists", "Email đã tồn tại");
+	// mav.setViewName("signUp");
+	// }
+	// return mav;
+	// }
 
 	public Account getAccountFromAccountSignup(AccountSignup accountSignup) {
 		Account account = new Account(accountSignup.getEmail(), accountSignup.getPassword(),
@@ -79,9 +100,9 @@ public class AccountController {
 	}
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public ModelAndView loginProcess(@Validated @ModelAttribute("accLogin") AccountLogin accountLogin, BindingResult bindingResult) {
+	public ModelAndView loginProcess(@Validated @ModelAttribute("accLogin") AccountLogin accountLogin,
+			BindingResult bindingResult) {
 		ModelAndView mav = new ModelAndView();
-
 		if (accountLogin.getEmail().contains(" ")) bindingResult.rejectValue("email", "accSignup.email.invalid");
 		if (!accountLogin.getEmail().contains(" ") && accountLogin.getEmail() != "" && accountLogin.getPassword() != "") {
 			Account account = accountService.findByEmailAndPassword(accountLogin);

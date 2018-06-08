@@ -166,9 +166,9 @@ public class OrderDAOImpl implements OrderDAO {
 		return orderDetails;
 	}
 
-//	public static void main(String[] args) {
-//		OrderDAOImpl orderDAOImpl = new OrderDAOImpl();
-		// System.out.println(orderDAOImpl.getOrder(1));
+	public static void main(String[] args) {
+		OrderDAOImpl orderDAOImpl = new OrderDAOImpl();
+		System.out.println(orderDAOImpl.getOrder(1));
 		// Donhang dh = new Donhang();
 		// dh.setTenKhachhang("Hello Kitty");
 		// dh.setTongTien(245000);
@@ -177,14 +177,15 @@ public class OrderDAOImpl implements OrderDAO {
 		// dh.setEmail("lehanhtri287@gmail.com");
 		// dh.setStatus(0);
 
-//		ChitietdonhangId chitietdonhangId = new ChitietdonhangId();
-//		chitietdonhangId.setIdDonhang(25);
-//		chitietdonhangId.setIdSanpham(6);
-//		chitietdonhangId.setSoLuong(2);
+		// ChitietdonhangId chitietdonhangId = new ChitietdonhangId();
+		// chitietdonhangId.setIdDonhang(25);
+		// chitietdonhangId.setIdSanpham(6);
+		// chitietdonhangId.setSoLuong(2);
 
 		// System.out.println(orderDAOImpl.insertOrder(dh));
 		// System.out.println(orderDAOImpl.getInsertedID());
-//		System.out.println(orderDAOImpl.insertOrderDetail(25, 6, 2));
-//		System.out.println(orderDAOImpl.getOrderDetail());
-//	}
+		// System.out.println(orderDAOImpl.insertOrderDetail(25, 6, 2));
+		// System.out.println(orderDAOImpl.getOrderDetail());
+		// }
+	}
 }

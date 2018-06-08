@@ -122,11 +122,23 @@ public class Donhang implements java.io.Serializable {
 		this.status = status;
 	}
 
+	public String generateStatus() {
+		if (status == 0) {
+			return "Đang xác nhận";
+		} else if (status == 1) {
+			return "Đã xác nhận";
+		} else if (status == 2) {
+			return "Đã giao hàng";
+		}
+		return "Đã hủy đơn hàng";
+	}
+
 	@Override
 	public String toString() {
-		return "Donhang [idDonhang=" + idDonhang + ", ngayDh=" + ngayDh + ", tongTien=" + tongTien + ", tenKhachhang="
-				+ tenKhachhang + ", sdt=" + sdt + ", diachi=" + diachi + ", email=" + email + ", status=" + status
-				+ "]";
+		return  "Mã ĐH: " + idDonhang + 
+				"\nNgày đặt hàng: " + ngayDh + 
+				"\nTổng tiền: " + tongTien + 
+				"\nTình trạng: " + generateStatus();
 	}
 
 }
