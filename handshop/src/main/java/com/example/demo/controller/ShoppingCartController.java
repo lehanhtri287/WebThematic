@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.demo.entities.Account;
 import com.example.demo.entities.Donhang;
 import com.example.demo.entities.Sanpham;
 import com.example.demo.model.ProductCart;
@@ -68,11 +69,11 @@ public class ShoppingCartController {
 	public String getCart(HttpSession session, Model model) {
 		List<ProductCart> details = (ArrayList<ProductCart>) session.getAttribute("list_detail");
 		int totalAmount = 0;
-
+		Account account = (Account) session.getAttribute("user");
 		if (details == null) {
 			details = new ArrayList<>();
 		}
-
+		if (account != null) model.addAttribute("user", account);
 		totalAmount = getTotalAmount(details);
 		model.addAttribute("totalAmount", totalAmount);
 		model.addAttribute("productsCart", details);

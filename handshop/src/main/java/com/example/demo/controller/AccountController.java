@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -85,7 +85,7 @@ public class AccountController {
 	}
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public ModelAndView loginProcess(@Validated @ModelAttribute("accLogin") AccountLogin accountLogin,
+	public ModelAndView loginProcess(@Validated  AccountLogin accountLogin,
 		BindingResult bindingResult, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Account account = null;
@@ -102,11 +102,19 @@ public class AccountController {
 		} else {
 			mav.addObject("listCate", categoryService.getAllCategories());
 			mav.addObject("listProducts", productService.getAllProduct());
-			mav.addObject("loginSuccess", "Login successful");
 			session.setAttribute("user", account);
 			mav.setViewName("redirect:/");
 		}
 		return mav;
+	}
+	
+	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	public String logout(Model model, HttpServletRequest request, HttpSession session){
+		if(session.getAttribute("user") != null) {
+			session.removeAttribute("user");
+			return "redirect:/";
+		}
+		return "redirect:/";
 	}
 
 	@RequestMapping(value = "forgot-password", method = RequestMethod.GET)

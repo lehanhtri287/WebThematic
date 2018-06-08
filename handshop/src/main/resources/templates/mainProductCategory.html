@@ -8,10 +8,10 @@
 
 				<div class="content-top1">
 
-					<div class="noProduct" th:if="${#lists.isEmpty(listProducts)}">
+					<div class="noProduct" th:if="${#lists.isEmpty(listProductsByCate)}">
 						<h3>Không có sản phẩm thuộc loại hàng này</h3>
 					</div>
-					<div class="item" th:unless="${#lists.isEmpty(listProducts)}" th:each="product : ${listProducts}">
+					<div class="item" th:unless="${#lists.isEmpty(listProductsByCate)}" th:each="product : ${listProductsByCate}">
 						<a th:href="${'/single/' + product.idSanpham}"> <img
 							class="img-responsive" th:src="${'/' + product.images}" />
 						</a>
@@ -22,7 +22,7 @@
 						<div class="price">
 							<h5 class="item_price"
 								th:utext="${#numbers.formatInteger(product.gia, 3, 'COMMA')} + ' đ' "></h5>
-							<a href="" class="item_add"
+							<a href="#" class="item_add"
 								th:onclick="'addCart(\''+ ${product.idSanpham}+'\');'">Thêm
 								vào giỏ</a>
 							<div class="clearfix"></div>
