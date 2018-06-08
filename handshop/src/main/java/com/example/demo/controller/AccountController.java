@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.Set;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -101,11 +102,12 @@ public class AccountController {
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public ModelAndView loginProcess(@Validated @ModelAttribute("accLogin") AccountLogin accountLogin,
-			BindingResult bindingResult) {
+			BindingResult bindingResult, HttpSession session) {
+		Account account = null;
 		ModelAndView mav = new ModelAndView();
 		if (accountLogin.getEmail().contains(" ")) bindingResult.rejectValue("email", "accSignup.email.invalid");
 		if (!accountLogin.getEmail().contains(" ") && accountLogin.getEmail() != "" && accountLogin.getPassword() != "") {
-			Account account = accountService.findByEmailAndPassword(accountLogin);
+			account = accountService.findByEmailAndPassword(accountLogin);
 			if (account == null) bindingResult.rejectValue("email", "accLogin.invalid");
 			if (account != null && account.getConfirmation() == 0) bindingResult.rejectValue("email", "accLogin.notConfirmed");
 		}
@@ -116,6 +118,7 @@ public class AccountController {
 			mav.addObject("listCate", categoryService.getAllCategories());
 			mav.addObject("listProducts", productService.getAllProduct());
 			mav.addObject("loginSuccess", "Login successful");
+			session.setAttribute("user", account);
 			mav.setViewName("redirect:/");
 		}
 		return mav;

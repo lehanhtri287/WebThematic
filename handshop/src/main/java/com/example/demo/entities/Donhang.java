@@ -2,6 +2,7 @@ package com.example.demo.entities;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -132,11 +133,16 @@ public class Donhang implements java.io.Serializable {
 		}
 		return "Đã hủy đơn hàng";
 	}
+	public String generateDate() {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		
+		return formatter.format(ngayDh);
+	}
 
 	@Override
 	public String toString() {
 		return  "Mã ĐH: " + idDonhang + 
-				"\nNgày đặt hàng: " + ngayDh + 
+				"\nNgày đặt hàng: " + generateDate() + 
 				"\nTổng tiền: " + tongTien + 
 				"\nTình trạng: " + generateStatus();
 	}
