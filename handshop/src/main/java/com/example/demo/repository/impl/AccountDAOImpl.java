@@ -26,6 +26,10 @@ public class AccountDAOImpl implements AccountDAO{
 	
 	public boolean signUp(Account account){
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String fullName = account.getFullName();
+		fullName = fullName.replaceAll("\\s+", " "); //replace spaces to space between
+		fullName = fullName.replaceAll("(^\\s+|\\s+$)", ""); //remove spaces at left and right
+		account.setFullName(fullName);
 		account.setPassword(encoder.encode(account.getPassword()));
 		account.setPosition("KH");
 		account.setConfirmation(0);

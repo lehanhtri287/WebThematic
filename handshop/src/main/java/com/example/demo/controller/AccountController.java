@@ -1,14 +1,5 @@
 package com.example.demo.controller;
 
-import java.util.Set;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,6 +44,7 @@ public class AccountController {
 		if (!accountSignup.getEmail().contains(" ")) {
 			emailAlreadyExists = accountService.findByEmail(accountSignup.getEmail());
 			account = getAccountFromAccountSignup(accountSignup);
+			if(emailAlreadyExists != null) bindingResult.rejectValue("email", "accSignup.email.exists");
 		}
 		if (accountSignup.getPassword() != "" && accountSignup.getConfirmPassword() != ""){
 			if (!accountSignup.getPassword().equals(accountSignup.getConfirmPassword())){
@@ -72,19 +64,6 @@ public class AccountController {
 		}
 		return mav;
 	}
-
-	// @RequestMapping(value = "sign-up/validateEmail", method =
-	// RequestMethod.POST)
-	// public ModelAndView signUpValidate(String email) {
-	// ModelAndView mav = new ModelAndView();
-	// String emailAlreadyExists = accountService.findByEmail(email);
-	// if (emailAlreadyExists != null) {
-	// mav.addObject("listCate", categoryService.getAllCategories());
-	// mav.addObject("emailAlreadyExists", "Email đã tồn tại");
-	// mav.setViewName("signUp");
-	// }
-	// return mav;
-	// }
 
 	public Account getAccountFromAccountSignup(AccountSignup accountSignup) {
 		Account account = new Account(accountSignup.getEmail(), accountSignup.getPassword(),
@@ -126,4 +105,5 @@ public class AccountController {
 		model.addAttribute("listCate", categoryService.getAllCategories());
 		return "forgotPass";
 	}
+	
 }

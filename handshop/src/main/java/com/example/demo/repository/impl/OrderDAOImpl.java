@@ -166,9 +166,9 @@ public class OrderDAOImpl implements OrderDAO {
 		return orderDetails;
 	}
 
-	public static void main(String[] args) {
-		OrderDAOImpl orderDAOImpl = new OrderDAOImpl();
-		System.out.println(orderDAOImpl.getOrder(1));
+//	public static void main(String[] args) {
+//		OrderDAOImpl orderDAOImpl = new OrderDAOImpl();
+//		System.out.println(orderDAOImpl.getOrder(1));
 		// Donhang dh = new Donhang();
 		// dh.setTenKhachhang("Hello Kitty");
 		// dh.setTongTien(245000);
@@ -187,5 +187,5 @@ public class OrderDAOImpl implements OrderDAO {
 		// System.out.println(orderDAOImpl.insertOrderDetail(25, 6, 2));
 		// System.out.println(orderDAOImpl.getOrderDetail());
 		// }
-	}
+//	}
 }
