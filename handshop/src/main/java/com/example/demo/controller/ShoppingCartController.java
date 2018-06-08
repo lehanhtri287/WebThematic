@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -79,6 +78,7 @@ public class ShoppingCartController {
 		model.addAttribute("totalAmount", totalAmount);
 		model.addAttribute("productsCart", details);
 		model.addAttribute("listCate", categoryService.getAllCategories());
+		session.setAttribute("size", details.size());
 
 		return "shoppingCart";
 	}
@@ -92,6 +92,8 @@ public class ShoppingCartController {
 				productCarts.remove(productCarts.get(i));
 			}
 		}
+		session.setAttribute("list_detail", productCarts);
+		session.setAttribute("size", productCarts.size());
 
 		return "forward:/showCart";
 	}
@@ -108,6 +110,8 @@ public class ShoppingCartController {
 				}
 			}
 		}
+		session.setAttribute("list_detail", productCarts);
+		session.setAttribute("size", productCarts.size());
 
 		return "forward:/showCart";
 	}
@@ -124,15 +128,21 @@ public class ShoppingCartController {
 				}
 			}
 		}
+		session.setAttribute("list_detail", productCarts);
+		session.setAttribute("size", productCarts.size());
+		
 		return "forward:/showCart";
 	}
 
 	@RequestMapping(value = "/payment", method = RequestMethod.POST)
 	public String payment(Donhang donhang, HttpSession session, Model model) {
 		List<ProductCart> productCarts = (ArrayList<ProductCart>) session.getAttribute("list_detail");
-
+		
+		String resultMessage = "";
+		
 		int totalAmount = getTotalAmount(productCarts);
 		donhang.setTongTien(totalAmount);
+		donhang.setStatus(0);
 
 		boolean tmp = orderService.insertOrder(donhang);
 
@@ -145,6 +155,7 @@ public class ShoppingCartController {
 		}
 		model.addAttribute("listCate", categoryService.getAllCategories());
 		if(tmp) {
+//			resul
 			return "successPayment";
 		} else {
 			return "failedPayment";

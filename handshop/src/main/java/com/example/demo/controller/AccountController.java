@@ -103,16 +103,18 @@ public class AccountController {
 	}
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public ModelAndView loginProcess(@Validated @ModelAttribute("accLogin") AccountLogin accountLogin, BindingResult bindingResult) {
+	public ModelAndView loginProcess(@Validated @ModelAttribute("accLogin") AccountLogin accountLogin,
+			BindingResult bindingResult) {
 		ModelAndView mav = new ModelAndView();
 		Account account = accountService.findByEmailAndPassword(accountLogin);
 
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		Validator validator = factory.getValidator();
 		Set<ConstraintViolation<AccountLogin>> violations = validator.validate(accountLogin); // errors list
-		
-		if (accountLogin.getEmail() == null || accountLogin.getEmail() == "") bindingResult.rejectValue("email", "accLogin.empty");
-		else{
+
+		if (accountLogin.getEmail() == null || accountLogin.getEmail() == "")
+			bindingResult.rejectValue("email", "accLogin.empty");
+		else {
 			if (account == null) {
 				bindingResult.rejectValue("email", "accLogin.invalid");
 			}
