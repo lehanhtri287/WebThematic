@@ -103,19 +103,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<td><a
 					th:href="${'/deletecart/' + productCart.product.idSanpham}"
 					class="btn btn-danger" role="button">Xóa</a></td>
-
 			</tr>
-
 		</table>
 		<div class="navbar-center" style="text-align: center;">
 			<label style="color: red;" id="errorListProducts"></label>
 		</div>
 		<div class="navbar-right">
 			<h3 class="amount">Tổng tiền: </h3>
-			<h3 class="amount"
+			<h3 class="amount amRight"
 				id="totalAmount"
 				th:text="${#numbers.formatInteger(totalAmount, 3, 'COMMA')}"></h3>
-			<h3 class="amount">đ</h3>
+			<h3 class="amount amRight">đ</h3>
 		</div>
 
 		<div class="navbar-left">
