@@ -45,6 +45,8 @@ public class AccountController {
 			emailAlreadyExists = accountService.findByEmail(accountSignup.getEmail());
 			account = getAccountFromAccountSignup(accountSignup);
 			if(emailAlreadyExists != null) bindingResult.rejectValue("email", "accSignup.email.exists");
+		} else {
+			bindingResult.rejectValue("email", "accSignup.email.invalid");
 		}
 		if (accountSignup.getPassword() != "" && accountSignup.getConfirmPassword() != ""){
 			if (!accountSignup.getPassword().equals(accountSignup.getConfirmPassword())){
