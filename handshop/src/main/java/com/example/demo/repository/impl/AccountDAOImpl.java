@@ -72,14 +72,14 @@ public class AccountDAOImpl implements AccountDAO{
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		Query<Account> query = session.createQuery("select new com.example.demo.entities.Account(password, confirmation) from Account where email = :email", Account.class);
+		Query<Account> query = session.createQuery("from Account where email = :email", Account.class);
 		query.setParameter("email", accountLogin.getEmail());
 		try{
 			Optional<Account> result = query.uniqueResultOptional();
 			account = result.get();
 			if (result.isPresent()){
-				if (encoder.matches(accountLogin.getPassword(), account.getPassword())){
-					account = new Account(account.getPassword(), account.getConfirmation());
+				if (!encoder.matches(accountLogin.getPassword(), account.getPassword())){
+					account = null;
 				}
 			}
 		} catch (NoSuchElementException e) {

@@ -1,6 +1,10 @@
 package com.example.demo.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +22,7 @@ import com.example.demo.service.CategoryService;
 import com.example.demo.service.ProductService;
 
 @Controller
+@Scope("session")
 @RequestMapping("/account/")
 public class AccountController {
 
@@ -82,11 +87,13 @@ public class AccountController {
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public ModelAndView loginProcess(@Validated @ModelAttribute("accLogin") AccountLogin accountLogin,
-			BindingResult bindingResult) {
+			BindingResult bindingResult, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
+		Account account = null;
+		
 		if (accountLogin.getEmail().contains(" ")) bindingResult.rejectValue("email", "accSignup.email.invalid");
 		if (!accountLogin.getEmail().contains(" ") && accountLogin.getEmail() != "" && accountLogin.getPassword() != "") {
-			Account account = accountService.findByEmailAndPassword(accountLogin);
+			account = accountService.findByEmailAndPassword(accountLogin);
 			if (account == null) bindingResult.rejectValue("email", "accLogin.invalid");
 			if (account != null && account.getConfirmation() == 0) bindingResult.rejectValue("email", "accLogin.notConfirmed");
 		}
@@ -96,7 +103,9 @@ public class AccountController {
 		} else {
 			mav.addObject("listCate", categoryService.getAllCategories());
 			mav.addObject("listProducts", productService.getAllProduct());
-			mav.addObject("loginSuccess", "Login successful");
+			HttpSession session = request.getSession();
+			session.setAttribute("user", account);
+			mav.addObject("session", session);
 			mav.setViewName("redirect:/");
 		}
 		return mav;
