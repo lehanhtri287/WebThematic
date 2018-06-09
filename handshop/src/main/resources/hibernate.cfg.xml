@@ -12,11 +12,11 @@
 		<property name="hibernate.connection.CharSet">utf8</property>
         <property name="hibernate.connection.characterEncoding">utf8</property>
         <property name="hibernate.connection.useUnicode">true</property>
-		<mapping class="com.example.demo.entities.Sanpham" />
+		<mapping class="com.example.demo.entities.Product" />
 		<mapping class="com.example.demo.entities.Chitietdonhang" />
-		<mapping class="com.example.demo.entities.Cmt" />
+		<mapping class="com.example.demo.entities.Comment" />
 		<mapping class="com.example.demo.entities.Donhang" />
-		<mapping class="com.example.demo.entities.Loaihang" />
+		<mapping class="com.example.demo.entities.Category" />
 		<mapping class="com.example.demo.entities.Account" />
 		<mapping class="com.example.demo.entities.Tintuc" />
 	</session-factory>

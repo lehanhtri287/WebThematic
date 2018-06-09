@@ -2,26 +2,26 @@ package com.example.demo.repository;
 
 import java.util.List;
 
-import com.example.demo.entities.Sanpham;
+import com.example.demo.entities.Product;
 
 public interface ProductDAO {
 
 	public void setPageSize(int pageSize);
 	
-	public List<Sanpham> getAllProduct();
+	public List<Product> getAllProduct();
 
-	public List<Sanpham> getProductPagination(int page);
+	public List<Product> getProductPagination(int page);
 
-	public Sanpham getProduct(int id);
+	public Product getProduct(int id);
 
-	public boolean insertProduct(Sanpham sanpham);
+	public boolean insertProduct(Product sanpham);
 	
-	public boolean updateProduct(Sanpham sanpham);
+	public boolean updateProduct(Product sanpham);
 
 	public boolean deleteProduct(int idSanpham);
 	
 	public int getNumpPages();
 	
-	public List<Sanpham> getProductByCate(int idLoaihang);
+	public List<Product> getProductByCate(int idLoaihang);
 
 }

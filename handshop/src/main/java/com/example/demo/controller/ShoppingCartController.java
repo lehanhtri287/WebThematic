@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entities.Donhang;
-import com.example.demo.entities.Sanpham;
+import com.example.demo.entities.Product;
 import com.example.demo.model.ProductCart;
 import com.example.demo.service.CategoryService;
 import com.example.demo.service.OrderService;
@@ -34,7 +34,7 @@ public class ShoppingCartController {
 	public void addCart(int prodId, HttpSession session, Model model) {
 		int result = 0;
 
-		Sanpham sanpham = productService.getProduct(prodId);
+		Product sanpham = productService.getProduct(prodId);
 
 		if (session.getAttribute("list_detail") == null) {
 			List<ProductCart> details = new ArrayList<>();
@@ -48,7 +48,7 @@ public class ShoppingCartController {
 			List<ProductCart> details = (ArrayList<ProductCart>) session.getAttribute("list_detail");
 			boolean tmp = false;
 			for (ProductCart detail : details) {
-				if (prodId == detail.getProduct().getIdSanpham()) {
+				if (prodId == detail.getProduct().getIdProduct()) {
 					detail.setQuantityCart(detail.getQuantityCart() + 1);
 					tmp = true;
 				}
@@ -87,7 +87,7 @@ public class ShoppingCartController {
 		List<ProductCart> productCarts = (ArrayList<ProductCart>) session.getAttribute("list_detail");
 
 		for (int i = productCarts.size() - 1; i >= 0; i--) {
-			if (productCarts.get(i).getProduct().getIdSanpham() == idProduct) {
+			if (productCarts.get(i).getProduct().getIdProduct() == idProduct) {
 				productCarts.remove(productCarts.get(i));
 			}
 		}
@@ -101,9 +101,9 @@ public class ShoppingCartController {
 	public String plusProduct(@PathVariable int idProduct, HttpSession session) {
 		List<ProductCart> productCarts = (ArrayList<ProductCart>) session.getAttribute("list_detail");
 		for (int i = productCarts.size() - 1; i >= 0; i--) {
-			if (productCarts.get(i).getProduct().getIdSanpham() == idProduct) {
-				if (productCarts.get(i).getQuantityCart() >= productCarts.get(i).getProduct().getSoLuong()) {
-					productCarts.get(i).setQuantityCart(productCarts.get(i).getProduct().getSoLuong());
+			if (productCarts.get(i).getProduct().getIdProduct() == idProduct) {
+				if (productCarts.get(i).getQuantityCart() >= productCarts.get(i).getProduct().getQuantityProduct()) {
+					productCarts.get(i).setQuantityCart(productCarts.get(i).getProduct().getQuantityProduct());
 				} else {
 					productCarts.get(i).setQuantityCart(productCarts.get(i).getQuantityCart() + 1);
 				}
@@ -119,7 +119,7 @@ public class ShoppingCartController {
 	public String minusProduct(@PathVariable int idProduct, HttpSession session) {
 		List<ProductCart> productCarts = (ArrayList<ProductCart>) session.getAttribute("list_detail");
 		for (int i = productCarts.size() - 1; i >= 0; i--) {
-			if (productCarts.get(i).getProduct().getIdSanpham() == idProduct) {
+			if (productCarts.get(i).getProduct().getIdProduct() == idProduct) {
 				if (productCarts.get(i).getQuantityCart() <= 1) {
 					productCarts.get(i).setQuantityCart(1);
 				} else {
@@ -151,7 +151,7 @@ public class ShoppingCartController {
 		
 		for (ProductCart productCart : productCarts) {
 			orderService.insertOrderDetail(donhang.getIdDonhang(), 
-										   productCart.getProduct().getIdSanpham(),
+										   productCart.getProduct().getIdProduct(),
 										   productCart.getQuantityCart());
 		}
 		model.addAttribute("listCate", categoryService.getAllCategories());
@@ -170,7 +170,7 @@ public class ShoppingCartController {
 		int result = 0;
 
 		for (ProductCart productCart : details) {
-			result += productCart.getProduct().getGia() * productCart.getQuantityCart();
+			result += productCart.getProduct().getPrice() * productCart.getQuantityCart();
 		}
 
 		return result;

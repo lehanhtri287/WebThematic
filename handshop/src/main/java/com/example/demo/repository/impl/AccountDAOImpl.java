@@ -26,8 +26,8 @@ public class AccountDAOImpl implements AccountDAO {
 	public boolean signUp(Account account) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String fullName = account.getFullName();
-		fullName = fullName.replaceAll("\\s+", " "); //replace spaces to space between
-		fullName = fullName.replaceAll("(^\\s+|\\s+$)", ""); //remove spaces at left and right
+		fullName = fullName.replaceAll("\\s+", " "); // replace spaces to space between
+		fullName = fullName.replaceAll("(^\\s+|\\s+$)", ""); // remove spaces at left and right
 		account.setFullName(fullName);
 		account.setPassword(encoder.encode(account.getPassword()));
 		account.setPosition("KH");
@@ -69,17 +69,18 @@ public class AccountDAOImpl implements AccountDAO {
 	@Override
 	public Account findByEmailAndPassword(AccountLogin accountLogin) {
 		Account account = null;
-		
+
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 
-		Query<Account> query = session.createQuery("from Account where email = :email", Account.class);
+		Query<Account> query = session.createQuery("from " + Account.class.getName() + " where email = :email",
+				Account.class);
 
 		query.setParameter("email", accountLogin.getEmail());
 		try {
 			Optional<Account> result = query.uniqueResultOptional();
-			account = result.get();
+			account = (Account) result.get();
 
 			if (result.isPresent()) {
 				if (!encoder.matches(accountLogin.getPassword(), account.getPassword())) {

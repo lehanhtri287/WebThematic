@@ -8,7 +8,7 @@
 					<h6>Danh mục sản phẩm</h6>
 					<ul>
 						<li th:each="category : ${listCate}">
-							<a th:href="${'/viewByCate/' + category.idLoaihang}" th:text="${category.tenLoaihang}"></a>
+							<a th:href="${'/viewByCate/' + category.idCategory}" th:text="${category.nameCategory}"></a>
 						</li>
 					</ul>
 				</div>
@@ -22,7 +22,7 @@
 				<div class="col-sm-4 footer-bottom-cate cate-bottom">
 					<h6>Địa chỉ</h6>
 					<ul>
-						<li>Mộ Đức, Quảng Ngãi</li>
+						<li>ĐH Nông Lâm, TP HCM</li>
 						<li class="phone">LH : 6985792466</li>
 					</ul>
 				</div>

@@ -10,23 +10,22 @@
 				<div class="content-top1">
 
 					<!-- <div th:if="${listProducts.isEmpty()}">
-						<h3 style="text-align: center; color: red; margin-top: 50px">Không
-							có sản phẩm thuộc loại hàng này</h3>
+						<h3 style="text-align: center; color: red; margin-top: 50px">KhÃ´ng
+							cÃ³ sáº£n pháº©m thuá»™c loáº¡i hÃ ng nÃ y</h3>
 					</div>-->
 					<div class="item" th:each="product : ${listProducts}">
-						<a th:href="${'/single/' + product.idSanpham}"> <img
+						<a th:href="${'/single/' + product.idProduct}"> <img
 							class="img-responsive" th:src="${'/' + product.images}" />
 						</a>
 						<h3>
-							<a id="nameProduct" th:href="${'/single/' + product.idSanpham}"
-								th:utext="${product.tenSanpham}"></a>
+							<a id="nameProduct" th:href="${'/single/' + product.idProduct}"
+								th:utext="${product.nameProduct}"></a>
 						</h3>
 						<div class="price">
 							<h5 class="item_price"
-								th:utext="${#numbers.formatInteger(product.gia, 3, 'COMMA')} + ' đ' "></h5>
+								th:utext="${#numbers.formatInteger(product.price, 3, 'COMMA')} + ' Đ' "></h5>
 							<a href="#" class="item_add"
-								th:onclick="'addCart(\''+ ${product.idSanpham}+'\');'">Thêm
-								vào giỏ</a>
+								th:onclick="'addCart(\''+ ${product.idProduct}+'\');'">Thêm vào giỏ</a>
 							<div class="clearfix"></div>
 						</div>
 

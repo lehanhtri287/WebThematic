@@ -37,8 +37,8 @@
 								mục</label> <input type="checkbox" id="menu-toggle">
 							<div class="mepanel">
 								<div class="h_nav" th:each="category : ${listCate}">
-									<a th:href="${'/viewByCate/' + category.idLoaihang}">
-										<h4 th:text="${category.tenLoaihang}"></h4>
+									<a th:href="${'/viewByCate/' + category.idCategory}">
+										<h4 th:text="${category.nameCategory}"></h4>
 									</a>
 								</div>
 							</div></li>

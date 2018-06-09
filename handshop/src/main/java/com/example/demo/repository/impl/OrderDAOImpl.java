@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.entities.Chitietdonhang;
 import com.example.demo.entities.ChitietdonhangId;
 import com.example.demo.entities.Donhang;
-import com.example.demo.entities.Sanpham;
+import com.example.demo.entities.Product;
 import com.example.demo.hibernate.HibernateUtil;
 import com.example.demo.repository.OrderDAO;
 
@@ -130,7 +130,7 @@ public class OrderDAOImpl implements OrderDAO {
 			session.getTransaction().begin();
 
 			Donhang donhang = (Donhang) session.get(Donhang.class, idDonhang);
-			Sanpham sanpham = (Sanpham) session.get(Sanpham.class, idSanpham);
+			Product sanpham = (Product) session.get(Product.class, idSanpham);
 			ChitietdonhangId chitietdonhangId = new ChitietdonhangId(idDonhang, idSanpham, soLuong);
 
 			session.save(new Chitietdonhang(chitietdonhangId, donhang, sanpham));

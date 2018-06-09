@@ -2,17 +2,17 @@ package com.example.demo.repository;
 
 import java.util.List;
 
-import com.example.demo.entities.Loaihang;
+import com.example.demo.entities.Category;
 
 public interface CategoryDAO {
 
-	public List<Loaihang> getAllCategory();
+	public List<Category> getAllCategory();
 
-	public Loaihang getCategory(int idCate);
+	public Category getCategory(int idCate);
 
-	public boolean addCategory(Loaihang loaihang);
+	public boolean addCategory(Category loaihang);
 
-	public boolean updateCategory(Loaihang loaihang);
+	public boolean updateCategory(Category loaihang);
 
 	public boolean deleteCategory(int idLoaihang);
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entities.Sanpham;
+import com.example.demo.entities.Product;
 import com.example.demo.repository.ProductDAO;
 import com.example.demo.service.ProductService;
 
@@ -15,12 +15,12 @@ public class ProductServiceImpl implements ProductService {
 	private ProductDAO productDAO;
 
 	@Override
-	public boolean addProduct(Sanpham sanpham) {
+	public boolean addProduct(Product sanpham) {
 		return productDAO.insertProduct(sanpham);
 	}
 
 	@Override
-	public boolean editProduct(Sanpham sanpham) {
+	public boolean editProduct(Product sanpham) {
 		return productDAO.updateProduct(sanpham);
 	}
 
@@ -30,17 +30,17 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Sanpham> getAllProduct() {
+	public List<Product> getAllProduct() {
 		return productDAO.getAllProduct();
 	}
 
 	@Override
-	public Sanpham getProduct(int idProduct) {
+	public Product getProduct(int idProduct) {
 		return productDAO.getProduct(idProduct);
 	}
 
 	@Override
-	public List<Sanpham> getProductByCate(int idLoaihang) {
+	public List<Product> getProductByCate(int idLoaihang) {
 		return productDAO.getProductByCate(idLoaihang);
 	}
 

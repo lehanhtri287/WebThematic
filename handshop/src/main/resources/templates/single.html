@@ -7,7 +7,8 @@
 
 <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all" />
-<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/validateFormCmt.js"></script>
 <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -29,20 +30,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start menu -->
 
 <link href="/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-<script src="js/simpleCart.min.js">
-	
-</script>
 
-<link href="/css/memenu.css" rel="stylesheet" type="text/css"
-	media="all" />
 <script type="text/javascript" src="/js/memenu.js"></script>
 <script>
 	$(document).ready(function() {
 		$(".memenu").memenu();
 	});
-</script>
-<script src="/js/simpleCart.min.js">
-	
 </script>
 <!-- slide -->
 <script type="text/javascript">
@@ -58,8 +51,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	}
 </script>
-
-<script src="/js/responsiveslides.min.js"></script>
 
 <style type="text/css">
 .col-md-3.col-md2 {
@@ -91,8 +82,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-7 single-top-in">
 					<div class="single-para simpleCart_shelfItem">
-						<h1 th:text="${singleProduct.tenSanpham}"></h1>
-						<p th:text="${singleProduct.moTa}"></p>
+						<h1 th:text="${singleProduct.nameProduct}"></h1>
+						<p th:text="${singleProduct.description}"></p>
 
 						<div class="star-on">
 							<div class="review">
@@ -101,9 +92,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="clearfix"></div>
 						</div>
 
-						<label class="add-to item_price" th:text="${singleProduct.gia}"></label>
+						<label class="add-to item_price" th:text="${singleProduct.price}"></label>
 						<a href="#"
-							th:onclick="'addCart(\''+ ${singleProduct.idSanpham}+'\');'"
+							th:onclick="'addCart(\''+ ${singleProduct.idProduct}+'\');'"
 							class="cart item_add">Thêm vào giỏ</a>
 					</div>
 				</div>
@@ -115,16 +106,53 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</li>
 						</ul>
 					</div>
+					<div class="bootstrap-tab-text-grid-right" th:each="comment: ${listComments}">
+
+						<div class="alert alert-info" role="alert">
+							<p style="font-weight: bold; font-size: 20px; color: #29B6F6;" 
+							   class="amount amRight" 
+							   th:text="${comment.account.fullName + '(' + comment.timeCmt + '): '}"></p>
+							<p style="font-size: 20px; color: #29B6F6;" 
+							   class="amount amRight"
+							   th:text="${comment.context}"></p>
+						</div>
+
+					</div>
 					<div class="formaction">
-						<form action="CommentAction" method="POST">
-							<input type="text" class="form-control" placeholder="Tên họ"
-								style="width: 60%" name="name" value="" readonly="readonly"><label
-								style="color: red;"></label> <input type="email" value=""
-								class="form-control" style="width: 60%" placeholder="Email"
-								name="email" readonly="readonly"><label
-								style="color: red;"></label>
-							<textarea type="text" class="form-control" placeholder="Nội dung"
-								style="width: 60%" name="context"></textarea>
+						<form th:action="@{/addComment}" 
+							  method="POST"
+							  id="formComment">
+							<td><input 
+								type="text" 
+								class="form-control" 
+								placeholder="Tên họ"
+								style="width: 60%; margin: 10px" 
+								name="name" th:value="${(session.user != null) ? session.user.fullName : ''}" 
+								readonly="readonly"
+								id="formName">
+								<label style="color: red;" id="errorName"></label> </td>
+							<input 
+								type="email" th:value="${(session.user != null) ? session.user.email : ''}"
+								class="form-control" 
+								style="width: 60%; margin: 10px" 
+								placeholder="Email"
+								name="email" 
+								readonly="readonly"
+								id="formEmail">
+								<label style="color: red;" id="errorEmail"></label>
+							<input 
+								type="number" 
+								th:value="${singleProduct.idProduct}" 
+								hidden="true"
+								name="idProduct"/>
+							<textarea 
+								type="text" 
+								class="form-control" 
+								placeholder="Nội dung"
+								style="width: 60%; margin: 10px" 
+								id="formContext"
+								name="context"></textarea>
+								<label style="color: red;" id="errorContext"></label>
 							<input type="submit" value="Gửi" class="btnComment"
 								role="button">
 						</form>
