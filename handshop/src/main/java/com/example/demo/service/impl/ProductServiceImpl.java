@@ -44,4 +44,14 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.getProductByCate(idLoaihang);
 	}
 
+	@Override
+	public int size() {
+		return productDAO.size();
+	}
+
+	@Override
+	public List<Product> getNewProducts() {
+		return productDAO.getNewProducts();
+	}
+
 }

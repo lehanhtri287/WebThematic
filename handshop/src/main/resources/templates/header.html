@@ -9,18 +9,20 @@
 				<div class="col-sm-4 header-left">
 
 					<p class="log" th:if="${not (session.user != null)}">
-						<a class="accountLink" th:href="@{/account/login}">Đăng nhập</a> / <a
-							class="accountLink" th:href="@{/account/sign-up}">Đăng ký</a>
+						<a class="accountLink" th:href="@{/account/login}">Đăng nhập</a> /
+						<a class="accountLink" th:href="@{/account/sign-up}">Đăng ký</a>
 					</p>
 					<p class="log" th:if="${not (session.user == null)}">
-						<a class="accountLink" th:text="${session.user.fullName}"></a> / 
-						<a class="accountLink">Đăng xuất</a>
+						<a class="accountLink" th:text="${session.user.fullName}"></a> / <a
+							class="accountLink">Đăng xuất</a>
 					</p>
-					<div class="cart box_1">
+					<div class="cart box_1" id="showCart">
 						<a th:href="@{/showCart}"> <img
 							th:src="@{/images/shopping-cart.png}" />
-						</a>
-						<!-- <a href="" id="sizeCart" th:text="${'(' + session.size + ')'}"></a> -->
+						</a> 
+						<a  id="sizeCart"
+							th:href="@{/showCart}" 
+							th:text="${'(' + session.size + ')'}"></a>
 					</div>
 					<div class="clearfix"></div>
 				</div>

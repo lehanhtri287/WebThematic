@@ -13,33 +13,33 @@
 <title>Quản lý web - Thống kê</title>
 <!-- InstanceEndEditable -->
 <!-- Font awesome -->
-<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="/admin/css/font-awesome.min.css">
 <!-- Sandstone Bootstrap CSS -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="/admin/css/bootstrap.minAdmin.css">
 <!-- Admin Style -->
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="/admin/css/styleAdmin.css">
 <!-- /.content-wrapper -->
-<script src="js/Chart.min.js"></script>
-<script src="js/chartData.js"></script>
+<script src="/admin/js/Chart.min.js"></script>
+<script src="/admin/js/chartData.js"></script>
 <!-- InstanceEndEditable -->
 <!-- Loading Scripts -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
-<script src="js/label.js"></script>
+<script src="/admin/js/jquery.min.js"></script>
+<script src="/admin/js/bootstrap.min.js"></script>
+<script src="/admin/js/main.js"></script>
+<script src="/admin/js/label.js"></script>
 </head>
 
 <body>
 	<div class="brand clearfix">
-		<a href="index.html" class="logo"><img
-			src="/images/logo.png" class="img-responsive" alt=""></a> <span
-			class="menu-btn"><i class="fa fa-bars"></i></span>
+		<a href="index.html" class="logo"><img src="#"
+			class="img-responsive" alt=""></a> <span class="menu-btn"><i
+			class="fa fa-bars"></i></span>
 		<ul class="ts-profile-nav">
-			<li class="ts-account"><a href="#"><img
-					src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="">
-					Tài khoản <i class="fa fa-angle-down hidden-side"></i></a>
+			<li class="ts-account"><a href="#"
+				th:text="${session.admin.fullName}"><img src="#"
+					class="ts-avatar hidden-side" alt=""><i
+					class="fa fa-angle-down hidden-side"></i></a>
 				<ul>
-					<li><a href="#">Thêm tài khoản admin</a></li>
 					<li><a href="#">Đăng xuất</a></li>
 				</ul></li>
 		</ul>
@@ -47,15 +47,12 @@
 	<div class="ts-main-content">
 		<nav class="ts-sidebar">
 			<ul class="ts-sidebar-menu">
-				<li class="ts-label">Tìm kiếm</li>
-				<li><input type="text" class="ts-sidebar-search"
-					placeholder="Nhập từ khóa..."></li>
 				<li class="ts-label">Danh mục</li>
 				<!-- Account from above -->
 				<ul class="ts-profile-nav">
-					<li class="ts-account"><a href="#"><img
-							src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="">
-							Tài khoản <i class="fa fa-angle-down hidden-side"></i></a>
+					<li class="ts-account"><a href="#"><img src="#"
+							class="ts-avatar hidden-side" alt=""> Tài khoản <i
+							class="fa fa-angle-down hidden-side"></i></a>
 						<ul>
 							<li><a href="#">Thông tin tài khoản</a></li>
 							<li><a href="#">Chỉnh sửa tài khoản</a></li>
@@ -65,9 +62,9 @@
 			</ul>
 			<!-- InstanceBeginEditable name="open" -->
 			<ul class="ts-sidebar-menu">
-				<li class="open"><a href="index.html"><i
+				<li class="open"><a href="/admin/index"><i
 						class="fa fa-dashboard"></i>Thống kê</a></li>
-				<li><a href="product.html"><i class="fa fa-database"></i>Sản
+				<li><a href="/admin/manageProduct"><i class="fa fa-database"></i>Sản
 						phẩm</a></li>
 				<li><a href="order.html"><i class="fa fa-pencil-square-o"></i>Đơn
 						hàng</a></li>
@@ -90,7 +87,7 @@
 										<div class="panel panel-default">
 											<div class="panel-body bk-primary text-light">
 												<div class="stat-panel text-center">
-													<div class="stat-panel-number h1 ">24</div>
+													<div class="stat-panel-number h1" th:text="${accountSize}"></div>
 													<div class="stat-panel-title text-uppercase">Khách
 														hàng</div>
 												</div>
@@ -106,7 +103,7 @@
 										<div class="panel panel-default">
 											<div class="panel-body bk-info text-light">
 												<div class="stat-panel text-center">
-													<div class="stat-panel-number h1 ">58</div>
+													<div class="stat-panel-number h1 " th:text="${orderSize}"></div>
 													<div class="stat-panel-title text-uppercase">Đơn hàng</div>
 												</div>
 											</div>
@@ -120,8 +117,9 @@
 										<div class="panel panel-default">
 											<div class="panel-body bk-warning text-light">
 												<div class="stat-panel text-center">
-													<div class="stat-panel-number h1 ">18</div>
-													<div class="stat-panel-title text-uppercase">Nhận xét</div>
+													<div class="stat-panel-number h1 "
+														th:text="${productSize}"></div>
+													<div class="stat-panel-title text-uppercase">Sản phẩm</div>
 												</div>
 											</div>
 											<a href="#" class="block-anchor panel-footer text-center">Xem
@@ -140,36 +138,16 @@
 									<table class="table table-hover">
 										<thead>
 											<tr>
-												<th>STT</th>
 												<th>Mã sản phẩm</th>
 												<th>Tên sản phẩm</th>
+												<th>Giá</th>
 											</tr>
 										</thead>
-										<tbody>
+										<tbody th:each="newProduct: ${newProducts}">
 											<tr>
-												<th scope="row">1</th>
-												<td>PID.110</td>
-												<td>Casio 1</td>
-											</tr>
-											<tr>
-												<th scope="row">2</th>
-												<td>PID.109</td>
-												<td>Casio 2</td>
-											</tr>
-											<tr>
-												<th scope="row">3</th>
-												<td>PID.108</td>
-												<td>Casio 3</td>
-											</tr>
-											<tr>
-												<th scope="row">4</th>
-												<td>PID.107</td>
-												<td>Casio 4</td>
-											</tr>
-											<tr>
-												<th scope="row">5</th>
-												<td>PID.108</td>
-												<td>Casio 5</td>
+												<th scope="row" th:text="${newProduct.idProduct}"></th>
+												<td th:text="${newProduct.nameProduct}"></td>
+												<td th:text="${newProduct.price}"></td>
 											</tr>
 										</tbody>
 									</table>
@@ -183,61 +161,18 @@
 									<table class="table table-hover">
 										<thead>
 											<tr>
-												<th>STT</th>
+												<th>Mã ĐH</th>
 												<th>Họ Tên</th>
 												<th>Email</th>
-												<th>Đơn Hàng</th>
+												<th>Tình trạng</th>
 											</tr>
 										</thead>
-										<tbody>
-											<tr  data-toggle="modal" data-target="#myModal">
-												<th scope="row">1</th>
-												<td>Mark</td>
-												<td>otto@mail.com</td>
-												<td>OID.123</td>
-											</tr>
-											<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
+										<tbody th:each="newOrder: ${newOrders}">
 											<tr>
-												<th scope="row">2</th>
-												<td>Jacob</td>
-												<td>thornton@abc.com</td>
-												<td>OID.111</td>
-											</tr>
-											<tr>
-												<th scope="row">3</th>
-												<td>Larry</td>
-												<td>bird@gmail.com</td>
-												<td>OID.103</td>
-											</tr>
-											<tr>
-												<th scope="row">4</th>
-												<td>An</td>
-												<td>an@abc.com</td>
-												<td>OID.99</td>
-											</tr>
-											<tr>
-												<th scope="row">5</th>
-												<td>Bình</td>
-												<td>binh@gmail.com</td>
-												<td>OID.90</td>
+												<th scope="row" th:text="${newOrder.idDonhang}"></th>
+												<td th:text="${newOrder.tenKhachhang}"></td>
+												<td th:text="${newOrder.email}"></td>
+												<td th:text="${newOrder.generateStatus()}"></td>
 											</tr>
 										</tbody>
 									</table>

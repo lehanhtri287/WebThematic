@@ -18,6 +18,7 @@ import com.example.demo.model.AccountLogin;
 import com.example.demo.model.AccountSignup;
 import com.example.demo.service.AccountService;
 import com.example.demo.service.CategoryService;
+import com.example.demo.service.OrderService;
 import com.example.demo.service.ProductService;
 
 @Controller
@@ -31,6 +32,8 @@ public class AccountController {
 	CategoryService categoryService;
 	@Autowired
 	ProductService productService;
+	@Autowired
+	OrderService orderService;
 
 	@RequestMapping(value = "sign-up", method = RequestMethod.GET)
 	public String signUpPage(Model model) {
@@ -44,16 +47,17 @@ public class AccountController {
 		ModelAndView mav = new ModelAndView();
 		String emailAlreadyExists = null;
 		Account account = null;
-		
+
 		if (!accountSignup.getEmail().contains(" ")) {
 			emailAlreadyExists = accountService.findByEmail(accountSignup.getEmail());
 			account = getAccountFromAccountSignup(accountSignup);
-			if(emailAlreadyExists != null) bindingResult.rejectValue("email", "accSignup.email.exists");
+			if (emailAlreadyExists != null)
+				bindingResult.rejectValue("email", "accSignup.email.exists");
 		} else {
 			bindingResult.rejectValue("email", "accSignup.email.invalid");
 		}
-		if (accountSignup.getPassword() != "" && accountSignup.getConfirmPassword() != ""){
-			if (!accountSignup.getPassword().equals(accountSignup.getConfirmPassword())){
+		if (accountSignup.getPassword() != "" && accountSignup.getConfirmPassword() != "") {
+			if (!accountSignup.getPassword().equals(accountSignup.getConfirmPassword())) {
 				bindingResult.rejectValue("password", "accSignup.password.notMatch");
 			}
 		}
@@ -86,15 +90,19 @@ public class AccountController {
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public ModelAndView loginProcess(@Validated @ModelAttribute("accLogin") AccountLogin accountLogin,
-		BindingResult bindingResult, HttpSession session) {
+			BindingResult bindingResult, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Account account = null;
-		
-		if (accountLogin.getEmail().contains(" ")) bindingResult.rejectValue("email", "accSignup.email.invalid");
-		if (!accountLogin.getEmail().contains(" ") && accountLogin.getEmail() != "" && accountLogin.getPassword() != "") {
+
+		if (accountLogin.getEmail().contains(" "))
+			bindingResult.rejectValue("email", "accSignup.email.invalid");
+		if (!accountLogin.getEmail().contains(" ") && accountLogin.getEmail() != ""
+				&& accountLogin.getPassword() != "") {
 			account = accountService.findByEmailAndPassword(accountLogin);
-			if (account == null) bindingResult.rejectValue("email", "accLogin.invalid");
-			if (account != null && account.getConfirmation() == 0) bindingResult.rejectValue("email", "accLogin.notConfirmed");
+			if (account == null)
+				bindingResult.rejectValue("email", "accLogin.invalid");
+			if (account != null && account.getConfirmation() == 0)
+				bindingResult.rejectValue("email", "accLogin.notConfirmed");
 		}
 		if (bindingResult.hasErrors()) {
 			mav.addObject("listCate", categoryService.getAllCategories());
@@ -103,8 +111,14 @@ public class AccountController {
 			mav.addObject("listCate", categoryService.getAllCategories());
 			mav.addObject("listProducts", productService.getAllProduct());
 			mav.addObject("loginSuccess", "Login successful");
-			session.setAttribute("user", account);
-			mav.setViewName("redirect:/");
+
+			if (account.getPosition().equalsIgnoreCase("ADM")) {
+				session.setAttribute("admin", account);
+				mav.setViewName("redirect:/admin/index");
+			} else {
+				session.setAttribute("user", account);
+				mav.setViewName("redirect:/");
+			}
 		}
 		return mav;
 	}
@@ -114,5 +128,5 @@ public class AccountController {
 		model.addAttribute("listCate", categoryService.getAllCategories());
 		return "forgotPass";
 	}
-	
+
 }

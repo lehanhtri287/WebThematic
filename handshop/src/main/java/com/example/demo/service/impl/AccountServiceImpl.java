@@ -28,4 +28,9 @@ public class AccountServiceImpl implements AccountService{
 		return accountDAO.findByEmailAndPassword(account);
 	}
 
+	@Override
+	public int size() {
+		return accountDAO.size();
+	}
+
 }

@@ -16,4 +16,8 @@ public interface OrderService {
 	public int getInsertedID();
 	
 	public boolean insertOrderDetail(int idDonhang, int idSanpham, int soLuong);
+
+	public int size();
+
+	public List<Donhang> getNewOrders();
 }

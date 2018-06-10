@@ -17,4 +17,7 @@ public interface ProductService {
 	
 	public List<Product> getProductByCate(int idLoaihang);
 
+	public int size();
+
+	public List<Product> getNewProducts();
 }

@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.hibernate.type.IntegerType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -93,6 +94,28 @@ public class AccountDAOImpl implements AccountDAO {
 			session.close();
 		}
 		return account;
+	}
+
+	@SuppressWarnings({ "deprecation", "rawtypes" })
+	@Override
+	public int size() {
+		Session session = sessionFactory.openSession();
+		int res = 0;
+		try {
+			session.getTransaction().begin();
+
+			Query query = session.createSQLQuery("select count(*) as size from taikhoan where chucvu = 'KH'")
+								 .addScalar("size", new IntegerType());
+
+			res = (int) query.uniqueResult();
+
+			session.getTransaction().commit();
+			return res;
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		return res;
 	}
 
 }

@@ -16,7 +16,7 @@ import com.example.demo.repository.ProductDAO;
 
 @SuppressWarnings("deprecation")
 @Repository
-public class ProductDAOImpl implements ProductDAO{
+public class ProductDAOImpl implements ProductDAO {
 	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 	private int pageSize;
 
@@ -33,7 +33,7 @@ public class ProductDAOImpl implements ProductDAO{
 
 		try {
 			session.getTransaction().begin();
-			String hql = "from " + Product.class.getName();
+			String hql = "from " + Product.class.getName() + " where tinh_trang = 0";
 			Query query = session.createQuery(hql);
 			sanphams = query.list();
 			session.getTransaction().commit();
@@ -198,14 +198,58 @@ public class ProductDAOImpl implements ProductDAO{
 			String hql = "from " + Product.class.getName() + " where id_loaihang = :idCate";
 			Query query = session.createQuery(hql);
 			query.setInteger("idCate", id);
-			
+
 			sanphams = query.list();
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 			session.getTransaction().rollback();
 		}
-		
+
+		return sanphams;
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public int size() {
+		Session session = sessionFactory.openSession();
+		int res = 0;
+		try {
+			session.getTransaction().begin();
+
+			Query query = session.createSQLQuery("select count(*) as size from sanpham where tinh_trang = 0")
+					.addScalar("size", new IntegerType());
+
+			res = (int) query.uniqueResult();
+
+			session.getTransaction().commit();
+			return res;
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		return res;
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public List<Product> getNewProducts() {
+		List<Product> sanphams = new ArrayList<>();
+
+		// Session session = sessionFactory.getCurrentSession();
+		Session session = sessionFactory.openSession();
+
+		try {
+			session.getTransaction().begin();
+			String hql = "from " + Product.class.getName() + " where tinh_trang = 0 order by id_sanpham desc";
+			Query query = session.createQuery(hql);
+			query.setMaxResults(5);
+			sanphams = query.list();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
 		return sanphams;
 	}
 

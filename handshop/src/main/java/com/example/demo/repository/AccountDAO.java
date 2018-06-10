@@ -10,4 +10,6 @@ public interface AccountDAO {
 	public String findByEmail(String email);
 	
 	public Account findByEmailAndPassword(AccountLogin account);
+
+	public int size();
 }

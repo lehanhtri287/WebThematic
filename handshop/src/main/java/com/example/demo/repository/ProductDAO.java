@@ -22,6 +22,10 @@ public interface ProductDAO {
 	
 	public int getNumpPages();
 	
+	public int size();
+	
 	public List<Product> getProductByCate(int idLoaihang);
+
+	public List<Product> getNewProducts();
 
 }

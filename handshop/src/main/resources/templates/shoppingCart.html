@@ -18,26 +18,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start menu -->
 <link href="/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 
-<script type="text/javascript">
-		function plusQty() {
-			var quantity = Number(document.getElementById("quantity").value);
-			quantity = quantity + 1;
-			alert(quantity);
-			document.getElementById("quantity").value = quantity + "";
-		}
-		function minusQty(id) {
-			var quantity = Number(document.getElementById("quantity" + id).value);
-
-			if (quantity <= 1) {
-				quantity = 1;
-			} else {
-				quantity = quantity - 1;
-			}
-
-			document.getElementById("quantity" ++ id).value = quantity + "";
-		}
-</script>
-
 <link href="/css/memenu.css" rel="stylesheet" type="text/css"
 	media="all" />
 <script type="text/javascript" src="/js/memenu.js"></script>
@@ -78,17 +58,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<th>Thao tác</th>
 			</tr>
 			<tr th:each="productCart : ${productsCart}">
-				<td th:text="${productCart.product.idSanpham}"></td>
-				<td th:text="${productCart.product.tenSanpham}"></td>
+				<td th:text="${productCart.product.idProduct}"></td>
+				<td th:text="${productCart.product.nameProduct}"></td>
 				<td><img th:src="${'/' + productCart.product.images}"
 					width="80" height="40"></td>
 				<td id="price"
-					th:text="${#numbers.formatInteger(productCart.product.gia, 3, 'COMMA')} + ' VNĐ' "></td>
+					th:text="${#numbers.formatInteger(productCart.product.price, 3, 'COMMA')} + ' VNĐ' "></td>
 
 				<td style="width: 80px">
 					<div class="input-group input-group-lg" style="width: 80px;">
 						<span class="input-group-addon" id="sizing-addon1"> 
-							<a th:href="${'/plusProduct/' + productCart.product.idSanpham}">+</a>
+							<a th:href="${'/plusProduct/' + productCart.product.idProduct}">+</a>
 						</span>
 						<input 
 							type="number" id="quantity" 
@@ -99,15 +79,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							name="quantity"
 							style="width: 70px; height: 45px;" /> 
 						<span class="input-group-addon" id="sizing-addon1"> 
-							<a th:href="${'/minusProduct/' + productCart.product.idSanpham}">-</a>
+							<a th:href="${'/minusProduct/' + productCart.product.idProduct}">-</a>
 						</span>
 					</div>
 				</td>
 				<td id="cost"
-					th:text="${#numbers.formatInteger(productCart.product.gia * productCart.quantityCart, 3, 'COMMA')} + ' VNĐ' ">
+					th:text="${#numbers.formatInteger(productCart.product.price * productCart.quantityCart, 3, 'COMMA')} + ' VNĐ' ">
 				</td>
 				<td><a
-					th:href="${'/deletecart/' + productCart.product.idSanpham}"
+					th:href="${'/deletecart/' + productCart.product.idProduct}"
 					class="btn btn-danger" role="button">Xóa</a></td>
 			</tr>
 		</table>
