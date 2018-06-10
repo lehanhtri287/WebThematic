@@ -10,36 +10,33 @@
 <meta name="author" content="">
 <meta name="theme-color" content="#3e454c">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Sản phẩm</title>
+<title>Quản lý sản phẩm</title>
 <!-- InstanceEndEditable -->
 <!-- Font awesome -->
-<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="/admin/css/font-awesome.min.css">
 <!-- Sandstone Bootstrap CSS -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="/admin/css/bootstrap.minAdmin.css">
 <!-- Admin Style -->
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="/admin/css/styleAdmin.css">
 
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-<!-- InstanceBeginEditable name="head" -->
-<!-- InstanceEndEditable -->
+<!-- Loading Scripts -->
+<script src="/admin/js/jquery.min.js"></script>
+<script src="/admin/js/bootstrap.min.js"></script>
+<script src="/admin/js/main.js"></script>
+<script src="/admin/js/index.js"></script>
 </head>
 
 <body>
 	<div class="brand clearfix">
-		<a href="index.html" class="logo"><img src="/ShopHM1/images/logo.png"
-			class="img-responsive" alt=""></a> <span class="menu-btn"><i
-			class="fa fa-bars"></i></span>
+		<a href="index.html" class="logo"><img
+			src="/ShopHM1/images/logo.png" class="img-responsive" alt=""></a> <span
+			class="menu-btn"><i class="fa fa-bars"></i></span>
 		<ul class="ts-profile-nav">
-			<li class="ts-account"><a href="#"><img
-					src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="">
-					Tài khoản <i class="fa fa-angle-down hidden-side"></i></a>
+			<li class="ts-account"><a href="#"
+				th:text="${session.admin.fullName}"><img src="img/ts-avatar.jpg"
+					class="ts-avatar hidden-side" alt=""> Tài khoản <i
+					class="fa fa-angle-down hidden-side"></i></a>
 				<ul>
-					<li><a href="#">Thông tin tài khoản</a></li>
-					<li><a href="#">Chỉnh sửa tài khoản</a></li>
 					<li><a href="#">Đăng xuất</a></li>
 				</ul></li>
 		</ul>
@@ -47,27 +44,13 @@
 	<div class="ts-main-content">
 		<nav class="ts-sidebar">
 			<ul class="ts-sidebar-menu">
-				<li class="ts-label">Tìm kiếm</li>
-				<li><input type="text" class="ts-sidebar-search"
-					placeholder="Nhập từ khóa..."></li>
 				<li class="ts-label">Danh Mục</li>
-				<!-- Account from above -->
-				<ul class="ts-profile-nav">
-					<li class="ts-account"><a href="#"><img
-							src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="">
-							Tài Khoản <i class="fa fa-angle-down hidden-side"></i></a>
-						<ul>
-							<li><a href="#">Thông Tin Tài Khoản</a></li>
-							<li><a href="#">Chỉnh Sửa Tài Khoản</a></li>
-							<li><a href="#">Đăng Xuất</a></li>
-						</ul></li>
-				</ul>
 			</ul>
 			<!-- InstanceBeginEditable name="open" -->
 			<ul class="ts-sidebar-menu">
-				<li><a href="index.html"><i class="fa fa-dashboard"></i>Thống
+				<li><a href="/admin/index"><i class="fa fa-dashboard"></i>Thống
 						Kê</a></li>
-				<li class="open"><a href="product.html"><i
+				<li class="open"><a href="/admin/manageProduct"><i
 						class="fa fa-database"></i>Sản Phẩm</a></li>
 				<li><a href="order.html"><i class="fa fa-pencil-square-o"></i>Đơn
 						Hàng</a></li>
@@ -81,12 +64,6 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-12">
-						<form class="search">
-							<input class="searchTerm" placeholder="Tìm kiếm ..." /> <input
-								class="searchButton" type="submit" />
-						</form>
-					</div>
-					<div class="col-md-12">
 						<h2 class="page-title">Quản lý sản phẩm</h2>
 						<div class="row">
 							<div class="col-md-12">
@@ -95,23 +72,11 @@
 										<div class="panel panel-default">
 											<div class="panel-body bk-primary text-light">
 												<div class="stat-panel text-center h1">
-													<a href="add_product.html"><i
-														class="fa fa-plus-square-o text-white hover-product"></i></a>
+													<a href="/admin/insertProduct">+</a>
 												</div>
 												<div class="stat-panel-title text-uppercase text-center">
-													<a href="add_product.html" class="hover-product">Thêm
+													<a href="/admin/insertProduct" class="hover-product">Thêm
 														sản phẩm mới</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="panel panel-default" href="#">
-											<div class="panel-body bk-success text-light">
-												<div class="stat-panel text-center">
-													<div class="stat-panel-number h1 ">111</div>
-													<div class="stat-panel-title text-uppercase">Tổng Sản
-														Phẩm</div>
 												</div>
 											</div>
 										</div>
@@ -120,9 +85,19 @@
 										<div class="panel panel-default">
 											<div class="panel-body bk-danger text-light">
 												<div class="stat-panel text-center">
-													<div class="stat-panel-number h1 ">10</div>
-													<div class="stat-panel-title text-uppercase">Sản Phẩm
-														Bán Chạy</div>
+													<div class="stat-panel-number h1 "><a href="#">#</a></div>
+													<div class="stat-panel-title text-uppercase">Quản lý loại hàng</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="panel panel-default" href="#">
+											<div class="panel-body bk-success text-light">
+												<div class="stat-panel text-center">
+													<div class="stat-panel-number h1 " th:text="${productSize}"></div>
+													<div class="stat-panel-title text-uppercase">Tổng Sản
+														Phẩm</div>
 												</div>
 											</div>
 										</div>
@@ -302,11 +277,6 @@
 		</script>
 		<!-- InstanceEndEditable -->
 	</div>
-	<!-- Loading Scripts -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/main.js"></script>
-	<script src="js/index.js"></script>
 	<script>
 		window.onload = function() {
 

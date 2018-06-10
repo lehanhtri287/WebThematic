@@ -1,12 +1,12 @@
 package com.example.demo.model;
 
-import com.example.demo.entities.Sanpham;
+import com.example.demo.entities.Product;
 
 public class ProductCart {
-	private Sanpham product;
+	private Product product;
 	private int quantityCart;
 
-	public ProductCart(Sanpham product, int quantityCart) {
+	public ProductCart(Product product, int quantityCart) {
 		super();
 		this.product = product;
 		this.quantityCart = quantityCart;
@@ -24,11 +24,11 @@ public class ProductCart {
 		this.quantityCart = quantityCart;
 	}
 
-	public Sanpham getProduct() {
+	public Product getProduct() {
 		return product;
 	}
 
-	public void setProduct(Sanpham product) {
+	public void setProduct(Product product) {
 		this.product = product;
 	}
 

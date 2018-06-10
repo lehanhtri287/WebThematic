@@ -16,4 +16,8 @@ public interface OrderDAO {
 	public boolean deleteOrder(int idOrder);
 
 	public boolean insertOrderDetail(int idDonhang, int idSanpham, int soLuong);
+
+	public int size();
+
+	public List<Donhang> getNewOrders();
 }

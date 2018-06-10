@@ -44,4 +44,14 @@ public class OrderServiceImpl implements OrderService {
 		return orderDAO.insertOrderDetail(idDonhang, idSanpham, soLuong);
 	}
 
+	@Override
+	public int size() {
+		return orderDAO.size();
+	}
+
+	@Override
+	public List<Donhang> getNewOrders() {
+		return orderDAO.getNewOrders();
+	}
+
 }

@@ -18,26 +18,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start menu -->
 <link href="/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 
-<script type="text/javascript">
-		function plusQty() {
-			var quantity = Number(document.getElementById("quantity").value);
-			quantity = quantity + 1;
-			alert(quantity);
-			document.getElementById("quantity").value = quantity + "";
-		}
-		function minusQty(id) {
-			var quantity = Number(document.getElementById("quantity" + id).value);
-
-			if (quantity <= 1) {
-				quantity = 1;
-			} else {
-				quantity = quantity - 1;
-			}
-
-			document.getElementById("quantity" ++ id).value = quantity + "";
-		}
-</script>
-
 <link href="/css/memenu.css" rel="stylesheet" type="text/css"
 	media="all" />
 <script type="text/javascript" src="/js/memenu.js"></script>
@@ -78,31 +58,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<th>Thao tác</th>
 			</tr>
 			<tr th:each="productCart : ${productsCart}">
-				<td th:text="${productCart.product.idSanpham}"></td>
-				<td th:text="${productCart.product.tenSanpham}"></td>
+				<td th:text="${productCart.product.idProduct}"></td>
+				<td th:text="${productCart.product.nameProduct}"></td>
 				<td><img th:src="${'/' + productCart.product.images}"
 					width="80" height="40"></td>
 				<td id="price"
-					th:text="${#numbers.formatInteger(productCart.product.gia, 3, 'COMMA')} + ' VNĐ' "></td>
+					th:text="${#numbers.formatInteger(productCart.product.price, 3, 'COMMA')} + ' VNĐ' "></td>
 
 				<td style="width: 80px">
 					<div class="input-group input-group-lg" style="width: 80px;">
-						<span class="input-group-addon" id="sizing-addon1"> <a
-							th:href="${'/plusProduct/' + productCart.product.idSanpham}">+</a>
-						</span> <input type="number" id="quantity" class="form-control"
-							aria-describedby="sizing-addon1" readonly="readonly"
-							th:value="${productCart.quantityCart}" name="quantity"
-							style="width: 70px; height: 45px;" /> <span
-							class="input-group-addon" id="sizing-addon1"> <a
-							th:href="${'/minusProduct/' + productCart.product.idSanpham}">-</a>
+						<span class="input-group-addon" id="sizing-addon1"> 
+							<a th:href="${'/plusProduct/' + productCart.product.idProduct}">+</a>
+						</span>
+						<input 
+							type="number" id="quantity" 
+							class="form-control"
+							aria-describedby="sizing-addon1" 
+							readonly="readonly"
+							th:value="${productCart.quantityCart}" 
+							name="quantity"
+							style="width: 70px; height: 45px;" /> 
+						<span class="input-group-addon" id="sizing-addon1"> 
+							<a th:href="${'/minusProduct/' + productCart.product.idProduct}">-</a>
 						</span>
 					</div>
 				</td>
 				<td id="cost"
-					th:text="${#numbers.formatInteger(productCart.product.gia * productCart.quantityCart, 3, 'COMMA')} + ' VNĐ' ">
+					th:text="${#numbers.formatInteger(productCart.product.price * productCart.quantityCart, 3, 'COMMA')} + ' VNĐ' ">
 				</td>
 				<td><a
-					th:href="${'/deletecart/' + productCart.product.idSanpham}"
+					th:href="${'/deletecart/' + productCart.product.idProduct}"
 					class="btn btn-danger" role="button">Xóa</a></td>
 			</tr>
 		</table>
@@ -117,31 +102,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<h3 class="amount amRight">đ</h3>
 		</div>
 
-		<div class="navbar-left" th:if="${user == null}">
-			<h2>Thông tin khách hàng</h2>
-			<form th:action="@{/payment}" id="formPayment"
-				onsubmit="return validatePayment();" method="POST">
+		<div class="navbar-left">
+			<h1>Thông tin khách hàng</h1>
+			<form th:action="@{/payment}" 
+				  id="formPayment"
+				  method="POST">
+
 				<table class="customerInfo">
 					<tr>
 						<td><span class="myLabel">Họ Tên </span><label
 							style="color: red;" id="errorName"></label> <input type="text"
-							name="tenKhachhang" class="customer-payment" value=""
+							name="tenKhachhang" class="customer-payment" th:value="${(session.user != null) ? session.user.fullName : ''}"
 							id="formName"></td>
 					</tr>
 					<tr>
 						<td><span class="myLabel">Email </span> <label
 							style="color: red;" id="errorEmail"></label><input type="email"
-							name="email" class="customer-payment" value="" id="formEmail"></td>
+							name="email" class="customer-payment" th:value="${(session.user != null) ? session.user.email : ''}" id="formEmail"></td>
 					</tr>
 					<tr>
 						<td><span class="myLabel">Số điện thoại </span> <label
 							style="color: red;" id="errorPhone"></label><input type="tel"
-							name="sdt" class="customer-payment" value="" id="formPhone"></td>
+							name="sdt" class="customer-payment" th:value="${(session.user != null) ? session.user.phoneNumber : ''}" id="formPhone"></td>
 					</tr>
 					<tr>
 						<td><span class="myLabel">Địa chỉ </span> <label
 							style="color: red;" id="errorAddress"></label> <textarea rows="4"
-								cols="30" name="diachi" class="customer-payment" value=""
+								cols="30" name="diachi" class="customer-payment" th:text="${(session.user != null) ? session.user.address : ''}"
 								id="formAddress"></textarea></td>
 					</tr>
 				</table>

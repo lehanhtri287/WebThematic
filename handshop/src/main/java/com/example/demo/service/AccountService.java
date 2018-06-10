@@ -11,4 +11,6 @@ public interface AccountService {
 	public Account findByEmailAndPassword(AccountLogin account);
 	
 	public boolean updateAccountInfo(Account account);
+
+	public int size();
 }

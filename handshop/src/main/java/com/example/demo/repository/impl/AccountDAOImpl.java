@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.hibernate.type.IntegerType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -26,8 +27,8 @@ public class AccountDAOImpl implements AccountDAO {
 	public boolean signUp(Account account) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String fullName = account.getFullName();
-		fullName = fullName.replaceAll("\\s+", " "); //replace spaces to space between
-		fullName = fullName.replaceAll("(^\\s+|\\s+$)", ""); //remove spaces at left and right
+		fullName = fullName.replaceAll("\\s+", " "); // replace spaces to space between
+		fullName = fullName.replaceAll("(^\\s+|\\s+$)", ""); // remove spaces at left and right
 		account.setFullName(fullName);
 		account.setPassword(encoder.encode(account.getPassword()));
 		account.setPosition("KH");
@@ -69,17 +70,18 @@ public class AccountDAOImpl implements AccountDAO {
 	@Override
 	public Account findByEmailAndPassword(AccountLogin accountLogin) {
 		Account account = null;
-		
+
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 
-		Query<Account> query = session.createQuery("from Account where email = :email", Account.class);
+		Query<Account> query = session.createQuery("from " + Account.class.getName() + " where email = :email",
+				Account.class);
 
 		query.setParameter("email", accountLogin.getEmail());
 		try {
 			Optional<Account> result = query.uniqueResultOptional();
-			account = result.get();
+			account = (Account) result.get();
 
 			if (result.isPresent()) {
 				if (!encoder.matches(accountLogin.getPassword(), account.getPassword())) {
@@ -124,6 +126,28 @@ public class AccountDAOImpl implements AccountDAO {
 			session.close();
 		}
 		return false;
+}
+	@SuppressWarnings({ "deprecation", "rawtypes" })
+	@Override
+	public int size() {
+		Session session = sessionFactory.openSession();
+		int res = 0;
+		try {
+			session.getTransaction().begin();
+
+			Query query = session.createSQLQuery("select count(*) as size from taikhoan where chucvu = 'KH'")
+								 .addScalar("size", new IntegerType());
+
+			res = (int) query.uniqueResult();
+
+			session.getTransaction().commit();
+			return res;
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		return res;
+
 	}
 
 }

@@ -14,25 +14,25 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "loaihang", catalog = "shophandmade")
-public class Loaihang implements java.io.Serializable {
+public class Category implements java.io.Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Integer idLoaihang;
-	private String tenLoaihang;
+	private Integer idCategory;
+	private String nameCategory;
 	private Integer isDelete;
 
-	public Loaihang() {
+	public Category() {
 	}
 
-	public Loaihang(String tenLoaihang) {
-		this.tenLoaihang = tenLoaihang;
+	public Category(String nameCategory) {
+		this.nameCategory = nameCategory;
 	}
 
-	public Loaihang(String tenLoaihang, Integer isDelete) {
-		this.tenLoaihang = tenLoaihang;
+	public Category(String nameCategory, Integer isDelete) {
+		this.nameCategory = nameCategory;
 		this.isDelete = isDelete;
 	}
 
@@ -40,21 +40,21 @@ public class Loaihang implements java.io.Serializable {
 	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "ID_LOAIHANG", unique = true, nullable = false)
-	public Integer getIdLoaihang() {
-		return this.idLoaihang;
+	public Integer getIdCategory() {
+		return this.idCategory;
 	}
 
-	public void setIdLoaihang(Integer idLoaihang) {
-		this.idLoaihang = idLoaihang;
+	public void setIdCategory(Integer idCategory) {
+		this.idCategory = idCategory;
 	}
 
 	@Column(name = "TEN_LOAIHANG", nullable = false, length = 100)
-	public String getTenLoaihang() {
-		return this.tenLoaihang;
+	public String getNameCategory() {
+		return this.nameCategory;
 	}
 
-	public void setTenLoaihang(String tenLoaihang) {
-		this.tenLoaihang = tenLoaihang;
+	public void setNameCategory(String nameCategory) {
+		this.nameCategory = nameCategory;
 	}
 
 	@Column(name = "IS_DELETE")

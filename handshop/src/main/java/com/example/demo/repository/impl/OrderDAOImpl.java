@@ -6,17 +6,18 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.type.IntegerType;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.entities.Chitietdonhang;
 import com.example.demo.entities.ChitietdonhangId;
 import com.example.demo.entities.Donhang;
-import com.example.demo.entities.Sanpham;
+import com.example.demo.entities.Product;
 import com.example.demo.hibernate.HibernateUtil;
 import com.example.demo.repository.OrderDAO;
 
 @Repository
-@SuppressWarnings({ "rawtypes", "deprecation" })
+@SuppressWarnings({ "rawtypes", "deprecation", "unchecked"})
 public class OrderDAOImpl implements OrderDAO {
 	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
@@ -130,7 +131,7 @@ public class OrderDAOImpl implements OrderDAO {
 			session.getTransaction().begin();
 
 			Donhang donhang = (Donhang) session.get(Donhang.class, idDonhang);
-			Sanpham sanpham = (Sanpham) session.get(Sanpham.class, idSanpham);
+			Product sanpham = (Product) session.get(Product.class, idSanpham);
 			ChitietdonhangId chitietdonhangId = new ChitietdonhangId(idDonhang, idSanpham, soLuong);
 
 			session.save(new Chitietdonhang(chitietdonhangId, donhang, sanpham));
@@ -147,7 +148,6 @@ public class OrderDAOImpl implements OrderDAO {
 		return false;
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<Chitietdonhang> getOrderDetail() {
 		List<Chitietdonhang> orderDetails = new ArrayList<>();
 
@@ -166,26 +166,45 @@ public class OrderDAOImpl implements OrderDAO {
 		return orderDetails;
 	}
 
-//	public static void main(String[] args) {
-//		OrderDAOImpl orderDAOImpl = new OrderDAOImpl();
-//		System.out.println(orderDAOImpl.getOrder(1));
-		// Donhang dh = new Donhang();
-		// dh.setTenKhachhang("Hello Kitty");
-		// dh.setTongTien(245000);
-		// dh.setSdt("2131231231");
-		// dh.setDiachi("TPHCM");
-		// dh.setEmail("lehanhtri287@gmail.com");
-		// dh.setStatus(0);
+	@Override
+	public int size() {
+		Session session = sessionFactory.openSession();
+		int res = 0;
+		try {
+			session.getTransaction().begin();
 
-		// ChitietdonhangId chitietdonhangId = new ChitietdonhangId();
-		// chitietdonhangId.setIdDonhang(25);
-		// chitietdonhangId.setIdSanpham(6);
-		// chitietdonhangId.setSoLuong(2);
+			Query query = session.createSQLQuery("select count(*) as size from donhang")
+					.addScalar("size", new IntegerType());
 
-		// System.out.println(orderDAOImpl.insertOrder(dh));
-		// System.out.println(orderDAOImpl.getInsertedID());
-		// System.out.println(orderDAOImpl.insertOrderDetail(25, 6, 2));
-		// System.out.println(orderDAOImpl.getOrderDetail());
-		// }
-//	}
+			res = (int) query.uniqueResult();
+
+			session.getTransaction().commit();
+			return res;
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		return res;
+	}
+
+	@Override
+	public List<Donhang> getNewOrders() {
+		List<Donhang> orders = new ArrayList<>();
+
+		// Session session = sessionFactory.getCurrentSession();
+		Session session = sessionFactory.openSession();
+
+		try {
+			session.getTransaction().begin();
+			String hql = "from " + Donhang.class.getName() + " order by ngayDh desc";
+			Query query = session.createQuery(hql);
+			query.setMaxResults(5);
+			orders = query.list();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		return orders;
+	}
 }

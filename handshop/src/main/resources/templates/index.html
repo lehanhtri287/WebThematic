@@ -39,19 +39,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	}
 </script>
 <script type="text/javascript">
-	$(function() {
+	$(function(res) {
 		var sizeCart = $("#sizeCart").html();
 		if (sizeCart == "(null)") {
 			$("#sizeCart").html("(0)");
 		}
 	});
 </script>
-<script type="text/javascript">
-	$(function() {
-		var res = $.session.get('size');
-		alert(res+"");
-	});
-</script>
+
 </head>
 <body>
 

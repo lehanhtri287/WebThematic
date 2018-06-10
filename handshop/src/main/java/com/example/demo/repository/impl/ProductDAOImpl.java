@@ -9,14 +9,14 @@ import org.hibernate.SessionFactory;
 import org.hibernate.type.IntegerType;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.entities.Loaihang;
-import com.example.demo.entities.Sanpham;
+import com.example.demo.entities.Category;
+import com.example.demo.entities.Product;
 import com.example.demo.hibernate.HibernateUtil;
 import com.example.demo.repository.ProductDAO;
 
 @SuppressWarnings("deprecation")
 @Repository
-public class ProductDAOImpl implements ProductDAO{
+public class ProductDAOImpl implements ProductDAO {
 	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 	private int pageSize;
 
@@ -25,15 +25,15 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public List<Sanpham> getAllProduct() {
-		List<Sanpham> sanphams = new ArrayList<>();
+	public List<Product> getAllProduct() {
+		List<Product> sanphams = new ArrayList<>();
 
 		// Session session = sessionFactory.getCurrentSession();
 		Session session = sessionFactory.openSession();
 
 		try {
 			session.getTransaction().begin();
-			String hql = "from " + Sanpham.class.getName();
+			String hql = "from " + Product.class.getName() + " where tinh_trang = 0";
 			Query query = session.createQuery(hql);
 			sanphams = query.list();
 			session.getTransaction().commit();
@@ -45,8 +45,8 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public List<Sanpham> getProductPagination(int page) {
-		List<Sanpham> sanphams = new ArrayList<>();
+	public List<Product> getProductPagination(int page) {
+		List<Product> sanphams = new ArrayList<>();
 
 		Session session = sessionFactory.openSession();
 
@@ -61,7 +61,7 @@ public class ProductDAOImpl implements ProductDAO{
 		offset = (page - 1) * pageSize;
 		try {
 			session.getTransaction().begin();
-			String hql = "from " + Sanpham.class.getName() + " where tinh_trang = 0";
+			String hql = "from " + Product.class.getName() + " where tinh_trang = 0";
 			Query query = session.createQuery(hql);
 			query.setFirstResult(offset);
 			query.setMaxResults(pageSize);
@@ -75,15 +75,15 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 
 	@SuppressWarnings("rawtypes")
-	public Sanpham getProduct(int id) {
+	public Product getProduct(int id) {
 		Session session = sessionFactory.openSession();
-		Sanpham result = null;
+		Product result = null;
 		try {
 			session.getTransaction().begin();
-			String hql = "from " + Sanpham.class.getName() + " where ID_SANPHAM = :idSanpham";
+			String hql = "from " + Product.class.getName() + " where ID_SANPHAM = :idSanpham";
 			Query query = session.createQuery(hql);
 			query.setInteger("idSanpham", id);
-			result = (Sanpham) query.uniqueResult();
+			result = (Product) query.uniqueResult();
 
 			session.getTransaction().commit();
 		} catch (Exception e) {
@@ -94,16 +94,16 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 
 	@SuppressWarnings("rawtypes")
-	public boolean insertProduct(Sanpham sanpham) {
+	public boolean insertProduct(Product sanpham) {
 		Session session = sessionFactory.openSession();
 
 		try {
 			session.getTransaction().begin();
 
-			Query query = session.createQuery("from " + Loaihang.class.getName() + " where ID_LOAIHANG = :ID_LOAIHANG");
-			query.setInteger("ID_LOAIHANG", sanpham.getLoaihang().getIdLoaihang());
-			Loaihang cate = (Loaihang) query.uniqueResult();
-			sanpham.setLoaihang(cate);
+			Query query = session.createQuery("from " + Category.class.getName() + " where ID_LOAIHANG = :ID_LOAIHANG");
+			query.setInteger("ID_LOAIHANG", sanpham.getCategory().getIdCategory());
+			Category cate = (Category) query.uniqueResult();
+			sanpham.setCategory(cate);
 
 			session.save(sanpham);
 			session.getTransaction().commit();
@@ -116,24 +116,24 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 
 	@SuppressWarnings("rawtypes")
-	public boolean updateProduct(Sanpham sanpham) {
+	public boolean updateProduct(Product sanpham) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.getTransaction().begin();
-			Sanpham sp = (Sanpham) session.get(Sanpham.class, sanpham.getIdSanpham());
+			Product sp = (Product) session.get(Product.class, sanpham.getIdProduct());
 
-			sp.setTenSanpham(sanpham.getTenSanpham());
-			sp.setGia(sanpham.getGia());
-			sp.setGiamGia(sanpham.getGiamGia());
-			sp.setTinhTrang(sanpham.getTinhTrang());
+			sp.setNameProduct(sanpham.getNameProduct());
+			sp.setPrice(sanpham.getPrice());
+			sp.setSale(sanpham.getSale());
+			sp.setStatus(sanpham.getStatus());
 			sp.setImages(sanpham.getImages());
-			sp.setMoTa(sanpham.getMoTa());
-			sp.setSoLuong(sanpham.getSoLuong());
+			sp.setDescription(sanpham.getDescription());
+			sp.setQuantityProduct(sanpham.getQuantityProduct());
 
-			Query query = session.createQuery("from " + Loaihang.class.getName() + " where ID_LOAIHANG = :ID_LOAIHANG");
-			query.setInteger("ID_LOAIHANG", sanpham.getLoaihang().getIdLoaihang());
-			Loaihang cate = (Loaihang) query.uniqueResult();
-			sp.setLoaihang(cate);
+			Query query = session.createQuery("from " + Category.class.getName() + " where ID_LOAIHANG = :ID_LOAIHANG");
+			query.setInteger("ID_LOAIHANG", sanpham.getCategory().getIdCategory());
+			Category cate = (Category) query.uniqueResult();
+			sp.setCategory(cate);
 
 			session.update(sp);
 			session.getTransaction().commit();
@@ -189,23 +189,67 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public List<Sanpham> getProductByCate(int id) {
-		List<Sanpham> sanphams = new ArrayList<>();
+	public List<Product> getProductByCate(int id) {
+		List<Product> sanphams = new ArrayList<>();
 		Session session = sessionFactory.openSession();
 
 		try {
 			session.getTransaction().begin();
-			String hql = "from " + Sanpham.class.getName() + " where id_loaihang = :idCate";
+			String hql = "from " + Product.class.getName() + " where id_loaihang = :idCate";
 			Query query = session.createQuery(hql);
 			query.setInteger("idCate", id);
-			
+
 			sanphams = query.list();
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 			session.getTransaction().rollback();
 		}
-		
+
+		return sanphams;
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public int size() {
+		Session session = sessionFactory.openSession();
+		int res = 0;
+		try {
+			session.getTransaction().begin();
+
+			Query query = session.createSQLQuery("select count(*) as size from sanpham where tinh_trang = 0")
+					.addScalar("size", new IntegerType());
+
+			res = (int) query.uniqueResult();
+
+			session.getTransaction().commit();
+			return res;
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		return res;
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public List<Product> getNewProducts() {
+		List<Product> sanphams = new ArrayList<>();
+
+		// Session session = sessionFactory.getCurrentSession();
+		Session session = sessionFactory.openSession();
+
+		try {
+			session.getTransaction().begin();
+			String hql = "from " + Product.class.getName() + " where tinh_trang = 0 order by id_sanpham desc";
+			Query query = session.createQuery(hql);
+			query.setMaxResults(5);
+			sanphams = query.list();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
 		return sanphams;
 	}
 

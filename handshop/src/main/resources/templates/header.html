@@ -9,8 +9,8 @@
 				<div class="col-sm-4 header-left">
 
 					<p class="log" th:if="${not (session.user != null)}">
-						<a class="accountLink" th:href="@{/account/login}">Đăng nhập</a> / <a
-							class="accountLink" th:href="@{/account/sign-up}">Đăng ký</a>
+						<a class="accountLink" th:href="@{/account/login}">Đăng nhập</a> /
+						<a class="accountLink" th:href="@{/account/sign-up}">Đăng ký</a>
 					</p>
 					<div class="mepanel mepanelUser" th:if="${not (session.user == null)}">
 						<label class="username" for="menu-user" th:text="${session.user.fullName}"></label>
@@ -24,10 +24,13 @@
 						</div>
 					</div>
 					<div class="cart box_1">
+
 						<a th:href="@{/showCart}"> <img
 							th:src="@{/images/shopping-cart.png}" />
-						</a>
-						<!-- <a href="" id="sizeCart" th:text="${'(' + session.size + ')'}"></a> -->
+						</a> 
+						<a  id="sizeCart"
+							th:href="@{/showCart}" 
+							th:text="${'(' + session.size + ')'}"></a>
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -45,8 +48,8 @@
 							<input type="checkbox" id="menu-toggle">
 							<div class="mepanel">
 								<div class="h_nav" th:each="category : ${listCate}">
-									<a th:href="${'/viewByCate/' + category.idLoaihang}">
-										<h4 th:text="${category.tenLoaihang}"></h4>
+									<a th:href="${'/viewByCate/' + category.idCategory}">
+										<h4 th:text="${category.nameCategory}"></h4>
 									</a>
 								</div>
 							</div>

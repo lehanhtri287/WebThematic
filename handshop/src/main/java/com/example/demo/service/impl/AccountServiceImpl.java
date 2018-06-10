@@ -9,10 +9,10 @@ import com.example.demo.repository.AccountDAO;
 import com.example.demo.service.AccountService;
 
 @Service
-public class AccountServiceImpl implements AccountService{
+public class AccountServiceImpl implements AccountService {
 	@Autowired
 	AccountDAO accountDAO;
-	
+
 	@Override
 	public boolean signUp(Account account) {
 		return accountDAO.signUp(account);
@@ -31,6 +31,10 @@ public class AccountServiceImpl implements AccountService{
 	@Override
 	public boolean updateAccountInfo(Account account) {
 		return accountDAO.updateAccountInfo(account);
+	}
+	
+	public int size() {
+		return accountDAO.size();
 	}
 
 }

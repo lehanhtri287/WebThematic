@@ -25,13 +25,6 @@ public class HomeController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/single/{id}", method = RequestMethod.GET)
-	public String singleProduct(@PathVariable int id, Model model) {
-		model.addAttribute("singleProduct", productService.getProduct(id));
-		model.addAttribute("listCate", categoryService.getAllCategories());
-
-		return "single";
-	}
 
 	@RequestMapping(value = "/viewByCate/{idCate}", method = RequestMethod.GET)
 	public String listProductsByCate(@PathVariable int idCate, Model model) {
@@ -39,7 +32,7 @@ public class HomeController {
 		model.addAttribute("listCate", categoryService.getAllCategories());
 		model.addAttribute("category", categoryService.getCategory(idCate));
 
-		return "productByCategory";
+		return "index";
 	}
 
 }

@@ -19,6 +19,7 @@ import com.example.demo.model.AccountLogin;
 import com.example.demo.model.AccountSignup;
 import com.example.demo.service.AccountService;
 import com.example.demo.service.CategoryService;
+import com.example.demo.service.OrderService;
 import com.example.demo.service.ProductService;
 
 @Controller
@@ -32,6 +33,8 @@ public class AccountController {
 	CategoryService categoryService;
 	@Autowired
 	ProductService productService;
+	@Autowired
+	OrderService orderService;
 
 	@RequestMapping(value = "sign-up", method = RequestMethod.GET)
 	public String signUpPage(Model model) {
@@ -45,7 +48,7 @@ public class AccountController {
 		ModelAndView mav = new ModelAndView();
 		String emailAlreadyExists = null;
 		Account account = null;
-		
+
 		if (!accountSignup.getEmail().contains(" ")) {
 			emailAlreadyExists = accountService.findByEmail(accountSignup.getEmail());
 			account = getAccountFromAccountSignup(accountSignup);
@@ -85,14 +88,19 @@ public class AccountController {
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public ModelAndView loginProcess(@Validated @ModelAttribute("accLogin") AccountLogin accountLogin,
-		BindingResult bindingResult, HttpSession session) {
+			BindingResult bindingResult, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Account account = null;
+
 		
 		if (!accountLogin.getEmail().contains(" ") && accountLogin.getEmail() != "" && accountLogin.getPassword() != "") {
+
+
 			account = accountService.findByEmailAndPassword(accountLogin);
-			if (account == null) bindingResult.rejectValue("email", "accLogin.invalid");
-			if (account != null && account.getConfirmation() == 0) bindingResult.rejectValue("email", "accLogin.notConfirmed");
+			if (account == null)
+				bindingResult.rejectValue("email", "accLogin.invalid");
+			if (account != null && account.getConfirmation() == 0)
+				bindingResult.rejectValue("email", "accLogin.notConfirmed");
 		}
 		if (bindingResult.hasErrors()) {
 			mav.addObject("listCate", categoryService.getAllCategories());
@@ -100,8 +108,16 @@ public class AccountController {
 		} else {
 			mav.addObject("listCate", categoryService.getAllCategories());
 			mav.addObject("listProducts", productService.getAllProduct());
-			session.setAttribute("user", account);
-			mav.setViewName("redirect:/");
+			mav.addObject("loginSuccess", "Login successful");
+
+			if (account.getPosition().equalsIgnoreCase("ADM")) {
+				session.setAttribute("admin", account);
+				mav.setViewName("redirect:/admin/index");
+			} else {
+				session.setAttribute("user", account);
+				mav.setViewName("redirect:/");
+			}
+
 		}
 		return mav;
 	}
@@ -120,5 +136,5 @@ public class AccountController {
 		model.addAttribute("listCate", categoryService.getAllCategories());
 		return "forgotPass";
 	}
-	
+
 }
