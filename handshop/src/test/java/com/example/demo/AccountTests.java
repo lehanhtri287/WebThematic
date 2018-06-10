@@ -45,5 +45,5 @@ public class AccountTests {
 		Account account = accountDAO.findByEmailAndPassword(accountLogin);
 		assertTrue(account != null);
 	}
-
+	
 }

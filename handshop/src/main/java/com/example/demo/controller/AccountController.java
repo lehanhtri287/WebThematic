@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -49,9 +50,7 @@ public class AccountController {
 			emailAlreadyExists = accountService.findByEmail(accountSignup.getEmail());
 			account = getAccountFromAccountSignup(accountSignup);
 			if(emailAlreadyExists != null) bindingResult.rejectValue("email", "accSignup.email.exists");
-		} else {
-			bindingResult.rejectValue("email", "accSignup.email.invalid");
-		}
+		} 
 		if (accountSignup.getPassword() != "" && accountSignup.getConfirmPassword() != ""){
 			if (!accountSignup.getPassword().equals(accountSignup.getConfirmPassword())){
 				bindingResult.rejectValue("password", "accSignup.password.notMatch");
@@ -85,12 +84,11 @@ public class AccountController {
 	}
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public ModelAndView loginProcess(@Validated  AccountLogin accountLogin,
+	public ModelAndView loginProcess(@Validated @ModelAttribute("accLogin") AccountLogin accountLogin,
 		BindingResult bindingResult, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		Account account = null;
 		
-		if (accountLogin.getEmail().contains(" ")) bindingResult.rejectValue("email", "accSignup.email.invalid");
 		if (!accountLogin.getEmail().contains(" ") && accountLogin.getEmail() != "" && accountLogin.getPassword() != "") {
 			account = accountService.findByEmailAndPassword(accountLogin);
 			if (account == null) bindingResult.rejectValue("email", "accLogin.invalid");

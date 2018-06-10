@@ -5,7 +5,6 @@ import javax.validation.constraints.Pattern;
 
 public class AccountLogin {
 	@Pattern(regexp = "^(.+)@(.+\\.+.+)$", message = "{accSignup.email.invalid}")
-	@NotEmpty(message = "{accLogin.empty}")
 	private String email;
 	@NotEmpty(message = "{accLogin.empty}")
 	private String password;
@@ -13,7 +12,7 @@ public class AccountLogin {
 	public AccountLogin() {}
 
 	public AccountLogin(
-			@Pattern(regexp = "^(.+)@(.+\\.+.+)$", message = "{accSignup.email.invalid}") @NotEmpty(message = "{accLogin.empty}") String email,
+			@Pattern(regexp = "^(.+)@(.+\\.+.+)$", message = "{accLogin.email.invalid}") String email,
 			@NotEmpty(message = "{accLogin.empty}") String password) {
 		super();
 		this.email = email;

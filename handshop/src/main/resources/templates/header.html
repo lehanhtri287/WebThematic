@@ -17,8 +17,8 @@
 						<input type="checkbox" id="menu-user">
 						<div class="menuUser">
 							<div class="h_nav">
-								<a th:href="@{/account/logout}"><h4>Cá nhân</h4></a>
-								<a th:href="@{/account/logout}"><h4>Đơn hàng</h4></a>
+								<a th:href="@{/user/info}"><h4>Cá nhân</h4></a>
+								<a th:href="@{/user/order}"><h4>Đơn hàng</h4></a>
 								<a th:href="@{/account/logout}"><h4>Đăng xuất</h4></a>
 							</div>
 						</div>
@@ -66,6 +66,13 @@
 			</div>
 		</div>
 	</div>
-
+	<script type="text/javascript">
+		var menuUser = document.getElementsByClassName('menuUser');
+		window.onclick = function(event) {
+		    if (event.target == menuUser) {
+		    	menuUser.style.maxHeight = "none";
+		    }
+		}	
+	</script>
 </body>
 </html>

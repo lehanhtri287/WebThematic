@@ -28,4 +28,9 @@ public class AccountServiceImpl implements AccountService{
 		return accountDAO.findByEmailAndPassword(account);
 	}
 
+	@Override
+	public boolean updateAccountInfo(Account account) {
+		return accountDAO.updateAccountInfo(account);
+	}
+
 }

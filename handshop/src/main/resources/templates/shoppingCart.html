@@ -118,7 +118,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 
 		<div class="navbar-left" th:if="${user == null}">
-			<h1>Thông tin khách hàng</h1>
+			<h2>Thông tin khách hàng</h2>
 			<form th:action="@{/payment}" id="formPayment"
 				onsubmit="return validatePayment();" method="POST">
 				<table class="customerInfo">
@@ -152,7 +152,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		
 		<div class="navbar-left" th:if="${user != null}">
-			<h1>Thông tin khách hàng</h1>
+			<h2>Thông tin khách hàng</h2>
 			<form th:action="@{/payment}" id="formPayment"
 				onsubmit="return validatePayment();" method="POST">
 				<table class="customerInfo">

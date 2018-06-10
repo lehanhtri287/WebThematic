@@ -94,4 +94,36 @@ public class AccountDAOImpl implements AccountDAO {
 		return account;
 	}
 
+	@Override
+	public boolean updateAccountInfo(Account account) {
+		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		Account accountResult = null;
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		Query<Account> query = session.createQuery("from Account where email = :email", Account.class);
+		query.setParameter("email", account.getEmail());
+		try {
+			Optional<Account> result = query.uniqueResultOptional();
+			if (result.isPresent()) {
+				accountResult = result.get();
+				if (encoder.matches(account.getPassword(), accountResult.getPassword())) {
+					accountResult.setFullName(account.getFullName());
+					accountResult.setPhoneNumber(account.getPhoneNumber());
+					accountResult.setAddress(account.getAddress());
+					session.save(accountResult);
+					session.getTransaction().commit();
+					return true;
+				}
+			}
+		} catch (NoSuchElementException e) {
+			LOGGER.error("- error when call method updateAccountInfo with paramater " + account, e);
+			session.getTransaction().rollback();
+		} finally {
+			session.close();
+		}
+		return false;
+	}
+
 }

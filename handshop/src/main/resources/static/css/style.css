@@ -869,7 +869,6 @@ a.cart:hover{
 	padding:0.5em;
 	border-bottom:1px solid #fa7455	;
 }
-
 .available h6{
 	color:#52D0C4;
 	font-size:1.4em;
@@ -1558,6 +1557,9 @@ h1.typo1 {
 	.account .register{
 		width: 60%;
 	}
+	.userInf{
+		width: 50%;
+	}
 }
 @media(max-width:320px){
 	.logo {
@@ -1983,10 +1985,11 @@ td.input{
     font-weight: 400;
     display: inline-block;
 }
-.navbar-left h2{
+.navbar-left h2, .userInfo h2{
 	color: crimson;
     font-family: unset;
     text-align: center;
+    font-weight: 400;
 }
 .tHead{
 	background-color: #00e6e6;
@@ -2001,4 +2004,73 @@ td.input{
 .message{
 	color: red;
 	font-weight: normal;
+}
+.userInfo{
+	width: 70%;
+    background-color: papayawhip;
+    margin: 1.5% 15%;
+    padding-bottom: 0;
+}
+.tUserInfo{
+	width: 100%;
+    font-size: 19px;
+}
+.userNotLogin{
+	height: 485px;
+}
+.menuSettings{
+	margin-top: 5%;
+    float: left;
+}
+.settingLink{
+	font-size: 19px;
+    color: black;
+}
+.settingLink:hover{
+	color: #0BB8E3;
+	text-decoration: underline;
+}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.infoEdit{
+	padding: 5%;
+	padding-bottom: 0;
+}
+.infoEditSub{
+	margin: 0% 44%;
 }
