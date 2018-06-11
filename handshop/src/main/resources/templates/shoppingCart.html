@@ -102,7 +102,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<h3 class="amount amRight">đ</h3>
 		</div>
 
-		<div class="navbar-left">
+		<div class="navbar-left" th:if="${user == null}">
 			<h1>Thông tin khách hàng</h1>
 			<form th:action="@{/payment}" 
 				  id="formPayment"

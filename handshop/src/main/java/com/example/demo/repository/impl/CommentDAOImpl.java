@@ -8,9 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.entities.Account;
 import com.example.demo.entities.Comment;
-import com.example.demo.entities.Product;
 import com.example.demo.hibernate.HibernateUtil;
 import com.example.demo.repository.CommentDAO;
 
@@ -60,15 +58,15 @@ public class CommentDAOImpl implements CommentDAO {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	public static void main(String[] args) {
-		CommentDAOImpl commentDAOImpl = new CommentDAOImpl();
-		Product product = new Product();
-		product.setIdProduct(2);
-		Account account = new Account();
-		account.setId(12);
-		
-		Comment cmt = new Comment(product, account, "Hello xin chao");
-//		System.out.println(commentDAOImpl.getComments(2));
-		System.out.println(commentDAOImpl.insertComment(cmt));
-	}
+//	public static void main(String[] args) {
+//		CommentDAOImpl commentDAOImpl = new CommentDAOImpl();
+//		Product product = new Product();
+//		product.setIdProduct(2);
+//		Account account = new Account();
+//		account.setId(12);
+//		
+//		Comment cmt = new Comment(product, account, "Hello xin chao");
+////		System.out.println(commentDAOImpl.getComments(2));
+//		System.out.println(commentDAOImpl.insertComment(cmt));
+//	}
 }

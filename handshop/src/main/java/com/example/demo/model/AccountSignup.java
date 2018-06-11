@@ -5,26 +5,26 @@ import javax.validation.constraints.Pattern;
 
 public class AccountSignup {
 	
-	@Pattern(regexp = "^(.+)@(.+\\.+.+)$", message = "{accSignup.email.invalid}")
+	@Pattern(regexp = "^(.+)@(.+\\.+.+)$", message = "{field.email.invalid}")
 	private String email;
-	@NotEmpty(message = "{accSignup.empty}")
+	@NotEmpty(message = "{field.empty}")
 	private String password;
-	@NotEmpty(message = "{accSignup.empty}")
+	@NotEmpty(message = "{field.empty}")
 	private String confirmPassword;
-	@NotEmpty(message = "{accSignup.empty}")
+	@NotEmpty(message = "{field.empty}")
 	private String fullName;
 	private String address;
-	@Pattern(regexp = "(\\d{10,11})", message = "{accSignup.phone.invalid}")
+	@Pattern(regexp = "(\\d{10,11})", message = "{field.phone.invalid}")
 	private String phoneNumber;
 	
 	public AccountSignup() {}
 	
 	public AccountSignup(
-			@Pattern(regexp = "^(.+)@(.+\\.+.+)$", message = "{accSignup.email.invalid}") String email,
-			@NotEmpty(message = "{accSignup.empty}") String password,
-			@NotEmpty(message = "{accSignup.empty}") String confirmPassword,
-			@NotEmpty(message = "{accSignup.empty}") String fullName, String address,
-			@Pattern(regexp = "(\\d{10,11})", message = "{accSignup.phone.invalid}") String phoneNumber) {
+			@Pattern(regexp = "^(.+)@(.+\\.+.+)$", message = "{field.email.invalid}") String email,
+			@NotEmpty(message = "{field.empty}") String password,
+			@NotEmpty(message = "{field.empty}") String confirmPassword,
+			@NotEmpty(message = "{field.empty}") String fullName, String address,
+			@Pattern(regexp = "(\\d{10,11})", message = "{field.phone.invalid}") String phoneNumber) {
 		super();
 		this.email = email;
 		this.password = password;

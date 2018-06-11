@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.entities.Account;
 import com.example.demo.hibernate.HibernateUtil;
 import com.example.demo.model.AccountLogin;
+import com.example.demo.model.AccountPassUpdating;
 import com.example.demo.repository.AccountDAO;
 
 @Repository
@@ -69,7 +70,7 @@ public class AccountDAOImpl implements AccountDAO {
 
 	@Override
 	public Account findByEmailAndPassword(AccountLogin accountLogin) {
-		Account account = null;
+		Account accountResult = null;
 
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Session session = sessionFactory.openSession();
@@ -81,19 +82,19 @@ public class AccountDAOImpl implements AccountDAO {
 		query.setParameter("email", accountLogin.getEmail());
 		try {
 			Optional<Account> result = query.uniqueResultOptional();
-			account = (Account) result.get();
+			accountResult = (Account) result.get();
 
 			if (result.isPresent()) {
-				if (!encoder.matches(accountLogin.getPassword(), account.getPassword())) {
-					account = null;
+				if (!encoder.matches(accountLogin.getPassword(), accountResult.getPassword())) {
+					accountResult = null;
 				}
 			}
 		} catch (NoSuchElementException e) {
-			LOGGER.error("- error when call method findByEmailAndPassword with paramater " + account, e);
+			LOGGER.error("- error when call method findByEmailAndPassword with paramater " + accountResult, e);
 		} finally {
 			session.close();
 		}
-		return account;
+		return accountResult;
 	}
 
 	@Override
@@ -126,7 +127,39 @@ public class AccountDAOImpl implements AccountDAO {
 			session.close();
 		}
 		return false;
-}
+	}
+
+	@Override
+	public Account updateAccountPassWord(AccountPassUpdating accountPassUpdating) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		Account accountResult = null;
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		Query<Account> query = session.createQuery("from Account where email = :email", Account.class);
+		query.setParameter("email", accountPassUpdating.getEmail());
+		try {
+			Optional<Account> result = query.uniqueResultOptional();
+			if (result.isPresent()) {
+				accountResult = result.get();
+				if (encoder.matches(accountPassUpdating.getPassword(), accountResult.getPassword())) {
+					accountResult.setPassword(encoder.encode(accountPassUpdating.getNewPassword()));
+					session.save(accountResult);
+					session.getTransaction().commit();
+					return accountResult;
+				} else {
+					accountResult = null;
+				}
+			}
+		} catch (NoSuchElementException e) {
+			LOGGER.error("- error when call method updateAccountInfo with paramater " + accountPassUpdating, e);
+			session.getTransaction().rollback();
+		} finally {
+			session.close();
+		}
+		return accountResult;
+	}
+
 	@SuppressWarnings({ "deprecation", "rawtypes" })
 	@Override
 	public int size() {

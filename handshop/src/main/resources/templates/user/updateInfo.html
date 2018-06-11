@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<title>Thông tin cá nhân</title>
+<title>Cập nhật thông tin</title>
 <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all" />
 <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -20,7 +20,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="account" th:classappend="${session.user == null} ? 'userNotLogin' : ''">
 		<div class="menuSettings" th:if="${session.user != null}">
 			<ul>
-				<li><a class="settingLink" th:href="@{/user/info}">Đổi mật khẩu</a></li>
+				<li><a class="settingLink" th:href="@{/user/info/password}">Đổi mật khẩu</a></li>
 				<li><a class="settingLink" th:href="@{/user/info}">Lịch sử đơn hàng</a></li>
 			</ul>
 		</div>
@@ -28,30 +28,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<h3 class="message" th:if="${message!=null}" th:text="${message}"></h3>
 			<div class="userInfo" th:if="${session.user != null}">
 				<h2>Thông tin cá nhân</h2>
-				<form th:if="${session.user != null}" th:action="@{/user/info}" th:object="${accInfoUpdating}" method="POST">
+				<form th:if="${session.user != null}" th:action="@{/user/info}" th:object="${account}" method="POST">
 					<table class="tUserInfo">
 						<tr hidden="hidden">
 							<td>
-								<span class="myLabel">Họ Tên </span><label style="color: red;" id="errorName"></label>
+								<span class="myLabel">Email</span><label style="color: red;" id="errorName"></label>
 								<input type="text" class="customer-payment" name="email" th:value="${session.user.email}" id="formName">
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<span class="myLabel">Họ Tên </span><label style="color: red;" id="errorName"></label>
+								<span class="myLabel">Họ Tên</span>
 								<input type="text" class="customer-payment" name="fullName" th:value="${session.user.fullName}" id="formName">
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<span class="myLabel">Số điện thoại </span>
+								<span class="myLabel">Số điện thoại</span>
 								<label class="message" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></label>
 								<input type="tel" class="customer-payment" name="phoneNumber" th:value="${session.user.phoneNumber}" id="formPhone">
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<span class="myLabel">Địa chỉ </span> <label style="color: red;" id="errorAddress"></label>
+								<span class="myLabel">Địa chỉ</span> <label style="color: red;" id="errorAddress"></label>
 								<textarea class="customer-payment" rows="4" cols="30" name="address" th:text="${session.user.address}" id="formAddress"></textarea>
 							</td>
 						</tr>

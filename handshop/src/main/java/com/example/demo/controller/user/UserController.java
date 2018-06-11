@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entities.Account;
+import com.example.demo.model.AccountPassUpdating;
 import com.example.demo.service.AccountService;
 import com.example.demo.service.CategoryService;
 
@@ -27,34 +28,76 @@ public class UserController {
 	AccountService accountService;
 	
 	@RequestMapping(value = "info", method = RequestMethod.GET)
-	public String infoPage(HttpSession session, @ModelAttribute("message") String message, Model model){
+	public String updateInfoPage(HttpSession session, @ModelAttribute("message") String message, Model model){
 		if (session.getAttribute("user") != null) {
 			model.addAttribute("message", message);
-			model.addAttribute("accInfoUpdating", new Account());
+			model.addAttribute("account", new Account());
 			model.addAttribute("listCate", categoryService.getAllCategories());
-			return "user/userInfo";
+			return "user/updateInfo";
 		} else {
 			model.addAttribute("message", "Bạn chưa đăng nhập");
-			return "user/userInfo";
+			return "user/updateInfo";
 		}
 	}
 	
 	@RequestMapping(value = "info", method = RequestMethod.POST)
-	public ModelAndView loginProcess(@Validated @ModelAttribute("accInfoUpdating") Account account,
+	public ModelAndView updateInfoProcess(@Validated Account account,
 			BindingResult bindingResult, HttpSession session, RedirectAttributes redirectAttributes) {
 			ModelAndView mav = new ModelAndView();
 		if (session.getAttribute("user") != null) {
-			if (accountService.updateAccountInfo(account)){
-				redirectAttributes.addFlashAttribute("message", "Cập nhật thành công");
-				session.setAttribute("user", account);
-				mav.setViewName("redirect:/user/info");
+			if (!account.getPassword().equals("")) {
+				if (accountService.updateAccountInfo(account)){
+					redirectAttributes.addFlashAttribute("message", "Cập nhật thành công");
+					session.setAttribute("user", account);
+					mav.setViewName("redirect:/user/info");
+				} else {
+					bindingResult.rejectValue("password", "field.password.wrong");
+				}
 			} else {
-				bindingResult.rejectValue("password", "accUpdateInfo.password.wrong");
+				bindingResult.rejectValue("password", "field.empty");
 			}
-			if(bindingResult.hasErrors()) mav.setViewName("user/userInfo");
+			if(bindingResult.hasErrors()) mav.setViewName("user/updateInfo");
 		} else {
 			mav.addObject("message", "Bạn chưa đăng nhập");
-			mav.setViewName("user/userInfo");
+			mav.setViewName("user/updateInfo");
+		}
+		return mav;
+	}
+	
+	@RequestMapping(value = "info/password", method = RequestMethod.GET)
+	public String updatePasswordPage(HttpSession session, @ModelAttribute("message") String message, Model model){
+		if (session.getAttribute("user") != null) {
+			model.addAttribute("message", message);
+			model.addAttribute("accountPassUpdating", new AccountPassUpdating());
+			model.addAttribute("listCate", categoryService.getAllCategories());
+			return "user/updatePassword";
+		} else {
+			model.addAttribute("message", "Bạn chưa đăng nhập");
+			return "user/updatePassword";
+		}
+	}
+	
+	@RequestMapping(value = "info/password", method = RequestMethod.POST)
+	public ModelAndView updatePasswordProcess(@Validated AccountPassUpdating accountPassUpdating,
+			BindingResult bindingResult, HttpSession session, RedirectAttributes redirectAttributes) {
+			ModelAndView mav = new ModelAndView();
+		if (session.getAttribute("user") != null) {
+			if (accountPassUpdating.getNewPassword().equals(accountPassUpdating.getConfirmNewPassword())){
+				Account account = accountService.updateAccountPassWord(accountPassUpdating);
+				if (account != null){
+					redirectAttributes.addFlashAttribute("message", "Cập nhật thành công");
+					session.setAttribute("user", account);
+					mav.setViewName("redirect:/user/info/password");
+				} else {
+					bindingResult.rejectValue("password", "field.password.wrong");
+				}
+			} else {
+				bindingResult.rejectValue("newPassword", "field.password.notMatch");
+			}
+			if(bindingResult.hasErrors()) mav.setViewName("user/updatePassword");
+		} else {
+			mav.addObject("message", "Bạn chưa đăng nhập");
+			mav.setViewName("user/updatePassword");
 		}
 		return mav;
 	}

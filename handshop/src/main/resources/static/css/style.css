@@ -552,6 +552,7 @@ p.footer-class a:hover{
     margin: 1.5%;
     border: none;
     border-bottom: 2px solid plum;
+    font-size: 19px;
 }
 .accountLink:hover{
 	color: darkblue;
@@ -1874,7 +1875,8 @@ h1.typo1 {
 }
 .paymentSubmit{
 	margin: 0% 38%;
-    margin-bottom: 4%;
+    margin-bottom: 1%;
+    margin-top: 2%;
 }
 .fh5co-post-entry{
 	margin: 0px;
