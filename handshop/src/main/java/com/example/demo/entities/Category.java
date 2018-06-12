@@ -66,4 +66,9 @@ public class Category implements java.io.Serializable {
 		this.isDelete = isDelete;
 	}
 
+	@Override
+	public String toString() {
+		return "Category [idCategory=" + idCategory + ", nameCategory=" + nameCategory + ", isDelete=" + isDelete + "]";
+	}
+	
 }

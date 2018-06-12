@@ -10,7 +10,7 @@
 <meta name="author" content="">
 <meta name="theme-color" content="#3e454c">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Thêm sản phẩm</title>
+<title>Chỉnh sửa sản phẩm</title>
 <!-- InstanceEndEditable -->
 <!-- Font awesome -->
 <link rel="stylesheet" href="/admin/css/font-awesome.min.css">
@@ -23,7 +23,7 @@
 <script src="/admin/js/main.js"></script>
 <script src="/admin/js/index.js"></script>
 <script src="/js/jquery-3.3.1.min.js"></script>
-<script src="/admin/js/validateFormProduct.js"></script>
+<script src="/admin/js/validateEditProduct.js"></script>
 </head>
 
 <body>
@@ -61,65 +61,36 @@
 			<div class="container-fluid">
 				<div class="add-product">
 					<div class="col-md-12">
-						<form th:action="@{/admin/insertProduct}"
+						<form th:action="@{/admin/editProduct}"
 							  enctype="multipart/form-data"  
 				  			  id="formProduct"
 							  method="POST">
 							<div class="title-product">
-								<h1 class="text-center">Thêm Sản Phẩm</h1>
+								<h1 class="text-center">Chỉnh sửa sản Phẩm</h1>
 							</div>
 							<div class="row">
 								<div class="main col-md-8">
+									<input 
+										type="number" 
+										th:value="${(singleProduct!=null) ? singleProduct.idProduct : ''}" 
+										hidden="true"
+										name="idProduct"/>
 									<input
 										id="formNameProduct"
 										name="nameProduct"
+										th:value="${(singleProduct!=null) ? singleProduct.nameProduct : ''}"
 										type="text" class="pid" 
 										placeholder="Nhập tên sản phẩm...">
 									<br>
-									<label style="color: red;" id="errorNameProduct"></label>
-									<br> 
-									<select name="idcategory" id="category" >
-										<option th:each="category : ${listCategories}" 
-												th:text="${category.nameCategory}" 
-												th:value="${category.idCategory}"></option>
-									</select> 
-									<input type="number" 
-										   id="formPrice"
-									   	   class="price" 
-									   	   name="price"
-									   	   placeholder="Nhập đơn giá...">
-									<br> 
-									<label style="color: red;" id="errorPrice"></label>
-									<br>									
-									<input type="number" class="quanity"
-										   name="quantityProduct"
-										   id="formQuantity"
-										   placeholder="Nhập số lượng..."> 
-									<br>
-									<label style="color: red;" id="errorQuantity"></label>
-									<br>									
-									<textarea placeholder="Nhập thông tin sản phẩm..." 
-											  name="description"
-											  id="formDescription"></textarea>
-									<br>
-									<label style="color: red;" id="errorDescription"></label>
+									<label style="color: red;" id="errorNameCategory"></label>
 								</div>
-								<div class="image-product col-md-4">
-									<img id="pimg" src="#" alt="Image"> 
-									<input 
-										type="file"
-										name="imageFile" 
-										onchange="readURL(this);" class="chooseimg"
-										value="Chọn Hình" id="formImage">
-									<br>
-									<label style="color: red;" id="errorImage"></label>
-								</div>
+
 							</div>
 							<div class="clearfix"></div>
 							<div class="row">
 								<div class="col-md-12">
 									<button class="btn btn-primary" type="submit">
-										<i class="fa fa-save"> Thêm </i>
+										<i class="fa fa-save" th:text="${type}"></i>
 									</button>
 								</div>
 							</div>

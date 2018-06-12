@@ -5,12 +5,10 @@ import java.util.List;
 import com.example.demo.entities.Product;
 
 public interface ProductDAO {
-
-	public void setPageSize(int pageSize);
 	
 	public List<Product> getAllProduct();
 
-	public List<Product> getProductPagination(int page);
+	public List<Product> getProductsPagination(int page, int pageSize);
 
 	public Product getProduct(int id);
 
@@ -20,7 +18,7 @@ public interface ProductDAO {
 
 	public boolean deleteProduct(int idSanpham);
 	
-	public int getNumpPages();
+	public int getNumpPages(int pageSize);
 	
 	public int size();
 	

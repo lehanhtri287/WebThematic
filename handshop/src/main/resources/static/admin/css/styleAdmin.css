@@ -866,9 +866,7 @@ ul, li {
 	height:200px;
 }
 #view .product .detail-product p{
-	text-align:left;
-	margin-left: 230px;
+	text-align:center;
 }
 #view .product .detail-product a{
-	margin-left: 270px;
 }

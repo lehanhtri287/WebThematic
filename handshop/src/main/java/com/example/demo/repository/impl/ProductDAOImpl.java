@@ -14,17 +14,11 @@ import com.example.demo.entities.Product;
 import com.example.demo.hibernate.HibernateUtil;
 import com.example.demo.repository.ProductDAO;
 
-@SuppressWarnings("deprecation")
+@SuppressWarnings({ "rawtypes", "unchecked", "deprecation"})
 @Repository
 public class ProductDAOImpl implements ProductDAO {
 	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-	private int pageSize;
 
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
-	}
-
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public List<Product> getAllProduct() {
 		List<Product> sanphams = new ArrayList<>();
 
@@ -44,16 +38,15 @@ public class ProductDAOImpl implements ProductDAO {
 		return sanphams;
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public List<Product> getProductPagination(int page) {
+	public List<Product> getProductsPagination(int page, int pageSize) {
 		List<Product> sanphams = new ArrayList<>();
 
 		Session session = sessionFactory.openSession();
 
 		int offset = 0;
 
-		if (page > getNumpPages()) {
-			page = getNumpPages();
+		if (page > getNumpPages(pageSize)) {
+			page = getNumpPages(pageSize);
 		}
 		if (page <= 0) {
 			page = 1;
@@ -61,7 +54,7 @@ public class ProductDAOImpl implements ProductDAO {
 		offset = (page - 1) * pageSize;
 		try {
 			session.getTransaction().begin();
-			String hql = "from " + Product.class.getName() + " where tinh_trang = 0";
+			String hql = "from " + Product.class.getName() + " where tinh_trang = 0 order by id_sanpham desc";
 			Query query = session.createQuery(hql);
 			query.setFirstResult(offset);
 			query.setMaxResults(pageSize);
@@ -74,7 +67,6 @@ public class ProductDAOImpl implements ProductDAO {
 		return sanphams;
 	}
 
-	@SuppressWarnings("rawtypes")
 	public Product getProduct(int id) {
 		Session session = sessionFactory.openSession();
 		Product result = null;
@@ -93,7 +85,6 @@ public class ProductDAOImpl implements ProductDAO {
 		return result;
 	}
 
-	@SuppressWarnings("rawtypes")
 	public boolean insertProduct(Product sanpham) {
 		Session session = sessionFactory.openSession();
 
@@ -115,7 +106,6 @@ public class ProductDAOImpl implements ProductDAO {
 		return false;
 	}
 
-	@SuppressWarnings("rawtypes")
 	public boolean updateProduct(Product sanpham) {
 		Session session = sessionFactory.openSession();
 		try {
@@ -126,7 +116,6 @@ public class ProductDAOImpl implements ProductDAO {
 			sp.setPrice(sanpham.getPrice());
 			sp.setSale(sanpham.getSale());
 			sp.setStatus(sanpham.getStatus());
-			sp.setImages(sanpham.getImages());
 			sp.setDescription(sanpham.getDescription());
 			sp.setQuantityProduct(sanpham.getQuantityProduct());
 
@@ -145,7 +134,6 @@ public class ProductDAOImpl implements ProductDAO {
 		return false;
 	}
 
-	@SuppressWarnings("rawtypes")
 	public boolean deleteProduct(int idSanpham) {
 		Session session = sessionFactory.openSession();
 		try {
@@ -164,8 +152,7 @@ public class ProductDAOImpl implements ProductDAO {
 		return false;
 	}
 
-	@SuppressWarnings("rawtypes")
-	public int getNumpPages() {
+	public int getNumpPages(int pageSize) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.getTransaction().begin();
@@ -188,7 +175,6 @@ public class ProductDAOImpl implements ProductDAO {
 		return 0;
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public List<Product> getProductByCate(int id) {
 		List<Product> sanphams = new ArrayList<>();
 		Session session = sessionFactory.openSession();
@@ -209,7 +195,6 @@ public class ProductDAOImpl implements ProductDAO {
 		return sanphams;
 	}
 
-	@SuppressWarnings("rawtypes")
 	@Override
 	public int size() {
 		Session session = sessionFactory.openSession();
@@ -231,7 +216,6 @@ public class ProductDAOImpl implements ProductDAO {
 		return res;
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public List<Product> getNewProducts() {
 		List<Product> sanphams = new ArrayList<>();

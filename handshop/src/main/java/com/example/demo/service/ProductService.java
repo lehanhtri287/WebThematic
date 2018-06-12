@@ -20,4 +20,8 @@ public interface ProductService {
 	public int size();
 
 	public List<Product> getNewProducts();
+	
+	public List<Product> getProductsPagination(int page, int pageSize);
+	
+	public int getNumPages(int pageSize);
 }

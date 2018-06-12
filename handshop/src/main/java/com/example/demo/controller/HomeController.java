@@ -25,10 +25,9 @@ public class HomeController {
 		return "index";
 	}
 
-
 	@RequestMapping(value = "/viewByCate/{idCate}", method = RequestMethod.GET)
 	public String listProductsByCate(@PathVariable int idCate, Model model) {
-		model.addAttribute("listProductsByCate", productService.getProductByCate(idCate));
+		model.addAttribute("listProducts", productService.getProductByCate(idCate));
 		model.addAttribute("listCate", categoryService.getAllCategories());
 		model.addAttribute("category", categoryService.getCategory(idCate));
 

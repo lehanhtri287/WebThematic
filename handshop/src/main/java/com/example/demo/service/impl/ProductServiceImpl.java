@@ -54,4 +54,14 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.getNewProducts();
 	}
 
+	@Override
+	public List<Product> getProductsPagination(int page, int pageSize) {
+		return productDAO.getProductsPagination(page, pageSize);
+	}
+
+	@Override
+	public int getNumPages(int pageSize) {
+		return productDAO.getNumpPages(pageSize);
+	}
+
 }

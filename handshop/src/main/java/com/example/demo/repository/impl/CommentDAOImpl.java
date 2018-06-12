@@ -60,15 +60,5 @@ public class CommentDAOImpl implements CommentDAO {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	public static void main(String[] args) {
-		CommentDAOImpl commentDAOImpl = new CommentDAOImpl();
-		Product product = new Product();
-		product.setIdProduct(2);
-		Account account = new Account();
-		account.setId(12);
-		
-		Comment cmt = new Comment(product, account, "Hello xin chao");
-//		System.out.println(commentDAOImpl.getComments(2));
-		System.out.println(commentDAOImpl.insertComment(cmt));
-	}
+
 }
