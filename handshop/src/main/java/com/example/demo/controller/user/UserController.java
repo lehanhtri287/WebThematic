@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,6 +18,7 @@ import com.example.demo.entities.Account;
 import com.example.demo.model.AccountPassUpdating;
 import com.example.demo.service.AccountService;
 import com.example.demo.service.CategoryService;
+import com.example.demo.service.OrderService;
 
 @Controller
 @RequestMapping("/user/")
@@ -26,13 +28,15 @@ public class UserController {
 	CategoryService categoryService;
 	@Autowired
 	AccountService accountService;
+	@Autowired
+	OrderService orderService;
 	
 	@RequestMapping(value = "info", method = RequestMethod.GET)
 	public String updateInfoPage(HttpSession session, @ModelAttribute("message") String message, Model model){
+		model.addAttribute("listCate", categoryService.getAllCategories());
 		if (session.getAttribute("user") != null) {
 			model.addAttribute("message", message);
 			model.addAttribute("account", new Account());
-			model.addAttribute("listCate", categoryService.getAllCategories());
 			return "user/updateInfo";
 		} else {
 			model.addAttribute("message", "Bạn chưa đăng nhập");
@@ -66,10 +70,10 @@ public class UserController {
 	
 	@RequestMapping(value = "info/password", method = RequestMethod.GET)
 	public String updatePasswordPage(HttpSession session, @ModelAttribute("message") String message, Model model){
+		model.addAttribute("listCate", categoryService.getAllCategories());
 		if (session.getAttribute("user") != null) {
 			model.addAttribute("message", message);
 			model.addAttribute("accountPassUpdating", new AccountPassUpdating());
-			model.addAttribute("listCate", categoryService.getAllCategories());
 			return "user/updatePassword";
 		} else {
 			model.addAttribute("message", "Bạn chưa đăng nhập");
@@ -100,5 +104,49 @@ public class UserController {
 			mav.setViewName("user/updatePassword");
 		}
 		return mav;
+	}
+	
+	@RequestMapping(value = "info/orders", method = RequestMethod.GET)
+	public String orderHistoryPage(HttpSession session, @ModelAttribute("message") String message, Model model){
+		model.addAttribute("listCate", categoryService.getAllCategories());
+		model.addAttribute("message", message);
+		if (session.getAttribute("user") != null) {
+			Account user = (Account) session.getAttribute("user");
+			model.addAttribute("orderList", orderService.getOrdersByEmail(user.getEmail()));
+			return "user/orderHistory";
+		} else {
+			model.addAttribute("message", "Bạn chưa đăng nhập");
+			return "user/orderHistory";
+		}
+	}
+	
+	@RequestMapping(value = "info/orders/detail/{id}", method = RequestMethod.GET)
+	public String orderDetail(HttpSession session, @PathVariable Integer id, @ModelAttribute("message") String message, Model model){
+		model.addAttribute("listCate", categoryService.getAllCategories());
+		if (session.getAttribute("user") != null) {
+			model.addAttribute("message", message);
+			model.addAttribute("orderDetail", orderService.getOrderDetailById(id));
+			model.addAttribute("order", orderService.getOrderById(id));
+			return "user/orderDetail";
+		} else {
+			model.addAttribute("message", "Bạn chưa đăng nhập");
+			return "user/orderDetail";
+		}
+	}
+	
+	@RequestMapping(value = "info/orders/cancel/{id}", method = RequestMethod.GET)
+	public String cancelOrder(HttpSession session, @PathVariable Integer id, @ModelAttribute("message") String message,
+			Model model, RedirectAttributes redirectAttributes){
+		model.addAttribute("listCate", categoryService.getAllCategories());
+		if (session.getAttribute("user") != null) {
+			if (orderService.cancelOrderById(id)){
+				redirectAttributes.addFlashAttribute("message", "Hủy đơn hàng thành công");
+			} else {
+				redirectAttributes.addFlashAttribute("message", "Chỉ hủy đơn hàng đang xác nhận");
+			}
+			return "redirect:/user/info/orders";
+		} else {
+			return "redirect:/user/info/orders";
+		}
 	}
 }

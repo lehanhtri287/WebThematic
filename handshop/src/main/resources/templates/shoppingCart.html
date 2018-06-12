@@ -84,7 +84,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 				</td>
 				<td id="cost"
-					th:text="${#numbers.formatInteger(productCart.product.price * productCart.quantityCart, 3, 'COMMA')} + ' VNĐ' ">
+					th:text="${#numbers.formatInteger(productCart.product.price * productCart.quantityCart, 3, 'COMMA')} + ' Đ' ">
 				</td>
 				<td><a
 					th:href="${'/deletecart/' + productCart.product.idProduct}"
@@ -98,7 +98,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<h3 class="amount">Tổng tiền: </h3>
 			<h3 class="amount amRight"
 				id="totalAmount"
-				th:text="${#numbers.formatInteger(totalAmount, 3, 'COMMA')}"></h3>
+				th:text="${#numbers.formatInteger(totalAmount, 3, 'COMMA')} + ' Đ'"></h3>
 			<h3 class="amount amRight">đ</h3>
 		</div>
 

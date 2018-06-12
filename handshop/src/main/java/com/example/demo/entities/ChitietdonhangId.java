@@ -80,4 +80,9 @@ public class ChitietdonhangId implements java.io.Serializable {
 		return result;
 	}
 
+	@Override
+	public String toString() {
+		return "ChitietdonhangId [idDonhang=" + idDonhang + ", idSanpham=" + idSanpham + ", soLuong=" + soLuong + "]";
+	}
+	
 }
