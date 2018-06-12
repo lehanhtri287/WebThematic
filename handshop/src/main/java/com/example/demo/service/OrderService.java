@@ -29,4 +29,10 @@ public interface OrderService {
 	public Donhang getOrderById(Integer orderId);
 	
 	public boolean cancelOrderById(Integer orderId);
+
+	public int getNumPages(int pageSize);
+
+	public List<Donhang> getOrdersPagination(int page, int pageSize);
+
+	public boolean updateStatusOrder(int idDonhang, int status);
 }

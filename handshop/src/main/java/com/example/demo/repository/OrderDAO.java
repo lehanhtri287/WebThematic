@@ -21,12 +21,18 @@ public interface OrderDAO {
 	public int size();
 
 	public List<Donhang> getNewOrders();
-	
+
 	public List<Donhang> getOrdersByEmail(String email);
-	
+
 	public List<Chitietdonhang> getOrderDetailById(Integer orderId);
-	
+
 	public Donhang getOrderById(Integer orderId);
-	
+
 	public boolean cancelOrderById(Integer orderId);
+
+	public List<Donhang> getOrdersPagination(int page, int pageSize);
+	
+	public int getNumPages(int pageSize);
+
+	public boolean updateStatusOrder(int idDonhang, int status);
 }

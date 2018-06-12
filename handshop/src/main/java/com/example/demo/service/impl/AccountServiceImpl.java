@@ -1,5 +1,7 @@
 package com.example.demo.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +43,16 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public Account updateAccountPassWord(AccountPassUpdating accountPassUpdating) {
 		return accountDAO.updateAccountPassWord(accountPassUpdating);
+	}
+
+	@Override
+	public int getNumPages(int pageSize) {
+		return accountDAO.getNumPages(pageSize);
+	}
+
+	@Override
+	public List<Account> getCustomersPagination(int page, int pageSize) {
+		return accountDAO.getCustomersPagination(page, pageSize);
 	}
 
 }

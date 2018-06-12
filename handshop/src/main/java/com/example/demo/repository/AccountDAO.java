@@ -1,5 +1,7 @@
 package com.example.demo.repository;
 
+import java.util.List;
+
 import com.example.demo.entities.Account;
 import com.example.demo.model.AccountLogin;
 import com.example.demo.model.AccountPassUpdating;
@@ -17,5 +19,9 @@ public interface AccountDAO {
 	public Account updateAccountPassWord(AccountPassUpdating accountPassUpdating);
 
 	public int size();
+
+	public int getNumPages(int pageSize);
+
+	public List<Account> getCustomersPagination(int page, int pageSize);
 
 }

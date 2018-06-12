@@ -59,6 +59,7 @@ public class CategoryDAOImpl implements CategoryDAO{
 
 		try {
 			session.getTransaction().begin();
+			loaihang.setIsDelete(0);
 			session.save(loaihang);
 			session.getTransaction().commit();
 			return true;

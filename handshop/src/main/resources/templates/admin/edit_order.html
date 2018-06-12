@@ -10,7 +10,7 @@
 <meta name="author" content="">
 <meta name="theme-color" content="#3e454c">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Thêm danh mục</title>
+<title>Cập nhật đơn hàng</title>
 <!-- InstanceEndEditable -->
 <!-- Font awesome -->
 <link rel="stylesheet" href="/admin/css/font-awesome.min.css">
@@ -23,7 +23,6 @@
 <script src="/admin/js/main.js"></script>
 <script src="/admin/js/index.js"></script>
 <script src="/js/jquery-3.3.1.min.js"></script>
-<script src="/js/validateAddCate.js"></script>
 </head>
 
 <body>
@@ -46,14 +45,14 @@
 				<li class="ts-label">Danh Mục</li>
 			</ul>
 			<ul class="ts-sidebar-menu">
-				<li class="open"><a href="/admin/index"><i
-						class="fa fa-dashboard"></i>Thống kê</a></li>
-				<li><a href="/admin/manageProduct"><i class="fa fa-database"></i>Sản
-						phẩm</a></li>
-				<li><a href="/admin/manageOrder"><i class="fa fa-pencil-square-o"></i>Đơn
-						hàng</a></li>
+				<li><a href="/admin/index"><i class="fa fa-dashboard"></i>Thống
+						Kê</a></li>
+				<li><a href="/admin/manageProduct"><i
+						class="fa fa-database"></i>Sản Phẩm</a></li>
+				<li class="open"><a href="/admin/manageOrder"><i class="fa fa-pencil-square-o"></i>Đơn
+						Hàng</a></li>
 				<li><a href="/admin/manageCustomer"><i class="fa fa-users"></i>Khách
-						hàng</a></li>
+						Hàng</a></li>
 			</ul>
 		</nav>
 		<!-- InstanceBeginEditable name="content" -->
@@ -61,31 +60,58 @@
 			<div class="container-fluid">
 				<div class="add-product">
 					<div class="col-md-12">
-						<form th:action="@{/admin/addCategory}"
-				  			  id="formCategory"
+						<form th:action="@{/admin/editOrder}"
 							  method="POST">
 							<div class="title-product">
-								<h1 class="text-center"> Thêm danh mục</h1>
+								<h1 class="text-center">Cập nhật đơn hàng</h1>
 							</div>
 							<div class="row">
 								<div class="main col-md-8">
-									<input
-										id="formNameCategory"
-										name="nameCategory"
+									<span class="myLabel">Mã ĐH: </span>
+									<input 
 										type="text" class="pid" 
-										placeholder="Nhập tên danh mục...">
+										th:value="${singleOrder.idDonhang}" 
+										readonly="readonly"
+										name="idDonhang"/>
 									<br>
-									<label style="color: red;" id="errorNameCategory"></label>
+									<span class="myLabel">Email: </span>
+									<input
+										readonly="readonly"
+										name="email"
+										th:value="${singleOrder.email}"
+										type="text" class="pid"/>
+									<br>
+									<span class="myLabel">Số điện thoại: </span>
+									<input type="number" 
+									    id="formPrice"
+									    class="price" 
+									    readonly="readonly"
+									    name="price"
+								   	    th:value="${singleOrder.sdt}"/>
+									<br>
+									<span class="myLabel">Tên KH: </span>
+									<input type="text" class="quanity"
+										readonly="readonly"
+ 										name="tenKhachhang"
+										id="formQuantity"
+										th:value="${singleOrder.tenKhachhang}"/> 
+									<br>
+									<select name="status" id="category">
+										<option th:text="${currentStatus.getStatusContent()}" 
+												th:value="${currentStatus.status}"></option>
+										<option th:each="statusOrder : ${statusOrders}" 
+												th:text="${statusOrder.statusContent}" 
+												th:value="${statusOrder.status}"></option>
+									</select> 
 								</div>
-
 							</div>
 							<div class="clearfix"></div>
 							<div class="row">
 								<div class="col-md-12">
 									<button class="btn btn-primary" type="submit">
-										<i class="fa fa-save"> Thêm</i>
+										<i class="fa fa-edit"> Cập nhật </i>
 									</button>
-									<a style="margin-left: 10px" href="/admin/manageCategory" type="submit">Quay lại</a>
+									<a style="margin-left: 10px" href="/admin/manageOrder" type="submit">Quay lại</a>
 								</div>
 							</div>
 						</form>
@@ -95,11 +121,9 @@
 			<!-- /.container-fluid -->
 		</div>
 		<!-- /.content-wrapper -->
-
 		<!-- InstanceEndEditable -->
 	</div>
 	<!-- Loading Scripts -->
-	
 </body>
 <!-- InstanceEnd -->
 </html>

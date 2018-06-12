@@ -1,5 +1,7 @@
 package com.example.demo.repository.impl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -19,6 +21,7 @@ import com.example.demo.model.AccountPassUpdating;
 import com.example.demo.repository.AccountDAO;
 
 @Repository
+@SuppressWarnings({ "deprecation", "rawtypes", "unchecked" })
 public class AccountDAOImpl implements AccountDAO {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(AccountDAOImpl.class);
@@ -99,7 +102,7 @@ public class AccountDAOImpl implements AccountDAO {
 
 	@Override
 	public boolean updateAccountInfo(Account account) {
-		
+
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Account accountResult = null;
 		Session session = sessionFactory.openSession();
@@ -160,7 +163,6 @@ public class AccountDAOImpl implements AccountDAO {
 		return accountResult;
 	}
 
-	@SuppressWarnings({ "deprecation", "rawtypes" })
 	@Override
 	public int size() {
 		Session session = sessionFactory.openSession();
@@ -169,7 +171,7 @@ public class AccountDAOImpl implements AccountDAO {
 			session.getTransaction().begin();
 
 			Query query = session.createSQLQuery("select count(*) as size from taikhoan where chucvu = 'KH'")
-								 .addScalar("size", new IntegerType());
+					.addScalar("size", new IntegerType());
 
 			res = (int) query.uniqueResult();
 
@@ -181,6 +183,60 @@ public class AccountDAOImpl implements AccountDAO {
 		}
 		return res;
 
+	}
+
+	@Override
+	public int getNumPages(int pageSize) {
+		Session session = sessionFactory.openSession();
+		try {
+			session.getTransaction().begin();
+
+			Query query = session.createSQLQuery("select count(*) as numPages from taikhoan where chucvu = 'KH'")
+					.addScalar("numPages", new IntegerType());
+
+			int res = (int) query.uniqueResult();
+			int numPages = res / pageSize;
+			if (res % pageSize > 0) {
+				numPages += 1;
+			}
+
+			session.getTransaction().commit();
+			return numPages;
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		return 0;
+	}
+
+	@Override
+	public List<Account> getCustomersPagination(int page, int pageSize) {
+		List<Account> accounts = new ArrayList<>();
+
+		Session session = sessionFactory.openSession();
+
+		int offset = 0;
+
+		if (page > getNumPages(pageSize)) {
+			page = getNumPages(pageSize);
+		}
+		if (page <= 0) {
+			page = 1;
+		}
+		offset = (page - 1) * pageSize;
+		try {
+			session.getTransaction().begin();
+			String hql = "from " + Account.class.getName() + " where chucvu = 'KH' order by id_tk desc";
+			Query query = session.createQuery(hql);
+			query.setFirstResult(offset);
+			query.setMaxResults(pageSize);
+			accounts = query.list();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		return accounts;
 	}
 
 }

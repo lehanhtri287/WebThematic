@@ -75,4 +75,20 @@ public class OrderServiceImpl implements OrderService {
 		return orderDAO.cancelOrderById(orderId);
 	}
 
+	@Override
+	public int getNumPages(int pageSize) {
+		return orderDAO.getNumPages(pageSize);
+	}
+
+	@Override
+	public List<Donhang> getOrdersPagination(int page, int pageSize) {
+		return orderDAO.getOrdersPagination(page, pageSize);
+	}
+
+	@Override
+	public boolean updateStatusOrder(int idDonhang, int status) {
+		// TODO Auto-generated method stub
+		return orderDAO.updateStatusOrder(idDonhang, status);
+	}
+
 }

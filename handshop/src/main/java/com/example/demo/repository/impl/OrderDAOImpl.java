@@ -18,7 +18,7 @@ import com.example.demo.hibernate.HibernateUtil;
 import com.example.demo.repository.OrderDAO;
 
 @Repository
-@SuppressWarnings({ "rawtypes", "deprecation", "unchecked"})
+@SuppressWarnings({ "rawtypes", "deprecation", "unchecked" })
 public class OrderDAOImpl implements OrderDAO {
 	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
@@ -174,8 +174,8 @@ public class OrderDAOImpl implements OrderDAO {
 		try {
 			session.getTransaction().begin();
 
-			Query query = session.createSQLQuery("select count(*) as size from donhang")
-					.addScalar("size", new IntegerType());
+			Query query = session.createSQLQuery("select count(*) as size from donhang").addScalar("size",
+					new IntegerType());
 
 			res = (int) query.uniqueResult();
 
@@ -213,12 +213,12 @@ public class OrderDAOImpl implements OrderDAO {
 	public List<Donhang> getOrdersByEmail(String email) {
 		List<Donhang> orderList = null;
 		Session session = sessionFactory.openSession();
-		try{
+		try {
 			String hql = "from " + Donhang.class.getName() + " where email = :email";
 			org.hibernate.query.Query<Donhang> query = session.createQuery(hql, Donhang.class);
 			query.setParameter("email", email);
 			orderList = query.getResultList();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			session.close();
 		}
 		return orderList;
@@ -228,12 +228,12 @@ public class OrderDAOImpl implements OrderDAO {
 	public List<Chitietdonhang> getOrderDetailById(Integer orderId) {
 		List<Chitietdonhang> orderDetailList = null;
 		Session session = sessionFactory.openSession();
-		try{
+		try {
 			String hql = "from " + Chitietdonhang.class.getName() + " ctdh where ctdh.donhang.idDonhang = :orderId";
 			org.hibernate.query.Query<Chitietdonhang> query = session.createQuery(hql, Chitietdonhang.class);
 			query.setParameter("orderId", orderId);
 			orderDetailList = query.getResultList();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			session.close();
 		}
 		return orderDetailList;
@@ -243,13 +243,14 @@ public class OrderDAOImpl implements OrderDAO {
 	public Donhang getOrderById(Integer orderId) {
 		Donhang order = null;
 		Session session = sessionFactory.openSession();
-		try{
+		try {
 			String hql = "from " + Donhang.class.getName() + " where idDonhang = :orderId";
 			org.hibernate.query.Query<Donhang> query = session.createQuery(hql, Donhang.class);
 			query.setParameter("orderId", orderId);
 			Optional<Donhang> result = query.uniqueResultOptional();
-			if (result.isPresent()) order = result.get();
-		}catch (Exception e) {
+			if (result.isPresent())
+				order = result.get();
+		} catch (Exception e) {
 			session.close();
 		}
 		return order;
@@ -259,26 +260,92 @@ public class OrderDAOImpl implements OrderDAO {
 	public boolean cancelOrderById(Integer orderId) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		try{
-			String hql = "update " + Donhang.class.getName() + " set status = 3 where idDonhang = :orderId and status = 0" ;
+		try {
+			String hql = "update " + Donhang.class.getName()
+					+ " set status = 3 where idDonhang = :orderId and status = 0";
 			org.hibernate.query.Query query = session.createQuery(hql);
 			query.setParameter("orderId", orderId);
 			int effectedRows = query.executeUpdate();
 			session.getTransaction().commit();
 			return 1 == effectedRows;
-		}catch (Exception e) {
+		} catch (Exception e) {
 			session.getTransaction().rollback();
 			session.close();
 		}
 		return false;
 	}
-	
-//	public static void main(String[] args) {
-//		OrderDAOImpl daoImpl = new OrderDAOImpl();
-////		List<Chitietdonhang> chitietdonhangs = daoImpl.getOrderDetailById(32);
-////		for (Chitietdonhang chitietdonhang : chitietdonhangs) {
-////			System.out.println(chitietdonhang.toString());
-////		}
-//		System.out.println(daoImpl.cancelOrderById(34));
-//	}
+
+	@Override
+	public List<Donhang> getOrdersPagination(int page, int pageSize) {
+		List<Donhang> donhangs = new ArrayList<>();
+
+		Session session = sessionFactory.openSession();
+
+		int offset = 0;
+
+		if (page > getNumPages(pageSize)) {
+			page = getNumPages(pageSize);
+		}
+		if (page <= 0) {
+			page = 1;
+		}
+		offset = (page - 1) * pageSize;
+		try {
+			session.getTransaction().begin();
+			String hql = "from " + Donhang.class.getName() + " order by id_donhang desc";
+			Query query = session.createQuery(hql);
+			query.setFirstResult(offset);
+			query.setMaxResults(pageSize);
+			donhangs = query.list();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		return donhangs;
+	}
+
+	@Override
+	public int getNumPages(int pageSize) {
+		Session session = sessionFactory.openSession();
+		try {
+			session.getTransaction().begin();
+
+			Query query = session.createSQLQuery("select count(*) as numPages from donhang").addScalar("numPages",
+					new IntegerType());
+
+			int res = (int) query.uniqueResult();
+			int numPages = res / pageSize;
+			if (res % pageSize > 0) {
+				numPages += 1;
+			}
+
+			session.getTransaction().commit();
+			return numPages;
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		return 0;
+	}
+
+	@Override
+	public boolean updateStatusOrder(int idDonhang, int status) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		try {
+			String hql = "update " + Donhang.class.getName() + " set status = :status where idDonhang = :orderId";
+			org.hibernate.query.Query query = session.createQuery(hql);
+			query.setParameter("orderId", idDonhang);
+			query.setParameter("status", status);
+			int effectedRows = query.executeUpdate();
+			session.getTransaction().commit();
+			return 1 == effectedRows;
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			session.close();
+		}
+		return false;
+	}
+
 }

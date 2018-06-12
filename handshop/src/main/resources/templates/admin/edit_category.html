@@ -10,7 +10,7 @@
 <meta name="author" content="">
 <meta name="theme-color" content="#3e454c">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Thêm danh mục</title>
+<title>Chỉnh sửa danh mục</title>
 <!-- InstanceEndEditable -->
 <!-- Font awesome -->
 <link rel="stylesheet" href="/admin/css/font-awesome.min.css">
@@ -23,7 +23,9 @@
 <script src="/admin/js/main.js"></script>
 <script src="/admin/js/index.js"></script>
 <script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/admin/js/validateEditProduct.js"></script>
 <script src="/js/validateAddCate.js"></script>
+
 </head>
 
 <body>
@@ -46,14 +48,14 @@
 				<li class="ts-label">Danh Mục</li>
 			</ul>
 			<ul class="ts-sidebar-menu">
-				<li class="open"><a href="/admin/index"><i
-						class="fa fa-dashboard"></i>Thống kê</a></li>
-				<li><a href="/admin/manageProduct"><i class="fa fa-database"></i>Sản
-						phẩm</a></li>
+				<li><a href="/admin/index"><i class="fa fa-dashboard"></i>Thống
+						Kê</a></li>
+				<li class="open"><a href="/admin/manageProduct"><i
+						class="fa fa-database"></i>Sản Phẩm</a></li>
 				<li><a href="/admin/manageOrder"><i class="fa fa-pencil-square-o"></i>Đơn
-						hàng</a></li>
+						Hàng</a></li>
 				<li><a href="/admin/manageCustomer"><i class="fa fa-users"></i>Khách
-						hàng</a></li>
+						Hàng</a></li>
 			</ul>
 		</nav>
 		<!-- InstanceBeginEditable name="content" -->
@@ -61,19 +63,26 @@
 			<div class="container-fluid">
 				<div class="add-product">
 					<div class="col-md-12">
-						<form th:action="@{/admin/addCategory}"
+						<form th:action="@{/admin/editCategory}"
 				  			  id="formCategory"
 							  method="POST">
 							<div class="title-product">
-								<h1 class="text-center"> Thêm danh mục</h1>
+								<h1 class="text-center"> Chỉnh sửa danh mục</h1>
 							</div>
 							<div class="row">
 								<div class="main col-md-8">
+									<input 
+										type="number" 
+										th:value="${category.idCategory}" 
+										class="pid" 
+										name="idCategory"
+										readonly="readonly"/>
 									<input
 										id="formNameCategory"
 										name="nameCategory"
+										th:value="${category.nameCategory}"
 										type="text" class="pid" 
-										placeholder="Nhập tên danh mục...">
+										placeholder="Nhập tên danh mục..."/>
 									<br>
 									<label style="color: red;" id="errorNameCategory"></label>
 								</div>
@@ -83,7 +92,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<button class="btn btn-primary" type="submit">
-										<i class="fa fa-save"> Thêm</i>
+										<i class="fa fa-edit"> Chỉnh sửa</i>
 									</button>
 									<a style="margin-left: 10px" href="/admin/manageCategory" type="submit">Quay lại</a>
 								</div>
@@ -95,11 +104,53 @@
 			<!-- /.container-fluid -->
 		</div>
 		<!-- /.content-wrapper -->
+		<script>
+			function readURL(input) {
+				if (input.files && input.files[0]) {
+					var reader = new FileReader();
 
+					reader.onload = function(e) {
+						$('#pimg').attr('src', e.target.result).width(150)
+								.height(200);
+					};
+
+					reader.readAsDataURL(input.files[0]);
+				}
+			}
+		</script>
 		<!-- InstanceEndEditable -->
 	</div>
 	<!-- Loading Scripts -->
 	
+	<script>
+		window.onload = function() {
+
+			// Line chart from swirlData for dashReport
+			var ctx = document.getElementById("dashReport").getContext("2d");
+			window.myLine = new Chart(ctx)
+					.Line(
+							swirlData,
+							{
+								responsive : true,
+								scaleShowVerticalLines : false,
+								scaleBeginAtZero : true,
+								multiTooltipTemplate : "<%if (label){%><%=label%>: <%}%><%= value %>",
+							});
+
+			// Pie Chart from doughutData
+			var doctx = document.getElementById("chart-area3").getContext("2d");
+			window.myDoughnut = new Chart(doctx).Pie(doughnutData, {
+				responsive : true
+			});
+
+			// Dougnut Chart from doughnutData
+			var doctx = document.getElementById("chart-area4").getContext("2d");
+			window.myDoughnut = new Chart(doctx).Doughnut(doughnutData, {
+				responsive : true
+			});
+
+		}
+	</script>
 </body>
 <!-- InstanceEnd -->
 </html>
