@@ -552,6 +552,7 @@ p.footer-class a:hover{
     margin: 1.5%;
     border: none;
     border-bottom: 2px solid plum;
+    font-size: 19px;
 }
 .accountLink:hover{
 	color: darkblue;
@@ -1850,18 +1851,19 @@ h1.typo1 {
 	color: crimson;
 }
 .navbar-right {
-	width: 20%;
-	margin-right: 5%;
+	width: 30%;
 	color: #003cb3;
 	border-bottom-style: double;
 }
-
 .navbar-left {
 	width: 55%;
     background-color: papayawhip;
     margin: 1.5% 23%;
     padding: 2%;
     padding-bottom: 0;
+}
+.order{
+	margin: 8% 23%
 }
 .navbar-left h1{
 	color: crimson;
@@ -1874,7 +1876,8 @@ h1.typo1 {
 }
 .paymentSubmit{
 	margin: 0% 38%;
-    margin-bottom: 4%;
+    margin-bottom: 1%;
+    margin-top: 2%;
 }
 .fh5co-post-entry{
 	margin: 0px;
@@ -1995,7 +1998,7 @@ td.input{
 	background-color: #00e6e6;
 }
 .myLabel{
-	font-size: 18px;
+	font-size: 19px;
 }
 .responseContent{
 	padding: 8%;
@@ -2010,6 +2013,25 @@ td.input{
     background-color: papayawhip;
     margin: 1.5% 15%;
     padding-bottom: 0;
+}
+.orderContainer{
+    float: right;
+    margin-right: 5%;
+    margin-top: 5%;
+    width: 80%;
+    background: papayawhip;
+    padding: 1%;
+}
+.orderH{
+	width: 100%;
+    background-color: papayawhip;
+}
+.orderT{
+	margin-top: 1%;
+	font-size: 19px;
+}
+.orderTitle{
+	text-align: center;
 }
 .tUserInfo{
 	width: 100%;

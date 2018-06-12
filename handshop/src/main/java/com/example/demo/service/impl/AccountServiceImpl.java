@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.Account;
 import com.example.demo.model.AccountLogin;
+import com.example.demo.model.AccountPassUpdating;
 import com.example.demo.repository.AccountDAO;
 import com.example.demo.service.AccountService;
 
@@ -24,8 +25,8 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public Account findByEmailAndPassword(AccountLogin account) {
-		return accountDAO.findByEmailAndPassword(account);
+	public Account findByEmailAndPassword(AccountLogin accountLogin) {
+		return accountDAO.findByEmailAndPassword(accountLogin);
 	}
 
 	@Override
@@ -35,6 +36,11 @@ public class AccountServiceImpl implements AccountService {
 	
 	public int size() {
 		return accountDAO.size();
+	}
+
+	@Override
+	public Account updateAccountPassWord(AccountPassUpdating accountPassUpdating) {
+		return accountDAO.updateAccountPassWord(accountPassUpdating);
 	}
 
 }

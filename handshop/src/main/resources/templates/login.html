@@ -5,32 +5,17 @@
 <title>Đăng nhập</title>
 <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all" />
-<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery-3.3.1.min.js"></script>
 <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords"
 	content="Fashion Mania Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript">
-	
-	
-	
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
 
-
-
-</script>
 <!-- start menu -->
-<link href="/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-<script src="js/simpleCart.min.js">
-	
-</script>
+<link href="/css/memenu.css" rel="stylesheet" type="text/css"
+	media="all" />
 </head>
 <body>
 	<!--header-->
@@ -41,7 +26,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<h1>Đăng nhập</h1>
 			<div class="account_grid">
 				<div class="col-md-12 login-right">
-					<form th:action="@{/account/login}" th:object="${accLogin}" method="POST" >
+					<form th:action="@{/account/login}" th:object="${accountLogin}" method="POST" >
 						<table class="tLogin" align="center">
 							<tr>
 								<td colspan="2">
@@ -76,5 +61,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--footer-->
 	<div th:replace="footer :: footer"></div>
 	<!--//footer-->
+		<script type="text/javascript">
+		$(function(res) {
+			var sizeCart = $("#sizeCart").html();
+			if (sizeCart == "(null)") {
+				$("#sizeCart").html("(0)");
+			}
+		});
+	</script>
 </body>
 </html>

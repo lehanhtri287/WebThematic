@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<title>Đổi mật khẩu</title>
+<title>Chi tiết đơn hàng</title>
 <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all" />
 <script src="/js/jquery-3.3.1.min.js"></script>
@@ -28,44 +28,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li><a class="settingLink" th:href="@{/user/info/orders}">Lịch sử đơn hàng</a></li>
 			</ul>
 		</div>
-		<div class="container register userInf">
+		<div class="orderContainer">
 			<h3 class="message" th:if="${message!=null}" th:text="${message}"></h3>
-			<div class="userInfo" th:if="${session.user != null}">
-				<h2>Đổi mật khẩu</h2>
-				<form th:if="${session.user != null}" th:action="@{/user/info/password}" th:object="${accountPassUpdating}" method="POST">
-					<table class="tUserInfo">
-						<tr hidden="hidden">
-							<td>
-								<span class="myLabel">Email</span><label style="color: red;" id="errorName"></label>
-								<input type="text" class="customer-payment" name="email" th:value="${session.user.email}" id="formName">
-							</td>
+			<div class="orderH" th:if="${session.user != null}">
+				<h2 class="message orderTitle">Chi tiết đơn hàng</h2>
+				<div class="orderT">
+					<table class="table table-hover" border="1" align="center">
+						<tr class="tHead">
+							<th>Mã SP</th>
+							<th>Tên sản phẩm</th>
+							<th>Hình ảnh</th>
+							<th>Giá(VNĐ)</th>
+							<th>Số lượng</th>
+							<th>Thành tiền(VNĐ)</th>
 						</tr>
-						<tr>
+						<tr th:each="detail : ${orderDetail}">
+							<td th:text="${detail.sanpham.idProduct}"></td>
+							<td th:text="${detail.sanpham.nameProduct}"></td>
 							<td>
-								<span class="myLabel">Mật khẩu mới</span><b class="message">*</b>
-								<label class="message" th:if="${#fields.hasErrors('newPassword')}" th:errors="*{newPassword}"></label>
-								<input class="customer-payment" type="password" name="newPassword">
+								<img th:src="${'/' + detail.sanpham.images}" width="80" height="40">
 							</td>
-						</tr>
-						<tr>
-							<td>
-								<span class="myLabel">Nhập lại mật khẩu mới</span><b class="message">*</b>
-								<input class="customer-payment" type="password" name="confirmNewPassword">
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<span class="myLabel">Mật khẩu hiện tại </span><b class="message">*</b>
-								<label class="message" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></label>
-								<input class="customer-payment" type="password" name="password">
-							</td>
+							<td th:text="${#numbers.formatInteger(detail.sanpham.price, 3, 'COMMA')} + ' Đ'"></td>
+							<td th:text="${detail.id.soLuong}"></td>
+							<td th:text="${#numbers.formatInteger(detail.sanpham.price * detail.id.soLuong, 3, 'COMMA')} + ' Đ'"></td>
 						</tr>
 					</table>
-					<input type="submit" class="paymentSubmit" id="payment"
-						value="Cập nhật"> <label style="color: red;"></label>
-				</form>
+					<div class="navbar-right">
+						<h3 class="amount">Tổng tiền: </h3>
+						<h3 class="amount amRight" id="totalAmount" th:text="${#numbers.formatInteger(order.tongTien, 3, 'COMMA')} + ' Đ'"></h3>
+					</div>
+				</div>
 			</div>
 		</div>
+		<div class="clearfix"></div>
 	</div>
 	<!--footer-->
 	<div th:replace="footer :: footer"></div>

@@ -2,6 +2,7 @@ package com.example.demo.repository;
 
 import java.util.List;
 
+import com.example.demo.entities.Chitietdonhang;
 import com.example.demo.entities.Donhang;
 
 public interface OrderDAO {
@@ -20,4 +21,12 @@ public interface OrderDAO {
 	public int size();
 
 	public List<Donhang> getNewOrders();
+	
+	public List<Donhang> getOrdersByEmail(String email);
+	
+	public List<Chitietdonhang> getOrderDetailById(Integer orderId);
+	
+	public Donhang getOrderById(Integer orderId);
+	
+	public boolean cancelOrderById(Integer orderId);
 }

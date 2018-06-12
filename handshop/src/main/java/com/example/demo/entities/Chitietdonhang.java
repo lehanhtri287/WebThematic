@@ -69,4 +69,9 @@ public class Chitietdonhang implements java.io.Serializable {
 		this.sanpham = sanpham;
 	}
 
+	@Override
+	public String toString() {
+		return "Chitietdonhang [id=" + id + ", donhang=" + donhang + ", sanpham=" + sanpham + "]";
+	}
+
 }

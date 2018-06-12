@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.example.demo.controller.AccountController;
 import com.example.demo.entities.Account;
 import com.example.demo.model.AccountLogin;
+import com.example.demo.model.AccountPassUpdating;
 import com.example.demo.model.AccountSignup;
 import com.example.demo.repository.AccountDAO;
 
@@ -46,4 +47,11 @@ public class AccountTests {
 		assertTrue(account != null);
 	}
 	
+	@Test
+	public void testChangePassword(){
+		AccountPassUpdating accountPassUpdating = new AccountPassUpdating("nhoccodaihp8@gmail.com", "s", "s", "a");
+		Account account = accountDAO.updateAccountPassWord(accountPassUpdating);
+		System.out.println("++ " + account);
+		assertTrue(account != null);
+	}
 }

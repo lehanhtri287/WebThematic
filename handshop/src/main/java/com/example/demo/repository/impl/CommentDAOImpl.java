@@ -8,9 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.entities.Account;
 import com.example.demo.entities.Comment;
-import com.example.demo.entities.Product;
 import com.example.demo.hibernate.HibernateUtil;
 import com.example.demo.repository.CommentDAO;
 
@@ -57,7 +55,6 @@ public class CommentDAOImpl implements CommentDAO {
 
 	@Override
 	public boolean deleteComment(int idComment) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

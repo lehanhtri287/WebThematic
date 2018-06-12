@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -48,15 +47,18 @@ public class AccountController {
 		ModelAndView mav = new ModelAndView();
 		String emailAlreadyExists = null;
 		Account account = null;
-
-		if (!accountSignup.getEmail().contains(" ")) {
+		
+		if (accountSignup.getEmail().contains(" ")){
+			bindingResult.rejectValue("email", "field.email.invalid");
+		}
+		else {
 			emailAlreadyExists = accountService.findByEmail(accountSignup.getEmail());
 			account = getAccountFromAccountSignup(accountSignup);
 			if(emailAlreadyExists != null) bindingResult.rejectValue("email", "accSignup.email.exists");
 		} 
 		if (accountSignup.getPassword() != "" && accountSignup.getConfirmPassword() != ""){
 			if (!accountSignup.getPassword().equals(accountSignup.getConfirmPassword())){
-				bindingResult.rejectValue("password", "accSignup.password.notMatch");
+				bindingResult.rejectValue("password", "field.password.notMatch");
 			}
 		}
 		if (bindingResult.hasErrors()) {
@@ -82,25 +84,27 @@ public class AccountController {
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String loginPage(Model model) {
 		model.addAttribute("listCate", categoryService.getAllCategories());
-		model.addAttribute("accLogin", new AccountLogin());
+		model.addAttribute("accountLogin", new Account());
 		return "login";
 	}
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public ModelAndView loginProcess(@Validated @ModelAttribute("accLogin") AccountLogin accountLogin,
-			BindingResult bindingResult, HttpSession session) {
+	public ModelAndView loginProcess(@Validated AccountLogin accountLogin, BindingResult bindingResult, HttpSession session) {
+			
 		ModelAndView mav = new ModelAndView();
 		Account account = null;
-
 		
-		if (!accountLogin.getEmail().contains(" ") && accountLogin.getEmail() != "" && accountLogin.getPassword() != "") {
-
-
-			account = accountService.findByEmailAndPassword(accountLogin);
-			if (account == null)
-				bindingResult.rejectValue("email", "accLogin.invalid");
-			if (account != null && account.getConfirmation() == 0)
-				bindingResult.rejectValue("email", "accLogin.notConfirmed");
+		if (accountLogin.getEmail().contains(" ")){
+			bindingResult.rejectValue("email", "field.email.invalid");
+		}
+		else{
+			if(accountLogin.getEmail() != "" && accountLogin.getPassword() != "") {
+				account = accountService.findByEmailAndPassword(accountLogin);
+				if (account == null)
+					bindingResult.rejectValue("email", "accLogin.invalid");
+				if (account != null && account.getConfirmation() == 0)
+					bindingResult.rejectValue("email", "accLogin.notConfirmed");
+			}
 		}
 		if (bindingResult.hasErrors()) {
 			mav.addObject("listCate", categoryService.getAllCategories());

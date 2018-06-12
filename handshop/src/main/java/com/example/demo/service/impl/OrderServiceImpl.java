@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.entities.Chitietdonhang;
 import com.example.demo.entities.Donhang;
 import com.example.demo.repository.OrderDAO;
 import com.example.demo.service.OrderService;
@@ -52,6 +53,26 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public List<Donhang> getNewOrders() {
 		return orderDAO.getNewOrders();
+	}
+
+	@Override
+	public List<Donhang> getOrdersByEmail(String email) {
+		return orderDAO.getOrdersByEmail(email);
+	}
+
+	@Override
+	public List<Chitietdonhang> getOrderDetailById(Integer orderId) {
+		return orderDAO.getOrderDetailById(orderId);
+	}
+
+	@Override
+	public Donhang getOrderById(Integer orderId) {
+		return orderDAO.getOrderById(orderId);
+	}
+
+	@Override
+	public boolean cancelOrderById(Integer orderId) {
+		return orderDAO.cancelOrderById(orderId);
 	}
 
 }
