@@ -84,7 +84,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 				</td>
 				<td id="cost"
-					th:text="${#numbers.formatInteger(productCart.product.price * productCart.quantityCart, 3, 'COMMA')} + ' Đ' ">
+					th:text="${#numbers.formatInteger(productCart.product.price * productCart.quantityCart, 3, 'COMMA')} ">
 				</td>
 				<td><a
 					th:href="${'/deletecart/' + productCart.product.idProduct}"

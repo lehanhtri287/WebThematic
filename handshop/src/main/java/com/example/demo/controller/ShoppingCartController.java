@@ -20,6 +20,8 @@ import com.example.demo.model.ProductCart;
 import com.example.demo.service.CategoryService;
 import com.example.demo.service.OrderService;
 import com.example.demo.service.ProductService;
+import com.example.demo.service.mailService.EmailProperties;
+import com.example.demo.service.mailService.MailEngine;
 
 @SuppressWarnings("unchecked")
 @Controller
@@ -44,7 +46,6 @@ public class ShoppingCartController {
 			session.setAttribute("list_detail", details);
 			result = details.size();
 			session.setAttribute("size", result);
-			System.out.println(details);
 		} else {
 			List<ProductCart> details = (ArrayList<ProductCart>) session.getAttribute("list_detail");
 			boolean tmp = false;
@@ -60,7 +61,7 @@ public class ShoppingCartController {
 			result = details.size();
 			session.setAttribute("list_detail", details);
 			session.setAttribute("size", result);
-//			System.out.println(details);
+			// System.out.println(details);
 		}
 
 	}
@@ -73,7 +74,8 @@ public class ShoppingCartController {
 		if (details == null) {
 			details = new ArrayList<>();
 		}
-		if (account != null) model.addAttribute("user", account);
+		if (account != null)
+			model.addAttribute("user", account);
 		totalAmount = getTotalAmount(details);
 		model.addAttribute("totalAmount", totalAmount);
 		model.addAttribute("productsCart", details);
@@ -130,16 +132,17 @@ public class ShoppingCartController {
 		}
 		session.setAttribute("list_detail", productCarts);
 		session.setAttribute("size", productCarts.size());
-		
+
 		return "forward:/showCart";
 	}
 
 	@RequestMapping(value = "/payment", method = RequestMethod.POST)
 	public String payment(Donhang donhang, HttpSession session, Model model) {
 		List<ProductCart> productCarts = (ArrayList<ProductCart>) session.getAttribute("list_detail");
-		
+		MailEngine mailEngine = new MailEngine();
+
 		String resultMessage = "";
-		
+
 		int totalAmount = getTotalAmount(productCarts);
 		donhang.setTongTien(totalAmount);
 		donhang.setStatus(0);
@@ -149,16 +152,17 @@ public class ShoppingCartController {
 
 		donhang.setIdDonhang(orderService.getInsertedID());
 
-		
 		for (ProductCart productCart : productCarts) {
 			orderService.insertOrderDetail(donhang.getIdDonhang(), 
 										   productCart.getProduct().getIdProduct(),
 										   productCart.getQuantityCart());
 		}
 		model.addAttribute("listCate", categoryService.getAllCategories());
-		if(tmp) {
-//			resultMessage = donhang.toString();
+
+		String context = EmailProperties.MAIL_HEADER + "\n" + donhang.toString() + "\n" + EmailProperties.MAIL_FOOTER;
+		if (tmp) {
 			model.addAttribute("messageSuccess", donhang);
+			mailEngine.sendEmail(donhang.getEmail(), EmailProperties.SUBJECT, context);
 			session.setAttribute("list_detail", null);
 		} else {
 			resultMessage = "Đã có lỗi xảy ra!";
