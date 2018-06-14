@@ -64,4 +64,9 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.getNumpPages(pageSize);
 	}
 
+	@Override
+	public List<Product> searchProducts(String input) {
+		return productDAO.searchProducts(input);
+	}
+
 }

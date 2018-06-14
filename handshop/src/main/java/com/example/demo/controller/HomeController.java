@@ -33,5 +33,14 @@ public class HomeController {
 
 		return "index";
 	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public String searchProduct(String input, Model model) {
+		model.addAttribute("listProducts", productService.searchProducts(input));
+		model.addAttribute("listCate", categoryService.getAllCategories());
+//		model.addAttribute("category", categoryService.getCategory(idCate));
 
+		return "index";
+	}
+	
 }

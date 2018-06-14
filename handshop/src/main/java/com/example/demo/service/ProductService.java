@@ -24,4 +24,6 @@ public interface ProductService {
 	public List<Product> getProductsPagination(int page, int pageSize);
 	
 	public int getNumPages(int pageSize);
+
+	public List<Product> searchProducts(String input);
 }

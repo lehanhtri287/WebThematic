@@ -75,7 +75,6 @@ public class Product implements java.io.Serializable {
 	public void setCategory(Category loaihang) {
 		this.category = loaihang;
 	}
-
 	@Column(name = "TEN_SANPHAM", nullable = false, length = 200)
 	public String getNameProduct() {
 		return this.nameProduct;

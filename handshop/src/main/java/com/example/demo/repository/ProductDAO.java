@@ -26,4 +26,6 @@ public interface ProductDAO {
 
 	public List<Product> getNewProducts();
 
+	public List<Product> searchProducts(String input);
+
 }

@@ -14,7 +14,7 @@ import com.example.demo.entities.Product;
 import com.example.demo.hibernate.HibernateUtil;
 import com.example.demo.repository.ProductDAO;
 
-@SuppressWarnings({ "rawtypes", "unchecked", "deprecation"})
+@SuppressWarnings({ "rawtypes", "unchecked", "deprecation" })
 @Repository
 public class ProductDAOImpl implements ProductDAO {
 	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
@@ -237,4 +237,27 @@ public class ProductDAOImpl implements ProductDAO {
 		return sanphams;
 	}
 
+	@Override
+	public List<Product> searchProducts(String input) {
+		List<Product> products = new ArrayList<>();
+		Session session = sessionFactory.openSession();
+
+		try {
+			session.getTransaction().begin();
+			String hql = "from " + Product.class.getName() + " where ten_sanpham like :input and tinh_trang = 0";
+			Query query = session.createQuery(hql);
+			query.setParameter("input", "%" + input + "%");
+			products = query.list();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		return products;
+	}
+
+	public static void main(String[] args) {
+		ProductDAOImpl productDAOImpl = new ProductDAOImpl();
+		System.out.println(productDAOImpl.searchProducts("Gối"));
+	}
 }
