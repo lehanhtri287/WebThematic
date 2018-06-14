@@ -158,8 +158,8 @@
 										</thead>
 										<tbody th:each="newOrder: ${newOrders}">
 											<tr>
-												<th scope="row" th:text="${newOrder.idDonhang}"></th>
-												<td th:text="${newOrder.tenKhachhang}"></td>
+												<th scope="row" th:text="${newOrder.idOrder}"></th>
+												<td th:text="${newOrder.customerName}"></td>
 												<td th:text="${newOrder.email}"></td>
 												<td th:text="${newOrder.generateStatus()}"></td>
 											</tr>

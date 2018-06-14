@@ -84,7 +84,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 				</td>
 				<td id="cost"
-					th:text="${#numbers.formatInteger(productCart.product.price * productCart.quantityCart, 3, 'COMMA')} ">
+					th:text="${#numbers.formatInteger(productCart.product.price * productCart.quantityCart, 3, 'COMMA')} + ' VNĐ'">
 				</td>
 				<td><a
 					th:href="${'/deletecart/' + productCart.product.idProduct}"
@@ -98,8 +98,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<h3 class="amount">Tổng tiền: </h3>
 			<h3 class="amount amRight"
 				id="totalAmount"
-				th:text="${#numbers.formatInteger(totalAmount, 3, 'COMMA')} + ' Đ'"></h3>
-			<h3 class="amount amRight">đ</h3>
+				th:text="${#numbers.formatInteger(totalAmount, 3, 'COMMA')}"></h3>
+			<h3 class="amount amRight">VNĐ</h3>
 		</div>
 
 		<div class="navbar-left" th:if="${user == null}">
@@ -110,26 +110,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 				<table class="customerInfo">
 					<tr>
-						<td><span class="myLabel">Họ Tên </span><label
-							style="color: red;" id="errorName"></label> <input type="text"
-							name="tenKhachhang" class="customer-payment" th:value="${(session.user != null) ? session.user.fullName : ''}"
-							id="formName"></td>
+						<td><span class="myLabel">Họ Tên </span>
+							<label style="color: red;" id="errorName"></label> 
+							<input type="text"
+						    	   name="customerName" 
+						    	   class="customer-payment" 
+						    	   th:value="${(session.user != null) ? session.user.fullName : ''}"
+								   id="formName"></td>
 					</tr>
 					<tr>
-						<td><span class="myLabel">Email </span> <label
-							style="color: red;" id="errorEmail"></label><input type="email"
-							name="email" class="customer-payment" th:value="${(session.user != null) ? session.user.email : ''}" id="formEmail"></td>
+						<td><span class="myLabel">Email </span> 
+							<label style="color: red;" id="errorEmail"></label>
+							<input type="email"
+								   name="email" 
+								   class="customer-payment" 
+								   th:value="${(session.user != null) ? session.user.email : ''}" 
+								   id="formEmail"></td>
 					</tr>
 					<tr>
-						<td><span class="myLabel">Số điện thoại </span> <label
-							style="color: red;" id="errorPhone"></label><input type="tel"
-							name="sdt" class="customer-payment" th:value="${(session.user != null) ? session.user.phoneNumber : ''}" id="formPhone"></td>
+						<td><span class="myLabel">Số điện thoại </span> 
+							<label style="color: red;" id="errorPhone"></label>
+							<input type="tel"
+						 		   name="phoneNumber" 
+						 		   class="customer-payment" 
+						 		   th:value="${(session.user != null) ? session.user.phoneNumber : ''}" 
+						 		   id="formPhone"></td>
 					</tr>
 					<tr>
-						<td><span class="myLabel">Địa chỉ </span> <label
-							style="color: red;" id="errorAddress"></label> <textarea rows="4"
-								cols="30" name="diachi" class="customer-payment" th:text="${(session.user != null) ? session.user.address : ''}"
-								id="formAddress"></textarea></td>
+						<td><span class="myLabel">Địa chỉ </span> 
+							<label style="color: red;" id="errorAddress"></label> 
+							<textarea rows="4"
+									  cols="30" name="address" 
+									  class="customer-payment" 
+									  th:text="${(session.user != null) ? session.user.address : ''}"
+									  id="formAddress"></textarea></td>
 					</tr>
 				</table>
 
@@ -140,29 +154,45 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		
 		<div class="navbar-left" th:if="${user != null}">
 			<h2>Thông tin khách hàng</h2>
-			<form th:action="@{/payment}" id="formPayment"
-				onsubmit="return validatePayment();" method="POST">
+			<form th:action="@{/payment}" 
+				  id="formPayment"
+				  method="POST">
 				<table class="customerInfo">
 					<tr>
-						<td><span class="myLabel">Họ Tên </span><label
-							style="color: red;" id="errorName"></label> <input type="text"
-							name="tenKhachhang" class="customer-payment" value="" th:value="${user.fullName}"
-							id="formName"></td>
+						<td><span class="myLabel">Họ Tên </span>
+							<label style="color: red;" id="errorName"></label> 
+							<input type="text"
+								   name="customerName" 
+								   class="customer-payment" 
+								   value="" th:value="${user.fullName}"
+								   id="formName"></td>
 					</tr>
 					<tr>
-						<td><span class="myLabel">Email </span> <label
-							style="color: red;" id="errorEmail"></label><input type="email"
-							name="email" class="customer-payment" value="" id="formEmail" th:value="${user.email}"></td>
+						<td><span class="myLabel">Email </span> 
+							<label style="color: red;" id="errorEmail"></label>
+							<input type="email"
+								   name="email" 
+								   class="customer-payment" 
+								   value="" id="formEmail" 
+								   th:value="${user.email}"></td>
 					</tr>
 					<tr>
-						<td><span class="myLabel">Số điện thoại </span> <label
-							style="color: red;" id="errorPhone"></label><input type="tel"
-							name="sdt" class="customer-payment" value=""  th:value="${user.phoneNumber}"id="formPhone"></td>
+						<td><span class="myLabel">Số điện thoại </span> 
+							<label style="color: red;" id="errorPhone"></label>
+							<input type="tel"
+								   name="phoneNumber" 
+								   class="customer-payment" 
+								   value=""  id="formPhone"
+								   th:value="${user.phoneNumber}"></td>
 					</tr>
 					<tr>
-						<td><span class="myLabel">Địa chỉ </span> <label
-							style="color: red;" id="errorAddress"></label> <textarea rows="4"
-								cols="30" name="diachi" class="customer-payment" th:text="${user.address}"
+						<td><span class="myLabel">Địa chỉ </span> 
+							<label style="color: red;" id="errorAddress"></label> 
+							<textarea 
+								rows="4" cols="30" 
+								name="address" 
+								class="customer-payment" 
+								th:text="${user.address}"
 								id="formAddress"></textarea></td>
 					</tr>
 				</table>

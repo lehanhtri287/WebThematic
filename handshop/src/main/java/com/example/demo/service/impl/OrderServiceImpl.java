@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.Chitietdonhang;
-import com.example.demo.entities.Donhang;
+import com.example.demo.entities.Order;
 import com.example.demo.repository.OrderDAO;
 import com.example.demo.service.OrderService;
 
@@ -16,18 +16,18 @@ public class OrderServiceImpl implements OrderService {
 	private OrderDAO orderDAO;
 
 	@Override
-	public List<Donhang> getOrders() {
+	public List<Order> getOrders() {
 		return orderDAO.getListOrders();
 	}
 
 	@Override
-	public boolean insertOrder(Donhang donhang) {
-		return orderDAO.insertOrder(donhang);
+	public boolean insertOrder(Order order) {
+		return orderDAO.insertOrder(order);
 	}
 
 	@Override
-	public boolean updateOrder(Donhang donhang) {
-		return orderDAO.updateOrder(donhang);
+	public boolean updateOrder(Order order) {
+		return orderDAO.updateOrder(order);
 	}
 
 	@Override
@@ -51,12 +51,12 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public List<Donhang> getNewOrders() {
+	public List<Order> getNewOrders() {
 		return orderDAO.getNewOrders();
 	}
 
 	@Override
-	public List<Donhang> getOrdersByEmail(String email) {
+	public List<Order> getOrdersByEmail(String email) {
 		return orderDAO.getOrdersByEmail(email);
 	}
 
@@ -66,7 +66,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public Donhang getOrderById(Integer orderId) {
+	public Order getOrderById(Integer orderId) {
 		return orderDAO.getOrderById(orderId);
 	}
 
@@ -81,7 +81,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public List<Donhang> getOrdersPagination(int page, int pageSize) {
+	public List<Order> getOrdersPagination(int page, int pageSize) {
 		return orderDAO.getOrdersPagination(page, pageSize);
 	}
 

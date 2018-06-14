@@ -15,7 +15,7 @@
 		<mapping class="com.example.demo.entities.Product" />
 		<mapping class="com.example.demo.entities.Chitietdonhang" />
 		<mapping class="com.example.demo.entities.Comment" />
-		<mapping class="com.example.demo.entities.Donhang" />
+		<mapping class="com.example.demo.entities.Order" />
 		<mapping class="com.example.demo.entities.Category" />
 		<mapping class="com.example.demo.entities.Account" />
 		<mapping class="com.example.demo.entities.Tintuc" />

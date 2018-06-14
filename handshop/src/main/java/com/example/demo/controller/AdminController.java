@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.entities.Account;
 import com.example.demo.entities.Category;
-import com.example.demo.entities.Donhang;
+import com.example.demo.entities.Order;
 import com.example.demo.entities.Product;
 import com.example.demo.model.StatusOrder;
 import com.example.demo.service.AccountService;
@@ -260,10 +260,10 @@ public class AdminController {
 		statusOrders.add(new StatusOrder(2, "Đã giao hàng"));
 		statusOrders.add(new StatusOrder(3, "Đã hủy đơn hàng"));
 
-		Donhang order = orderService.getOrderById(idOrder);
+		Order order = orderService.getOrderById(idOrder);
 
+		mav.addObject("statusOrder", new StatusOrder(order.getStatus()));
 		mav.addObject("statusOrders", statusOrders);
-		mav.addObject("currentStatus", new StatusOrder(order.getStatus()));
 		mav.addObject("singleOrder", order);
 		mav.setViewName("/admin/edit_order");
 

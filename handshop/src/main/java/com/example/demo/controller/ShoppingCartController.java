@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.entities.Account;
-import com.example.demo.entities.Donhang;
+import com.example.demo.entities.Order;
 import com.example.demo.entities.Product;
 import com.example.demo.model.ProductCart;
 import com.example.demo.service.CategoryService;
@@ -137,32 +137,32 @@ public class ShoppingCartController {
 	}
 
 	@RequestMapping(value = "/payment", method = RequestMethod.POST)
-	public String payment(Donhang donhang, HttpSession session, Model model) {
+	public String payment(Order order, HttpSession session, Model model) {
 		List<ProductCart> productCarts = (ArrayList<ProductCart>) session.getAttribute("list_detail");
 		MailEngine mailEngine = new MailEngine();
 
 		String resultMessage = "";
 
 		int totalAmount = getTotalAmount(productCarts);
-		donhang.setTongTien(totalAmount);
-		donhang.setStatus(0);
-		donhang.setNgayDh(new Date());
+		order.setTotalAmount(totalAmount);
+		order.setStatus(0);
+		order.setOrderDate(new Date());
 
-		boolean tmp = orderService.insertOrder(donhang);
+		boolean tmp = orderService.insertOrder(order);
 
-		donhang.setIdDonhang(orderService.getInsertedID());
+		order.setIdOrder(orderService.getInsertedID());
 
 		for (ProductCart productCart : productCarts) {
-			orderService.insertOrderDetail(donhang.getIdDonhang(), 
+			orderService.insertOrderDetail(order.getIdOrder(), 
 										   productCart.getProduct().getIdProduct(),
 										   productCart.getQuantityCart());
 		}
 		model.addAttribute("listCate", categoryService.getAllCategories());
 
-		String context = EmailProperties.MAIL_HEADER + "\n" + donhang.toString() + "\n" + EmailProperties.MAIL_FOOTER;
+		String context = EmailProperties.MAIL_HEADER + "\n" + order.toString() + "\n" + EmailProperties.MAIL_FOOTER;
 		if (tmp) {
-			model.addAttribute("messageSuccess", donhang);
-			mailEngine.sendEmail(donhang.getEmail(), EmailProperties.SUBJECT, context);
+			model.addAttribute("messageSuccess", order);
+			mailEngine.sendEmail(order.getEmail(), EmailProperties.SUBJECT, context);
 			session.setAttribute("list_detail", null);
 		} else {
 			resultMessage = "Đã có lỗi xảy ra!";

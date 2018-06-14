@@ -70,7 +70,7 @@
 									<span class="myLabel">Mã ĐH: </span>
 									<input 
 										type="text" class="pid" 
-										th:value="${singleOrder.idDonhang}" 
+										th:value="${singleOrder.idOrder}" 
 										readonly="readonly"
 										name="idDonhang"/>
 									<br>
@@ -87,18 +87,18 @@
 									    class="price" 
 									    readonly="readonly"
 									    name="price"
-								   	    th:value="${singleOrder.sdt}"/>
+								   	    th:value="${singleOrder.phoneNumber}"/>
 									<br>
 									<span class="myLabel">Tên KH: </span>
 									<input type="text" class="quanity"
 										readonly="readonly"
  										name="tenKhachhang"
 										id="formQuantity"
-										th:value="${singleOrder.tenKhachhang}"/> 
+										th:value="${singleOrder.customerName}"/> 
 									<br>
 									<select name="status" id="category">
-										<option th:text="${currentStatus.getStatusContent()}" 
-												th:value="${currentStatus.status}"></option>
+										<option th:text="${statusOrder.getStatusContent()}" 
+												th:value="${statusOrder.status}"></option>
 										<option th:each="statusOrder : ${statusOrders}" 
 												th:text="${statusOrder.statusContent}" 
 												th:value="${statusOrder.status}"></option>

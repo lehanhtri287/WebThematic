@@ -80,13 +80,13 @@
 									</thead>
 									<tbody th:each="order : ${orders}">
 										<tr>
-											<td th:text="${order.idDonhang}"></td>
+											<td th:text="${order.idOrder}"></td>
 											<td th:text="${order.generateDate()}"></td>
-											<td class="hidden-xs" th:text="${order.tongTien}"></td>
+											<td class="hidden-xs" th:text="${order.totalAmount}"></td>
 											<td th:text="${order.generateStatus()}"></td>
-											<td th:text="${order.sdt}"></td>
+											<td th:text="${order.phoneNumber}"></td>
 											<td><div class="btn-group btn-group-sm">
-													<a th:href="${'/admin/editOrder/' + order.idDonhang}" class="btn btn-primary"> <i
+													<a th:href="${'/admin/editOrder/' + order.idOrder}" class="btn btn-primary"> <i
 														class="fa fa-edit" title="Xem"></i></a> 
 												</div></td>
 										</tr>

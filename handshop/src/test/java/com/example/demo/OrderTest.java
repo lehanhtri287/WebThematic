@@ -24,7 +24,7 @@ public class OrderTest {
 	
 	@Test
 	public void testGetOrderById(){
-		assertTrue(orderService.getOrderById(32).getIdDonhang().equals(32));
+		assertTrue(orderService.getOrderById(32).getIdOrder().equals(32));
 	}
 	
 	@Test

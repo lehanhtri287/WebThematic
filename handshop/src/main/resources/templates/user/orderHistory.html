@@ -41,14 +41,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<th>Tổng tiền</th>
 							<th>Trạng thái</th>
 						</tr>
+						<!-- change variable name -->
 						<tr th:each="order : ${orderList}">
 							<td>
-								<a class="btn btn-success" th:href="@{'/user/info/orders/detail/' + ${order.idDonhang}}">Chi tiết</a> 
-								<a class="btn btn-danger" type="button" th:href="@{'/user/info/orders/cancel/' + ${order.idDonhang}}">Hủy</a>
+								<a class="btn btn-success" th:href="@{'/user/info/orders/detail/' + ${order.idOrder}}">Chi tiết</a> 
+								<a class="btn btn-danger" type="button" th:href="@{'/user/info/orders/cancel/' + ${order.idOrder}}">Hủy</a>
 							</td>
-							<td th:text="${order.idDonhang}"></td>
+							<td th:text="${order.idOrder}"></td>
 							<td th:text="${order.generateDate()}"></td>
-							<td th:text="${#numbers.formatInteger(order.tongTien, 3, 'COMMA')} + ' Đ'"></td>
+							<td th:text="${#numbers.formatInteger(order.totalAmount, 3, 'COMMA')} + ' Đ'"></td>
 							<td id="price" th:text="${order.generateStatus()}"></td>
 						</tr>
 					</table>

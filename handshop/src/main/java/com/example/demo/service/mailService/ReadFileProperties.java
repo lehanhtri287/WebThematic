@@ -1,6 +1,5 @@
 package com.example.demo.service.mailService;
 
-import java.io.FileInputStream;
 import java.util.Properties;
 
 public class ReadFileProperties {

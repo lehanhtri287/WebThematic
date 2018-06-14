@@ -20,7 +20,7 @@ public class Chitietdonhang implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private ChitietdonhangId id;
-	private Donhang donhang;
+	private Order order;
 	private Product sanpham;
 
 	public Chitietdonhang() {
@@ -30,9 +30,9 @@ public class Chitietdonhang implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Chitietdonhang(ChitietdonhangId id, Donhang donhang, Product sanpham) {
+	public Chitietdonhang(ChitietdonhangId id, Order order, Product sanpham) {
 		this.id = id;
-		this.donhang = donhang;
+		this.order = order;
 		this.sanpham = sanpham;
 	}
 
@@ -51,12 +51,12 @@ public class Chitietdonhang implements java.io.Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_DONHANG", insertable = false, updatable = false)
-	public Donhang getDonhang() {
-		return this.donhang;
+	public Order getDonhang() {
+		return this.order;
 	}
 
-	public void setDonhang(Donhang donhang) {
-		this.donhang = donhang;
+	public void setDonhang(Order order) {
+		this.order = order;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -71,7 +71,7 @@ public class Chitietdonhang implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Chitietdonhang [id=" + id + ", donhang=" + donhang + ", sanpham=" + sanpham + "]";
+		return "Chitietdonhang [id=" + id + ", order=" + order + ", sanpham=" + sanpham + "]";
 	}
 
 }
