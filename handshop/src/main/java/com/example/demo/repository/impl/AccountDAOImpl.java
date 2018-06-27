@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.entities.Account;
+import com.example.demo.entities.Confirmation;
 import com.example.demo.hibernate.HibernateUtil;
 import com.example.demo.model.AccountLogin;
 import com.example.demo.model.AccountPassUpdating;
@@ -239,4 +240,66 @@ public class AccountDAOImpl implements AccountDAO {
 		return accounts;
 	}
 
+	@Override
+	public int getNewIdCustomer() {
+		Session session = sessionFactory.openSession();
+		int res = 0;
+		try {
+			session.getTransaction().begin();
+
+			Query query = session.createSQLQuery("select id_tk from taikhoan order by id_tk desc limit 1");
+
+			res = (int) query.uniqueResult();
+
+			session.getTransaction().commit();
+			return res;
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		} finally {
+			session.close();
+		}
+		return res;
+	}
+
+	@Override
+	public boolean generateConfirm(Confirmation confirmation) {
+		Session session = sessionFactory.openSession();
+
+		try {
+			session.getTransaction().begin();
+			session.save(confirmation);
+			session.getTransaction().commit();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		} finally {
+			session.close();
+		}
+		return false;
+	}
+
+	@Override
+	public int confirmAccount(int idCust, String token) {
+		Session session = sessionFactory.openSession();
+		int res = 0;
+		try {
+			session.getTransaction().begin();
+
+			Query query = session.createSQLQuery("select checkConfirm(:token, :idCust) as result").addScalar("result",
+					new IntegerType());
+			query.setParameter("token", token);
+			query.setParameter("idCust", idCust);
+
+			res = (int) query.uniqueResult();
+
+			session.getTransaction().commit();
+			return res;
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		return res;
+	}
 }
