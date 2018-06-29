@@ -36,11 +36,10 @@ public class Confirmation implements java.io.Serializable {
 		this.dateCreated = dateCreated;
 	}
 
-	public Confirmation(String idConfirm, Account taikhoan, int status, Date dateCreated, Integer typeConfirmed) {
+	public Confirmation(String idConfirm, Account taikhoan, int status, Integer typeConfirmed) {
 		this.idConfirm = idConfirm;
 		this.taikhoan = taikhoan;
 		this.status = status;
-		this.dateCreated = dateCreated;
 		this.typeConfirmed = typeConfirmed;
 	}
 

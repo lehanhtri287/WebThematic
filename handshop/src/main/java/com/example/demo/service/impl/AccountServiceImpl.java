@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.Account;
+import com.example.demo.entities.Confirmation;
 import com.example.demo.model.AccountLogin;
 import com.example.demo.model.AccountPassUpdating;
 import com.example.demo.repository.AccountDAO;
@@ -53,6 +54,21 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public List<Account> getCustomersPagination(int page, int pageSize) {
 		return accountDAO.getCustomersPagination(page, pageSize);
+	}
+
+	@Override
+	public int getNewIdCustomer() {
+		return accountDAO.getNewIdCustomer();
+	}
+
+	@Override
+	public boolean generateConfirm(Confirmation confirmation) {
+		return accountDAO.generateConfirm(confirmation);
+	}
+
+	@Override
+	public int confirmAccount(int idCust, String token) {
+		return accountDAO.confirmAccount(idCust, token);
 	}
 
 }

@@ -3,6 +3,7 @@ package com.example.demo.repository;
 import java.util.List;
 
 import com.example.demo.entities.Account;
+import com.example.demo.entities.Confirmation;
 import com.example.demo.model.AccountLogin;
 import com.example.demo.model.AccountPassUpdating;
 
@@ -23,5 +24,11 @@ public interface AccountDAO {
 	public int getNumPages(int pageSize);
 
 	public List<Account> getCustomersPagination(int page, int pageSize);
+
+	public int getNewIdCustomer();
+
+	public boolean generateConfirm(Confirmation confirmation);
+
+	public int confirmAccount(int idCust, String token);
 
 }

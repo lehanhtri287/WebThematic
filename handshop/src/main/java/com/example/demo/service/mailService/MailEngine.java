@@ -28,7 +28,7 @@ public class MailEngine {
 			message.setSubject(subject);
 			message.setFrom(new InternetAddress(propertiesLib.getProperty("email")));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(receiver));
-			message.setText(context);
+			message.setText(context, "UTF-8", "html");
 
 			Transport.send(message);
 			return true;
@@ -36,10 +36,6 @@ public class MailEngine {
 			e.printStackTrace();
 			return false;
 		}
-	}
-	public static void main(String[] args) {
-		MailEngine mailEngine = new MailEngine();
-		System.out.println(mailEngine.sendEmail("lehanhtri287@gmail.com", "testing", "hello motherfucker"));
 	}
 	
 }

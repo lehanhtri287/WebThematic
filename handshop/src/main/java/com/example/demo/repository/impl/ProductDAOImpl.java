@@ -256,8 +256,4 @@ public class ProductDAOImpl implements ProductDAO {
 		return products;
 	}
 
-	public static void main(String[] args) {
-		ProductDAOImpl productDAOImpl = new ProductDAOImpl();
-		System.out.println(productDAOImpl.searchProducts("Gối"));
-	}
 }
