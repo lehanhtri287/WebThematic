@@ -23,16 +23,16 @@ import com.example.demo.service.OrderService;
 @Controller
 @RequestMapping("/user/")
 public class UserController {
-	
+
 	@Autowired
 	CategoryService categoryService;
 	@Autowired
 	AccountService accountService;
 	@Autowired
 	OrderService orderService;
-	
+
 	@RequestMapping(value = "info", method = RequestMethod.GET)
-	public String updateInfoPage(HttpSession session, @ModelAttribute("message") String message, Model model){
+	public String updateInfoPage(HttpSession session, @ModelAttribute("message") String message, Model model) {
 		model.addAttribute("listCate", categoryService.getAllCategories());
 		if (session.getAttribute("user") != null) {
 			model.addAttribute("message", message);
@@ -43,14 +43,14 @@ public class UserController {
 			return "user/updateInfo";
 		}
 	}
-	
+
 	@RequestMapping(value = "info", method = RequestMethod.POST)
-	public ModelAndView updateInfoProcess(@Validated Account account,
-			BindingResult bindingResult, HttpSession session, RedirectAttributes redirectAttributes) {
-			ModelAndView mav = new ModelAndView();
+	public ModelAndView updateInfoProcess(@Validated Account account, BindingResult bindingResult, HttpSession session,
+			RedirectAttributes redirectAttributes) {
+		ModelAndView mav = new ModelAndView();
 		if (session.getAttribute("user") != null) {
 			if (!account.getPassword().equals("")) {
-				if (accountService.updateAccountInfo(account)){
+				if (accountService.updateAccountInfo(account)) {
 					redirectAttributes.addFlashAttribute("message", "Cập nhật thành công");
 					session.setAttribute("user", account);
 					mav.setViewName("redirect:/user/info");
@@ -60,16 +60,17 @@ public class UserController {
 			} else {
 				bindingResult.rejectValue("password", "field.empty");
 			}
-			if(bindingResult.hasErrors()) mav.setViewName("user/updateInfo");
+			if (bindingResult.hasErrors())
+				mav.setViewName("user/updateInfo");
 		} else {
 			mav.addObject("message", "Bạn chưa đăng nhập");
 			mav.setViewName("user/updateInfo");
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "info/password", method = RequestMethod.GET)
-	public String updatePasswordPage(HttpSession session, @ModelAttribute("message") String message, Model model){
+	public String updatePasswordPage(HttpSession session, @ModelAttribute("message") String message, Model model) {
 		model.addAttribute("listCate", categoryService.getAllCategories());
 		if (session.getAttribute("user") != null) {
 			model.addAttribute("message", message);
@@ -80,34 +81,37 @@ public class UserController {
 			return "user/updatePassword";
 		}
 	}
-	
+
 	@RequestMapping(value = "info/password", method = RequestMethod.POST)
 	public ModelAndView updatePasswordProcess(@Validated AccountPassUpdating accountPassUpdating,
 			BindingResult bindingResult, HttpSession session, RedirectAttributes redirectAttributes) {
-			ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView();
 		if (session.getAttribute("user") != null) {
-			if (accountPassUpdating.getNewPassword().equals(accountPassUpdating.getConfirmNewPassword())){
-				Account account = accountService.updateAccountPassWord(accountPassUpdating);
-				if (account != null){
-					redirectAttributes.addFlashAttribute("message", "Cập nhật thành công");
-					session.setAttribute("user", account);
-					mav.setViewName("redirect:/user/info/password");
-				} else {
-					bindingResult.rejectValue("password", "field.password.wrong");
+			if (accountPassUpdating.getNewPassword().equals(accountPassUpdating.getConfirmNewPassword())) {
+				if(accountPassUpdating.getPassword() != ""){
+					Account account = accountService.updateAccountPassWord(accountPassUpdating);
+					if (account != null) {
+						redirectAttributes.addFlashAttribute("message", "Cập nhật thành công");
+						session.setAttribute("user", account);
+						mav.setViewName("redirect:/user/info/password");
+					} else {
+						bindingResult.rejectValue("password", "field.password.wrong");
+					}
 				}
 			} else {
 				bindingResult.rejectValue("newPassword", "field.password.notMatch");
 			}
-			if(bindingResult.hasErrors()) mav.setViewName("user/updatePassword");
+			if (bindingResult.hasErrors())
+				mav.setViewName("user/updatePassword");
 		} else {
 			mav.addObject("message", "Bạn chưa đăng nhập");
 			mav.setViewName("user/updatePassword");
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "info/orders", method = RequestMethod.GET)
-	public String orderHistoryPage(HttpSession session, @ModelAttribute("message") String message, Model model){
+	public String orderHistoryPage(HttpSession session, @ModelAttribute("message") String message, Model model) {
 		model.addAttribute("listCate", categoryService.getAllCategories());
 		model.addAttribute("message", message);
 		if (session.getAttribute("user") != null) {
@@ -119,9 +123,10 @@ public class UserController {
 			return "user/orderHistory";
 		}
 	}
-	
+
 	@RequestMapping(value = "info/orders/detail/{id}", method = RequestMethod.GET)
-	public String orderDetail(HttpSession session, @PathVariable Integer id, @ModelAttribute("message") String message, Model model){
+	public String orderDetail(HttpSession session, @PathVariable Integer id, @ModelAttribute("message") String message,
+			Model model) {
 		model.addAttribute("listCate", categoryService.getAllCategories());
 		if (session.getAttribute("user") != null) {
 			model.addAttribute("message", message);
@@ -133,13 +138,13 @@ public class UserController {
 			return "user/orderDetail";
 		}
 	}
-	
+
 	@RequestMapping(value = "info/orders/cancel/{id}", method = RequestMethod.GET)
 	public String cancelOrder(HttpSession session, @PathVariable Integer id, @ModelAttribute("message") String message,
-			Model model, RedirectAttributes redirectAttributes){
+			Model model, RedirectAttributes redirectAttributes) {
 		model.addAttribute("listCate", categoryService.getAllCategories());
 		if (session.getAttribute("user") != null) {
-			if (orderService.cancelOrderById(id)){
+			if (orderService.cancelOrderById(id)) {
 				redirectAttributes.addFlashAttribute("message", "Hủy đơn hàng thành công");
 			} else {
 				redirectAttributes.addFlashAttribute("message", "Chỉ hủy đơn hàng đang xác nhận");

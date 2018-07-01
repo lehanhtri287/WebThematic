@@ -43,6 +43,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<tr>
 							<td>
 								<span class="myLabel">Họ Tên</span>
+								<label class="message" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></label>
 								<input type="text" class="customer-payment" name="fullName" th:value="${session.user.fullName}" id="formName">
 							</td>
 						</tr>
@@ -50,7 +51,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<td>
 								<span class="myLabel">Số điện thoại</span>
 								<label class="message" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></label>
-								<input type="tel" class="customer-payment" name="phoneNumber" th:value="${session.user.phoneNumber}" id="formPhone">
+								<input type="text" class="customer-payment" name="phoneNumber" th:value="${session.user.phoneNumber}" id="formPhone">
 							</td>
 						</tr>
 						<tr>

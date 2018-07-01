@@ -32,8 +32,11 @@ public class AccountDAOImpl implements AccountDAO {
 	public boolean signUp(Account account) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String fullName = account.getFullName();
-		fullName = fullName.replaceAll("\\s+", " "); // replace spaces to space between
-		fullName = fullName.replaceAll("(^\\s+|\\s+$)", ""); // remove spaces at left and right
+		fullName = fullName.replaceAll("\\s+", " "); // replace spaces to space
+														// between
+		fullName = fullName.replaceAll("(^\\s+|\\s+$)", ""); // remove spaces at
+																// left and
+																// right
 		account.setFullName(fullName);
 		account.setPassword(encoder.encode(account.getPassword()));
 		account.setPosition("KH");
@@ -106,22 +109,36 @@ public class AccountDAOImpl implements AccountDAO {
 
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Account accountResult = null;
+		boolean hasChanged = false;
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 
 		Query<Account> query = session.createQuery("from Account where email = :email", Account.class);
 		query.setParameter("email", account.getEmail());
+		Optional<Account> result = query.uniqueResultOptional();
 		try {
-			Optional<Account> result = query.uniqueResultOptional();
 			if (result.isPresent()) {
 				accountResult = result.get();
 				if (encoder.matches(account.getPassword(), accountResult.getPassword())) {
-					accountResult.setFullName(account.getFullName());
-					accountResult.setPhoneNumber(account.getPhoneNumber());
-					accountResult.setAddress(account.getAddress());
-					session.save(accountResult);
-					session.getTransaction().commit();
-					return true;
+					if (account.getFullName() != "" && !accountResult.getFullName().equals(account.getFullName())) {
+						accountResult.setFullName(account.getFullName());
+						hasChanged = true;
+					}
+					if (account.getPhoneNumber() != ""
+							&& !accountResult.getPhoneNumber().equals(account.getPhoneNumber())) {
+						accountResult.setPhoneNumber(account.getPhoneNumber());
+						hasChanged = true;
+					}
+					if (account.getAddress() != "" && !accountResult.getAddress().equals(account.getAddress())) {
+						accountResult.setAddress(account.getAddress());
+						hasChanged = true;
+					}
+					if(hasChanged){
+						session.save(accountResult);
+						session.getTransaction().commit();
+						LOGGER.info("updated info");
+						return true;
+					}
 				}
 			}
 		} catch (NoSuchElementException e) {
