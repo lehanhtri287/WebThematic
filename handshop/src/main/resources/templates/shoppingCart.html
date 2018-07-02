@@ -60,7 +60,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<tr th:each="productCart : ${productsCart}">
 				<td th:text="${productCart.product.idProduct}"></td>
 				<td th:text="${productCart.product.nameProduct}"></td>
-				<td><img th:src="@{'/' + productCart.product.images}"
+				<td><img th:src="@{'/' + ${productCart.product.images}}"
 					width="80" height="40"></td>
 				<td id="price"
 					th:text="${#numbers.formatInteger(productCart.product.price, 3, 'COMMA')} + ' VNĐ' "></td>

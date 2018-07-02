@@ -121,7 +121,7 @@
 						<li><a href="#" aria-label="Previous"> <span
 								aria-hidden="true">&laquo;</span>
 						</a></li>
-						<li><a th:href="@{'/admin/manageCustomer/' + {i}}"
+						<li><a th:href="@{'/admin/manageCustomer/' + ${i}}"
 								th:each=" i : ${#numbers.sequence(1, numPages)}" th:text="${i}" >1</a></li>
 						<li><a href="#" aria-label="Next"> <span
 								aria-hidden="true">&raquo;</span>
