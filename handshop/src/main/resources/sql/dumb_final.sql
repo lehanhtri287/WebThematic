@@ -24,6 +24,7 @@ CREATE DEFINER=`root`@`localhost` FUNCTION `checkConfirm`(
 
 
 
+
 ) RETURNS int(11)
     COMMENT 'check customer, return 0 is confirmed, return 1 is already confirmed, return 2 is not confirmed yet'
 BEGIN
@@ -31,7 +32,9 @@ BEGIN
 	
 	if temp is null then set temp = 2; 
 	elseif temp is not null then 
-		if temp = 0 then update confirmation set status = 1 where confirmation.ID_TK = idCust and confirmation.ID_CONFIRM = idconfirm; end if;		
+		if temp = 0 then update confirmation set status = 1 where confirmation.ID_TK = idCust and confirmation.ID_CONFIRM = idconfirm; 
+							  update taikhoan set taikhoan.IS_CONFIRM = 1 where taikhoan.ID_TK = idCust;
+							  end if;		
 	end if;
 	return temp;
 END//
@@ -272,7 +275,7 @@ CREATE TABLE IF NOT EXISTS `taikhoan` (
   UNIQUE KEY `UKtovbpabyqv71grfb9v2knw1jg` (`TEN_DANGNHAP`)
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
--- Dumping data for table shophandmade.taikhoan: ~9 rows (approximately)
+-- Dumping data for table shophandmade.taikhoan: ~10 rows (approximately)
 /*!40000 ALTER TABLE `taikhoan` DISABLE KEYS */;
 INSERT INTO `taikhoan` (`ID_TK`, `TEN_DANGNHAP`, `MAT_KHAU`, `CHUCVU`, `TEN_KH`, `DIACHI`, `SDT`, `IS_CONFIRM`) VALUES
 	(2, 'trile@gmail.com', 'jgXSEb8rRL9MfZ62Do2StA==', 'ADM', 'Trí Lê', 'Quảng Ngãi', '0123456789', 1),
