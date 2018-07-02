@@ -15,7 +15,7 @@
 					</div>-->
 					<div class="item" th:each="product : ${listProducts}">
 						<a th:href="@{'/single/' + ${product.idProduct}}"> <img
-							class="img-responsive" th:src="@{'/' + ${product.images}}" />
+							class="img-responsive" th:src="${'/' + product.images}" />
 						</a>
 						<h3>
 							<a id="nameProduct" th:href="@{'/single/' + ${product.idProduct}}"

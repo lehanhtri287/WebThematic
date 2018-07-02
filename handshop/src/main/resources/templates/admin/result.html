@@ -11,20 +11,20 @@
 <title>Quản lý sản phẩm</title>
 
 <!-- Font awesome -->
-<link rel="stylesheet" th:href="@{/admin/css/font-awesome.min.css}">
+<link rel="stylesheet" href="/admin/css/font-awesome.min.css">
 <!-- Sandstone Bootstrap CSS -->
-<link rel="stylesheet" th:href="@{/admin/css/bootstrap.minAdmin.css}">
+<link rel="stylesheet" href="/admin/css/bootstrap.minAdmin.css">
 <!-- Admin Style -->
-<link rel="stylesheet" th:href="@{/admin/css/styleAdmin.css}">
+<link rel="stylesheet" href="/admin/css/styleAdmin.css">
 <!-- /.content-wrapper -->
-<script th:src="@{/admin/js/Chart.min.js}"></script>
-<script th:src="@{/admin/js/chartData.js}"></script>
+<script src="/admin/js/Chart.min.js"></script>
+<script src="/admin/js/chartData.js"></script>
 <!-- InstanceEndEditable -->
 <!-- Loading Scripts -->
-<script th:src="@{/admin/js/jquery.min.js}"></script>
-<script th:src="@{/admin/js/bootstrap.min.js}"></script>
-<script th:src="@{/admin/js/main.js}"></script>
-<script th:src="@{/admin/js/label.js}"></script>
+<script src="/admin/js/jquery.min.js"></script>
+<script src="/admin/js/bootstrap.min.js"></script>
+<script src="/admin/js/main.js"></script>
+<script src="/admin/js/label.js"></script>
 <script>
 	window.onload = function() {
 
@@ -58,7 +58,7 @@
 
 <body>
 	<div class="brand clearfix">
-		<a th:href="@{/admin/index}" class="logo"><img src="img/logo.jpg"
+		<a href="index.html" class="logo"><img src="img/logo.jpg"
 			class="img-responsive" alt=""></a> <span class="menu-btn"><i
 			class="fa fa-bars"></i></span>
 		<ul class="ts-profile-nav">
@@ -67,20 +67,20 @@
 					class="ts-avatar hidden-side" alt=""> <i
 					class="fa fa-angle-down hidden-side"></i></a>
 				<ul>
-					<li><a th:href="@{/admin/logout}">Đăng xuất</a></li>
+					<li><a href="/admin/logout">Đăng xuất</a></li>
 				</ul></li>
 		</ul>
 	</div>
 	<div class="ts-main-content">
 		<nav class="ts-sidebar">
 			<ul class="ts-sidebar-menu">
-				<li class="open"><a th:href="@{/admin/index}"><i
+				<li class="open"><a href="/admin/index"><i
 						class="fa fa-dashboard"></i>Thống kê</a></li>
-				<li><a th:href="@{/admin/manageProduct}"><i class="fa fa-database"></i>Sản
+				<li><a href="/admin/manageProduct"><i class="fa fa-database"></i>Sản
 						phẩm</a></li>
-				<li><a th:href="@{/admin/manageOrder}"><i class="fa fa-pencil-square-o"></i>Đơn
+				<li><a href="/admin/manageOrder"><i class="fa fa-pencil-square-o"></i>Đơn
 						hàng</a></li>
-				<li><a th:href="@{/admin/manageCustomer}"><i class="fa fa-users"></i>Khách
+				<li><a href="/admin/manageCustomer"><i class="fa fa-users"></i>Khách
 						hàng</a></li>
 
 			</ul>
@@ -91,7 +91,7 @@
 			<div class="add-product">
 				<div class="col-md-12">
 					<h3 style="margin-top: 100px;margin-left: 50px; color: red" th:text="${message}"></h3>
-					<h3 style="margin-left: 50px; color: red"> <a th:href="@{/admin/}">Quay lại</a></h3>
+					<h3 style="margin-left: 50px; color: red"> <a href="/admin/">Quay lại</a></h3>
 				</div>
 			</div>
 		</div>

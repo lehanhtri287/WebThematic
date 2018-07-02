@@ -46,7 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			data : {
 				prodId : prod_id
 			},
-			url : "http://" + host + "/handshop/shoppingcart",
+			url : "http://" + host + "/shoppingcart",
 			async : true
 		});
 	}
@@ -71,7 +71,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<ul class="slides">
 							<li>
 								<div class="thumb-image">
-									<img th:src="@{'/'+ ${singleProduct.images}}"
+									<img th:src="${'/'+ singleProduct.images}"
 										data-imagezoom="true" class="img-responsive"
 										style="height: 400px">
 
@@ -111,7 +111,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="alert alert-info" role="alert">
 							<p style="font-weight: bold; font-size: 20px; color: #29B6F6;" 
 							   class="amount amRight" 
-							   th:text="${{comment.account.fullName} + '(' + {comment.timeCmt} + '): '}"></p>
+							   th:text="${comment.account.fullName + '(' + comment.timeCmt + '): '}"></p>
 							<p style="font-size: 20px; color: #29B6F6;" 
 							   class="amount amRight"
 							   th:text="${comment.context}"></p>
@@ -166,9 +166,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class=" rsidebar span_1_of_left">
 					<h3 class="cate">Danh mục</h3>
 					<ul class="menu-drop">
-						<li class="item1" th:each="category : ${listCate}">
-							<a th:href="@{'/viewByCate/' + ${category.idCategory}}" th:text="${category.nameCategory}"></a>
-						</li>
+						<li class="item1"><a
+							href="ViewProductByCate?action=viewProd&id="></a></li>
 					</ul>
 				</div>
 				<!--initiate accordion-->

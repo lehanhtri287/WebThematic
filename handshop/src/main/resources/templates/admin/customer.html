@@ -13,26 +13,26 @@
 <title>Khách hàng</title>
 <!-- InstanceEndEditable -->
 <!-- Font awesome -->
-<link rel="stylesheet" th:href="@{/admin/css/font-awesome.min.css}">
+<link rel="stylesheet" href="/admin/css/font-awesome.min.css">
 <!-- Sandstone Bootstrap CSS -->
-<link rel="stylesheet" th:href="@{/admin/css/bootstrap.minAdmin.css}">
+<link rel="stylesheet" href="/admin/css/bootstrap.minAdmin.css">
 <!-- Admin Style -->
-<link rel="stylesheet" th:href="@{/admin/css/styleAdmin.css}">
+<link rel="stylesheet" href="/admin/css/styleAdmin.css">
 <!-- /.content-wrapper -->
-<script th:src="@{/admin/js/Chart.min.js}"></script>
-<script th:src="@{/admin/js/chartData.js}"></script>
+<script src="/admin/js/Chart.min.js"></script>
+<script src="/admin/js/chartData.js"></script>
 <!-- InstanceEndEditable -->
 <!-- Loading Scripts -->
-<script th:src="@{/admin/js/jquery.min.js}"></script>
-<script th:src="@{/admin/js/bootstrap.min.js}"></script>
-<script th:src="@{/admin/js/main.js}"></script>
-<script th:src="@{/admin/js/label.js}"></script>
+<script src="/admin/js/jquery.min.js"></script>
+<script src="/admin/js/bootstrap.min.js"></script>
+<script src="/admin/js/main.js"></script>
+<script src="/admin/js/label.js"></script>
 
 </head>
 
 <body>
 	<div class="brand clearfix">
-		<a th:href="@{/admin/index}" class="logo"><img src="img/logo.jpg"
+		<a href="index.html" class="logo"><img src="img/logo.jpg"
 			class="img-responsive" alt=""></a> <span class="menu-btn"><i
 			class="fa fa-bars"></i></span>
 		<ul class="ts-profile-nav">
@@ -40,7 +40,7 @@
 					src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="">
 					<i class="fa fa-angle-down hidden-side"></i></a>
 				<ul>
-					<li><a th:href="@{/admin/logout}">Đăng xuất</a></li>
+					<li><a href="/admin/logout">Đăng xuất</a></li>
 				</ul></li>
 		</ul>
 	</div>
@@ -53,13 +53,13 @@
 			</ul>
 			<!-- InstanceBeginEditable name="open" -->
 			<ul class="ts-sidebar-menu">
-				<li><a th:href="@{/admin/index}"><i
+				<li><a href="/admin/index"><i
 						class="fa fa-dashboard"></i>Thống kê</a></li>
-				<li><a th:href="@{/admin/manageProduct}"><i class="fa fa-database"></i>Sản
+				<li><a href="/admin/manageProduct"><i class="fa fa-database"></i>Sản
 						phẩm</a></li>
-				<li><a th:href="@{/admin/manageOrder}"><i class="fa fa-pencil-square-o"></i>Đơn
+				<li><a href="/admin/manageOrder"><i class="fa fa-pencil-square-o"></i>Đơn
 						hàng</a></li>
-				<li class="open"><a th:href="@{/admin/manageCustomer}"><i class="fa fa-users"></i>Khách
+				<li class="open"><a href="/admin/manageCustomer"><i class="fa fa-users"></i>Khách
 						hàng</a></li>
 			</ul>
 			<!-- InstanceEndEditable -->
@@ -121,7 +121,7 @@
 						<li><a href="#" aria-label="Previous"> <span
 								aria-hidden="true">&laquo;</span>
 						</a></li>
-						<li><a th:href="@{'/admin/manageCustomer/' + {i}}"
+						<li><a th:href="${'/admin/manageCustomer/' + i}"
 								th:each=" i : ${#numbers.sequence(1, numPages)}" th:text="${i}" >1</a></li>
 						<li><a href="#" aria-label="Next"> <span
 								aria-hidden="true">&raquo;</span>
