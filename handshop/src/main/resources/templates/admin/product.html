@@ -131,14 +131,22 @@
 												<td class="hidden-xs" th:text="${product.quantityProduct}"></td>
 												<td><div class="btn-group btn-group-sm">
 														<button class="btn btn-primary hidden-xs"
+<<<<<<< HEAD
 															data-toggle="modal" th:data-target="${'#view' + product.idProduct}">
+=======
+															data-toggle="modal" th:data-target="@{'#view' + ${product.idProduct}}">
+>>>>>>> a804e5f3aa160607ad642009c2c9bc37bfc0d9c9
 															<i class="fa fa-eye" title="Chỉnh sửa"></i>
 														</button>
 														<a th:href="${'/admin/editProduct/' + product.idProduct}" class="btn btn-success"> <i
 															class="fa fa-edit" title="Chỉnh sửa"></i></a> 
 														<a th:href="${'/admin/deleteProduct/' + product.idProduct}"
 															class="btn btn-danger">x</a>
+<<<<<<< HEAD
 														<div th:id="${'view' + product.idProduct}" class="modal fade">
+=======
+														<div th:id="@{'view' + ${product.idProduct}}" class="modal fade">
+>>>>>>> a804e5f3aa160607ad642009c2c9bc37bfc0d9c9
 															<div class="modal-dialog">
 																<div class="modal-content">
 																	<div class="modal-header">
@@ -150,7 +158,7 @@
 																	<div class="modal-body">
 																		<div class="product">
 																			<div class="img-product text-center">
-																				<img style="width: 300px; height: 150px" th:src="${'/' + product.images}" alt="">
+																				<img style="width: 300px; height: 150px" th:src="@{'/' + ${product.images}}" alt="">
 																			</div>
 																			<div style="text-align: center;" class="detail-product">
 																				<p style="text-align: center; font-weight: bold;" th:text="${'Mã sản phẩm : ' + product.idProduct}"></p>
@@ -183,7 +191,11 @@
 						<li><a href="#" aria-label="Previous"> <span
 								aria-hidden="true">&laquo;</span>
 						</a></li>
+<<<<<<< HEAD
 						<li><a th:href="${'/admin/manageProduct/' + i}" th:each=" i : ${#numbers.sequence(1, numPages)}" th:text="${i}" ></a></li>
+=======
+						<li><a th:href="@{'/admin/manageProduct/' + ${i}}" th:each=" i : ${#numbers.sequence(1, numPages)}" th:text="${i}" ></a></li>
+>>>>>>> a804e5f3aa160607ad642009c2c9bc37bfc0d9c9
 						<li><a href="#" aria-label="Next"> <span
 								aria-hidden="true">&raquo;</span>
 						</a></li>

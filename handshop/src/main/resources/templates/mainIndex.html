@@ -24,8 +24,9 @@
 						<div class="price">
 							<h5 class="item_price"
 								th:utext="${#numbers.formatInteger(product.price, 3, 'COMMA')} + ' Đ' "></h5>
-							<a th:href="@{#}" class="item_add"
-								th:onclick="'addCart(\''+ ${product.idProduct}+'\');'">Thêm vào giỏ</a>
+							<a th:href="@{#}"
+								th:onclick="'addCart(\''+ ${product.idProduct}+'\');'"
+								class="cart item_add">Thêm vào giỏ</a>
 							<div class="clearfix"></div>
 						</div>
 
