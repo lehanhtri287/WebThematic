@@ -110,34 +110,33 @@ public class AccountDAOImpl implements AccountDAO {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Account accountResult = null;
 		boolean hasChanged = false;
+		boolean result = false;
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 
 		Query<Account> query = session.createQuery("from Account where email = :email", Account.class);
 		query.setParameter("email", account.getEmail());
-		Optional<Account> result = query.uniqueResultOptional();
+		Optional<Account> accountRresult = query.uniqueResultOptional();
 		try {
-			if (result.isPresent()) {
-				accountResult = result.get();
+			if (accountRresult.isPresent()) {
+				accountResult = accountRresult.get();
 				if (encoder.matches(account.getPassword(), accountResult.getPassword())) {
-					if (account.getFullName() != "" && !accountResult.getFullName().equals(account.getFullName())) {
+					if (!account.getFullName().equals("")) {
 						accountResult.setFullName(account.getFullName());
 						hasChanged = true;
 					}
-					if (account.getPhoneNumber() != ""
-							&& !accountResult.getPhoneNumber().equals(account.getPhoneNumber())) {
+					if (!account.getPhoneNumber().equals("")){
 						accountResult.setPhoneNumber(account.getPhoneNumber());
 						hasChanged = true;
 					}
-					if (account.getAddress() != "" && !accountResult.getAddress().equals(account.getAddress())) {
+					if (!account.getAddress().equals("")) {
 						accountResult.setAddress(account.getAddress());
 						hasChanged = true;
 					}
 					if(hasChanged){
 						session.save(accountResult);
 						session.getTransaction().commit();
-						LOGGER.info("updated info");
-						return true;
+						result = true;
 					}
 				}
 			}
@@ -147,8 +146,59 @@ public class AccountDAOImpl implements AccountDAO {
 		} finally {
 			session.close();
 		}
-		return false;
+		return result;
+		
 	}
+	
+//	@Override
+//	public boolean updateAccountInfo(Account account) {
+//
+//		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//		Account accountResult = null;
+//		boolean hasChanged = false;
+//		boolean result = false;
+//		Session session = sessionFactory.openSession();
+//		session.beginTransaction();
+//
+//		Query<Account> query = session.createQuery("from Account where email = :email", Account.class);
+//		query.setParameter("email", account.getEmail());
+//		Optional<Account> accountRresult = query.uniqueResultOptional();
+//		try {
+//			if (accountRresult.isPresent()) {
+//				accountResult = accountRresult.get();
+//				if (encoder.matches(account.getPassword(), accountResult.getPassword())) {
+//					if (!account.getFullName().equals("") && !accountResult.getFullName().equals(account.getFullName())) {
+//						accountResult.setFullName(account.getFullName());
+//						hasChanged = true;
+//					}
+//					if (!account.getPhoneNumber().equals("")
+//							&& !accountResult.getPhoneNumber().equals(account.getPhoneNumber())) {
+//						accountResult.setPhoneNumber(account.getPhoneNumber());
+//						hasChanged = true;
+//					}
+//					if (!account.getAddress().equals("") && !accountResult.getAddress().equals(account.getAddress())) {
+//						accountResult.setAddress(account.getAddress());
+//						hasChanged = true;
+//					}
+//					if(hasChanged){
+//						session.save(accountResult);
+//						session.getTransaction().commit();
+//						LOGGER.info("updated info");
+//						result = true;
+//					}
+//				}else{
+//					System.out.println("password wrong");
+//				}
+//			}
+//		} catch (NoSuchElementException e) {
+//			LOGGER.error("- error when call method updateAccountInfo with paramater " + account, e);
+//			session.getTransaction().rollback();
+//		} finally {
+//			session.close();
+//		}
+//		return result;
+//		
+//	}
 
 	@Override
 	public Account updateAccountPassWord(AccountPassUpdating accountPassUpdating) {

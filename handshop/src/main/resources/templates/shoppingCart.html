@@ -68,7 +68,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<td style="width: 80px">
 					<div class="input-group input-group-lg" style="width: 80px;">
 						<span class="input-group-addon" id="sizing-addon1"> 
-							<a th:href="${'/plusProduct/' + productCart.product.idProduct}">+</a>
+							<a th:href="@{'/plusProduct/' + ${productCart.product.idProduct}}">+</a>
 						</span>
 						<input 
 							type="number" id="quantity" 
@@ -79,7 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							name="quantity"
 							style="width: 70px; height: 45px;" /> 
 						<span class="input-group-addon" id="sizing-addon1"> 
-							<a th:href="${'/minusProduct/' + productCart.product.idProduct}">-</a>
+							<a th:href="@{'/minusProduct/' + ${productCart.product.idProduct}}">-</a>
 						</span>
 					</div>
 				</td>
@@ -87,7 +87,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					th:text="${#numbers.formatInteger(productCart.product.price * productCart.quantityCart, 3, 'COMMA')} + ' VNĐ'">
 				</td>
 				<td><a
-					th:href="${'/deletecart/' + productCart.product.idProduct}"
+					th:href="@{'/deletecart/' + ${productCart.product.idProduct}}"
 					class="btn btn-danger" role="button">Xóa</a></td>
 			</tr>
 		</table>
