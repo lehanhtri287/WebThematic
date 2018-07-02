@@ -13,21 +13,21 @@
 <title>Đơn Hàng</title>
 <!-- InstanceEndEditable -->
 <!-- Font awesome -->
-<link rel="stylesheet" href="/admin/css/font-awesome.min.css">
+<link rel="stylesheet" th:href="@{/admin/css/font-awesome.min.css}">
 <!-- Sandstone Bootstrap CSS -->
-<link rel="stylesheet" href="/admin/css/bootstrap.minAdmin.css">
+<link rel="stylesheet" th:href="@{/admin/css/bootstrap.minAdmin.css}">
 <!-- Admin Style -->
-<link rel="stylesheet" href="/admin/css/styleAdmin.css">
-<script src="/admin/js/jquery.min.js"></script>
-<script src="/admin/js/bootstrap.min.js"></script>
-<script src="/admin/js/main.js"></script>
-<script src="/admin/js/index.js"></script>
-<script src="/js/jquery-3.3.1.min.js"></script>
-<script src="/admin/js/validateFormProduct.js"></script>
+<link rel="stylesheet" th:href="@{/admin/css/styleAdmin.css}">
+<script th:src="@{/admin/js/jquery.min.js}"></script>
+<script th:src="@{/admin/js/bootstrap.min.js}"></script>
+<script th:src="@{/admin/js/main.js}"></script>
+<script th:src="@{/admin/js/index.js}"></script>
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/admin/js/validateFormProduct.js}"></script>
 </head>
 <body>
 	<div class="brand clearfix">
-		<a href="index.html" class="logo"><img src="img/logo.jpg"
+		<a th:href="@{/admin/index}" class="logo"><img src="img/logo.jpg"
 			class="img-responsive" alt=""></a> <span class="menu-btn"><i
 			class="fa fa-bars"></i></span>
 		<ul class="ts-profile-nav">
@@ -36,7 +36,7 @@
 					class="ts-avatar hidden-side" alt=""> <i
 					class="fa fa-angle-down hidden-side"></i></a>
 				<ul>
-					<li><a href="/admin/logout">Đăng xuất</a></li>
+					<li><a th:href="@{/admin/logout}">Đăng xuất</a></li>
 				</ul></li>
 		</ul>
 	</div>
@@ -46,13 +46,13 @@
 				<li class="ts-label">Danh Mục</li>
 			</ul>
 			<ul class="ts-sidebar-menu">
-				<li><a href="/admin/index"><i
+				<li><a th:href="@{/admin/index}"><i
 						class="fa fa-dashboard"></i>Thống kê</a></li>
-				<li><a href="/admin/manageProduct"><i class="fa fa-database"></i>Sản
+				<li><a th:href="@{/admin/manageProduct}"><i class="fa fa-database"></i>Sản
 						phẩm</a></li>
-				<li class="open"><a href="/admin/manageOrder"><i class="fa fa-pencil-square-o"></i>Đơn
+				<li class="open"><a th:href="@{/admin/manageOrder}"><i class="fa fa-pencil-square-o"></i>Đơn
 						hàng</a></li>
-				<li><a href="/admin/manageCustomer"><i class="fa fa-users"></i>Khách
+				<li><a th:href="@{/admin/manageCustomer}"><i class="fa fa-users"></i>Khách
 						hàng</a></li>
 			</ul>
 		</nav>
@@ -86,7 +86,7 @@
 											<td th:text="${order.generateStatus()}"></td>
 											<td th:text="${order.phoneNumber}"></td>
 											<td><div class="btn-group btn-group-sm">
-													<a th:href="${'/admin/editOrder/' + order.idOrder}" class="btn btn-primary"> <i
+													<a th:href="@{'/admin/editOrder/' + ${order.idOrder}}" class="btn btn-primary"> <i
 														class="fa fa-edit" title="Xem"></i></a> 
 												</div></td>
 										</tr>
@@ -101,7 +101,7 @@
 						<li><a href="#" aria-label="Previous"> <span
 								aria-hidden="true">&laquo;</span>
 						</a></li>
-						<li><a th:href="${'/admin/manageOrder/' + i}"
+						<li><a th:href="@{'/admin/manageOrder/' + {i}}"
 							th:each=" i : ${#numbers.sequence(1, numPages)}" th:text="${i}"></a></li>
 						<li><a href="#" aria-label="Next"> <span
 								aria-hidden="true">&raquo;</span>

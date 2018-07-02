@@ -13,17 +13,17 @@
 <title>Quản lý loại hàng</title>
 <!-- InstanceEndEditable -->
 <!-- Font awesome -->
-<link rel="stylesheet" href="/admin/css/font-awesome.min.css">
+<link rel="stylesheet" th:href="@{/admin/css/font-awesome.min.css}">
 <!-- Sandstone Bootstrap CSS -->
-<link rel="stylesheet" href="/admin/css/bootstrap.minAdmin.css">
+<link rel="stylesheet" th:href="@{/admin/css/bootstrap.minAdmin.css}">
 <!-- Admin Style -->
-<link rel="stylesheet" href="/admin/css/styleAdmin.css">
+<link rel="stylesheet" th:href="@{/admin/css/styleAdmin.css}">
 
 <!-- Loading Scripts -->
-<script src="/admin/js/jquery.min.js"></script>
-<script src="/admin/js/bootstrap.min.js"></script>
-<script src="/admin/js/main.js"></script>
-<script src="/admin/js/index.js"></script>
+<script th:src="@{/admin/js/jquery.min.js}"></script>
+<script th:src="@{/admin/js/bootstrap.min.js}"></script>
+<script th:src="@{/admin/js/main.js}"></script>
+<script th:src="@{/admin/js/index.js}"></script>
 </head>
 
 <body>
@@ -37,7 +37,7 @@
 					class="ts-avatar hidden-side" alt=""> Tài khoản <i
 					class="fa fa-angle-down hidden-side"></i></a>
 				<ul>
-					<li><a href="/admin/logout">Đăng xuất</a></li>
+					<li><a th:href="@{/admin/logout}">Đăng xuất</a></li>
 				</ul></li>
 		</ul>
 	</div>
@@ -48,13 +48,13 @@
 			</ul>
 			<!-- InstanceBeginEditable name="open" -->
 			<ul class="ts-sidebar-menu">
-				<li><a href="/admin/index"><i class="fa fa-dashboard"></i>Thống
+				<li><a th:href="@{/admin/index}"><i class="fa fa-dashboard"></i>Thống
 						Kê</a></li>
-				<li class="open"><a href="/admin/manageProduct"><i
+				<li class="open"><a th:href="@{/admin/manageProduct}"><i
 						class="fa fa-database"></i>Sản Phẩm</a></li>
-				<li><a href="/admin/manageOrder"><i class="fa fa-pencil-square-o"></i>Đơn
+				<li><a th:href="@{/admin/manageOrder}"><i class="fa fa-pencil-square-o"></i>Đơn
 						Hàng</a></li>
-				<li><a href="/admin/manageCustomer"><i class="fa fa-users"></i>Khách
+				<li><a th:href="@{/admin/manageCustomer}"><i class="fa fa-users"></i>Khách
 						hàng</a></li>
 			</ul>
 			<!-- InstanceEndEditable -->

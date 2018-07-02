@@ -8,7 +8,7 @@
 					<h6>Danh mục sản phẩm</h6>
 					<ul>
 						<li th:each="category : ${listCate}">
-							<a th:href="@{'/viewByCate/' + category.idCategory}" th:text="${category.nameCategory}"></a>
+							<a th:href="@{'/viewByCate/' + ${category.idCategory}}" th:text="${category.nameCategory}"></a>
 						</li>
 					</ul>
 				</div>
