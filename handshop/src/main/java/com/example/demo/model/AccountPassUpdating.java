@@ -1,21 +1,21 @@
 package com.example.demo.model;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 public class AccountPassUpdating {
 	private String email;
-	@NotEmpty(message = "{field.empty}")
+	@Size(min = 1, message = "{field.empty}")
 	private String newPassword;
-	@NotEmpty(message = "{field.empty}")
+	@Size(min = 1, message = "{field.empty}")
 	private String confirmNewPassword;
-	@NotEmpty(message = "{field.empty}")
+	@Size(min = 1, message = "{field.empty}")
 	private String password;
 	
 	public AccountPassUpdating() {}
 
-	public AccountPassUpdating(String email, @NotEmpty(message = "{field.empty}") String newPassword,
-			@NotEmpty(message = "{field.empty}") String confirmNewPassword,
-			@NotEmpty(message = "{field.empty}") String password) {
+	public AccountPassUpdating(String email, @Size(min = 1, message = "{field.empty}") String newPassword,
+			@Size(min = 1, message = "{field.empty}") String confirmNewPassword,
+			@Size(min = 1, message = "{field.empty}") String password) {
 		super();
 		this.email = email;
 		this.newPassword = newPassword;

@@ -1,19 +1,19 @@
 package com.example.demo.model;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 public class AccountLogin {
 	@Pattern(regexp = "^(.+)@(.+\\.+.+)$", message = "{field.email.invalid}")
 	private String email;
-	@NotEmpty(message = "{field.empty}")
+	@Size(min = 1, message = "{field.empty}")
 	private String password;
 	
 	public AccountLogin() {}
 
 	public AccountLogin(
 			@Pattern(regexp = "^(.+)@(.+\\.+.+)$", message = "{field.email.invalid}") String email,
-			@NotEmpty(message = "{accLogin.empty}") String password) {
+			@Size(min = 1, message = "{field.empty}") String password) {
 		super();
 		this.email = email;
 		this.password = password;

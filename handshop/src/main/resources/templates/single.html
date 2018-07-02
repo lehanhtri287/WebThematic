@@ -93,7 +93,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 
 						<label class="add-to item_price" th:text="${singleProduct.price}"></label>
-						<a href="#"
+						<a th:href="@{#}"
 							th:onclick="'addCart(\''+ ${singleProduct.idProduct}+'\');'"
 							class="cart item_add">Thêm vào giỏ</a>
 					</div>

@@ -48,14 +48,14 @@
 							<input type="checkbox" id="menu-toggle">
 							<div class="mepanel">
 								<div class="h_nav" th:each="category : ${listCate}">
-									<a th:href="@{'/viewByCate/' + category.idCategory}">
+									<a th:href="@{'/viewByCate/' + ${category.idCategory}}">
 										<h4 th:text="${category.nameCategory}"></h4>
 									</a>
 								</div>
 							</div>
 						</li>
-						<li><a href="#">Tin Tức</a></li>
-						<li><a class="color6" href="#">Liên hệ</a></li>
+						<li><a th:href="@{#}">Tin Tức</a></li>
+						<li><a class="color6" th:href="@{#}">Liên hệ</a></li>
 						<li class="search">
 							<form action="@{/search}" method="POST">
 								<input type="text" class="form-control inputSearch"
