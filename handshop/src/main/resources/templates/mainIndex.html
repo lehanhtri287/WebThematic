@@ -14,11 +14,11 @@
 							cÃ³ sáº£n pháº©m thuá»™c loáº¡i hÃ ng nÃ y</h3>
 					</div>-->
 					<div class="item" th:each="product : ${listProducts}">
-						<a th:href="${'/single/' + product.idProduct}"> <img
-							class="img-responsive" th:src="${'/' + product.images}" />
+						<a th:href="@{'/single/' + product.idProduct}"> <img
+							class="img-responsive" th:src="@{'/' + product.images}" />
 						</a>
 						<h3>
-							<a id="nameProduct" th:href="${'/single/' + product.idProduct}"
+							<a id="nameProduct" th:href="@{'/single/' + product.idProduct}"
 								th:utext="${product.nameProduct}"></a>
 						</h3>
 						<div class="price">
