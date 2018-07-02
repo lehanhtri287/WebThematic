@@ -28,7 +28,7 @@
 
 <body>
 	<div class="brand clearfix">
-		<a th:href="@{/admin/index}" class="logo"><img src="img/logo.jpg"
+		<a href="index.html" class="logo"><img src="img/logo.jpg"
 			class="img-responsive" alt=""></a> <span class="menu-btn"><i
 			class="fa fa-bars"></i></span>
 		<ul class="ts-profile-nav">
@@ -36,7 +36,7 @@
 					src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="">
 					<i class="fa fa-angle-down hidden-side"></i></a>
 				<ul>
-					<li><a th:href="@{/admin/logout}">Đăng xuất</a></li>
+					<li><a href="/admin/logout">Đăng xuất</a></li>
 				</ul></li>
 		</ul>
 	</div>
@@ -46,13 +46,13 @@
 				<li class="ts-label">Danh Mục</li>
 			</ul>
 			<ul class="ts-sidebar-menu">
-				<li class="open"><a th:href="@{/admin/index}"><i
+				<li class="open"><a href="/admin/index"><i
 						class="fa fa-dashboard"></i>Thống kê</a></li>
-				<li><a th:href="@{/admin/manageProduct}"><i class="fa fa-database"></i>Sản
+				<li><a href="/admin/manageProduct"><i class="fa fa-database"></i>Sản
 						phẩm</a></li>
-				<li><a th:href="@{/admin/manageOrder}"><i class="fa fa-pencil-square-o"></i>Đơn
+				<li><a href="/admin/manageOrder"><i class="fa fa-pencil-square-o"></i>Đơn
 						hàng</a></li>
-				<li><a th:href="@{/admin/manageCustomer}"><i class="fa fa-users"></i>Khách
+				<li><a href="/admin/manageCustomer"><i class="fa fa-users"></i>Khách
 						hàng</a></li>
 			</ul>
 		</nav>
@@ -85,7 +85,7 @@
 									<button class="btn btn-primary" type="submit">
 										<i class="fa fa-save"> Thêm</i>
 									</button>
-									<a style="margin-left: 10px" th:href="@{/admin/manageCategory}" type="submit">Quay lại</a>
+									<a style="margin-left: 10px" href="/admin/manageCategory" type="submit">Quay lại</a>
 								</div>
 							</div>
 						</form>

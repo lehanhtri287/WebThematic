@@ -23,6 +23,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         }
 
 </script>
+<script type="text/javascript">
+		function plusQty() {
+			var quantity = Number(document.getElementById("quantity").value);
+			quantity = quantity + 1;
+			alert(quantity);
+			document.getElementById("quantity").value = quantity + "";
+		}
+		function minusQty(id) {
+			var quantity = Number(document.getElementById("quantity" + id).value);
+
+			if (quantity <= 1) {
+				quantity = 1;
+			} else {
+				quantity = quantity - 1;
+			}
+
+			document.getElementById("quantity" ++ id).value = quantity + "";
+		}
+</script>
 
 <link th:href="@{/css/memenu.css}" rel="stylesheet" type="text/css"
 	media="all" />

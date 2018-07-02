@@ -13,24 +13,24 @@
 <title>Chỉnh sửa danh mục</title>
 <!-- InstanceEndEditable -->
 <!-- Font awesome -->
-<link rel="stylesheet" th:href="@{/admin/css/font-awesome.min.css}">
+<link rel="stylesheet" href="/admin/css/font-awesome.min.css">
 <!-- Sandstone Bootstrap CSS -->
-<link rel="stylesheet" th:href="@{/admin/css/bootstrap.minAdmin.css}">
+<link rel="stylesheet" href="/admin/css/bootstrap.minAdmin.css">
 <!-- Admin Style -->
-<link rel="stylesheet" th:href="@{/admin/css/styleAdmin.css}">
-<script th:src="@{/admin/js/jquery.min.js}"></script>
-<script th:src="@{/admin/js/bootstrap.min.js}"></script>
-<script th:src="@{/admin/js/main.js}"></script>
-<script th:src="@{/admin/js/index.js}"></script>
-<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
-<script th:src="@{/admin/js/validateEditProduct.js}"></script>
-<script th:src="@{/js/validateAddCate.js}"></script>
+<link rel="stylesheet" href="/admin/css/styleAdmin.css">
+<script src="/admin/js/jquery.min.js"></script>
+<script src="/admin/js/bootstrap.min.js"></script>
+<script src="/admin/js/main.js"></script>
+<script src="/admin/js/index.js"></script>
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/admin/js/validateEditProduct.js"></script>
+<script src="/js/validateAddCate.js"></script>
 
 </head>
 
 <body>
 	<div class="brand clearfix">
-		<a th:href="@{/admin/index}" class="logo"><img src="img/logo.jpg"
+		<a href="index.html" class="logo"><img src="img/logo.jpg"
 			class="img-responsive" alt=""></a> <span class="menu-btn"><i
 			class="fa fa-bars"></i></span>
 		<ul class="ts-profile-nav">
@@ -38,7 +38,7 @@
 					src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="">
 					<i class="fa fa-angle-down hidden-side"></i></a>
 				<ul>
-					<li><a th:href="@{/admin/logout}">Đăng xuất</a></li>
+					<li><a href="/admin/logout">Đăng xuất</a></li>
 				</ul></li>
 		</ul>
 	</div>
@@ -48,13 +48,13 @@
 				<li class="ts-label">Danh Mục</li>
 			</ul>
 			<ul class="ts-sidebar-menu">
-				<li><a th:href="@{/admin/index}"><i class="fa fa-dashboard"></i>Thống
+				<li><a href="/admin/index"><i class="fa fa-dashboard"></i>Thống
 						Kê</a></li>
-				<li class="open"><a th:href="@{/admin/manageProduct}"><i
+				<li class="open"><a href="/admin/manageProduct"><i
 						class="fa fa-database"></i>Sản Phẩm</a></li>
-				<li><a th:href="@{/admin/manageOrder}"><i class="fa fa-pencil-square-o"></i>Đơn
+				<li><a href="/admin/manageOrder"><i class="fa fa-pencil-square-o"></i>Đơn
 						Hàng</a></li>
-				<li><a th:href="@{/admin/manageCustomer}"><i class="fa fa-users"></i>Khách
+				<li><a href="/admin/manageCustomer"><i class="fa fa-users"></i>Khách
 						Hàng</a></li>
 			</ul>
 		</nav>
@@ -94,7 +94,7 @@
 									<button class="btn btn-primary" type="submit">
 										<i class="fa fa-edit"> Chỉnh sửa</i>
 									</button>
-									<a style="margin-left: 10px" th:href="@{/admin/manageCategory}" type="submit">Quay lại</a>
+									<a style="margin-left: 10px" href="/admin/manageCategory" type="submit">Quay lại</a>
 								</div>
 							</div>
 						</form>
