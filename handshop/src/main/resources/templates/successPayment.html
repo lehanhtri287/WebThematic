@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <title>T&T Handshop</title>
-<link href="/css/bootstrap.css" rel="stylesheet" type="text/css"
+<link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css"
 	media="all" />
-<script src="/js/jquery-3.3.1.min.js"></script>
-<script src="/js/validatePaymentForm.js"></script>
-<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/js/validatePaymentForm.js}"></script>
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords"
@@ -43,9 +43,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		}
 </script>
 
-<link href="/css/memenu.css" rel="stylesheet" type="text/css"
+<link th:href="@{/css/memenu.css}" rel="stylesheet" type="text/css"
 	media="all" />
-<script type="text/javascript" src="/js/memenu.js"></script>
+<script type="text/javascript" th:src="@{/js/memenu.js}"></script>
 <script>
 	$(document).ready(function() {
 		$(".memenu").memenu();
